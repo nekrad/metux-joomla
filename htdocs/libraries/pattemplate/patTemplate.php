@@ -1623,11 +1623,15 @@ class patTemplate
 			/**
 			 * parse
 			 */
-			$this->_parseVariables( $template );
+			// NOTICE: the order of deps and vars is reverted now: 
+			// dependencies are now parsed BEFORE variables, so an dependency
+			// may leave unused vars which are filled by the outer template
+			//                   -- 2008-10-14 Enrico Weigelt <weigelt@metux.de>
 			$result = $this->_parseDependencies( $template );
 			if (patErrorManager::isError($result)) {
 				return $result;
 			}
+			$this->_parseVariables( $template );
 
 			/**
 			 * store result
