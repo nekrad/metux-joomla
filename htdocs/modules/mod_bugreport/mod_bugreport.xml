@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Bug report</name>
+	<author>metux IT service</author>
+	<creationDate>November 2008</creationDate>
+	<copyright>Copyright (C) 2008 metux IT service. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>weigelt@metux.de</authorEmail>
+	<authorUrl>http://www.metux.de/</authorUrl>
+	<version>1.5.0</version>
+	<description>This module displays an bug report form and posts context-sensitive data in the bug report</description>
+	<files>
+		<filename module="mod_bugreport">mod_bugreport.php</filename>
+		<filename module="mod_bugreport">tmpl/default.php</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+
+		<param name="@spacer"      type="spacer" default=""     label=""                    description="" />
+		<param name="subject"      type="text"   default=""     label="Report subject"      description="Subject of the report emaild" />
+		<param name="email"        type="text"   default=""     label="Destination address" description="eMail address the report is sent to" />
+		<param name="sender"       type="text"   default=""     label="Sender address"      description="Sender address of the report emails" />
+		<param name="submitbutton" type="text"   default="Send" label="Submit button"       description="Submit button label" />
+		<param name="helptext"     type="text"   default=""     label="Help text"           description="Help message text" />
+		
+	</params>
+<!--	<params group="advanced">
+	</params> -->
+</install>
