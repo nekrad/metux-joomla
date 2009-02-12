@@ -1,0 +1,53 @@
+#!/usr/bin/php -q
+<?php
+
+if (!$argv[2])
+{
+    print $argv[0]." <langfile-1> <langfile-2>\n";
+    print "\n";
+    print "Compares two language files and lists missing entries\n\n";
+    exit(1);
+}
+
+run_compare($argv[1], $argv[2]);
+
+
+function load_langfile($fn)
+{
+#    print "load_langfile: $fn\n";
+    $lines = file($fn);
+    foreach($lines as $walk => $cur)
+    {
+#       print "CUR=$cur\n";
+        $cur = trim($cur);
+        if ($cur)
+        {
+            if (preg_match('~^([A-Za-z0-0\ \.\:\-\_\+]+)=(.*)$~', $cur, $m))
+            {
+                $lang{$m[1]} = $m[2];
+            }
+            else
+                print "<WARN: cannot parse> ".$cur."\n";
+        }
+    }
+    return $lang;
+}
+
+
+function run_compare($f1, $f2)
+{
+    $lang1 = load_langfile($f1);
+    $lang2 = load_langfile($f2);
+
+    foreach($lang1 as $walk => $cur)
+    {
+        if (!isset($lang2{$walk}))
+            print "$f2: missing \"$walk\"\n";
+    }
+
+    foreach($lang2 as $walk => $cur)
+    {
+        if (!isset($lang1{$walk}))
+            print "$f1: missing \"$walk\"\n";
+    }
+}
