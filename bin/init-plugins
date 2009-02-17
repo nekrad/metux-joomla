@@ -1,0 +1,65 @@
+#!/usr/bin/php -q
+<?php
+
+define('JOOMLA_PREFIX', '../htdocs/');
+require_once(JOOMLA_PREFIX.'configuration.php');
+require_once('MDB2.php');
+
+function load_ini($fn)
+{
+    if (!($fp = @fopen($fn,"r")))
+	return;
+
+    while (!feof($fp))
+    {
+	$line = trim(fgets($fp, 4096));
+	if (preg_match('~([A-Za-z0-9\.\_]+):(.*)~', $line, $res))
+	    $data{trim($res[1])} = trim($res[2]);
+    }
+    return $data;
+}
+
+function get_plugin($folder, $element)
+{
+    global $dbc;
+    $q = "SELECT * FROM jos_plugins WHERE folder = '$folder' AND element = '$element'";
+    return $dbc->queryRow($q);
+}
+
+function create_plugin($folder, $element, $name)
+{
+    global $dbc;
+    $q = "INSERT INTO jos_plugins (folder,element,name) VALUES ( '".
+	$dbc->escape($folder)."','".
+	$dbc->escape($element)."','".
+	$dbc->escape($name)."' );";
+    $dbc->query($q);
+}
+
+$jconf = new JConfig();
+
+$dbc = MDB2::connect(
+    $jconf->dbtype.'://'.$jconf->user.':'.$jconf->password.'@'.$jconf->host.'/'.$jconf->db);
+
+if (!($inifile = $_SERVER['argv'][1]))
+    die($_SERVER['argv'][0]." <configfile>\n");
+
+if (!is_array($pluginconf = load_ini($inifile)))
+    die("Cannot open \"$inifile\"\n");
+
+if (!($class = $pluginconf{'class'}))
+    die("Missing plugin class\n");
+
+if (!($name = $pluginconf{'name'}))
+    die("Missing plugin name\n");
+    
+if (!($description = $pluginconf{'description'}))
+    die("Missing plugin description");
+
+if ($plug = get_plugin($class, $name))
+{
+    print "Plugin $class:$name already registered\n";
+    exit;
+}
+else
+    create_plugin($class, $name, $description);
