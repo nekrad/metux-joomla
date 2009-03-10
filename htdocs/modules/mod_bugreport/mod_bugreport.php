@@ -30,8 +30,9 @@ else
 {
 	$mod_bugreport_kickback   = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	$mod_bugreport_url        = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	$mod_bugreport_sendbutton = 'Send';
+	$mod_bugreport_sendbutton = (($p = $params->get('submitbutton') ? $p : 'Send'));
 	$mod_bugreport_option     = JRequest::getString('option');
+	$mod_bugreport_comment    = $params->get('helptext');
 
 	require(JModuleHelper::getLayoutPath('mod_bugreport'));
 }
