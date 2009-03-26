@@ -51,6 +51,7 @@ class TableProperties extends JTable
 	var $checked_out = null;
 	var $checked_out_time = null ;
 	var $created_by = null;
+	var $video = null;
 	
 	function TableProperties(& $db) {
 		
@@ -119,7 +120,4 @@ class TableProperties extends JTable
         
         return true;
 	}
-	
-	
-	
 }

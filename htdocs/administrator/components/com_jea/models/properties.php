@@ -264,7 +264,8 @@ class JeaModelProperties extends JModel
 			'description'    => JRequest::getVar( 'description', '', 'POST', 'string', JREQUEST_ALLOWRAW ),
 			'slogan_id'      => JRequest::getInt( 'slogan_id', 0 , 'POST' ),
 			'published'      => JRequest::getInt( 'published', 0 , 'POST' ),
-			'emphasis'       => JRequest::getInt( 'emphasis', 0 , 'POST' )
+			'emphasis'       => JRequest::getInt( 'emphasis', 0 , 'POST' ),
+		'video'		=> JRequest::getString( 'video', 0, 'POST' )
         );
         
         if ($created_by = JRequest::getInt( 'created_by', 0 , 'POST' )){

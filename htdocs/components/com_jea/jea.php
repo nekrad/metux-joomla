@@ -17,6 +17,16 @@
 defined('_JEXEC') or die('Restricted access');
 
 require_once JPATH_COMPONENT_ADMINISTRATOR.DS.'jea.class.php';
+require_once('mcloud-client.conf.php');
+require_once('MC_RemoteClient.class.php');
+
+global $mcloud_remoteclient;
+$mcloud_remoteclient = new MC_RemoteClient(array
+(
+    'namespace' => MEDIACLOUD_SRV_NAMESPACE,
+    'prefix'    => MEDIACLOUD_SRV_PREFIX,
+    'secret'    => MEDIACLOUD_SRV_SECRET
+));                                                                                                       
 
 //add ACL
 $acl = & JFactory::getACL();
