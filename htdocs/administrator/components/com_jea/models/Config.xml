@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>JEA Config Form</name>
+
+	<params group="units" addpath="/administrator/components/com_jea/elements" >
+		<param name="surface_measure" type="list" default="" label="Surface unit" description="PARAMSURFACEMEASURE">
+			<option value="m²">m²</option>
+			<option value="Sq. Ft.">Sq. Ft.</option>
+		</param>
+	</params>
+	
+	<params group="currency">
+		<param name="currency_symbol" type="text" size="5" default="€" label="Currency symbol" description=""  />
+		<param name="thousands_separator" type="text" size="1" default=" " label="Thousands separator" description=""  />
+		<param name="decimals_separator" type="text" size="1" default="," label="Decimals separator" description=""  />
+		<param name="symbol_place" type="radio"  default="1" label="Symbol position" description="PARAMSSYMBOLPLACE"  >
+			<option value="0">Before</option>
+			<option value="1">After</option>
+		</param>
+	</params>
+	
+	<params group="lists">
+		<param name="sort_price" type="radio" default="0" label="Sort by price" description="PARAMSLISTSSORTPRICE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		
+		<param name="sort_livingspace" type="radio" default="0" label="Sort by living space" description="PARAMSLISTSSORTLIVINGSPACE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		
+		<param name="sort_landspace" type="radio" default="0" label="Sort by land space" description="PARAMSLISTSSORTLANDSPACE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>		
+		<param name="list_limit" type="text" size="3" default="10" label="List limit" description="PARAMSLISTLIMIT"  />				
+	</params>
+	
+	<params group="property">
+		<param name="show_print_icon" type="radio" default="1" label="Print Icon" description="PARAMSPRINT">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_pdf_icon" type="radio" default="1" label="PDF Icon" description="PARAMSPDF">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+		
+		<param name="show_contactform" type="radio" default="1" label="Contact form" description="PARAMSCONTACTFORM">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="default_mail" type="text" default="" label="Default email" description="PARAMSDEFAULTEMAIL" />
+        <param name="send_form_to_agent" type="radio" default="0" label="Send form to agent" description="PARAMSSENDFORMTOAGENT">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+        
+        <param name="show_googlemap" type="radio" default="0" label="Google map" description="PARAMSSHOWGOOGLEMAP">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+        <param name="googlemap_apikey" type="text" default="" label="Google map API key" size="65" description="PARAMSGOOGLEMAPAPIKEY" />
+        
+        
+	</params>
+	
+	<params group="pictures">
+		<param name="jpg_quality" type="text" size="3" default="90" label="Pictures quality" description="PARAMSPICTUREQUALITY"  />
+		<param name="max_thumbnails" type="text" size="3" default="120" label="Max thumbnails width" description="PARAMSMAXTHUMBNAILS"  />
+		<param name="max_previews" type="text" size="3" default="400" label="Max previews width" description="PARAMSMAXPREVIEWS"  />					
+	</params>
+	
+</form>

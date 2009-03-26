@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+
+		<param name="sort_price" type="radio" default="0" label="Sort by price" description="PARAMSLISTSSORTPRICE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		
+		<param name="sort_livingspace" type="radio" default="0" label="Sort by living space" description="PARAMSLISTSSORTLIVINGSPACE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		
+		<param name="sort_landspace" type="radio" default="0" label="Sort by land space" description="PARAMSLISTSSORTLANDSPACE" >
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+	</params>
+</config>

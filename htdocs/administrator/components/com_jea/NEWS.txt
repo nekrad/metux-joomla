@@ -1,0 +1,55 @@
+Joomla Estate Agency          News
+==================================
+
+=RELEASE 0.7 / 01-2009=
+-Add Google map geolocalisation
+-Add Pdf view to properties detail
+-Fix bug on room min in advanced search
+-Fix translations on administrator component menu
+-Fix Missing translations
+-Fix various bugs on search results
+-Fix pagination bug
+
+=RELEASE 0.6 / 12-2008=
+-Fix bug on search pagination
+-Add english translation
+-Add sh404SEF plugin (site/sef_ext/com_jea)
+-Add Joomfish contentElements (admin/joomfish)
+-Default email to contact form different than administrator email in component parameters
+-Jea Agents could receive contact form in component parameters
+
+=RELEASE 0.5 / 12-2008=
+-Fix bug on image deletion (redirect on blank page)
+-Fix bug #10490 Error message when mail function cannot send mail
+-Fix bug #13089 on module emphasis (break links)
+-Users can manage properties in front-office
+
+=RELEASE 0.4 / 06-2008=
+0.4 beta (bugfixes release)
+- Fix include path for jea library
+- Refix bug #10973 -> Warning: cannot yet handle MBCS in html_entity_decode()
+- Move /components/com_jea/upload to /images/com_jea
+- Move /components/com_jea/medias to /medias/com_jea
+- Refactor entire code to be more Joomla compliant
+- Ordering properties columns in admin
+- Checked-out on properties (Avoid conflict between users)
+- Fix bug when search reference in administration.
+- Fix Ordering bug after search in front
+
+=RELEASE 0.3 / 05-2008=
+-fix search bugs
+-fix bug on menu parameters
+-fix bug [#10973] Warning: cannot yet handle MBCS in html_entity_decode() with PHP4
+-fix bug [#10490] Error message when mail function cannot send mail
+
+=RELEASE 0.2 / 04-2008=
+-Fix bug on list limit in front
+-Search engine implementation
+-Language update
+-Refactor some code
+-Contact form implementation
+-Breadcrumb and title supports
+-AJAX search support
+
+=RELEASE 0.1 / 26-mar-2008=
+- Initial public code drop
