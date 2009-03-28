@@ -65,6 +65,19 @@ class JeaViewProperties extends JeaView
 		
 		$this->assignRef('row', $row);
 		
+		$old_params = & $params;
+		$params = new JParameter("");
+		$params->set('medium_id', $this->row->video);
+	        $params->set('player_width',  400);
+		$params->set('player_height', 400);
+
+		ob_start();
+		require('modules/mod_mcloud_player/mod_mcloud_player.php');
+		$playerbox = ob_get_contents();
+		ob_end_clean();
+		$params = & $old_params;
+		$this->assignRef('player_box', $playerbox);
+
 		$res = ComJea::getImagesById($row->id);
 		$this->assignRef('main_image', $res['main_image']);
 		$this->assignRef('secondaries_images', $res['secondaries_images']);

@@ -48,7 +48,11 @@ if(!$this->row->id){
  <h2 ><?php echo JText::_('Ref')?> : <?php echo $this->escape($this->row->ref) ?></h2>
  
  <div class="clr" >&nbsp;</div>
-  	    
+
+   <?php echo $this->player_box; ?>
+
+   <p> &nbsp; </p>
+
    <div class="item_second_column">
       <h3><?php echo JText::_('Adress') ?> :</h3>
       <strong>
