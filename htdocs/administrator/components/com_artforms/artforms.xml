@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>artforms</name>
+ <creationDate>04/05/2008</creationDate>
+ <author>InterJoomla</author>
+ <copyright>This component in released under the GNU/GPL License version 2</copyright>
+ <authorEmail>interjoomla@gmail.com</authorEmail>
+ <authorUrl>http://jartforms.interjoomla.com.ar/</authorUrl>
+ <version>2.1b7.1 [RC1 for J1.5.x]</version>
+ <description>
+  Welcome to ArtForms, a Joomla's forms component!
+  The ArtForms component is a package for an easy From Generator for Joomla 1.5.xx.
+  It allows you to generate as much Forms as you like, you can define all fields
+  you need and also make file upload and attachment possible.
+  The idea of the ArtForms is to give you a tool that is enabling you create a
+  dynamic form in minutes within your Joomla! CMS.
+ </description>
+ <install>
+  <queries>
+   <query>
+   CREATE TABLE IF NOT EXISTS #__artforms (
+  `id` int(11) NOT NULL auto_increment,
+  `titel` varchar(255) NOT NULL default '',
+  `text` text NOT NULL,
+  `danktext` text NOT NULL,
+  `customjscode` text NOT NULL,
+  `customcss` text NOT NULL,
+  `metakey` mediumtext NOT NULL,
+  `metadesc` text NOT NULL,
+  `email` varchar(255) NOT NULL default '',
+  `ccmail` varchar(255) NOT NULL default '',
+  `bccmail` varchar(255) NOT NULL default '',
+  `html` char(2) NOT NULL default '0',
+  `seccode` char(2) NOT NULL default '0',
+  `emailfield` char(2) NOT NULL default '0',
+  `allowatt` varchar(10) NOT NULL default '0',
+  `allowattfiles` mediumtext NOT NULL,
+  `allowattfilesize` int(40) NOT NULL default '102400',
+  `published` tinyint(1) NOT NULL default '0',
+  `publish_up` datetime NOT NULL default '0000-00-00 00:00:00',
+  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+  `created_by` int(10) unsigned NOT NULL default '0',
+  `checked_out` tinyint(1) unsigned NOT NULL default '0',
+  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `access` int(10) unsigned NOT NULL default '0',
+  `ordering` int(10) unsigned NOT NULL default '9999',
+  `publish_down` datetime NOT NULL default '0000-00-00 00:00:00',
+  `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+  `modified_by` int(10) unsigned NOT NULL default '0',
+  `author` varchar(255) NOT NULL default '',
+  `modifier` varchar(255) NOT NULL default '',
+  `version` int(10) unsigned NOT NULL default '1',
+  `hits` int(10) unsigned NOT NULL default '0',
+  `created_by_alias` varchar(255) NOT NULL default '',
+  `afeditor` varchar(255) NOT NULL default '',
+  `attribs` text NOT NULL,
+  PRIMARY KEY  (`id`)
+    )
+   </query>
+   <query>
+   CREATE TABLE IF NOT EXISTS #__artforms_items (
+  `item_id` int(11) NOT NULL auto_increment,
+  `form_id` int(11) NOT NULL default '0',
+  `name` text NOT NULL,
+  `type` varchar(10) NOT NULL default '',
+  `required` char(1) NOT NULL default '0',
+  `validation` varchar(10) NOT NULL default '0',
+  `values` text NOT NULL,
+  `default_values` text NOT NULL default '',
+  `readonly` char(1) NOT NULL default '0',
+  `customcode` varchar(255) NOT NULL default '',
+  `item_ordering` tinyint(5) unsigned NOT NULL default '0',
+  `layout` text NOT NULL default '',
+  PRIMARY KEY  (`item_id`)
+	)
+   </query>
+   <query>
+   CREATE TABLE #__artforms_inbox (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) NOT NULL default '',
+  `form_id` int(11) NOT NULL default '0',
+  `item_name` text NOT NULL,
+  `item_data` text NOT NULL,
+  `form_date` varchar(45) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+	)
+   </query>
+  </queries>
+ </install>
+ <installfile>install.artforms.php</installfile>
+ <uninstallfile>uninstall.artforms.php</uninstallfile>
+ <files destination="com_artforms" folder="frontend">
+  <filename>artforms.php</filename>
+  <filename>artforms.html.php</filename>
+  <filename>version.php</filename>
+  <filename>assets/captcha/audio/silent.mp3</filename>
+  <filename>assets/captcha/audio/english/codestart.mp3</filename>
+  <filename>assets/captcha/audio/english/forbidden.mp3</filename>
+  <filename>assets/captcha/audio/english/0.mp3</filename>
+  <filename>assets/captcha/audio/english/1.mp3</filename>
+  <filename>assets/captcha/audio/english/2.mp3</filename>
+  <filename>assets/captcha/audio/english/3.mp3</filename>
+  <filename>assets/captcha/audio/english/4.mp3</filename>
+  <filename>assets/captcha/audio/english/5.mp3</filename>
+  <filename>assets/captcha/audio/english/6.mp3</filename>
+  <filename>assets/captcha/audio/english/7.mp3</filename>
+  <filename>assets/captcha/audio/english/8.mp3</filename>
+  <filename>assets/captcha/audio/english/9.mp3</filename>
+  <filename>assets/captcha/audio/english/a.mp3</filename>
+  <filename>assets/captcha/audio/english/b.mp3</filename>
+  <filename>assets/captcha/audio/english/c.mp3</filename>
+  <filename>assets/captcha/audio/english/d.mp3</filename>
+  <filename>assets/captcha/audio/english/e.mp3</filename>
+  <filename>assets/captcha/audio/english/f.mp3</filename>
+  <filename>assets/captcha/audio/english/g.mp3</filename>
+  <filename>assets/captcha/audio/english/h.mp3</filename>
+  <filename>assets/captcha/audio/english/i.mp3</filename>
+  <filename>assets/captcha/audio/english/j.mp3</filename>
+  <filename>assets/captcha/audio/english/k.mp3</filename>
+  <filename>assets/captcha/audio/english/l.mp3</filename>
+  <filename>assets/captcha/audio/english/m.mp3</filename>
+  <filename>assets/captcha/audio/english/n.mp3</filename>
+  <filename>assets/captcha/audio/english/o.mp3</filename>
+  <filename>assets/captcha/audio/english/p.mp3</filename>
+  <filename>assets/captcha/audio/english/q.mp3</filename>
+  <filename>assets/captcha/audio/english/r.mp3</filename>
+  <filename>assets/captcha/audio/english/s.mp3</filename>
+  <filename>assets/captcha/audio/english/t.mp3</filename>
+  <filename>assets/captcha/audio/english/u.mp3</filename>
+  <filename>assets/captcha/audio/english/v.mp3</filename>
+  <filename>assets/captcha/audio/english/w.mp3</filename>
+  <filename>assets/captcha/audio/english/x.mp3</filename>
+  <filename>assets/captcha/audio/english/y.mp3</filename>
+  <filename>assets/captcha/audio/english/z.mp3</filename>
+  <filename>assets/captcha/audio/german/codestart.mp3</filename>
+  <filename>assets/captcha/audio/german/forbidden.mp3</filename>
+  <filename>assets/captcha/audio/german/0.mp3</filename>
+  <filename>assets/captcha/audio/german/1.mp3</filename>
+  <filename>assets/captcha/audio/german/2.mp3</filename>
+  <filename>assets/captcha/audio/german/3.mp3</filename>
+  <filename>assets/captcha/audio/german/4.mp3</filename>
+  <filename>assets/captcha/audio/german/5.mp3</filename>
+  <filename>assets/captcha/audio/german/6.mp3</filename>
+  <filename>assets/captcha/audio/german/7.mp3</filename>
+  <filename>assets/captcha/audio/german/8.mp3</filename>
+  <filename>assets/captcha/audio/german/9.mp3</filename>
+  <filename>assets/captcha/audio/german/a.mp3</filename>
+  <filename>assets/captcha/audio/german/b.mp3</filename>
+  <filename>assets/captcha/audio/german/c.mp3</filename>
+  <filename>assets/captcha/audio/german/d.mp3</filename>
+  <filename>assets/captcha/audio/german/e.mp3</filename>
+  <filename>assets/captcha/audio/german/f.mp3</filename>
+  <filename>assets/captcha/audio/german/g.mp3</filename>
+  <filename>assets/captcha/audio/german/h.mp3</filename>
+  <filename>assets/captcha/audio/german/i.mp3</filename>
+  <filename>assets/captcha/audio/german/j.mp3</filename>
+  <filename>assets/captcha/audio/german/k.mp3</filename>
+  <filename>assets/captcha/audio/german/l.mp3</filename>
+  <filename>assets/captcha/audio/german/m.mp3</filename>
+  <filename>assets/captcha/audio/german/n.mp3</filename>
+  <filename>assets/captcha/audio/german/o.mp3</filename>
+  <filename>assets/captcha/audio/german/p.mp3</filename>
+  <filename>assets/captcha/audio/german/q.mp3</filename>
+  <filename>assets/captcha/audio/german/r.mp3</filename>
+  <filename>assets/captcha/audio/german/s.mp3</filename>
+  <filename>assets/captcha/audio/german/t.mp3</filename>
+  <filename>assets/captcha/audio/german/u.mp3</filename>
+  <filename>assets/captcha/audio/german/v.mp3</filename>
+  <filename>assets/captcha/audio/german/w.mp3</filename>
+  <filename>assets/captcha/audio/german/x.mp3</filename>
+  <filename>assets/captcha/audio/german/y.mp3</filename>
+  <filename>assets/captcha/audio/german/z.mp3</filename>
+  <filename>assets/captcha/bg/bg01.png</filename>
+  <filename>assets/captcha/bg/bg02.png</filename>
+  <filename>assets/captcha/bg/bg03.png</filename>
+  <filename>assets/captcha/bg/bg04.png</filename>
+  <filename>assets/captcha/bg/bg05.png</filename>
+  <filename>assets/captcha/bg/bg06.png</filename>
+  <filename>assets/captcha/bg/bg07.png</filename>
+  <filename>assets/captcha/fonts/Arial.ttf</filename>
+  <filename>assets/captcha/fonts/BitstreamGVeraGSans.ttf</filename>
+  <filename>assets/captcha/fonts/BitstreamGVeraGSerif.ttf</filename>
+  <filename>assets/captcha/fonts/Garamond.ttf</filename>
+  <filename>assets/captcha/fonts/Rubberstamp.ttf</filename>
+  <filename>assets/captcha/fonts/Arial.fdb</filename>
+  <filename>assets/captcha/fonts/BitstreamGVeraGSans.fdb</filename>
+  <filename>assets/captcha/fonts/BitstreamGVeraGSerif.fdb</filename>
+  <filename>assets/captcha/fonts/Garamond.fdb</filename>
+  <filename>assets/captcha/fonts/Rubberstamp.fdb</filename>
+  <filename>assets/captcha/images/forbidden.png</filename>
+  <filename>assets/captcha/images/reload.png</filename>
+  <filename>assets/captcha/images/speaker.png</filename>
+  <filename>assets/captcha/includes/alikon/captcha.php</filename>
+  <filename>assets/captcha/includes/alikon/playcode.php</filename>
+  <filename>assets/captcha/includes/alikon/showcode.php</filename>
+  <filename>assets/captcha/includes/captchaform/captcha.php</filename>
+  <filename>assets/captcha/includes/captchaform/captchaform4.php</filename>
+  <filename>assets/captcha/includes/captchaform/captchaform5.php</filename>
+  <filename>assets/captcha/includes/captchaform/imgcaptcha.php</filename>
+  <filename>assets/captcha/includes/captchaform/mp3captcha.php</filename>
+  <filename>assets/captcha/includes/captchaform/mp3captchaform4.php</filename>
+  <filename>assets/captcha/includes/captchaform/mp3captchaform5.php</filename>
+  <filename>assets/captcha/includes/captchatalk/captcha.php</filename>
+  <filename>assets/captcha/includes/captchatalk/swfcaptcha4.php</filename>
+  <filename>assets/captcha/includes/captchatalk/swfcaptcha5.php</filename>
+  <filename>assets/captcha/includes/captchatalk/swfmovie.php</filename>
+  <filename>assets/captcha/includes/recaptcha/captcha.php</filename>
+  <filename>assets/captcha/includes/recaptcha/license.txt</filename>
+  <filename>assets/captcha/swf/dp.swf</filename>
+  <filename>assets/captcha/swf/voice.swf</filename>
+  <filename>assets/css/artforms.css</filename>
+  <filename>assets/editors/tinymce_full.php</filename>
+  <filename>assets/editors/tinymce_light.php</filename>
+  <filename>assets/editors/tinymce_simple.php</filename>
+  <filename>assets/editors/fckeditor_def.php</filename>
+  <filename>assets/editors/fckeditor_o2003.php</filename>
+  <filename>assets/editors/fckeditor_silver.php</filename>
+  <filename>assets/images/minilogo.png</filename>
+  <filename>assets/images/minierror.png</filename>
+  <filename>assets/images/error.png</filename>
+  <filename>assets/images/input.png</filename>
+  <filename>assets/images/temp/ast01.png</filename>
+  <filename>assets/images/temp/ast02.png</filename>
+  <filename>assets/images/temp/ast03.png</filename>
+  <filename>assets/images/temp/ast04.png</filename>
+  <filename>assets/images/temp/ast05.png</filename>
+  <filename>assets/images/temp/ast06.png</filename>
+  <filename>assets/images/temp/ast07.png</filename>
+  <filename>assets/images/temp/ast08.png</filename>
+  <filename>assets/images/temp/ast09.png</filename>
+  <filename>assets/images/temp/ast10.png</filename>
+  <filename>assets/images/temp/ast11.png</filename>
+  <filename>assets/images/temp/ast12.png</filename>
+  <filename>assets/images/temp/ast13.png</filename>
+  <filename>assets/images/temp/ast14.png</filename>
+  <filename>assets/images/temp/ast15.png</filename>
+  <filename>assets/images/temp/ast16.png</filename>
+  <filename>assets/images/temp/ast17.png</filename>
+  <filename>assets/images/temp/ast18.png</filename>
+  <filename>assets/images/temp/ast19.png</filename>
+  <filename>assets/images/temp/ast20.png</filename>
+  <filename>assets/images/temp/ast21.png</filename>
+  <filename>assets/images/temp/ast22.png</filename>
+  <filename>assets/images/temp/ast23.png</filename>
+  <filename>assets/images/temp/ast24.png</filename>
+  <filename>assets/images/temp/ast25.png</filename>
+  <filename>assets/images/temp/ast26.png</filename>
+  <filename>assets/images/temp/ast27.png</filename>
+  <filename>assets/images/temp/ast28.png</filename>
+  <filename>assets/joomfish/artforms.artforms.xml</filename>
+  <filename>assets/joomfish/artforms.items.xml</filename>
+  <filename>assets/js/base64/webtoolkit.base64.js</filename>
+  <filename>assets/js/cnet/multiple.open.accordion.js</filename>
+  <filename>assets/js/date/jscalendar.js</filename>
+  <filename>assets/js/highslide/highslide.js</filename>
+  <filename>assets/js/highslide/highslide-html.js</filename>
+  <filename>assets/js/highslide/loader.gif</filename>
+  <filename>assets/js/highslide/outlines/beveled/1.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/2.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/3.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/4.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/5.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/6.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/7.png</filename>
+  <filename>assets/js/highslide/outlines/beveled/8.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/1.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/2.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/3.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/4.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/5.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/6.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/7.png</filename>
+  <filename>assets/js/highslide/outlines/drop-shadow/8.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/1.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/2.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/3.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/4.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/5.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/6.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/7.png</filename>
+  <filename>assets/js/highslide/outlines/outer-glow/8.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/1.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/2.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/3.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/4.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/5.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/6.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/7.png</filename>
+  <filename>assets/js/highslide/outlines/rounded-white/8.png</filename>
+  <filename>assets/js/multiple-file-element/multifile.js</filename>
+  <filename>assets/js/multiupload-gmail/multiupload.js</filename>
+  <filename>assets/js/stickman-multiupload/cross_small.gif</filename>
+  <filename>assets/js/stickman-multiupload/Stickman.MultiUpload.css</filename>
+  <filename>assets/js/stickman-multiupload/Stickman.MultiUpload.js</filename>
+  <filename>assets/sef/sh404sef/com_artforms.php</filename>
+  <filename>assets/sef/sh404sef/com_artforms.lang.php</filename>
+ </files>
+ <languages folder="frontend">
+  <language tag="de-DE">lang/de-DE/de-DE.com_artforms.ini</language>
+  <language tag="en-GB">lang/en-GB/en-GB.com_artforms.ini</language>
+ </languages>
+ <administration>
+  <menu img="components/com_artforms/assets/images/minilogo.png">ArtForms</menu>
+  <submenu>
+   <menu img="../administrator/components/com_artforms/assets/images/forms16.png" task="showaf">Forms</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/rforms16.png" task="rforms">Inbox Forms</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/help16.png" task="help">Tutorial</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/lang16.png" task="language">Language</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/css16.png" task="cssedit">Edit CSS</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/config16.png" task="config">Settings</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/update16.png" task="update">Update</menu>
+   <menu img="../administrator/components/com_artforms/assets/images/info16.png" task="info">Info</menu>
+  </submenu>
+  <files folder="backend">
+   <filename>admin.artforms.php</filename>
+   <filename>admin.artforms.html.php</filename>
+   <filename>artforms.class.php</filename>
+   <filename>config.artforms.php</filename>
+   <filename>toolbar.artforms.php</filename>
+   <filename>toolbar.artforms.html.php</filename>
+   <filename>assets/css/afmoot.css</filename>
+   <filename>assets/css/artformsadm.css</filename>
+   <filename>assets/docs/changelog.txt</filename>
+   <filename>assets/docs/copyright.txt</filename>
+   <filename>assets/docs/license.txt</filename>
+   <filename>assets/docs/readme.txt</filename>
+   <filename>assets/images/artformsbox.png</filename>
+   <filename>assets/images/bubble.png</filename>
+   <filename>assets/images/config16.png</filename>
+   <filename>assets/images/config48.png</filename>
+   <filename>assets/images/css16.png</filename>
+   <filename>assets/images/css48.png</filename>
+   <filename>assets/images/delete.png</filename>
+   <filename>assets/images/dineromail.png</filename>
+   <filename>assets/images/dineromail2.png</filename>
+   <filename>assets/images/egold.gif</filename>
+   <filename>assets/images/error.png</filename>
+   <filename>assets/images/expcsv.png</filename>
+   <filename>assets/images/expxls.png</filename>
+   <filename>assets/images/forms16.png</filename>
+   <filename>assets/images/forms48.png</filename>
+   <filename>assets/images/help16.png</filename>
+   <filename>assets/images/help48.png</filename>
+   <filename>assets/images/hideall.png</filename>
+   <filename>assets/images/iconlogo.png</filename>
+   <filename>assets/images/info.png</filename>
+   <filename>assets/images/info16.png</filename>
+   <filename>assets/images/info48.png</filename>
+   <filename>assets/images/lang16.png</filename>
+   <filename>assets/images/lang48.png</filename>
+   <filename>assets/images/logo.png</filename>
+   <filename>assets/images/menu.png</filename>
+   <filename>assets/images/minilogo.png</filename>
+   <filename>assets/images/paypal.gif</filename>
+   <filename>assets/images/rforms16.png</filename>
+   <filename>assets/images/rforms48.png</filename>
+   <filename>assets/images/showall.png</filename>
+   <filename>assets/images/spinner.gif</filename>
+   <filename>assets/images/success.png</filename>
+   <filename>assets/images/update16.png</filename>
+   <filename>assets/images/update48.png</filename>
+   <filename>assets/tutorial/tutorial.spanish.php</filename>
+   <filename>assets/tutorial/tutorial.english.php</filename>
+   <filename>assets/tutorial/tutorial.french.php</filename>
+   <filename>assets/tutorial/tutorial.german.php</filename>
+   <filename>assets/tutorial/tutorial.italian.php</filename>
+   <filename>assets/tutorial/tutorial.turkish.php</filename>
+   <filename>assets/tutorial/tutorial.hungarian.php</filename>
+   <filename>assets/tutorial/tutorial.brazilian_portuguese.php</filename>
+   <filename>assets/tutorial/tutorial.polish.php</filename>
+   <filename>assets/tutorial/tutorial.dutch.php</filename>
+   <filename>lib/af.lib.adm.php</filename>
+   <filename>lib/af.lib.afforms.php</filename>
+   <filename>lib/af.lib.attfiles.php</filename>
+   <filename>lib/af.lib.bkup.php</filename>
+   <filename>lib/af.lib.bkuphtml.php</filename>
+   <filename>lib/af.lib.core.php</filename>
+   <filename>lib/af.lib.legacy.php</filename>
+   <filename>lib/af.lib.fields.php</filename>
+   <filename>lib/af.lib.fieldsajax.php</filename>
+   <filename>lib/af.lib.hideemail.php</filename>
+   <filename>lib/af.lib.loadassets.php</filename>
+   <filename>lib/af.lib.loadhelper.php</filename>
+   <filename>lib/af.lib.loadmenus.php</filename>
+   <filename>lib/af.lib.rdf.php</filename>
+   <filename>lib/af.lib.upd.php</filename>
+  </files>
+  <languages folder="backend">
+   <language tag="de-DE">lang/de-DE/de-DE.com_artforms.ini</language>
+   <language tag="en-GB">lang/en-GB/en-GB.com_artforms.ini</language>
+  </languages>
+ </administration>
+</install>

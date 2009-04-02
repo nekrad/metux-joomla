@@ -1,0 +1,393 @@
+/* Styles for component */
+
+#artforms-box {
+	width: 100%;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	font-size: 11px;
+	font-weight: bold;
+	margin: 0px -4px 0px -4px;
+	padding: 5px 2px 5px 2px;
+}
+
+#artforms-box input,
+#artforms-box .inputboxtxt,
+#artforms-box fieldset {
+	padding:0;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	background: #f4f4f4 url(../images/input.png) -3px -3px repeat-x;
+}
+
+#artforms-box .inputboxhtml {
+	padding:0;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	background: #f4f4f4 url(../images/input.png) -3px -3px repeat-x;
+}
+
+#artforms-text {
+	padding: 5px 5px 5px 5px;
+}
+
+#artforms-danktext {
+	padding-left: 10px;
+	padding-bottom: 15px;
+}
+
+.affieldname {
+	padding-top:0px;
+}
+
+.artformstextarea-html {
+	padding:0;
+	margin:0;
+}
+
+.artformstextarea-txt {
+	padding:0;
+	margin:0;
+}
+
+.artforms-date {
+	display:inline-block;
+}
+
+#artforms-box .artforms-button {
+	border: 1px solid #777;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	background: transparent url(../images/input.png) -3px -3px repeat-x;
+	font-size: 12px;
+	color: #888;
+	padding:2px 4px 2px 7px;
+}	
+
+#artforms-box div.artforms-date input.button:hover,
+#artforms-box .artforms-button:hover {
+	border: 1px solid #d6d6d6;
+	border-left-color: #777;
+	border-top-color: #777;
+	background: transparent url(../images/input.png) -3px -3px repeat-x;
+	font-size: 12px;
+	color: #333;
+	padding:2px 4px 2px 6px;
+	margin:1px 0px -1px 1px;
+}	
+
+#artforms-box #artforms-reqtext {
+	margin:5px 0px 5px 0px;
+	padding:2px 2px 2px 2px;
+	height:99%;
+}
+
+#artforms-box #artforms-buttons {
+	margin:5px 0px 5px 0px;
+	padding:2px 2px 2px 2px;
+	height:99%;
+}
+
+#artforms-box #artforms-forminfo {
+	margin:2px 0px 15px 0px;
+	padding:1px 2px 2px 2px;
+	height:99%;
+}
+
+#artforms-box #attsysbox {
+	margin:10px 0px 10px 0px;
+	padding:0;
+	height:99%;
+}
+
+#artforms-box #afnewsletter {
+	margin:10px 0px 10px 0px;
+	padding:0;
+	height:99%;
+	text-align: center;
+}
+
+#artforms-box .artforms-error {
+	margin: 10px 0px;
+	padding: 10px 15px 5px 75px;
+	height: 55px;
+	border: 1px solid #cc0000;
+	background: #ffffcc;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/error.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+#artforms-box .artforms-errorwsize {
+	margin: 10px 0px;
+	padding: 10px 15px 5px 75px;
+	border: 1px solid #cc0000;
+	background: #ffffcc;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/error.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+#artforms-box .artforms-errorwtype {
+	margin: 10px 0px;
+	padding: 10px 15px 5px 75px;
+	border: 1px solid #cc0000;
+	background: #ffffcc;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/error.png);
+	background-repeat: no-repeat;
+	background-position: 10px 18px;
+}
+
+#artforms-box .artforms-errorfield {
+	margin: 2px 0px 2px;
+	padding: 5px 15px 5px 35px;
+	border: 1px solid #cc0000;
+	background: #ffffcc;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/minierror.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+#artforms-box .artforms-errorftxt {
+	margin: 0px 0px 0px;
+	padding: 2px 0px 2px 35px;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/minierror.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+#artforms-box .artforms-errorfield {
+	margin: 2px 0px 2px;
+	padding: 5px 15px 5px 35px;
+	border: 1px solid #cc0000;
+	background: #ffffcc;
+	text-align: left;
+	color: red;
+	font-weight: bold;
+	background-image: url(../images/minierror.png);
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+}
+
+.attfile {
+	display: block;
+}
+
+
+.aferrorm {
+   width:100%;
+   height:44px;
+   color:#C64934;
+   font-family:Arial;
+   font-size:14px;
+   font-weight:bold;
+   float:left;
+   margin:7px 2px 7px 2px;
+   padding:2px 2px 0px 2px;
+   text-align:center;
+   overflow:hidden;
+}
+
+.aferrorm img {
+   margin-bottom:-4px; 
+   padding:0px 3px 0px 3px;
+}
+
+.afattastfix {
+   margin-left:320px;
+}
+
+.clear {
+   clear:both;
+} 
+
+
+/* Styles for FrontEnd Recived Forms */
+
+table.adminlist {
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #ddd;
+	border-spacing: 0px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.adminlist th {
+	margin: 0px;
+	padding: 6px 4px 2px 4px;
+	height: 20px;
+	background: url(../../../administrator/templates/joomla_admin/images/background.jpg);
+	background-repeat: repeat;
+	font-size: 9px;
+	color: #000;
+	text-align: center;
+}
+table.adminlist th.title {
+	text-align: left;
+}
+
+table.adminlist th a{
+	text-align: center;
+}
+
+table.adminlist th a:link, table.adminlist th a:visited {
+	color: #c64934;
+	text-decoration: none;
+}
+
+table.adminlist th a:hover {
+	text-decoration: underline;
+}
+
+table.adminlist tr.row0 {
+	background-color: #F9F9F9;
+	text-align: left;
+}
+table.adminlist tr.row1 {
+	background-color: #FFF;
+	text-align: left;
+}
+table.adminlist td {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 4px;
+	font-size: 9px;
+	text-align: center;
+}
+table.adminlist tr.row0:hover {
+	background-color: #f1f1f1;
+}
+table.adminlist tr.row1:hover {
+	background-color: #f1f1f1;
+}
+table.adminlist td.options {
+	background-color: #ffffff;
+	font-size: 5px;	
+}
+select.options, input.options {
+	font-size: 8px;
+	font-weight: normal;
+	border: 1px solid #999999;
+}
+
+/* Styles for Highslide */
+
+.highslide-html {
+   background-color: white;
+}
+
+.highslide-html-content {
+   position: absolute;
+   display: none;
+}
+
+.highslide-loading {
+   display: block;
+   text-decoration: none;
+   padding: 2px;
+   border: 1px solid black;
+   background-color: white;
+}
+
+.control {
+   float: right;
+   /*display: block;*/
+   /*position: relative;*/
+   margin: 0 5px;
+}
+
+.control:hover {
+   color: black !important;
+}
+
+.highslide-move {
+   cursor: move;
+}
+
+.highslide-display-block {
+   display: block;
+}
+
+.highslide-display-none {
+   display: none;
+}
+
+
+/* AttFile Styles */
+
+		#afattfile .afattfilebox
+		{
+			width:					100%;
+			float:					left;
+		}
+		#afattfile .afattfilebtnbox
+		{
+			width:					28%;
+			height:					20px;
+			padding-top:		3%;
+			float:					left;
+		}
+		#afattfile .afattfilequeuebox
+		{
+			width:					70%;
+			float:					left;
+		}
+		#afattfile fieldset
+		{
+			border: 1px solid #d6d6d6;
+			border-left-color: #e4e4e4;
+			border-top-color: #e4e4e4;
+			background-image: none;
+		}
+
+		#afattfile legend
+		{
+			font-weight:			bold;
+			font-size:				1.2em;
+			color:					#888;
+			margin:					auto;
+		}
+		#afattfile label
+		{
+			float:					left;
+			text-align:				right;
+			font-size:				1.1em;
+		}
+		#afattfile label.error
+		{
+			color:					#ff0000;
+		}
+		#afattfile div.label
+		{
+			clear:					both;
+			margin:					0 0 0 0;
+			padding:				0.1em 0.3em;
+		}
+		#afattfile input,
+		#afattfile select
+		{
+			width:					10em;
+		}
+.ajax-loading
+{
+	padding:                50px;
+	background:             url(../images/spinner.gif) no-repeat center;
+}

@@ -1,0 +1,35 @@
+<?php
+$afcfg_att_path                  = '\\images\\artforms\\attachedfiles\\';
+$afcfg_bkup_path                 = '\\components\\com_artforms\\backups\\';
+$afcfg_attimagew                 = '1280';
+$afcfg_attimageh                 = '720';
+$afcfg_attfilesave               = '1';
+$afcfg_loadfrontcss              = '1';
+$afcfg_showfrontfooter           = '1';
+$afcfg_allowajax                 = '0';
+$afcfg_dbsaveforms               = '1';
+$afcfg_allowerr_rep              = '1';
+$afcfg_beitemsinterfase          = 'ajax';
+$afcfg_usebehelper               = '1';
+$afcfg_fieldsdefaultlayout       = '%3Cdiv+style%3D%22margin-left%3A15px%3B%22%3E%0D%0A%3Cdiv+style%3D%22float%3Aleft%3Bmargin-top%3A5px%3Bwidth%3A100px%3B%22%3E%23%23%23FIELDNAME%23%23%23%3C%2Fdiv%3E%0D%0A%3Cdiv+style%3D%22float%3Aleft%3Bmargin-top%3A5px%3B%22%3E%23%23%23THEFIELD%23%23%23%3C%2Fdiv%3E%0D%0A%3Cdiv+style%3D%22float%3Aleft%3Bmargin-top%3A5px%3B%22%3E%23%23%23ASTERISK%23%23%23%3C%2Fdiv%3E%0D%0A%3C%2Fdiv%3E%0D%0A%3Cdiv+class%3D%22clear%22%3E%3C%2Fdiv%3E';
+$afcfg_asteriskimg               = 'ast01.png';
+$afcfg_showferforms              = '0';
+$afcfg_showattinvferforms        = '0';
+$afcfg_valide_zipcode            = '^[0-9]{5}$';
+$afcfg_valide_custom1            = '';
+$afcfg_valide_custom1_legend     = '';
+$afcfg_valide_custom2            = '';
+$afcfg_valide_custom2_legend     = '';
+$afcfg_valide_custom3            = '';
+$afcfg_valide_custom3_legend     = '';
+$afcfg_valide_custom4            = '';
+$afcfg_valide_custom4_legend     = '';
+$afcfg_valide_custom5            = '';
+$afcfg_valide_custom5_legend     = '';
+$afcfg_captcha_mode              = 'both';
+$afcfg_captcha_length            = '5';
+$afcfg_captcha_recapt_theme      = 'white';
+$afcfg_captcha_recapt_tabindex   = '2';
+$afcfg_captcha_recapt_publickey  = '';
+$afcfg_captcha_recapt_privatekey = '';
+?>

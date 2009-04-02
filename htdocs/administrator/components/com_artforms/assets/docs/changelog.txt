@@ -1,0 +1,293 @@
+
+Copyright and disclaimer
+---------------------------
+This application is opensource software released under a variant of the LGPL.
+Please see source code and the LICENSE file for more details.
+
+Copyright 2003-2005 Andreas Duswald
+Copyright 2007-2008 Gonzalo M. for InterJoomla
+- All Rights Reserved.
+
+
+2. Changelog
+------------
+This is a non-exhaustive (but still near complete) changelog for
+the ArtForms 2.1.x, including beta and release candidate versions.
+
+The ArtForms 2.1.x is based on the ArtForms 2.0 b54t release but includes some
+drastic technical changes, bug fixes and new features.
+
+
+Legend:
+
+* -> Security Fix
+# -> Bug Fix
++ -> Addition
+^ -> Change
+- -> Removed
+! -> Note
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CHANGELOG
+-------------------------------------------
+
+v.2.1 b7.1
+----------
+
+# SecurityImages works again with ArtForms.
+# Fixed bug with redirections and validations.
+# Fixed bug with missed values with custom validations legend.
+^ Some changes in translations of italian and french files, made by translators.
+# Fixed issues with Alikon captcha mod in linux servers.
+# Fixed issues related with doc and excel attachments.
+# Minor corrections with params for new forms.
+# Fixed small typo in forms editor.
+  
+  
+v.2.1 b7
+---------
+
+! When you update from old versions please don't forget to perform updates and
+  check settings!
+! Frontend Recived Forms was disabled by default, if you need that please check
+  settings. If you need to create a menu use URL option and write one of these:
+  " /index.php?option=com_artforms&task=ferforms " or
+  " /index.php?option=com_artforms&task=tferforms " .
+  For include only one form add `&viewform=1` (where 1 it's the form that you
+  only needs to show) Example: 
+  " /index.php?option=com_artforms&task=ferforms&viewform=1 " or
+  " /index.php?option=com_artforms&task=tferforms&viewform=1 " .
++ Added Captcha Audio Language support for hungarian, turkish and italian.
+^ Added new translated italian language to package, grate thanks to Mittelcom!  
++ Added new Joomla's Menu for Frontend Recived Forms, you can download separate
+  from this package (like ArtFormsMenu) in JoomlaCode, project JArtForms.
+^ Changed GPL license URL with the new URL for GPL2.
++ Added sh404SEF Support, check update task ;)
+# Updated ChaptchaForm from detected bug: There is a abrupt soundending with the
+  new Quicktime player, so new silent.mp3 file was added by ChaptchaForm's
+  Developer. Thanks to him for the fix!
+# Fixed wrong redirection when you click into a manu's name under form editor.  
+^ Changed the path for error image alert from captchas, now uses frontend images.
+# Fixed modules' links that didn't showed when users was loged in Joomla.
+^ Added in language files their language entries for navigation in recived
+  forms (backend and front end) and created forms (backend).
+# Fixed missed apply changes to Copy forms option in backend.
++ Added new feature: New option to insert an email to send only confirmations
+  on every recived form. See that options when edit or make new forms.
+^ Now files attachments can be made manditory, check that options when edit
+  or make new forms.
+^ Date validations are now setted by language file to work better with joomfish.
+^ During hard testing to implement FancyUploads into ArtForms code and without
+  success (because javascript and files verifications limitations) this
+  attachment system has been deleted from package. Maybe in near future will
+  come again!
++ Added new feature: Last ArtForms' version checker in About ArtForms (Info).
++ Added new feature: You can show recived forms in frontend (two diferent
+  modes) or switch off this feature. Default is off. You can select if you 
+  want to allow show attahments in frontend too. This feature have email spam
+  protection.
+# Fixed minor error in recived forms when a form sent with one or more empty
+  input attachments.
++ Added new feature: If you have Letterman you can add an option to allow users
+  to subscribe to your newsletter. More newsletter's bridges maybe come.
+# Fixed some wrong html layout in old field editor, changed inputs to textarea
+  from values, default values and layout (new!).
++ Added option for edit default fields layout. See Settings.  
++ Added new option for fields: layout. Now you can change field's HTML, layout,
+  etc.
++ Added option to switch Helper into state activate or not. This option is
+  disable by default, so you need switch to yes under settings.
++ Added Helper to help you to know more about some options when you create or
+  edit a form.
+# Fixed wrong positioned of captchas in content mambot. Edited captcha 
+  Alikon Mod, Captcha Form and Captcha Talk (please update Mini Form Module
+  and content mambot)
++ Added csv and xml export option in recived forms.
++ Added Joomfish support.
+# Fixed issues with stickman upload systems.
+# Fixed bug with no data recived from textarea -plain text- item field.
++ Added new option to select if title will be showed or not.
++ Added Dutch language to package, grate thanks to Patrick van den Bragt!
+  (added too that language audio pack for captchas.)
++ Added Brazilian language audio pack for captchas.
+  
+
+v.2.1 b6
+---------
+
+! Update-Package is only for update files with a ftp client, then you needs
+  go to update task and perform updates for your last ArtForms version
+  (make a backup before that)
+! Added demo and SVN demo: http://demo.interjoomla.com.ar/
+! ArtForms is now available in SVN!
+! Website and forum comming soon!
++ Now you can change attachments folder with custom path.
++ Now you can change backups path.
+* Backups files have 5 random letters (only for security reasons)
++ Added database backup and restore feature.
+^ Fields editor was improove with new style and interfase. Now uses ajax.
++ Added too an option to change this with old style. See settings.
++ Added Easy Captcha support.
+^ Added new translated german language to package, grate thanks to Wolfgang
+  Heinemann!
++ Added Brazilian language to package, grate thanks to Saulo Lima!
++ Added Polish language to package, grate thanks to Stefan Wajda!
++ Added ajax request of ArtForms' css file into custom css textarea.
++ Added feature request '[#7419] Separate CSS'. Now you can select not use
+  artforms.css and insert custom stylesheet code.
++ Added feature for showing form's title into actual window's title.
++ Added feature for redirect succesful forms (sent without errors, but if file
+  upload fails it will be reditect) to another custom page. See params in
+  every forms.
++ Added params for every form. For example now you can select if you need to
+  show reset button, back button, etc.
++ Added feature for limit attached file amounth for all systems.
++ Added 3 styles of fckeditor for frontend editor choice (of course you need
+  has been installed FCK Editor)
++ Added features like edit form's creator, alias, access, state and much more.
++ Added feature request '[#7130] Change data'. Now you can select start and
+  end forms.
+^ Now editors can be selected for every form.
+^ Now attachment systems can be selected for every form.
+^ Now captcha systems can be selected for every form.
++ Added new attachments sytems: two from Stickman (one works with MooTools),
+  one like GMail and not working now (under testing ported) named FancyUploads
+  (don't use, only for testing propouses).
+^ Attachments allows now multiple files.(It was implemented before feature
+  request '[#7539] Multiple attachments')
++ Attachment was improvee a lot with new core (for backend, frontend and
+  database)
+* Uploaded attachments have 5 random letters (only for security reasons)
++ Added support for others new files into attachments.
++ Limited size of attachments are now inserted in KBytes (not more in bytes)   
++ Added support for audio files into attachments. Feature requested:
+  '[#7068] Add sound files to file attachments';
++ Added item ordering (It was implemented before feature
+  request '[#7420] Order')
+# Fixed bug in instalation file '[#7281] installation failed'.
+# Fixed bug '[#7923] Asteriks not showing.' related to folder rights.
+# Fixed bug with showing attached files in recived forms.
+# Fixed missing lang tags and wrong tags.
+# Checked and fixed all captchas engine and captchas addons support too.
+# Fixed bug related to show pages into recived forms and edit forms tasks.
++ Added search forms in backend.
++ Added feature to get ItemId in root artfoms' component page.
++ Now title and text leyend will be saved into artforms' params of component
+  table, and supporting html code for text leyend.
+# Fixed wrong show of asterisks into some items.
++ Added new php validations and 5 custom validation (you can set these in
+  settings).
++ Added new items, like date, hidden, and more.
++ Added 'textarea text plane'. If you use a html form, with this you can add
+  plain text and editor don't be available for that textarea.
+^ Changed HTML text item for better use, supports htmlcode.
++ Added custom code for items, now you can add for example
+  'onClick="dosomething"' or and id="" or what ever you need.
++ Added read only option for items.
++ Items was improove, now only needs to select what items you need, no more
+  needs do selection of single or multiple option.
++ Improove new alert system for backend (seems mosmsg but with state images)
++ Added ordering for forms.
++ Added custom javascript code support.
++ Added metadata and keywords support.
++ Added feature for showing IP, joomla's user, joomla's username into sent
+  forms and recived forms.
++ Added css file only for backend mootools' styles.
++ Added more info showed in screen into recived forms. Now shows email,
+  first and second field, user and more.
+# Fixed issues when deleting items. 
++ Update task was improove, with new style and code. Now uses Ajax.
+^ Removed some short php tags ('<?') from old code, and changed with '<?php'.
+^ Changed some tables to divs.
+^ Updated ArtForms with New logo (Joomla's license compatible)
+^ Updated all languages from package with new lang tags, grate thanks to all
+  translators!
+# Fixed some bugs reported from beta testers during internal beta, grate
+  thanks to all beta testers!
+! And anothers features, changes, bugs fixed, etc. what I missed to write
+  here...
+
+  
+v.2.1 b5.1
+------------
+
+# Fixed emails Bug. Now send data.
+# Fixed installation bug with $mosConfig_live_site.
+# Fixed missing some lang entries in language files not spanish. Translators
+  please check new entries! Thanks!
++ Added Hungarian language to package, grate thanks to Zoltan Varanka!
++ Added new button in Settings section, with the posibility of uploads
+  asterisks directly to images/artforms/asterisks.
+^ Fixed some text in .txt files.
+
+
+v.2.1 b5
+----------
+
+^ New settings options (under development yet).
+^ Made new system for menus under joomla for ArtForms,
+  added too make menu directly into form editor.
++ Added 3 new captchas options: ReCaptcha, SecurityImages (component), and
+  Alikon SecBot (Mambot).
++ Added (for testing) SEF compatibility.
++ Added 'highslide' package, usefull for backend recived forms and future
+  modules.
+^ All language tags has been inproove and changed, and update texts without
+  translations with english language tags specting translators can made
+  translates.
+^ Added css styles for errors and others frontend alerts.
++ Added an option for frontend's editor selecting.
++ Added css stylesheet for backend styles.
+^ Now an image (logo) represents ArtForms name into copyright leyend, and
+  minilogo.png was change to iconlogo.png
++ Added back button and go to menú button into menus tasks.
+^ Images were optimised to reduse ArtForms' package size.
+^ Copyright leyend modified.
+# Fixed minor bugs of visualisation of minierror.png and error.png (frontend).
+^ Ahora los asteriscos son seleccionables, permitiendo elegir la imágen.
+! Now asterisks can be added into 'components\com_artforms\images\asterisks\'.
+# Fixed bugs related to language edition and settings edition.
++ Added new feature to collect recibed forms and them will be saved into
+  database.
++ Added new table #__artforms_inbox for recibed forms.
++ Added featute for frontend css file edition.
++ Added feature for file rights security into language edition,settings and
+  frontend css edition.
+^ Added into component's menu css edition and inbox forms. Modified ArtForms'
+  tasks order too.
+^ Now captcha's system can be change.
+^ Added 2 captchas systems: Chaptcha Form and Captcha Talk
++ New captcha's configuration options.
+^ Info tasks was improove, updated and added text boxs showing lisence,
+  copyright, readme and changelog txt files.
+^ Update 'update task' with new change for this new beta.
+
+
+v.2.1 b4 and others internal betas
+-------------------------------------
++ Added root menu feature.
++ Added new images for titles and menus.
+^ Change tabs with Joomla's tabs.
++ Added settings feature, some settings will be saved into
+  configuration.artforms.php file.
++ Added css stylesheet file for future w3c compatibility.
+^ Forms edition was improove, specially with adding new fields.
++ Added apply button.
+^ Added new language tags and others missed.
+^ Now all sent emails will be sent with site's charset ISO.
++ Added 'update' feature for all updates from old versions into this beta and
+  for future updates. Only you need delete old 'com_artforms' folders and
+  repace with this new package (or future packages) named 'update-package'.
+  When you ready please go to update task and click into correct update button
+  (all database and others updates will be added by ArtForms Update task).
+^ Tutorial task now show language customised file (all under development).
++ Added .rar and .ace files for attachtments.
++ Added into ArtForms a modified Alikon captcha securebot.
+^ Fixed bug related to 'send copy' from frontend forms, first email item
+  selected will be sent a copy to user.
++ Added feature for asterisks' fields ( * ) replace with images.
++ New mambot (beta) was made.
+^ Copyright leyend was modified y and new fuction made for version showing.
+# Fixed some bugs related to fuction and joomla's compatibility.
+

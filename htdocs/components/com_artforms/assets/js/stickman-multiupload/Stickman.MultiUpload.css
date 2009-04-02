@@ -1,0 +1,25 @@
+div.multiupload{
+	width:50%;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4; 
+	padding:3px;
+	background:#eee;
+	text-align:center;
+}
+div.multiupload div.list{
+	background: #fff;
+}
+div.multiupload div.list div.item{
+	margin:1px;
+	background: #eee;
+	text-align:left;
+}
+div.multiupload div.list div.item:hover{
+	background: #ccc;
+}
+div.multiupload div.list img{
+	text-align:left;
+	margin: 3px;
+	cursor:pointer;
+}

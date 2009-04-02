@@ -1,0 +1,109 @@
+
+ArtForms v.2.1 is based on source ArtForms v.2.0 b54t develops and provides under
+an Open Source license. For details about the license please the the license
+(or license.txt file) included in this distribution.
+
+The work is copyrighted by any or all of the following, from 2003 through 2006:
+* Andreas Duswald - http://Joomla-Radio.de/ (Original Developer)
+* Phillipp Hemmer - Phil-Taylor.com - phil@phil-taylor.com (Developed features
+  for version 2.0)
+* Matthias Heymann - www.webnetworx.de (For Old Logo v2.0 and Design)
+* Das Team von - www.students-design.de - admin@yaserb.de (Bugfixes and
+  Extensions for ArtForms v2.0 with checkboxes and intermediate text)
+* NOTE: For testing and Layout development of old v2.0 by www.mambooport.de
+
+And under new develop since versions 2.1, from 2007:
+* Gonzalo M., InterJoomla (Córdoba, Argentina).
+
+
+
+ArtForms includes or is derivative of works distributed under
+the following copyright notices:
+
+Captcha
+-------
+
+Alikon Captcha Mod: Original code from: Alikon Web - www.alikonweb.it
+                    Modified by Gonzalo M. - InterJoomla
+Captcha Form: scripts.titude.nl - NLD - 2007
+              modified by Gonzalo M. InterJoomla
+Captcha Talk: scripts.titude.nl - NLD - 2007
+              modified by Gonzalo M. - InterJoomla
+ReCaptcha: http://www.recaptcha.org/
+
+
+Captcha (Joomla's Addons packages supported by ArtForms)
+--------------------------------------------------------
+
+Alikon Secure Addon (Mambot): Alikon Web - http://www.alikonweb.it/
+SecurityImages (Component): Walter Cedric - http://www.waltercedric.com/
+Easy Captcha (Component): Easy-Joomla http://www.easy-joomla.org/              
+
+
+UI translations
+---------------
+
+Spanish	Copyright: Gonzalo M. - InterJoomla
+
+English	Copyright: Gonzalo M. - InterJoomla
+and some old translations made by Andreas Duswald - www.duswald.de                      
+                       
+French Copyright: Daneel - daneel.joomla@gmail.com - http://www.joomlafrance.org/
+and some old translations made by lexel & Mpn Team (Joomlafrance.org & Mamboportail.net)
+
+German Copyright: Wolfgang Heinemann - info@praxis-heinemann.com - http://www.praxis-heinemann.com 
+and some old translations made by Andreas Duswald - www.duswald.de
+                      
+Turkish Copyright: Translation not finished yet.
+Old translations made by Sinan Ata - www.mambo.gen.tr
+
+Hungarian Copyright: Zoltan Varanka - zvaranka@freemail.hu
+
+Brazilian Copyright: Saulo Lima - saulo@detran.pe.gov.br
+
+Polish Copyright: Stefan Wajda [zwiastun] - Polskie Centrum Joomla! - http://www.joomla.pl/
+
+Dutch Copyright: Patrick van den Bragt - fujigas@hotmail.com - http://www.prp-media.nl/
+
+Italian Copyright: Mittelcom - mittelcom@gmail.com - http://www.mittelcom.it/
+
+
+3rd. Party Tools (some customised for better working with ArtForms)
+-------------------------------------------------------------------
+
+- MooTools AJAX Framework: Valerio Proietti - http://mad4milk.net - http://mootools.net/ 
+- MooTools plugins and others: see MooTools copyright from http://mootools.net/
+- Multiple Open Accordion: Aaron Newton, aaron@newton.cnet.com
+- Multiple File Selector:  Stickman - http://www.the-stickman.com/  
+- Multiple File Upload Element (Mootools 1.1):  Stickman - http://www.the-stickman.com/  
+- Multiple Attachs (like GMail):  Alex from Buaya Corp. - http://www.buayacorp.com/
+- Highslide JS & Highslide HTML Extension: Torstein Hønsi - http://vikjavev.no/
+- Backup system: Original code from MOSTlyDB Admin & Mambo Foundation Inc
+	Ported into ArtForms by Gonzalo M. - InterJoomla
+- JavaScript Base64 encode/decode made by http://www.webtoolkit.info/
+- People CNC's Email Obsfuscator - http://www.peoplecnc.com
+- RSS headline grabber - By Steve Yelvington - steve@rendy.co.uk - http://yelvington.com/
+  and Changes made by Bob Zoller - bob@kludgebox.com. Joomla Adaptation by JoomlaHacks.com.
+  Merged, so fixed bug without showing create copy of RDF file under linux by InterJoomla.			 	
+
+
+Captcha (Audio Languages)
+------------------------
+
+Used settings for the mp3 sound files: 22050 Hz - 24 kb/s Mono to keep overall
+size small.
+
+- The Dutch ( Belgian ) alphabet and number sound files originate from:
+  Dutch Grammar  - http://www.dutchgrammar.com/ - and adapted by
+  scripts.titude.nl - NLD - 2007.
+- The English (EN) , France and German alphabet and number sound files originate
+  from: LanguageGuide.org  - http://www.languageguide.org/ - and adapted by
+  scripts.titude.nl - NLD - 2007.
+- The Brazilian (PT-BR) alphabet and number sound files originate from:
+  Easy Portuguese  - http://www.easyportuguese.com/
+- The Turkish alphabet and number sound files originate from:
+  Erika H. Gilson - http://www.princeton.edu/~ehgilson/
+- The Hungarian alphabet and number sound files originate from:
+  Single-Serving - http://www.single-serving.com/Hungarian/
+- The Italian and Spanish alphabet and number sound files originate from:
+  N/A
