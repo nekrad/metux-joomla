@@ -3,7 +3,7 @@
               class="inputbox"
               onblur="if (this.value='') this.value='<?php echo $mod_bugreport_comment; ?>'"
               onfocus="if (this.value='<?php echo $mod_bugreport_comment;?>') this.value='';"
-    ></textarea>
+    ><?php echo $mod_bugreport_comment; ?></textarea>
     <input type="hidden" name="option" value="com_frontpage" />
     <input type="submit" value="<?php echo $mod_bugreport_submitbutton; ?>" class="button"/>
     <input type="hidden" name="mod_bugreport_kickback" value="<?php echo $mod_bugreport_kickback; ?>" />
