@@ -30,7 +30,8 @@ else
 {
 	$mod_bugreport_kickback   = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 	$mod_bugreport_url        = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	$mod_bugreport_sendbutton = (($p = $params->get('submitbutton') ? $p : 'Send'));
+	if (!($mod_bugreport_submitbutton = $params->get('submitbutton')))
+	      $mod_bugreport_submitbutton = 'Send';
 	$mod_bugreport_option     = JRequest::getString('option');
 	$mod_bugreport_comment    = $params->get('helptext');
 
