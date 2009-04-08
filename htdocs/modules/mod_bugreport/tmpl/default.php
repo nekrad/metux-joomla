@@ -1,5 +1,6 @@
 <form action="." name="mod_bugreport">
     <textarea name="mod_bugreport_message"
+              id="mod_bugreport_message"
               class="inputbox"
               onblur="if (this.value='') this.value='<?php echo $mod_bugreport_comment; ?>'"
               onfocus="if (this.value='<?php echo $mod_bugreport_comment;?>') this.value='';"
