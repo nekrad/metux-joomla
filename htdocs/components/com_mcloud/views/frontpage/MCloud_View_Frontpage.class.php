@@ -154,6 +154,8 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
     {
 	global $remoteclient, $my;
 
+	$this->medialist[1]{'title'}     = JRequest::getString('medium_1_title');
+	$this->medialist[1]{'medium_id'} = JRequest::getString('medium_1_id');
 	$this->medialist[2]{'title'}     = JRequest::getString('medium_2_title');
 	$this->medialist[2]{'medium_id'} = JRequest::getString('medium_2_id');
 	$this->medialist[3]{'title'}     = JRequest::getString('medium_3_title');
