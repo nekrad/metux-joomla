@@ -1,0 +1,104 @@
+<script language="javascript" type="text/javascript">
+    function chkform () 
+    {
+		videoupload.send.disabled=true;
+		var form = document.videoupload;
+		if (form.title.value == "")
+		{
+    		    alert("Bitte Datei ausw&auml;hlen");
+    		    form.title.focus();
+    		    return false;
+  		} 
+		else if (form.description.value == "") 
+		{
+    		    alert("Bitte Beschreibung angeben");
+    		    form.description.focus();
+    		    return false;
+  		} 
+		else if (form.category_id.value == "none") 
+		{
+    		    alert("Bitte Kategorie w&auml;hlen");
+    		    form.category_id.focus();
+    		    return false;
+  		} 
+		else if (form.tags.value == "") 
+		{
+//    		    alert("Tag fehlt");
+//    		    form.tags.focus();
+    		    return false;
+  		}
+    }
+</script>
+
+<h1> Medium bearbeiten </h1>
+<form name="videoupload" action="{ACTION}" method="post" onsubmit="return chkform()">
+    <input type="hidden" name="id"    value="{MEDIUM:ID}" />
+    <input type="hidden" name="owner" value="{MEDIUM:OWNER_NAME}">
+	<table width="100%" cellpadding="0" cellspacing="4" border="0">
+	    <tr>
+		<td width="150"> Titel
+		    <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="title" value="{MEDIUM:TITLE}" class="inputbox" size="20" maxlength="50" style="width: 200px;" />
+		</td>
+		<td rowspan="3" valign="top">
+		    <a href="{MEDIUM:URL}">
+			<img src="{THUMB:URL}" border="0" width="100px"/>
+		    </a>
+		</td>
+	    </tr>
+	    <tr>
+		<td valign="top"> Beschreibung
+		    <font class="required">*</font>
+		</td>
+		<td valign="top">
+		    <textarea rows="4" cols="20" name="description" class="inputbox" style="width: 200px;">{MEDIUM:DESCRIPTION}</textarea>
+		</td>
+	    </tr>
+	    <tr>
+		<td> Kategorie
+		    <font class="required">*</font>
+		</td>
+		<td>
+		    {CATEGORY_LIST}
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    Schlagworte
+		    <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="tags" value="{MEDIUM:TAGS}" class="inputbox" size="20" maxlength="50" style="width: 200px;" />
+		</td>
+		<td colspan="2">
+		    <font class="required">*</font> Pflichtfeld
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"> Sichtbar f&uuml;r </td>
+		<td>
+		    <select name="visibility">
+			<option value="public"     {SEL:PUBLIC}> &ouml;ffentlich</option>
+			<option value="registered" {SEL:REGISTERED}> registrierte Benutzer </option>
+			<option value="private"    {SEL:PRIVATE}> privat </option>
+			<option value="group"      {SEL:GROUP}> Gruppen-Mitglieder </option>
+		    </select>
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"> Preis </td>
+		<td>
+		    <input name="price" value="{MEDIUM:PRICE}" class="inputbox" size="20" style="width: 200px">
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"></td>
+		<td>
+		    <input type="submit" class="inputbox" value="Speichern" name="send" />&#160;
+		    <input type="button" class="inputbox" value="Abbruch"   onClick="javascript:history.go(-1)"/>
+		</td>
+	    </tr>
+	</table>
+</form>

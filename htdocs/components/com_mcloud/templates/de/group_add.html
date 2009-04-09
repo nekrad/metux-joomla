@@ -1,0 +1,64 @@
+<form name="creategroup" action="{ACTION}" method="post" onsubmit="return chkform()">
+    <input type="hidden" name="adminid" value="{USER:ID}" />
+    <h1> Neuen Ordner anlegen </h1>
+	<table cellpadding="0" cellspacing="4" border="0">
+	    <tr>
+		<td width="150"> 
+		    Name <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="group_name" value="" class="inputbox" size="20" maxlength="100" style="width: 200px;" />
+		</td>
+	    </tr>
+	    <tr>
+		<td valign="top"> 
+		    Beschreibung <font class="required">*</font>
+		</td>
+		<td valign="top">
+		    <textarea rows="4" cols="20" name="group_description" class="inputbox" style="width: 200px;"></textarea>
+		    <br />
+		</td>
+	    </tr>
+	    <tr>
+		<td colspan="2"><font class="required">*</font> Pflichtfelder </td>
+	    </tr>
+	    <tr>
+		<td width="150"> Sichtbarkeit </td>
+		<td>
+		    <select name="visibility">
+			<option value="public"> &ouml;ffentlich </option>
+			<option value="registered"> registrierte Nutzer </option>
+			<option value="private"> privat </option>
+		    </select>
+		</td>
+	    </tr>
+<!--	    <tr>
+		<td width="150"> Beitritt </td>
+		<td>
+		    <select name="subscribe_policy">
+			<option value="confirm"> mit Best&auml;tigung </option>
+			<option value="public"> ohne Best&auml;tigung </option>
+			<option value="private"> privat </option>
+		    </select>
+		</td>
+	    </tr>
+-->	
+    <input type="hidden" name="subscribe_policy" value="private" />
+    <input type="hidden" name="add2group" value="1" />
+
+<!--	    <tr>
+		<td width="150">&nbsp;</td>
+		<td>
+		    <input type="checkbox" checked="yes" name="add2group" value="1" />
+		    &nbsp; der Gruppe beitreten
+		</td>
+	    </tr>-->
+	    
+	    <tr>
+		<td width="150"></td>
+		<td>
+		    <input type="submit" name="send" class="inputbox" value="Ordner anlegen" />
+		</td>
+	    </tr>
+        </table>
+</form>

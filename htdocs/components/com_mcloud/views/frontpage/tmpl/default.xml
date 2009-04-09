@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="MCloud: Frontpage">
+		<message>
+			<![CDATA[MCloud: Frontpage]]>
+		</message>
+	</layout>
+	<state>
+		<name>MCloud: Frontpage</name>
+		<description>MCloud: Frontpage</description>
+		<url>
+			<param name="limit"    type="text"  default="5" label="Maximum number of rows" />
+			<param name="cat_id"   type="text"  default="0" label="Category ID" />
+			<param name="medialist_layout" type="radio" default="3column" label="List layout" description="The layout in which the media list is displayed">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="categories_layout" type="radio" default="2column" label="Category layout" description="The layout of the category shown when clicking on a medium's category name">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="player_widget_width"  type="text" default="200" label="Player widget width" />
+			<param name="player_widget_height" type="text" default="225" label="Player widget height" />
+			<param name="player_menu_height"   type="text" default="260" label="Player menu height" />
+			<param name="player_menu_width"    type="text" default="200" label="Player menu width" />
+			<param name="media_class" type="radio" default="" label="Media class filter" description="Which class of media to show">
+				<option value=""> All </option>
+				<option value="video"> Videos </option>
+				<option value="audio"> Audio </option>
+				<option value="image"> Image </option>			
+			</param>
+			<param name="featured_group_id" type="text" default="0" label="Featured Group" description="ID of the group holding featured media" />
+			<param name="medium_1_id"      type="text" default=""  label="Medium 1: ID" />
+			<param name="medium_1_title"   type="text" default=""  label="Medium 1: Title" />			
+			<param name="medium_2_id"      type="text" default=""  label="Medium 2: ID" />
+			<param name="medium_2_title"   type="text" default=""  label="Medium 2: Title" />			
+			<param name="medium_3_id"      type="text" default=""  label="Medium 3: ID" />
+			<param name="medium_3_title"   type="text" default=""  label="Medium 3: Title" />			
+			<param name="medium_4_id"      type="text" default=""  label="Medium 4: ID" />
+			<param name="medium_4_title"   type="text" default=""  label="Medium 4: Title" />			
+			<param name="medium_5_id"      type="text" default=""  label="Medium 5: ID" />
+			<param name="medium_5_title"   type="text" default=""  label="Medium 5: Title" />			
+			<param name="medium_6_id"      type="text" default=""  label="Medium 6: ID" />
+			<param name="medium_6_title"   type="text" default=""  label="Medium 6: Title" />			
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>

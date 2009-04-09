@@ -1,0 +1,126 @@
+
+    <patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+	{LANG:MCLOUD:GROUP-CREATE:CAPTION}
+    </patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:denied" unusedvars="ignore" visibility="hidden">
+
+    <h1> {LANG:MCLOUD:GROUP-CREATE:CAPTION} </h1>
+    <p>
+	{LANG:MCLOUD:GROUP-CREATE:DENIED}
+    </p>
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore" visibility="hidden">
+
+	    <script language="javascript" type="text/javascript">
+<!--
+	function chkform () 
+	{
+	    var form = document.creategroup;
+	    if (form.group_ident.value == '')
+	    {
+		form.group_ident.value = form.group_title.value;
+		form.group_ident.focus();
+		return false;
+	    }
+	    if (form.group_title.value == '')
+	    {
+    		alert('{LANG:MCLOUD:GROUP-CREATE:MISSING-NAME}');
+    		form.group_title.focus();
+    		return false;
+  	    }
+	    if (form.group_description.value == '')
+	    {
+    		alert('{LANG:MCLOUD:GROUP-CREATE:MISSING-DESCRIPTION}');
+    		form.group_description.focus();
+    		return false;
+  	    }
+	}
+-->
+	    </script>
+
+    <h1> {LANG:MCLOUD:GROUP-CREATE:CAPTION} </h1>
+    <form name="creategroup" action="./index.php" method="post" onsubmit="return chkform()">
+	<input type="hidden" name="option"  value="{CURRENT:COMPONENT}" />
+	<input type="hidden" name="Itemid"  value="{CURRENT:ITEM_ID}" />
+	<input type="hidden" name="task"    value="group_create" />
+	<table cellpadding="0" cellspacing="4" border="0">
+	    <tr>
+		<td width="150"> 
+		    {LANG:MCLOUD:GROUP-CREATE:NAME} <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="group_title" value="" class="inputbox" size="20" maxlength="100" style="width: 200px;" />
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"> 
+		    {LANG:MCLOUD:GROUP-CREATE:IDENT} <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="group_ident" value="" class="inputbox" size="20" maxlength="100" style="width: 200px;" />
+		</td>
+	    </tr>
+	    <tr>
+		<td valign="top"> 
+		    {LANG:MCLOUD:GROUP-CREATE:DESCRIPTION} <font class="required">*</font>
+		</td>
+		<td valign="top">
+		    <textarea rows="4" cols="20" name="group_description" class="inputbox" style="width: 200px;"></textarea>
+		    <br />
+		</td>
+	    </tr>
+	    <tr>
+		<td colspan="2"><font class="required">*</font> {LANG:MCLOUD:GROUP-CREATE:REQUIRED} </td>
+	    </tr>
+	    <tr>
+		<td width="150"> {LANG:MCLOUD:GROUP-CREATE:VISIBILITY} </td>
+		<td>
+		    <select name="visibility">
+			<option value="public"> {LANG:MCLOUD:GROUP-CREATE:PUBLIC} </option>
+			<option value="registered"> {LANG:MCLOUD:GROUP-CREATE:REGISTERED} </option>
+			<option value="private"> {LANG:MCLOUD:GROUP-CREATE:PRIVATE} </option>
+		    </select>
+		</td>
+	    </tr>
+<!--	    <tr>
+		<td width="150"> Beitritt </td>
+		<td>
+		    <select name="subscribe_policy">
+			<option value="confirm"> mit Best&auml;tigung </option>
+			<option value="public"> ohne Best&auml;tigung </option>
+			<option value="private"> privat </option>
+		    </select>
+		</td>
+	    </tr>
+-->	
+    <input type="hidden" name="subscribe_policy" value="private" />
+    <input type="hidden" name="add2group" value="1" />
+
+<!--	    <tr>
+		<td width="150">&nbsp;</td>
+		<td>
+		    <input type="checkbox" checked="yes" name="add2group" value="1" />
+		    &nbsp; der Gruppe beitreten
+		</td>
+	    </tr>-->
+	    
+	    <tr>
+		<td width="150"></td>
+		<td>
+		    <input type="submit" name="send" class="inputbox" value="{LANG:MCLOUD:GROUP-CREATE:SUBMIT}" />
+		</td>
+	    </tr>
+        </table>
+</form>
+
+    </patTemplate:tmpl>
+    
+</patTemplate:tmpl>

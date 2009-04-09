@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="My media">
+		<message><![CDATA[Shows the current user's media]]></message>
+	</view>
+</metadata>

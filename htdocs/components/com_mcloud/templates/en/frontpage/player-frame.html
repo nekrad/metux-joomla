@@ -1,0 +1,90 @@
+<style>
+    TABLE.player_frame
+    {
+	border:			1px dotted grey;
+	height:			300;
+	width:			{FRONTPAGE:PLAYER-FRAME:WIDTH}px;
+    }
+
+    TD.player_frame_widget
+    {
+	padding-left:		0px;
+	padding-right:		0px;
+	width:			1%;
+    }
+
+    TD.player_frame_menu
+    {
+	width:			200px;
+    }
+
+    TABLE.player_menu
+    {
+	height:			{FRONTPAGE:PLAYER-MENU:HEIGHT}px;
+	width:			{FRONTPAGE:PLAYER-MENU:WIDTH}px;
+	border-collapse:	collapse;
+	border-left:		1px solid #555555;
+	border-right:		1px solid #555555;
+    }
+
+    TABLE.player_menu	TD
+    {
+	background:		url(/images/tv_button.gif);
+	height:			50px
+	color:			#cccccc;
+	padding-left:		12px;
+	border-collapse:	collapse;
+	border-bottom:		1px solid #555555;
+	font-decoration:	none;
+    }
+
+    TABLE.player_menu	TD	A
+    {
+	color:			#cccccc;
+	font-weight:		bold;
+	font-decoration:	none;
+	border-bottom:		1px solid #555555;
+    }
+
+    TABLE.player_menu	TD:hover
+    {
+	background-color:	url(/images/tv_button_on.gif);
+	padding-left:		12px;
+	border-collapse:	collapse;
+    }
+</style>
+
+<center>
+<table cellpadding="0" cellspacing="0" class="player_frame">
+    <tr>
+	<td class="player_frame_widget">
+	    {PLAYER:WIDGET}
+	</td>
+	<td class="player_frame_menu">
+	    <table class="player_menu">
+		<tr>
+		    <td> <a href="/index.php?option=com_3mpn_guide&view=euromap&Itemid=315">Program Overview</a></td>
+		</tr>
+		<tr>
+		    <td> <a href="{MEDIUM:2:URL}"> {MEDIUM:2:TITLE} </td>
+		</tr>
+		<tr>
+		    <td> <a href="{MEDIUM:3:URL}"> {MEDIUM:3:TITLE} </td>
+		</tr>
+		<tr>
+		    <td> <a href="{MEDIUM:4:URL}"> {MEDIUM:4:TITLE} </td>
+		</tr>
+		<tr>
+		    <td> <a href="{MEDIUM:5:URL}"> {MEDIUM:5:TITLE} </td>
+		</tr>
+		<tr>
+		    <td> <a href="http://www.metux.de/">
+			metux IT service
+		    </a></td>
+		<tr>
+	    </table>
+	</td>
+    </tr>
+</table>
+</center>
+

@@ -1,0 +1,51 @@
+
+<patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+    {LANG:MCLOUD:FRONTPAGE:CAPTION}
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+<style>
+
+.mcloud_frontpage_frame
+{
+    border:		none;
+    padding:		12px;
+    margin-bottom:	12px;
+    width:		770px;
+    height:		480px;
+}
+
+.mcloud_frontpage_headrow
+{
+    background-image:	url(images/bg_button_3d.gif);
+    width:		100%;
+    height:		50px;
+    padding-top:	3px;
+    font-size: 		large;
+    padding-left:	10px;
+}
+
+</style>
+
+<div class="mcloud_frontpage_frame">
+    {FRONTPAGE:PLAYERBOX}
+</div>
+
+<div class="mcloud_frontpage_frame">
+    <p>
+    {FRONTPAGE:TOPMEDIA}
+    </p>
+    <p style="text-align: center; font-weight: bold">
+	<a href="/index.php?option=com_mcloud&view=my-frontpage&cat_id=0&limit=0&medialist_layout=3column&categories_layout=2column&column0=newest&column1=top-views&column2=top-rate&column3=top-comment&media_class=video&Itemid=110">
+	    {LANG:MCLOUD:FRONTPAGE:UPLOAD_MEDIA}
+	</a>
+    </p>
+</div>
+
+<div class="mcloud_frontpage_frame">
+    <div class="article-content">
+	Welcome to our media platform
+    </div>
+</div>
+
+</patTemplate:tmpl>

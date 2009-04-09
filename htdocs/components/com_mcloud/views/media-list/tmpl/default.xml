@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="MCloud: Media list">
+		<message>
+			<![CDATA[MCloud: Media list]]>
+		</message>
+	</layout>
+	<state>
+		<name>MCloud: show media visible for current user</name>
+		<description></description>
+		<url>
+			<param name="category_id" type="text"  default="0" label="Category ID" />
+			<param name="limit"       type="text"  default="0" label="Limit" />
+			<param name="medialist_layout" type="radio" default="3column" label="List layout" description="The layout in which the media list is displayed">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="categories_layout" type="radio" default="2column" label="Category layout" description="The layout of the category shown when clicking on a medium's category name">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="order" type="list" default="none" label="Ordering">
+				<option value="none"> Unordered </option>
+				<option value="newest"> Newest first </option>
+			</param>
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>

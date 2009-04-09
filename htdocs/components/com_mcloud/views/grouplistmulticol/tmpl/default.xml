@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="List groups (3 column)">
+                <message>
+                        <![CDATA[List groups (3 column)]]>
+                </message>
+        </layout>
+        <state>
+                <name>List groups in 3 columns</name>
+                <description>Shows an group list</description>
+                <url>
+			    <param name="title"     type="text" default="" label="Page title" />
+			    <param name="filter_0"  type="text" default="" label="Filter #0" />
+			    <param name="caption_0" type="text" default="" label="Caption #0" />
+			    <param name="filter_1"  type="text" default="" label="Filter #1" />
+			    <param name="caption_1" type="text" default="" label="Caption #1" />
+			    <param name="filter_2"  type="text" default="" label="Filter #2" />
+			    <param name="caption_2" type="text" default="" label="Caption #2" />
+                </url>
+                <params>
+                </params>
+        </state>
+</metadata>

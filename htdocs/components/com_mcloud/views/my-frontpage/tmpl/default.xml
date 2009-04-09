@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="MCloud: Users media page">
+		<message>
+			<![CDATA[MCloud: Users media page]]>
+		</message>
+	</layout>
+	<state>
+		<name>MCloud: Users media page</name>
+		<description>MCloud: Users media page</description>
+		<url>
+			<param name="cat_id"   type="text"  default="0" label="Category ID" />
+			<param name="limit"    type="text"  default="0" label="Limit" />
+			<param name="media_class" type="radio" default="" label="Media class filter" description="Which class of media to show">
+				<option value="">      All </option>
+				<option value="video"> Video </option>
+				<option value="audio"> Audio </option>
+				<option value="image"> Image </option>
+			</param>
+			<param name="medialist_layout" type="radio" default="3column" label="List layout" description="The layout in which the media list is displayed">
+				<option value="list">    List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="categories_layout" type="radio" default="2column" label="Category layout" description="The layout of the category shown when clicking on a medium's category name">
+				<option value="list">    List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="column0" type="list" default="" label="1st. Column Layout" description="The most left column">
+				<option value="newest">          Newest </option>
+				<option value="top-views">       Top viewed </option>
+				<option value="top-views-today"> Top viewed today </option>
+				<option value="top-views-month"> Top viewed this month </option>
+				<option value="top-rate">        Top rated </option>
+				<option value="top-comment">     Top commented </option>
+			</param>
+			<param name="column1" type="list" default="" label="2nd. Column Layout" description="">
+				<option value="newest">          Newest </option>
+				<option value="top-views">       Top viewed </option>
+				<option value="top-views-today"> Top viewed today </option>
+				<option value="top-views-month"> Top viewed this month </option>
+				<option value="top-rate">        Top rated </option>
+				<option value="top-comment">     Top commented </option>
+			</param>
+			<param name="column2" type="list" default="" label="3rd. Column Layout" description="">
+				<option value="newest">          Newest </option>
+				<option value="top-views">       Top viewed </option>
+				<option value="top-views-today"> Top viewed today </option>
+				<option value="top-views-month"> Top viewed this month </option>
+				<option value="top-rate">        Top rated </option>
+				<option value="top-comment">     Top commented </option>
+			</param>
+			<param name="column3" type="list" default="" label="4th. Column Layout" description="">
+				<option value="newest">          Newest </option>
+				<option value="top-views">       Top viewed </option>
+				<option value="top-views-today"> Top viewed today </option>
+				<option value="top-views-month"> Top viewed this month </option>
+				<option value="top-rate">        Top rated </option>
+				<option value="top-comment">     Top commented </option>
+			</param>
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>

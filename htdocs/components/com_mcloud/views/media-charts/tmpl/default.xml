@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Media Top 20">
+		<message>
+			<![CDATA[Shows media charts (most viewed)]]>
+		</message>
+	</layout>
+	<state>
+		<name>MediaCloud: Media charts</name>
+		<description>Diplays N top viewed media</description>
+		<url>
+			<param name="limit" type="text" default="20" label="Limit" description="Maximum number of media to show" />
+			<param name="category_id" type="text" default="" label="Category ID" description="Filter by that category id" />
+			<param name="media_class" type="text" default="" label="Media class" description="Filter by that media class (eg. video,audio,image)" />
+			<param name="medialist_layout" type="radio" default="3column" label="List layout" description="The layout in which the media list is displayed">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+			<param name="categories_layout" type="radio" default="2column" label="Category layout" description="The layout of the category shown when clicking on a medium's category name">
+				<option value="list"> List </option>
+				<option value="2column"> 2 Columns </option>
+				<option value="3column"> 3 Columns </option>
+			</param>
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>

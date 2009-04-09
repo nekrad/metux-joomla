@@ -1,0 +1,10 @@
+<h3> Kommentar schreiben </h3>
+<form action="index.php">
+    <input type="hidden" name="{SESSION:NAME}" value="{SESSION:ID}">
+    <input type="hidden" name="option"         value="{CURRENT:OPTION}">
+    <input type="hidden" name="view"           value="add_media_comment">
+    <input type="hidden" name="Itemid"         value="{CURRENT:ITEM_ID}">
+    <input type="hidden" name="id"             value="{MEDIUM:ID}">
+    <textarea width="100%" name="comment"></textarea>
+    <input type="submit" value="Senden">
+</form>

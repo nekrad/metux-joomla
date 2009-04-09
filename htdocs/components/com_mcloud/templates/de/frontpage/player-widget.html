@@ -1,0 +1,24 @@
+
+<script type="text/javascript" src="/components/com_mcloud/js/swfobject.js"></script>
+<div style="text-align: center">
+    <div id="flashcontent"> Bitte Javascript aktivieren </div>
+    <script type="text/javascript">
+		var frontpage_player = new SWFObject(
+		    'http://mcloud.metux.de/flowplayer/current/FlowPlayerDark.swf?1997257045',
+		    'video',
+		    '{PLAYER:WIDTH}',
+		    '{PLAYER:HEIGHT}',
+		    '8',
+		    '#171d25');
+		frontpage_player.addVariable('width',		'{PLAYER:WIDTH}');
+		frontpage_player.addVariable('height',		'{PLAYER:HEIGHT}');
+		frontpage_player.addParam('allowFullScreen',	'true');
+		frontpage_player.addParam('play', 		'true');
+		frontpage_player.addParam('quality', 		'high');
+		frontpage_player.addParam('scale', 		'scale');
+		frontpage_player.addParam('wmode', 		'transparent');
+		frontpage_player.addParam('loop',               'true');
+		frontpage_player.addVariable('config', 	"{videoFile: '{MEDIUM:URL}',initialScale: 'scale',loop:'true'}");
+		frontpage_player.write('flashcontent');
+    </script>
+</div>

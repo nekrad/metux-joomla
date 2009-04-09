@@ -1,0 +1,195 @@
+
+<patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+    {LANG:MCLOUD:GROUPSHOW:CAPTION}
+</patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:missing" unusedvars="ignore" visibility="hidden">
+	<h2> {LANG:MCLOUD:MEDIUM-SHOW:MISSING} </h2>
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore">
+
+<style>
+<!--
+
+.mcloud_conversions
+{
+}
+
+.mcloud_conversions >	A
+{
+    color:	black;
+}
+-->
+</style>
+
+	<h1> {MEDIUM:TITLE} </h1>
+
+	<patTemplate:tmpl name="component:must-buy" unusedvars="ignore" visibility="hidden">
+	<p style="font-weight: bold; font-style: italic">
+	    {LANG:MCLOUD:MEDIUM-SHOW:MUST-BUY}
+	</p>
+	<p>
+	    {LANG:MCLOUD:MEDIUM-SHOW:PRICE}: {MEDIUM:PRICE}
+	</p>
+	<p>
+	    <form action="/">
+		<input type="hidden" name="task"        value="mediumbuy"  />
+		<input type="hidden" name="medium_id"   value="{MEDIUM:ID}" />
+		<input type="hidden" name="confirm_buy" value="1" />
+		<input type="hidden" name="option"      value="{CURRENT:OPTION}" />
+		<input type="hidden" name="Itemid"      value="{CURRENT:ITEM_ID}" />
+		<input type="submit"                    value="{LANG:MCLOUD:MEDIUM-SHOW:BUY}" />
+	    </form>
+	</p>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:player" unusedvars="ignore" visibility="hidden">
+	<p align="center">
+	    <patTemplate:tmpl name="component:player:unsupported" unusedvars="ignore" visibility="hidden">
+	    <p>
+		<img src="/components/com_mcloud/images/icons/exclamation.png" />&nbsp;&nbsp;
+		{LANG:MCLOUD:MEDIUM-SHOW:UNSUPPORTED-TYPE}
+	    </p>
+	    </patTemplate:tmpl>
+	    <patTemplate:tmpl name="component:player:classic" unusedvars="ignore" visibility="hidden">
+	    {VIEWER}
+	    </patTemplate:tmpl>
+	    <patTemplate:tmpl name="component:player:livestream:mplayer2" unusedvars="ignore" visibility="hidden">
+<!-- livestream: mplayer2 -->
+<object id="mediaPlayer" width="320" height="240"
+        classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95"
+        codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701"
+        standby="Loading Microsoft Windows Media Player components...' type='application/x-oleobject">
+    <param name="fileName" value="{LIVESTREAM:URL}">
+    <param name="animationatStart" value='true'>
+    <param name="transparentatStart" value='true'>
+    <param name="autoStart" value="true">
+    <param name="showControls" value="true">
+    <param name="loop" value="false">
+    <embed type="application/x-mplayer2"
+           pluginspage="http://microsoft.com/windows/mediaplayer/en/download/"
+           id='mediaPlayer' name='mediaPlayer' displaysize='4' autosize='-1'
+           bgcolor='darkblue' showcontrols="true" showtracker='-1'
+           showdisplay='0' showstatusbar='-1' videoborder3d='-1' width="320" height="240"
+           src="{LIVESTREAM:URL}" autostart="true" designtimesp='5311' loop="false">
+    </embed>
+</object>
+<!-- -->
+	    </patTemplate:tmpl>
+	    <patTemplate:tmpl name="component:player:livestream:unsupported" unusedvars="ignore" visibility="hidden">
+<strong> Livestream: unsupported content type: {MEDIUM:CONTENT_TYPE} </strong>
+	    </patTemplate:tmpl>
+	</p>
+	<p> {MEDIUM:DESCRIPTION} </p>
+	<p> Tags: {MEDIUM:TAGS} </p>
+
+{GROUPS}
+
+	<h3> {LANG:MCLOUD:MEDIUM-SHOW:CONVERSIONS} </h3>
+	<table class="mcloud_conversions">
+	    <patTemplate:tmpl name="component:conversions:entry" unusedvars="ignore">
+	    <tr>
+		<td>
+		    <a href="{CONV:URL}" style="color: black">{CONV:CLASS}</a>
+		</td>
+		<td>
+		    <a href="{CONV:URL}" style="color: black">{CONV:CONTENT-TYPE}</a>
+		</td>
+		<td align="right">
+		    {CONV:SIZE_KB} KB
+		</td>
+	    </tr>
+	    </patTemplate:tmpl>
+	</table>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:comments" unusedvars="ignore" visibility="hidden">
+	<h3> {LANG:MCLOUD:MEDIUM-SHOW:COMMENTS} </h3>
+	<table class="mcloud_comments">
+	    <patTemplate:tmpl name="component:comments:entry" unusedvars="ignore" visibility="hidden">
+	    <tr>
+		<td>
+		    {COMMENT:MTIME}
+		</td>
+		<td>
+		    {COMMENT:USERNAME}
+		</td>
+		<td>
+		    {COMMENT:CONTENT}
+		</td>
+	    </tr>
+	    </patTemplate:tmpl>
+	</table>	    
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:post-comment" unusedvars="ignore" visibility="hidden">
+	<h3> {LANG:MCLOUD:MEDIUM-SHOW:POST-COMMENT} </h3>
+	<form action="index.php" name="post-comment">
+	    <input type="hidden" name="{SESSION:NAME}" value="{SESSION:ID}">
+	    <input type="hidden" name="option"         value="{CURRENT:COMPONENT}">
+	    <input type="hidden" name="task"           value="medium_comment">
+	    <input type="hidden" name="Itemid"         value="{CURRENT:ITEM_ID}">
+	    <input type="hidden" name="medium_id"      value="{MEDIUM:ID}">
+	    <input type="hidden" name="kickback"       value="{HTMLENC::CURRENT:URI}">
+	    <textarea width="100%" name="comment"></textarea>
+	    <input type="submit" value="{LANG:MCLOUD:MEDIUM-SHOW:POST-COMMENT:SUBMIT}">
+	</form>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:recommend" unusedvars="ignore" visibility="hidden">
+
+	<script language="javascript" type="text/javascript">
+<!--
+	function check_recommend()
+	{
+	    var form = document.recommend;
+	    if (form.email.value == '')
+	    {
+		alert('{LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND:MISSING-EMAIL}');
+		return false;	    
+	    }
+	    if (form.message.value == '')
+	    {
+		alert('{LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND:MISSING-MSG');
+		return false;
+	    }
+	    return true;
+	}
+-->
+	</script>
+	
+	<h3> {LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND} </h3> 
+	<form action="index.php" name="recommend" onSubmit="return check_recommend()">
+	    <input type="hidden" name="{SESSION:NAME}" value="{SESSION:ID}">
+	    <input type="hidden" name="option"         value="{CURRENT:COMPONENT}">
+	    <input type="hidden" name="task"           value="medium_recommend">
+	    <input type="hidden" name="Itemid"         value="{CURRENT:ITEM_ID}">
+	    <input type="hidden" name="medium_id"      value="{MEDIUM:ID}">
+	    <input type="hidden" name="kickback"       value="{HTMLENC::CURRENT:URI}">
+	    
+	    <table style="width: 100%">
+		<tr>
+		    <td style="width: 20%"> {LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND:EMAIL} </td>
+		    <td> <input name="email" style="width: 100%"/> </td>
+		</tr>
+		<tr>
+		    <td style="width: 20%"> {LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND:MESSAGE} </td>
+		    <td> <textarea style="width: 100%" name="message"></textarea> </td>
+		</tr>
+		<tr>
+		    <td>
+			<input type="submit" value="{LANG:MCLOUD:MEDIUM-SHOW:RECOMMEND:SUBMIT}">
+		    </td>
+		</tr>
+	    </table>
+	</form>
+	</patTemplate:tmpl>
+    </patTemplate:tmpl>
+</patTemplate:tmpl>

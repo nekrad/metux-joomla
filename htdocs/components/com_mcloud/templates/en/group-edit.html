@@ -1,0 +1,52 @@
+<h1 class="header"> Ordner bearbeiten </h1>
+<form name="creategroup" action="{ACTION}" method="post" onsubmit="return chkform()">
+    <input type="hidden" name="group_id" value="{GROUP:ID}" />
+	<table cellpadding="0" cellspacing="4" border="0">
+	    <tr>
+		<td width="150">
+		    Name <font class="required">*</font>
+		</td>
+		<td>
+		    <input name="group_name" class="inputbox" size="20" maxlength="100" style="width: 200px;" value="{HTML:GROUP:TITLE}" />
+		</td>
+	    </tr>
+	    <tr>
+		<td valign="top">
+		    Description <font class="required">*</font>
+		</td>
+		<td valign="top">
+		    <textarea rows="4" cols="20" name="group_description" class="inputbox" style="width: 200px;">{GROUP:DESCRIPTION}</textarea>
+		    <br />
+		</td>
+	    </tr>
+	    <tr>
+		<td colspan="2"><font class="required">*</font> Required fields </td>
+	    </tr>
+	    <tr>
+		<td width="150"> Visibility </td>
+		<td>
+		    <select name="visibility">
+			<option value="public"     {OPT:VISIBILITY:PUBLIC}> public </option>
+			<option value="registered" {OPT:VISIBILITY:REGISTERED}> registrered user </option>
+			<option value="private"    {OPT:VISIBILITY:PRIVATE}> private </option>
+		    </select>
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"> Join </td>
+		<td>
+		    <select name="subscribe_policy">
+			<option value="confirm" {OPT:SUBSCRIBE:CONFIRM}> with confirmation </option>
+			<option value="public"  {OPT:SUBSCRIBE:PUBLIC}> without confirmation </option>
+			<option value="private" {OPT:SUBSCRIBE:PRIVATE}> private </option>
+		    </select>
+		</td>
+	    </tr>
+	    <tr>
+		<td width="150"></td>
+		<td>
+		    <input type="submit" name="send" class="inputbox" value="Speichern" />
+		</td>
+	    </tr>
+        </table>
+</form>

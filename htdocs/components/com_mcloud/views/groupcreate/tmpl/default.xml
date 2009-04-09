@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Create a group">
+                <message>
+                        <![CDATA[Create a group]]>
+                </message>
+        </layout>
+	<state>
+                <name>Create group</name>
+                <description>Shows an form for group creation</description>	
+	</state>
+</metadata>

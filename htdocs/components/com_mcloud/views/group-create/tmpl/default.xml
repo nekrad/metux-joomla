@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Create group form">
+		<message>
+			<![CDATA[Shows an form for creating an group]]>
+		</message>
+	</layout>
+	<state>
+		<name>MCloud group create Layout</name>
+		<description>MediaCloud group create form</description>
+		<params>
+			<param name="comp_description" type="textarea" default="" label="Description Text" rows="5" cols="30" description="Description for page"/>
+
+			<param name="@spacer" type="spacer" default="" label="" description="" />
+			<param name="image" type="imagelist" directory="/images/stories" hide_default="1" default="-1" label="Image" description="PARAMIMAGE" />
+			<param name="image_align" type="radio" default="right" label="Image Align" description="Alignment of the image">
+				<option value="left">Left</option>
+				<option value="right">Right</option>
+			</param>
+		</params>
+	</state>
+</metadata>
