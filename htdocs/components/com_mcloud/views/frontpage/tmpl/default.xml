@@ -46,6 +46,7 @@
 			<param name="medium_6_title"   type="text" default=""  label="Medium 6: Title" />			
 		</url>
 		<params>
+			<param name="teaser_moduleposition" type="text" default="mcloud_teaser" label="Teaser Module-Position" description="Modules from that position are displayed in the teaser area of the frontpage" />
 		</params>
 	</state>
 </metadata>

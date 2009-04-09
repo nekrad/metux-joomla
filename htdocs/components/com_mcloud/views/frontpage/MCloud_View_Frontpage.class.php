@@ -1,5 +1,7 @@
 <?php
 
+jimport( 'joomla.application.module.helper' );
+
 require_once('components/com_mcloud/source/MCloud_Render.class.php');
 require_once('components/com_mcloud/source/MCloud_View_MediaList_Base.class.php');
 
@@ -119,6 +121,35 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 	);
     }
 
+    function getparam($n)
+    {
+	if (!$this->params)
+	{
+	    $menuitemid = JRequest::getInt( 'Itemid' );
+	    if ($menuitemid)
+	    {
+		$menu = JSite::getMenu();
+		$this->params = $menu->getParams( $menuitemid );
+	    }
+	}
+	if ($v = $this->params->get($n))
+	    return $v;
+	return $_REQUEST{$n};
+    }
+
+    function render_teaser()
+    {
+	$modpos = $this->getparam('teaser_moduleposition');
+	if (!is_array($modules = JModuleHelper::getModules($modpos)))
+	    return "";
+
+	$text = "";
+	foreach ($modules as $mwalk => $mcur)
+	    $text .= JModuleHelper::renderModule($mcur);
+
+	return $text;
+    }
+
     function show($option)
     {
 	global $remoteclient, $my;
@@ -169,7 +200,8 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 	    'FRONTPAGE:TOPMEDIA'		=> $this->render_topmedia(),
 	    'FRONTPAGE:PLAYER-MENU:HEIGHT'	=> $_REQUEST{'player_menu_height'},
 	    'FRONTPAGE:PLAYER-MENU:WIDTH'	=> $_REQUEST{'player_menu_width'},
-	    'FRONTPAGE:PLAYER-FRAME:WIDTH'	=> $_REQUEST{'player_menu_width'} + $width
+	    'FRONTPAGE:PLAYER-FRAME:WIDTH'	=> $_REQUEST{'player_menu_width'} + $width,
+	    'FRONTPAGE:TEASER'			=> $this->render_teaser()
 	));
     }
 }
