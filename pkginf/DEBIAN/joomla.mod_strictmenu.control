@@ -1,0 +1,6 @@
+Package: mod-strictmenu
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.0.0
+Description: Displays a menu that displays links depending on the users permission level.
+Priority: optional
