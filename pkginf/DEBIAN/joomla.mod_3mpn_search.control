@@ -1,0 +1,6 @@
+Package: mod-3mpn-search
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 0.0.1.0
+Description: Special search module for 3MPN/TVEU sites
+Priority: optional
