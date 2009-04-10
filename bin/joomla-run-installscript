@@ -1,0 +1,29 @@
+#!/usr/bin/php -q
+<?php
+
+if ($_SERVER['argc'] < 3)
+    die("Missing <webapp-dir> <pkgfile>\n");
+
+define('WEBAPP_DIR',  $_SERVER['argv'][1]);
+define('JPATH_BASE',  WEBAPP_DIR.'/htdocs');
+define('JPATH_CONFIGURATION', JPATH_BASE);
+define('INSTALLFILE', $_SERVER['argv'][2]);
+ini_set('include_path', ini_get('include_path').':'.WEBAPP_DIR.'/lib:'.JPATH_BASE);
+
+require_once(JPATH_BASE.'/configuration.php');
+require_once('libraries/loader.php');
+require_once('joomla/InstallContext.class.php');
+
+$application = new JApplication(array());
+
+$context = new InstallContext();
+$context->dbo    = JFactory::getDBO();
+$context->pkg    = '???';
+$context->htroot = JPATH_BASE;
+
+require_once(INSTALLFILE);
+
+if (function_exists('joomla_component_install'))
+    joomla_component_install($context);
+else
+    print "Missing joomla_component_install()\n";
