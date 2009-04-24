@@ -150,6 +150,26 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 	return $text;
     }
 
+    function fetch_medium($id)
+    {
+	global $remoteclient, $my;
+
+	if ($id == '*')
+	{
+            $res = $remoteclient->getMediaVisibleForUser(array(
+		'username'      => $my->username,
+		'order'         => 'random',
+		'media_class'   => 'video',
+		'limit'         => 42
+	    ));
+	    return array_pop($res);
+	}
+	else
+	{
+	    return $remoteclient->getMediumById($id, $my->username);
+	}
+    }
+
     function show($option)
     {
 	global $remoteclient, $my;
@@ -170,7 +190,7 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 
 	if ($medium_id = $this->medialist[$id]{'medium_id'})
 	{
-	    $medium = $remoteclient->getMediumById($medium_id, $my->username);
+	    $medium = $this->fetch_medium($medium_id);
 	    $medium_url = $medium{'conversions'}{'flash'}{'download_url'};
 	}
 	else
