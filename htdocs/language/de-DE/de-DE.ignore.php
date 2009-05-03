@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: de-DE.ignore.php 255 2008-05-12 19:09:20Z sisko1990 $
+* @version		$Id: de-DE.ignore.php 413 2008-12-24 13:25:16Z sisko1990 $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2009 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
