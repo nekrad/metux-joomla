@@ -1,0 +1,158 @@
+body {
+ color: #E8ECF3;
+ background-color: #202020;
+ font-family: verdana,tahoma,helvetica;
+ scrollbar-face-color:#444D57;
+scrollbar-highlight-color:#535D68;
+scrollbar-3dlight-color:#49535D;
+scrollbar-darkshadow-color:#000000;
+scrollbar-shadow-color:#49535D;
+scrollbar-arrow-color:#FFFFFF;
+scrollbar-track-color:#48515B;
+}
+
+body, td { font-size: 8pt; }
+
+body a:link, body a:visited, body a:active {
+ color: #E8ECF3;
+ text-decoration: underline;
+ 
+}
+body a:hover {
+ color: #E8ECF3;
+ text-decoration: none;
+ 
+}
+
+.tablea1{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/start.png") 0 0 no-repeat;
+}
+
+
+.tablea1:hover { 
+background-position: -155px 0;
+}
+
+
+.tablea2{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+display: block; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/stop.png") 0 0 no-repeat;
+}
+
+
+.tablea2:hover { 
+background-position: -155px 0;
+}
+
+
+.tablea3{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/restart.png") 0 0 no-repeat;
+}
+
+.tablea3:hover { 
+background-position: -155px 0;
+}
+
+.tablea4{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/playlist.png") 0 0 no-repeat;
+}
+
+.tablea4:hover { 
+background-position: -155px 0;
+}
+
+.tablea5{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/config.png") 0 0 no-repeat;
+}
+
+.tablea5:hover { 
+background-position: -155px 0;
+}
+
+.tablea6{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/reload.png") 0 0 no-repeat;
+}
+
+.tablea6:hover { 
+background-position: -155px 0;
+}
+
+.tablea7{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/next.png") 0 0 no-repeat;
+}
+
+.tablea7:hover { 
+background-position: -155px 0;
+}
+
+.tablea8{ 
+text-decoration: none; 
+border:0; 
+padding:0; 
+text-indent: -9999px; 
+letter-spacing: -9999px; 
+font-size:0;  
+width: 155px;
+height:28px; 
+background: url("http://37116.vs.webtropia.com/webtrans/images/files.png") 0 0 no-repeat;
+}
+
+.tablea8:hover { 
+background-position: -155px 0;
+}

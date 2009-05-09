@@ -1,0 +1,43 @@
+    #!/bin/bash
+
+    # To start the script automatically at bootup type the following command
+    # update-rc.d sc_trans defaults 99
+
+    USER=rt
+    DIR=/var/www/webtrans/sc_trans_040/
+
+    case $1 in
+    start)
+    #display to user that what is being started
+    echo “Starting sc_trans_linux”
+    #start the process and record record it’s pid
+    cd $DIR ; screen -AmdS stream ./sc_trans_linux;
+	sleep 2
+	ps -A | grep sc_trans_linux | cut -c 0-6 > /var/run/sctrans.pid
+    #output failure or success
+    #info on how to interact with the torrent
+    #echo “To interact with the torrent client, you will need to reattach the screen session with following command”
+    #echo “screen -r torrent”
+    if [[ $? -eq 0 ]]; then
+    echo “The process started successfully”
+    else
+    echo “The process failed to start”
+    fi
+    ;;
+
+    stop)
+    #First we want to kill the original servers, so we don't get errors.
+	echo "Killing old shoutcast streams."
+	for oldpid in `ps -A | grep sc_trans_linux | cut -c 0-6`; do
+	kill -9 $oldpid
+	done
+	rm -f /var/run/sctrans.pid
+    ;;
+
+    *)
+    # show the options
+    echo “Usage: {start|stop}”
+    exit 1
+    ;;
+    esac
+exit 0
