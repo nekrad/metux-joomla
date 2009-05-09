@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install version="1.5" type="template">
+  <name>mylsfm</name>
+  <creationDate>10.5.2009</creationDate>
+  <author>Marcel Beuchert und Niclas Holtrup</author>
+  <copyright>(C) Copyright 2009 by Live Style FM</copyright>
+  <authorEmail>melanie-melli@hotmail.de</authorEmail>
+  <authorUrl>www.mylsfm.de</authorUrl>
+  <version>MyLSFM Records Startseite</version>
+  <description>
+Copyright Hinweis
+--------------------------------------
+
+Live Style FM
+melanie-melli@hotmail.de
+radio@livestylefm.de
+
+Dieses Templates gibt es in verschiedenen Versionen. Bei allen Versionen zählt das Copyright Gesetz.
+Unterstützt wird dieses Template von folgenden Seiten:
+
+- www.livestyleradio.de
+- www.livestylefm.de
+- www.lifestylefm.de
+- www.unitedfilm.de
+- www.united-film.de
+- www.mylsfm.de
+
+--------------------------------------
+
+Liebe User,
+
+wenn ihr dieses Template gedownloadet habt, dürft ihr es in diesem Zustand nicht verwenden, wenn es sich dabei
+auch um das selbe Thema handelt. Unsere Websiten stehen unter dem Copyright der World Star Radio Company.
+
+Folgende Möglichkeiten stehen zur Auswahl:
+
+1. Wenn das Template benutzt werden soll, freuen wir uns auf ein Feedback, damit wir auch schauen können, das
+   hierbei nicht das Template im vollen Satz verwendet wird. (Grund dafür ist, dass unsere designten Bilder
+   nicht nochmals verwendet werden. Bei einem austauschen der Bilder (logo, footer, Farbschema...) sind wir
+   ohen weiteres einverstanden!)
+
+2. Das Nachfragen unter melanie-melli@hotmail.de ist die sicherste Sache und wird von uns sofort als okay
+   genehmigt.
+
+3. Wir kontrollieren regelmäßig große Joomla Portale, bei dennen in Foren oder Beiträge unserer Template sind,
+   falls einer dieses unbefugt benutzt. Das Template ist als Funktion öffentlich freigestellt, die Grafiken nicht.
+
+4. Der Copyright-Hinweis unter dem Footer darf erst entfernt werden, wenn dazu ein okay abgesegnet wurde.
+
+
+Bitte seht dies nicht als brutale Maßnahme. Ich möchte nur nicht, dass eine andere Website mit meinen selbst erstellten
+Grafiken im Netz steht und eventuell auch noch mehr Erfolg damit. Ich bitte daher um Verständnis!!!
+
+
+Über ein Feedback freue ich mich sehr, genauso über neue Änderungen oder Vorschläge des Templates.
+Fragen oder Hilfe ganz direkt mit meiner Persönlichkeit gibts im Forum www.genial-forum.de
+
+Liebe Grüße
+
+Marcel Beuchert
+Geschäftsführer
+Live Style Radio </description>
+  <files>
+    <filename>index.php</filename>
+    <filename>template_thumbnail.png</filename>
+  </files>
+  <images>
+    <filename>images/bannerground.png</filename>
+    <filename>images/farbgrund.jpg</filename>
+    <filename>images/flashground.png</filename>
+    <filename>images/footer1.png</filename>
+    <filename>images/footer2.png</filename>
+    <filename>images/headerground.png</filename>
+    <filename>images/logo.png</filename>
+    <filename>images/media.jpg</filename>
+    <filename>images/naviground.png</filename>
+    <filename>images/real.jpg</filename>
+    <filename>images/seitenground.png</filename>
+    <filename>images/tunes.jpg</filename>
+    <filename>images/winamp.jpg</filename>
+  </images>
+  <css>
+    <filename>css/template.css</filename>
+    <filename>css/editor_content.css</filename>
+    <filename>css/jce_editor.css</filename>
+  </css>
+</install>
