@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: mod_jgerman.xml 466 2009-03-27 21:52:38Z sisko1990 $ -->
+<install type="module" version="1.5.0" client="administrator">
+	<name>Update nötig?</name>
+	<position>cpanel</position>
+	<author>Jan Erik Zassenhaus</author>
+	<creationDate>August 2008</creationDate>
+	<copyright>Copyright (C) 2008 J!German. Alle Rechte vorbehalten!</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>Jan.Zassenhaus@jgerman.de</authorEmail>
+	<authorUrl>www.jgerman.de</authorUrl>
+	<version>1.2.0</version>
+	<description>Dieses Modul zeigt an, ob die installierten Übersetzungen und Joomla! auf dem aktuellsten Stand sind.</description>
+	<files>
+		<filename module="mod_jgerman">mod_jgerman.php</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>index.html</filename>
+	</files>
+	<params>
+		<param name="auto_check" type="radio" default="auto_check_no" label="Auto. Version prüfen?" description="Hier können Sie einstellen, ob bei jedem Zugriff auf die Administration automatisch nach einer neuen Version gesucht werden soll.">
+			<option value="auto_check_yes">Yes</option>
+			<option value="auto_check_no">No</option>
+	  </param>
+		<param name="check_core" type="radio" default="check_core_show" label="Core-Version prüfen?" description="Hier können Sie einstellen, ob Sie die Version des Joomla!-Core auf Aktualität überprüfen lassen wollen.">
+			<option value="check_core_show">Yes</option>
+			<option value="check_core_hide">No</option>
+	  </param>
+		<param name="notice" type="radio" default="notice_show" label="Löschhinweis anzeigen?" description="Hier können Sie einstellen, ob Sie den Hinweis zum Löschen des Moduls anzeigen lassen wollen.">
+			<option value="notice_show">Yes</option>
+			<option value="notice_hide">No</option>
+	  </param>
+	  <param name="imagesize" type="radio" default="middle" label="Welche Bildgröße?" description="Hier können Sie einstellen, wie groß das angezeigte Bild sein soll. Sie können wählen zwischen: groß, mittel und klein.">
+		  <option value="big">Groß</option>
+			<option value="middle">Mittel</option>
+			<option value="small">Klein</option>
+	  </param>
+	</params>
+</install>
