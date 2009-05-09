@@ -1,0 +1,47 @@
+td.layout-right {
+	width: 30%;
+	height: 230px;
+}
+/*Search & Sort*/
+div#searchbox input {
+	width: 87%;
+	margin-top: 0px;
+}
+div#tree, div#info {
+	position: absolute;
+}
+div#browser {
+	margin-top: -20px;
+}
+div#dir-list, div.spacer.vertical {
+	height: 297px;
+}
+div#tree-body {
+	height: 273px;
+}
+div#info-body {
+	height: 243px;
+}
+#info-nav{
+	height: 20px;
+	margin: 1px 1px 0px 0px;
+	padding: 1px 0px 1px 0px;
+}
+div#tree ul li {
+	float: left;
+	clear: left;
+}
+div#tree ul li span {
+	float: left;
+	clear: right;
+	white-space: pre;
+}
+iframe.blocker {
+	position:absolute;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	background-color:#fff;
+	border:none;
+	filter:alpha(opacity=0);
+}

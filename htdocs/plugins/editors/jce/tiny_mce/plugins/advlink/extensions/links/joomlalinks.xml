@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<install version="1.5" type="extension" plugin="advlink" extension="joomlalinks" folder="links">
+	<name>Joomla! Links for Advanced Link</name>
+	<version>1.0.0</version>
+	<creationDate>15 May 2007</creationDate>
+	<author>Ryan Demmer</author>
+	<authorEmail>ryandemmer@gmail.com</authorEmail>
+	<authorUrl>http://www.cellardoor.za.net/</authorUrl>
+	<copyright>Ryan Demmer</copyright>
+	<license>GPL</license>
+	<description></description>
+	<files>
+		<filename>joomlalinks.php</filename>
+		<filename>joomlalinks/index.html</filename>
+		<filename>joomlalinks/contact.link.php</filename>
+		<filename>joomlalinks/content.link.php</filename>
+		<filename>joomlalinks/weblink.link.php</filename>
+	</files>
+</install>

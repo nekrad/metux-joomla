@@ -1,0 +1,34 @@
+/*Standard*/
+.check {
+	vertical-align: middle;
+	border: 0px;
+}
+select {
+	vertical-align: middle;
+}
+label {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+label.disabled {
+	color: #ccc;
+}
+input {
+	vertical-align: middle;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.visible {
+	visibility: visible;
+}
+.hidden {
+	visibility: hidden;
+}
+img {
+  border: 0;
+}
+/*End Standard*/

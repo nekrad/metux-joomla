@@ -1,0 +1,30 @@
+td.layout-right {
+	width: 30%;
+	height: 230px;
+}
+/*Search & Sort*/
+div#searchbox input {
+	width: 87%;
+	margin-top: 0px;
+}
+div#browser {
+	margin: -20px 0px -15px 0px;
+}
+div#dir-list, div.spacer.vertical {
+	height: 297px;
+}
+div#tree-body {
+	height: 273px;
+}
+div#info-body {
+	height: 248px;
+}
+div#tree ul li {
+	float: left;
+	clear: left;
+}
+div#tree ul li span {
+	float: left;
+	clear: right;
+	white-space: pre;
+}

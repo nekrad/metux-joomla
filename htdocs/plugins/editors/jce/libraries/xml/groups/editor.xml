@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+        <param name="editor_dir" type="text" default="images/stories" size="50" label="MANAGER PARAM DIRECTORY" description="MANAGER PARAM DIRECTORY DESC"/>
+		<param name="editor_max_size" type="text" default="1024" label="MANAGER PARAM UPLOAD SIZE" description="MANAGER PARAM UPLOAD SIZE DESC"/>
+		<param name="editor_toggle" type="list" default="1" label="PARAM EDITOR TOGGLE ALLOW" description="PARAM EDITOR TOGGLE ALLOW DESC">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>
+		<param name="editor_theme_advanced_toolbar_location" type="list" default="top" label="PARAM TOOLBAR" description="PARAM TOOLBAR DESC">
+			<option value="top">TOP</option>
+			<option value="bottom">BOTTOM</option>
+		</param>
+		<param name="editor_skin" type="list" default="default" label="PARAM EDITOR SKIN" description="PARAM EDITOR SKIN DESC">
+			<option value="default">PARAM EDITOR DEFAULT</option>
+			<option value="o2k7">o2k7</option>
+		</param>
+		<param name="editor_skin_variant" type="list" default="default" label="PARAM EDITOR SKIN VARIANT" description="PARAM EDITOR SKIN VARIANT DESC">
+			<option value="default">PARAM EDITOR DEFAULT</option>
+			<option value="silver">Silver</option>
+		</param>
+		<param name="editor_inlinepopups_skin" type="list" default="clearlooks2" label="PARAM DIALOG SKIN" description="PARAM DIALOG SKIN DESC">
+			<option value="clearlooks2">ClearLooks2</option>
+			<option value="classicblue">Classic Blue</option>
+		</param>
+		<param name="editor_allow_script" type="list" default="0" label="PARAM JAVASCRIPT" description="PARAM JAVASCRIPT DESC">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>
+		<param name="editor_allow_php" type="list" default="0" label="PARAM PHP" description="PARAM PHP DESC">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>
+	</params>
+</config>

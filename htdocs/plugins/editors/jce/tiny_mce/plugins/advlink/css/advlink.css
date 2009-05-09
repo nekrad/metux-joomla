@@ -1,0 +1,43 @@
+/* CSS file for advimage plugin popup */
+
+.mceActionPanel {
+	margin-top: 7px;
+}
+
+.panel_wrapper div.current {
+	height: 270px;
+}
+
+#classlist, #title, #href, #popupurl, #popupname, #emailaddress, #emailsubject, .mceLinkList, .mceAnchorList, #targetlist, .link-items {
+	width: 300px;
+}
+
+#id, #style, #classes, #target, #dir, #hreflang, #lang, #charset, #type, #rel, #rev, #tabindex, #accesskey {
+	width: 200px;
+}
+
+#events_panel input {
+	width: 260px;
+}
+select.link-items {
+	vertical-align: middle;
+	margin-top: 5px;
+}
+#loader {
+	float: left;
+	width: 20px;
+	height: 20px;
+}
+#loader.loader-on {
+	background: url( ../../../../libraries/img/load.gif) no-repeat center;
+}
+#link-types {
+	margin-top: 0px;
+}
+#link-options {
+	float: left;
+	height: 100px;
+}
+#link-options div {
+	margin-top: 2px;
+}
