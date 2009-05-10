@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbinstall version="1.0" type="plugin" group="user">
+	<name>CB ProfileBook</name>
+	<author>JoomlaJoe and Beat</author>
+	<creationDate>December 2005 - 2006.05.25</creationDate>
+	<copyright>(C) 2005-2006 www.joomlapolis.com</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>joomlajoe@joomlapolis.com</authorEmail>
+	<authorUrl>www.joomlapolis.com</authorUrl>
+	<version>1.0</version>
+	<description>Provides each registered user with there own Guestbook like system.</description>
+	<files>
+		<filename plugin="cb.profilebook">cb.profilebook.php</filename>
+		<filename>index.html</filename>
+		<filename>bb_adm.js</filename>
+		<filename>classes/bbcode.inc.php</filename>
+		<filename>classes/index.html</filename>
+		<filename>language/english.php</filename>
+		<filename>language/index.html</filename>
+		<filename>smilies/angry.png</filename>
+		<filename>smilies/arrow.gif</filename>
+		<filename>smilies/blink.png</filename>
+		<filename>smilies/blush.png</filename>
+		<filename>smilies/cheerful.png</filename>
+		<filename>smilies/cool.png</filename>
+		<filename>smilies/devil.png</filename>
+		<filename>smilies/dizzy.png</filename>
+		<filename>smilies/ermm.png</filename>
+		<filename>smilies/grin.png</filename>
+		<filename>smilies/kissing.png</filename>
+		<filename>smilies/laughing.png</filename>
+		<filename>smilies/pinch.png</filename>
+		<filename>smilies/sad.png</filename>
+		<filename>smilies/shocked.png</filename>
+		<filename>smilies/sick.png</filename>
+		<filename>smilies/sideways.png</filename>
+		<filename>smilies/silly.png</filename>
+		<filename>smilies/smile.png</filename>
+		<filename>smilies/tongue.png</filename>
+		<filename>smilies/unsure.png</filename>
+		<filename>smilies/w00t.png</filename>
+		<filename>smilies/wassat.png</filename>
+		<filename>smilies/whistling.png</filename>
+		<filename>smilies/wink.png</filename>
+		<filename>smilies/none-arrow.gif</filename>
+		<filename>smilies/block-arrow.gif</filename>		
+		<filename>smilies/index.html</filename>
+	</files>
+    <params>
+		<param name="pbStatRating" type="radio" default="1" label="Add Rating to Stats List" description="Adds the average user profile rating to the users stats section">
+	        <option value="0">No</option>
+	        <option value="1">Yes</option>
+		</param>
+    	<param name="pbStatRatingText" type="text" default="_pb_DefaultRatingText" label="Stats Menu Label" description="Label to be used to show stats menu" />    
+	</params>
+	<tabs>
+		<tab name="_pb_ProfileBook" description="" class="getProfileBookTab" fields="1" position="cb_tabmain" displaytype="tab">
+			<params>
+		    	<param name="pbEntriesPerPage" type="text" default="10" label="Entries per Page" description="Number of entries shown per page." />    
+				<param name="pbSortDirection" type="list" default="DESC" label="Sort Order" description="Set the sort order of entries on a profile based on submission date/time.">
+			        <option value="ASC">Ascending</option>
+			        <option value="DESC">Descending</option>
+				</param>
+				<param name="@spacer" type="spacer" default="" label="" description="" />
+		    	<param name="pbAllowAnony" type="radio" default="0" label="Anonymous Entries" description="Allow unregistered users to write entries.">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>
+				<param name="pbEnableRating" type="list" default="2" label="Enable User Rating" description="Allow users to rate profile">
+			        <option value="0">No</option>
+			        <option value="1">Yes, Optional</option>
+			        <option value="2">Yes, Optional but Remind</option>
+			        <option value="3">Yes, Mandatory</option>
+				</param>
+				<param name="pbAllowSmiles" type="radio" default="1" label="Allow Smilies" description="Allow users add smilies to their post">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>
+				<param name="pbAllowBBCode" type="radio" default="1" label="Allow BBCode" description="Allow users to add bbcode to their post">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>
+				<param name="pbPagingEngabbled" type="radio" default="1" label="Enable Paging" description="Allow entries to automatically page when they exceed the number per page limit.">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>
+				<param name="pbEnableGesture" type="radio" default="0" label="Enable Gesture" description="When a user is viewing an entry from another registered user a link will appear that will allow them to return the gesture.">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>						
+				<param name="@spacer" type="spacer" default="" label="" description="" />
+				<param name="pbUseLocation" type="radio" default="1" label="Use Location Field" description="Allow posters to enter a location as part of their entry">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>				
+				<param name="pbLocationField" type="field" default="" label="Location Field" description="Select the name of the field which contains the equivalent field in the Community Build Field manager.  If blank, registered users will be asked for a location." />						
+				<param name="pbUseWebAddress" type="radio" default="1" label="Use Web Address Field" description="Allow posters to enter a web address as part of their entry">
+			        <option value="0">No</option>
+			        <option value="1">Yes</option>
+				</param>	
+				<param name="pbWebField" type="field" default="" label="Web Address Field" description="Select the name of the field which contains the equivalent field in the Community Build Field manager.  If blank, registered users will be asked for a web address." />										
+			</params>
+			<fields>
+				<field type="radio" title="_pb_EnableProfileBook" name="cb_pb_enable" description="_pb_EnableProfileBook_Desc" registration="0" readonly="0" profile="0">
+					<fieldvalue title="_UE_YES" ordering="1" sys="0" />
+					<fieldvalue title="_UE_NO" ordering ="2" sys="0" />
+				</field>
+				<field type="radio" title="_pb_AutoPublish" name="cb_pb_autopublish" description="_pb_AutoPublish_Desc" registration="0" readonly="0" profile="0" >
+					<fieldvalue title="_UE_YES" ordering="1" sys="0" />
+					<fieldvalue title="_UE_NO" ordering ="2" sys="0" />
+				</field>
+				<field type="radio" title="_pb_NotifyMe" name="cb_pb_notifyme" description="_pb_NotifyMe_Desc" registration="0" readonly="0" profile="0" >
+					<fieldvalue title="_UE_YES" ordering="1" sys="0" />
+					<fieldvalue title="_UE_NO" ordering ="2" sys="0" />
+				</field>
+			</fields>
+		</tab>
+	</tabs>
+	  <install>
+    <queries>
+      <query>
+        CREATE TABLE IF NOT EXISTS `#__comprofiler_plug_profilebook` (
+		  `id` int(11) unsigned NOT NULL auto_increment,
+		  `posterid` int(11) unsigned default NULL,
+		  `posterip` varchar(255) NOT NULL default '',
+		  `postername` varchar(255) default '',
+		  `posteremail` varchar(255) default NULL,
+		  `posterlocation` varchar(255) default NULL,
+		  `posterurl` varchar(255) default NULL,
+		  `postervote` int(11) unsigned default NULL,
+		  `postercomment` text NOT NULL,
+		  `date` datetime default NULL,
+		  `userid` int(11) unsigned NOT NULL default '0',
+		  `feedback` text,
+		  `editdate` datetime default NULL,
+		  `editedbyid` int(11) unsigned NOT NULL default '0',
+		  `editedbyname` varchar(255) default NULL,
+		  `published` tinyint(3) NOT NULL default '0',
+		  PRIMARY KEY  (`id`)
+		) TYPE=MyISAM
+      </query>
+    </queries>
+  </install>
+</cbinstall>
