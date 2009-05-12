@@ -10,7 +10,7 @@
 */
 
 /** ensure this file is being included by a parent file */
-defined( '_VALID_MOS' ) or die( 'Direct Access to this location is not allowed.' );
+defined( '_VALID_MOS' ) or defined ('_JEXEC') or die( 'Direct Access to this location is not allowed.' );
 
 $_PLUGINS->registerFunction( 'onAfterDeleteUser', 'userDeleted','getProfileBookTab' );
 
@@ -178,7 +178,7 @@ class getProfileBookTab extends cbTabHandler {
 	
 	function _getLanguageFile() {
 		global $mainframe,$mosConfig_lang;
-		$UElanguagePath=$mainframe->getCfg( 'absolute_path' ).'/components/com_comprofiler/plugin/user/plug_cbprofilebook';
+		$UElanguagePath=JPATH_BASE.'/components/com_comprofiler/plugin/user/plug_cbprofilebook';
 		if (file_exists($UElanguagePath.'/language/'.$mosConfig_lang.'.php')) {
 		  include_once($UElanguagePath.'/language/'.$mosConfig_lang.'.php');
 		} else include_once($UElanguagePath.'/language/english.php');	
