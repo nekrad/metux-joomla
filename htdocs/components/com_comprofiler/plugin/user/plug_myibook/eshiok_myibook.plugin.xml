@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbinstall version="1.00" type="plugin" group="user">
+	<name>My iBook</name>
+	<author>eShiok.com</author>
+	<creationDate>May 2008</creationDate>
+	<copyright>(C) 2008 eShiok.com</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>support@eshiok.com</authorEmail>
+	<authorUrl>http://www.eshiok.com</authorUrl>
+	<version>1.0</version>
+	<description>My iBook Social Guestbook Network is a new way of internet collaboration between you and other online users. No matter whether you or they have Joomla website, Community Builder, weblog (Blogger, Wordpress, Live, Ning, TypePad), Facebook, Bebo, Hi5, Orkut, Piczo, you will form the entire online network under your network with this Community Builder plugin. Start now and if you do not have My iBook ID, register one at http://www.eshiok.com</description>
+	<files>
+		<filename plugin="eshiok_myibook.plugin">eshiok_myibook.plugin.php</filename>
+		<filename>index.html</filename>
+	</files>
+    <tabs>
+		<tab name="My iBook" description="" class="getMyIBookTab" fields="1" position="cb_tabmain" displaytype="tab">
+			<params>
+				<param name="iBookId" type="text" size="10" default="eshiok" label="Your iBook Network ID" description="If you do not have one, register one for free at: http://www.eshiok.com or leave it as it is. All user who joins iBook Network will be part of your network with your own ID and thus improve online traffic to your community website in a future." />
+				<param name="skin" type="list" default="aqua" label="Skin" description="Use your website default CSS or pre-built in skins">
+				<option value="default">default</option>
+				<option value="cbskin">cb default</option>
+				</param>
+				<param name="target" type="list" default="" label="Target" description="Target, open a new window or default">
+				<option value="_blank">_blank</option>
+				<option value="_top">_top</option>
+				</param>
+				<param name="iBookTitle" type="text" size="50" default="My iBook : Build your own truly online network" label="Title for My iBook Tab" description="Specify My iBook Tab Title, you can customize your own title here" />
+			</params>
+			<fields>
+				<field title="Your My iBook ID" name="cb_myibookid" description="Fill in your My iBook ID from eShiok.com" type="text" registration="1" profile="1" readonly="0" params="" />
+			</fields>
+		</tab>
+	</tabs>
+</cbinstall>
