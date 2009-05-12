@@ -27,7 +27,7 @@
 
 #nav a {
 	display: block;
-    width:5em;
+    width:10em;
 }
 
 #nav li {
@@ -38,7 +38,7 @@
 
 #nav li ul {
 	position: absolute;
-	width: 125px;
+	width: 160px;
 	left: -999em;
     border : 1px solid white;
     display:block !important;
@@ -76,6 +76,10 @@ top: 105px;
     width:125px !important;
 }*/
 
+DIV.javamenu	.menu	ul	li
+{
+    width:	200px	!important;
+}
 </style>
 
 </head>
@@ -105,6 +109,7 @@ top: 105px;
 	
 <div class="javamenu">
 
+<!--
 <li><a href="http://www.mylsfm.de">Home</a>
 		
         </li>
@@ -154,7 +159,13 @@ top: 105px;
 			<li><a href="http://www.livestylefm.de/index.php/bewerbung.html">Bewerbung</a></li>
 			<li><a href="http://www.livestylefm.de/index.php/teamliste.html">Unser Team</a></li>
 		</ul>
-	</li></div>
+	</li>
+-->
+
+<jdoc:include type="modules" name="top_menu"/>
+	
+	
+</div>
 
 
 	<!-- etc. -->
