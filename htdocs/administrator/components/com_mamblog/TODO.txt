@@ -1,0 +1,114 @@
+Plans for v1.1:
+* Add config option to select whether to view content items internally or with Mambo content component.
+* Add config option to choose if html should be stripped from blog entries. Possible a list of tags that should be allowed.
+* Update the component for Joomla 1.0.x
+* Quick list of all users who has written a blog entry.
+* Let users set a template for their blog.
+* User specific blog categories.
+* Possibly some easy way to upgrade.
+* Page Navigation on blog page
+* Config option with a list of users who are allowed to blog.
+* Add possibility to upload image with blog entry.
+* Moblog / email integration.
+* Add support for MosCom and check that AkoCommentPlus works.
+* Add Community Builder integration.
+* Run html_entities on output for blogbinders
+* Add possibility to list blogs like a normal list.
+* Update to work with latest version of SEF Advanced.
+* Switch content to be saved in introtext instead of fulltext so it works to add items to the frontpage of the site. Also make sure it won't affect any other part of the component. If this is done an upgrade script will be needed.
+
+
+
+TODO
+* Allow upgrading by reinstalling, by using 'create table if not exists' and 'replace into' as well as deleting old mos_component items.
+* Add code to rate entries when viewing them internally.
+* Add an option to list blogs from several defined users at once.
+* Search page: search author, search by author, search by date range
+* Let users sort their own entries. 
+* Set who can add/edit blogs (by group or specific users)
+
+
+BUGS:
+* Hopefully fixed: Display problem in MSIE: http://mambo.theyard.org/index.php?option=com_simpleboard&Itemid=25&func=view&catid=4&id=150#150
+* Read more link not showing, remove all mask READ_ON code?
+* javascript code not removed!!
+* Check if the mambo config variables used for the mask still exists.
+* Possibly save with Mambo specific params to make sure things show up correctly.
+
+
+Possible extras for the future:
+* When viewing a blog item there should be some sort of TrackBack
+  link. I will have to investigate this further.
+* A module to list the latest x blog items.
+* A module to list the newest bloggers.
+* Module to list bloggers based on how many entries they've written
+* Module to list latest active bloggers.
+* Module to search bloggers.
+* Module to jump to the page of a given blogger.
+* Calendar module with links to all blogs of each day.
+* Latest blogs of a randomized user.
+* Connect links to categories.
+* User selectable templates or preselected values for the colors etc.
+* Limit how many blog entries a user can have.
+* Support XMLRPC
+
+
+Community Builder integration:
+* Link to show all blog entries by author
+* Link to author CB profile
+* Report blog author
+
+    <?php       if ( ( $my->id == $blog->created_by ) && !($mask&MASK_POPUP))
+{?>
+<?php } else { ?>
+<br><?php echo "Visa författarens alla bloggar" ?>
+<a href="<?php echo sefRelToAbs(
+"index.php?option=com_comprofiler&amp;task=reportUser&amp;uid=$blog->created_by"
+); ?>"> <img src="images/M_images/anmal.gif" width="12" height="14"
+align="right" valign="bottom" border="0" alt="Anmäl blogg" /></a>
+<a href="<?php echo sefRelToAbs(
+"index.php?option=com_comprofiler&task=userProfile&user=$blog->created_by" );
+?>"><img src="components/com_mamblog/profile.gif" width="59" height="18"
+align="right" valign="top" border="0" alt="Se medlemmens profil" /></a>
+ 
+ 
+<?php   } ?>
+
+
+
+
+Thoughts on the component:
+Thanks for the links and the description, that is really helpful.
+
+The user can actually change parts of the appearence but the admin needs to change the settings to allow it. At the moment it is only possible to change text color, background color etc and it is done on on an entry basis, not for all entries although I'm planning to add the ability for users to set what should be default for all allowed options.
+
+Adding the ability for users to change the template completely would be a matter of bypassing the normal template in Mambo, which is very possible. This is however nothing that will be included in the first release as I have a feature freeze (I'm only going to fix the comment bit and try to add TrackBack). I would like to know about how the template is changed, is it an html header and footer that can be changed or something?
+
+Short links to a users blog is possible, as long as the server allows mod_rewrite, I've included information on how this is done, and it creates links like this:
+http://yoursite.com/membername
+
+I'll possibly make this automated so that it is created when the component is installed. 
+
+Searching for blogs already works, using the internal Mambo search function. Isn't Mambo great? =]
+
+Since my blog component uses the normal Mambo member system it is only a matter of adding the userlist component to get a member list. Unfortunately that won't give you links to their blogs, but I might include a modified version of the script which includes that.
+
+I'm not sure what you mean by favorites, is that a selection of the bloggers favorite own blog entries, or favorite other bloggers, or favorite others blog entries? Whatever it is, it shouldn't be hard to add later on.
+
+I have a bunch of ideas for modules to add to the component to allow the administrator to set what information should be listed and this will include things like latest bloggers, links to blogs by date and so on. More information can be found in the included information which can be read from the admin page.
+
+Any extras that are not part of a blog system will not be included, these are things like personal guestbooks, private messaging, personal homepage, gallery etc, as these things are better off as their own components letting the administrator choose which parts should be included. Possibly there should be a separate component to show a users page, from where links can be added to the components installed. Maybe this is where the template thing should be placed as this could be interesting for others who might not want the blog part. The beauty of Mambo is the ability to customize and easily add new components and modules. This user page could also allow users to select modules from a list of modules to show on this page, much like other user portals.
+
+Things I've seen in another blog system is personal links, but that is also something which is better off as its own component. But I sure like the idea.
+
+Hmm. The more I think about it the more I see the need of someone defining a structure for community based components based around the user page component. So that people can work together to create all the needed parts so that they integrate easily together.
+
+Something along the lines of this structure:
+Userpage Component - Home of the user, with links to all public information about the user, and a user menu for the user to edit all parts.
+User Detail Component - Lets the user add details about himself which is shown on a profile page, the admin should be able to add any number of options and select if they should be shown publically or not. Possibly other user components could plug in to this to add options for that component.
+User Template Component - Lets the user choose from a set of templates or possibly create his own.
+Module Selection Component - Select modules to show on the user page from a list of allowable components, each module can be set to shown to all or only the user who owns the page. This way, the user could add a weather component which shows the weather where he lives, or a module showing his favorite links etc.
+Private Messaging System - This exists already, but would definately be great together with all the rest of this.
+User Blog Component - To allow users writing their own blogs.
+Personal Photo Gallery - Not sure if any of the existing galleries support this, but it would be a great addition.
+Personal Guestbook - Well, I've modified a guestbook for 4.0.x for multiple users and will probably upgrade the coming 4.5 version to work with users as well.

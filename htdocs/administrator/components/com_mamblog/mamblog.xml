@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>Mamblog</name>
+  <creationDate>30 Oct 2005</creationDate>
+  <author>Olle Johansson</author>
+  <copyright>This component is released under the GNU/GPL License.</copyright>
+  <authorEmail>Olle@Johansson.com</authorEmail>
+  <authorUrl>http://mambo.theyard.org</authorUrl>
+  <version>1.0</version>
+  <description>A user blog system that allows for users to sign up to write their own blogs.</description>
+  <files>
+    <filename>mamblog.php</filename>
+    <filename>mamblog.html.php</filename>
+    <filename>editblog.php</filename>
+    <filename>showblogs.php</filename>
+    <filename>listbloggers.php</filename>
+    <filename>register.php</filename>
+    <filename>sef_ext.php</filename>
+    <filename>language/english.php</filename>
+    <filename>language/swedish.php</filename>
+    <filename>language/dutch.php</filename>
+    <filename>language/norwegian.php</filename>
+    <filename>language/germani.php</filename>
+    <filename>language/russian.php</filename>
+    <filename>language/italiano.php</filename>
+    <filename>language/spanishf.php</filename>
+    <filename>language/french.php</filename>
+    <filename>configuration.php</filename>
+    <filename>style.css</filename>
+    <filename>mamblog.gif</filename>
+    <filename>mamblog_small.gif</filename>
+  </files>
+  <install>
+  </install>
+  <uninstall>
+  </uninstall>
+  <installfile>install.mamblog.php</installfile>
+  <uninstallfile>uninstall.mamblog.php</uninstallfile>
+  <administration>
+    <menu>Mamblog</menu>
+    <submenu>
+      <menu task="info">Information</menu>
+      <menu task="conf">Configuration</menu>
+    </submenu>
+    <files>
+      <filename>admin.mamblog.php</filename>
+      <filename>admin.mamblog.html.php</filename>
+      <filename>toolbar.mamblog.php</filename>
+      <filename>toolbar.mamblog.html.php</filename>
+      <filename>footer.php</filename>
+      <filename>readme.html</filename>
+      <filename>TODO.txt</filename>
+      <filename>CHANGES.txt</filename>
+      <filename>gnu_gpl.txt</filename>
+    </files>
+  </administration>
+</mosinstall>

@@ -1,0 +1,148 @@
+<img src="../components/com_mamblog/mamblog.gif" alt="Mamblog" /><br />
+
+<h1>Mamblog 1.0</h1>
+
+<p>Mamblog is a user blog system for Joomla! It allows you to run a page where users can register and get their own blog page where they can add new blog entries without having to be editors.</p>
+
+<p>The component is still in beta but will be released in a stable version once it has been tested enough. Many people are using this component already though, so it should be quite stable enough for most needs.</p>
+
+<p>Among the features are: Users can publish/unpublish/archive individual blog entries, set appearence attributes. No new or changed tables in Joomla!, it makes use of the standard Joomla! content sections. Admin can edit/delete all blogs from the administrator interface. Lots of configure options. Completely automatical installation. Several language files included: English, Swedish, Norwegian, Dutch, German (informal), Italian, Russian, Spanish, French.</p>
+
+
+<h2>Requirements</h2>
+<p>Mamblog is a component for Mambo 4.5.2.3 and Joomla 1.0.x<br />
+Mamblog requires PHP4 or above.</p>
+
+
+<h2>License</h2>
+<p>Mamblog is released under the GNU General Public License, a copy of this license should be included in the zip file and available for reading from the administrator page once the component has been installed.</p>
+
+
+<h2>Installation</h2>
+<p>Just install the component as according to the Joomla! documentation, a menu item for the component will be created and published automatically. This means users of your site can start using the blog component as soon as you've installed the component.</p>
+
+
+<h2>Usage</h2>
+<p>Once installed you will have a new menu option called Mamblog under the Components menu in the administrator page of Joomla!. From this menu you can administer the component, read information, change the configuration etc.</p>
+
+<h3>How to link to specific blogs</h3>
+<p>You can reach the blogs of certain users by either of the following URL:s:<br />
+<pre>
+http://www.example.com/index.php?option=com_mamblog&task=show&action=user&id=89
+http://www.example.com/index.php?option=com_mamblog&task=show&action=user&id=Username
+</pre>
+Either use user id or username to link to a user.</p>
+
+<h3>How to link to the users own blog</h3>
+<p>The stable version of Mamblog 1.0 adds a user menu link to the users' own blog. If you don't want to re-install the component you can add this function yourself by adding the following as an url menu item:</p>
+<pre>http://www.example.com/index.php?option=com_mamblog&task=show&action=showmyblog</pre>
+<p>They can also get a link to their own archive, it is very similar and looks like this:</p>
+<pre>http://www.example.com/index.php?option=com_mamblog&task=show&action=showmyarchive</pre>
+
+<h4>Important information on the Mamblog section</h4>
+<p>If name of the Mamblog section has been changed the blog entries won't be automatically removed if you delete the component. Don't add any categories either, it is unnecessary and might cause problems.</p>
+
+<h3>Write a blog entry</h3>
+<p>When Mamblog is installed a new entry called "Write a blog entry" is automatically added to your user menu and this is what users click on to add new entries. You can add this link anywhere on your site if you want, it looks like this:</p>
+<pre>http://www.example.com/index.php?option=com_mamblog&task=edit</pre>
+
+
+<h3>Comment system support</h3>
+<p>To allow comments to blog entries you first have to install a separate comment system. Mamblog supports both AkoComment by Arthur Konze and the now obsolete ComboLITE/ComboMAX components by Phil Taylor.</p>
+
+<h4>AkoComment</h4>
+<p>Arthur Konze has created a very nice and feature rich comment component called AkoComment which is available at <a href="http://www.mamboportal.com/" target="_new">Mamboportal.com</a>. After you have downloaded and installed AkoComment you need to set the "Main Operating Mode" in the AkoComment Settings to "Choose from settings below" and select your Mamblog section from the available sections. You will also have to change the Mamblog configuration setting "Comment system to use" under Settings to "AkoComment" to enable the comments in Mamblog. Also make sure that you allow comments to blog entries, either by setting "Allow Comments" under Default Values, or "Let users set if comments are allowed?" under Settings, to "Yes".</p>
+
+<h4>ComboLITE/ComboMAX</h4>
+<p>These components are now unavailable but are still supported for those who already have it installed. When you have installed ComboLITE/ComboMAX you will have to change the configuration setting "Comment system to use" to "ComboLITE or ComboMAX" and make sure that the Default value is to allow comments, or that users can set if they want comments allowed. <em>Note that this has not been tested recently since these components have been discontinued by the author.</em></p>
+
+<h4>Joomlaboard</h4>
+<p>If you want to use the Joomlaboard forum as a commenting system you must choose this option and also add the id of the forum comment threads will be created in in the Joomlaboard forum ID config option below.</p>
+
+<h3>Moderating blog entries</h3>
+All blog entries will show up in the content section called Mamblog and can be listed and edited just as normal content. New blog entries should be added through the frontend though.<br />
+
+<h3>Listing Bloggers</h3>
+<p>Mamblog doesn't have any internal functionality to list bloggers, but you can use the excellent <a href="http://mosforge.net/projects/userlistxtd">Userlist XTD</a> component by Bernhard Zechmann which has support for Mamblog.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Users can create a new blog item.</li>
+<li>Users can edit their own blog items.</li>
+<li>Items can be set to published, unpublished or archived.</li>
+<li>Archived items won't be listed in the main listing when showing
+  blogs from the user, but only as linked titles when viewing a users
+  archived blogs.</li>
+<li>Some appearence properties can be set, among these: text color,
+  background color, border width (sets a border around the text),
+  border color etc. Each of these can be disallowed in the
+  configuration for the component.</li>
+<li>Item can be set to appear on the "frontpage", which means the
+  item will show up on the frontpage of the site. This is
+  configurable.</li>
+<li>Users can set if they want others to be able to comment on the blog
+  item as well as setting if the comments should be publically shown.
+  N.B. No internal comment system available at this moment.</li>
+<li>It is possible to list a single blog item, all published blogs by a
+  user, all archived blogs from a user, all blogs on a given date, all
+  blogs set to be shown on the frontpage and all blogs by all
+  users. All of these lists conform to show only the amount of
+  complete items and linked items that has been set by the admin, just
+  as the Joomla! frontpage.</li>
+<li>The admin can define which type of blogs should be shown on the
+  blog frontpage.</li>
+<li>The script uses the content table in Joomla! for all data.</li>
+<li>Completely automatical installation.</li>
+<li>Configurable whether new blog items need to be admin approved before
+  shown on the site.</li>
+<li>Users can archive and unpublish their blogs.</li>
+<li>When adding/editing a blog item the user can set access restrictions
+  for who can read the blog. Public, Members or Private.</li>
+<li>The admin can configure which extra attributes of blogs users should
+  be able to edit.</li>
+<li>All config options changeable by an easy to use admin interface.</li>
+<li>Admin configurable if all users or only special users should be able
+  to edit/create blogs.</li>
+<li>Multiple language files included: English, Swedish, Norwegian, Dutch and German (informal), Italian, Russian, French.</li>
+<li>AkoComments, ComboLITE/ComboMAX comment systems supported as well as Joomlaboard forum.</li>
+<li>Supports Joomla! wysiwyg html editors, configurable whether the editor should be used.</li>
+<li>Users can delete their own blog entries.</li>
+<li>User menu item to the users' own blog.</li>
+<li>Supports SEF links on all frontend links.</li>
+<li>Support for the SEF Advance script from Emir Sakic.</li>
+</ul>
+
+
+<h2>Information</h2>
+If you have any bugs to report, or want to make a feature suggestion, or just want to inform me of your site running this component you can write about it on the forums at my development site which you can find at this address: <a href="http://mambo.theyard.org" target="_blank">http://mambo.theyard.org</a><br />
+<br />
+All components and modules I've released are available from that site so if you are looking for more Joomla! enhancements, feel free to visit.<br />
+<br />
+If you like this component you can encourage the development by donating a few dollars to me via PayPal on the address <a href="mailto:Olle@Johansson.com">Olle@Johansson.com</a><br />
+
+
+<h2>About the Author</h2>
+Mamblog was initially developed by Olle Johansson.
+Find more Joomla! components and modules on Olle Johanssons development site <a href="http://mambo.theyard.org/" target="_new">Mambo at the Yard</a>.
+
+
+<h2>Credits</h2>
+First of all I'd like to thank all of the Joomla! Core Developers for giving away so much of their time to develop the best CMS there is to be found on the net.<br />
+<br />
+I'd also like to thank all of those who develop components, modules, templates etc for Joomla!, it's great to have such a wealth of addons to choose from.<br />
+<br />
+All those who have reported bugs, given name suggestions as well as feature suggestions are also worth mentioning, without you guys it would be hard to develop anything.<br />
+<br />
+Those who have helped translating the component deserve special thanks as well, these are: sokratex, Joris van den Wittenboer, Martin Fröjdh, Vlad, dikud (from Russian Mambo translation team), Julien Rey, Frank D. Martínez, Francesco.<br />
+<br />
+I'd especially like to thank Jan de Graaf since I've used some code from Simpleboard for this component and for sending in Joomlaboard comment functionality code.<br />
+<br />
+David Hagman is the guy who has drawn the new logo for Mamblog, which is much appreciated.<br />
+<br />
+Finally, I'd like to thank Syedur Islam for requesting the component and donating some money to get me going, without him the component would probably never have been finished.<br />
+<br />
+Donjun (koolitz) and MM (Birks) who sent me some code to add a link for the comments made with the ComboLITE/ComboMAX component.<br />
+<br />
+Gary who sent in a bug fix for the comments code.<br />
+<br />
+A.Scott McCulloch who donated a license of Wysiwyg Pro so that I could make sure the support for it is working.

@@ -1,0 +1,18 @@
+.chksel {
+	background-color: #b7dbeb;
+}	
+.error {
+	color: red;
+	margin-top: 4px;
+	margin-bottom: 0px
+}
+blockquote.error {
+	background-color: #ffcccc;
+	font-weight: bold;
+	border: 1px solid darkred;
+	padding-left: 10px;
+	padding-bottom: 5px;
+}
+h4 {
+	margin-bottom:0px;
+}
