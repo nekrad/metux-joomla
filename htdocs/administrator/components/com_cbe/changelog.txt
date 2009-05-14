@@ -1,0 +1,53 @@
+========================
+ CBE 1.5 Nativ Beta 1.7
+========================
+
+15.03.09
+- fixed backend showing "Warning: Call-time pass-by-reference has been deprecated;..."
+- improved redirecting and message handling on Geousermap creation in backend
+
+14.03.09
+- fixed not showing geodistance in profile (GeoCoder)
+
+13.03.09
+- fixed and improved some default config settings [only in full installation, NOT in update version!]
+	- secimages login problem
+	- geousermap not showing
+- fixed creating cbe_usermap.xml.php (white page)
+- improved backend cpanel wording (Blocked Names and Bad Words Filter) by ArtPortal
+
+12.03.09
+- added backend backup and restore function
+
+11.03.09
+- fixed icon paths in SEO mode
+- fixed _REGWARN_UNAME missing localisation
+- improved admin backend, fixed missing icons in configuration
+- fixed guestbook add entry link not opening in tab
+
+09.03.09
+- fixed profile delete bug (white page)
+
+07.03.09
+- fixed send email from form in profile bug (white page)
+- fixed userreports not working (missing reportedbyuser id)
+
+05.03.09
+- improved admin cpanel fetching version from cbe.xml
+- fixed editor text area field bug (white page) by Gustav
+- fixed guestbook not showing stars.gif
+- fixed remember me (login) bug
+
+27.02.09:
+- fixed guestbook missing Itemids and answer bug
+- fixed cbesearch not working (white page)
+- fixed sorting fields and tabs in backend (white page)
+- fixed multiselect fields not showing correctly
+- fixed automatic password creation on registration is active even if disabled
+- fixed buddy tab not showing buddies
+
+24.02.09:
+- fixed guestbook smilies not working
+
+04.02.09
+- fixed single name field registration bug (white page)

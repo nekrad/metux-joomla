@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="cbe_tab" version="1.5.0">
+        <name>Fireboard-Forum-Tab</name>
+        <author>Jakob Glueck</author>
+	<creationDate>15/10/2009</creationDate>
+        <copyright>GNU GPL</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>fbtab_cbe@glueck-bwald.ede</authorEmail>
+        <authorUrl>glueck-bwalde.de/blog</authorUrl>
+        <version>1.0.0</version>
+        <description>Tab fuer das Fireboard-Forum fuer den CBE</description>
+        <files>
+                <filename cbe_tab="fbforum">fbforum.php</filename>
+                <filename cbe_tab="fbforum">language/german.php</filename>
+                <filename cbe_tab="fbforum">language/english.php</filename>
+                <filename cbe_tab="fbforum">language/germani.php</filename>
+                <filename cbe_tab="fbforum">language/germanf.php</filename>                                
+        </files>
+	<params>
+		<param name="fbforum_sb_forum_posts_per_page" type="text" default="6">
+		</param>
+		<param name="fbforum_sb_forum_chkgid" type="list" default="1">
+				<option value="0">_UE_YES</option>
+				<option value="1">_UE_NO</option>
+		</param>
+	</params>
+	<enhancedparams>
+		<enhancedparam name="profile" type="text" default="1"></enhancedparam>
+		<enhancedparam name="tabtype" type="text" default="1"></enhancedparam>
+		<enhancedparam name="enhancedname" type="text" default="fbforum"></enhancedparam>
+	</enhancedparams>
+</install>
+
+
+
+

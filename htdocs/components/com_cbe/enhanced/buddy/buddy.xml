@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="cbe_tab" version="1.5.0">
+        <name>Freunde</name>
+        <author>Joomla CBE</author>
+	<creationDate>15/10/2009</creationDate>
+        <copyright>GNU GPL</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>info@joomla-cbe.de</authorEmail>
+        <authorUrl>www.joomla-cbe.de</authorUrl>
+        <version>1.0.0</version>
+        <description>Tab fuer die Freunde</description>
+        <files>
+                <filename cbe_tab="buddy">buddy.php</filename>
+                <filename cbe_tab="buddy">language/german.php</filename>
+                <filename cbe_tab="buddy">language/english.php</filename>
+                <filename cbe_tab="buddy">language/germani.php</filename>
+                <filename cbe_tab="buddy">language/germanf.php</filename>                                
+        </files>
+	<params>
+		<param name="buddy_allow_pmbuddy" type="list" label="_UE_ALLOW_PM_BUDDY" desc="_UE_ALLOW_PM_BUDDY_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_allow_onlinebuddy" type="list" label="_UE_ALLOW_ONLINE_BUDDY" desc="_UE_ALLOW_ONLINE_BUDDY_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_allow_guestbookbuddy" type="list" label="_UE_ALLOW_GUESTBOOK_BUDDY" desc="_UE_ALLOW_GUESTBOOK_BUDDY_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_show_add_del_bud_link" type="list" label="_UE_SHOW_ADD_DEL_BUD_LINK" desc="_UE_SHOW_ADD_DEL_BUD_LINK_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_buddylist_sender" type="list" label="_UE_BUDDY_SENDER" desc="_UE_BUDDY_SENDER_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_buddylist_use_pms_notify" type="list" label="_UE_BUDDY_USE_PMS_NOTIFY" desc="_UE_BUDDY_USE_PMS_NOTIFY_DESC">
+			<option value="0">_UE_NO</option>
+			<option value="0">_UE_YES</option>
+		</param>
+		<param name="buddy_buddies_per_page" type="text" label="_UE_BUDDY_TAB_BUDDIES_PER_PAGE" desc="_UE_BUDDY_TAB_BUDDIES_PER_PAGE" default="10"></param>
+	</params>
+	<enhancedparams>
+		<enhancedparam name="profile" type="text" default="1"></enhancedparam>
+		<enhancedparam name="tabtype" type="text" default="1"></enhancedparam>
+		<enhancedparam name="enhancedname" type="text" default="buddy"></enhancedparam>
+	</enhancedparams>
+</install>

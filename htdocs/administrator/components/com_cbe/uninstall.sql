@@ -1,0 +1,25 @@
+
+DROP TABLE IF EXISTS `#__cbe`;
+DROP TABLE IF EXISTS `#__cbe_admods`;
+DROP TABLE IF EXISTS `#__cbe_authorlist`;
+DROP TABLE IF EXISTS `#__cbe_bad_usernames`;
+DROP TABLE IF EXISTS `#__cbe_bad_words`;
+DROP TABLE IF EXISTS `#__cbe_buddylist`;
+DROP TABLE IF EXISTS `#__cbe_cbsearch_ses`;
+DROP TABLE IF EXISTS `#__cbe_extensions`;
+DROP TABLE IF EXISTS `#__cbe_fields`;
+DROP TABLE IF EXISTS `#__cbe_field_values`;
+DROP TABLE IF EXISTS `#__cbe_gallery`;
+DROP TABLE IF EXISTS `#__cbe_geodata`;
+DROP TABLE IF EXISTS `#__cbe_lastvisitor`;
+DROP TABLE IF EXISTS `#__cbe_lists`;
+DROP TABLE IF EXISTS `#__cbe_mambome_gbook`;
+DROP TABLE IF EXISTS `#__cbe_mambome_journal`;
+DROP TABLE IF EXISTS `#__cbe_profile_comments`;
+DROP TABLE IF EXISTS `#__cbe_ratings`;
+DROP TABLE IF EXISTS `#__cbe_searchmanager`;
+DROP TABLE IF EXISTS `#__cbe_tabs`;
+DROP TABLE IF EXISTS `#__cbe_templates`;
+DROP TABLE IF EXISTS `#__cbe_testimonials`;
+DROP TABLE IF EXISTS `#__cbe_userreports`;
+DROP TABLE IF EXISTS `#__cbe_userstime`;

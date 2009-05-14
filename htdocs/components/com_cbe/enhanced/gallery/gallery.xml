@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="cbe_tab" version="1.5.0">
+        <name>Gallerie</name>
+        <author>Joomla CBE</author>
+	<creationDate>15/10/2009</creationDate>
+        <copyright>GNU GPL</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>info@joomla-cbe.de</authorEmail>
+        <authorUrl>www.joomla-cbe.de</authorUrl>
+        <version>1.0.0</version>
+        <description></description>
+        <files>
+		<filename cbe_tab="gallery">cbe_inc_gallery.php</filename>
+		<filename cbe_tab="gallery">gallery.php</filename>
+		<filename cbe_tab="gallery">index.html</filename>
+		<filename cbe_tab="gallery">images/index.html</filename>
+		<filename cbe_tab="gallery">language/english.php</filename>
+		<filename cbe_tab="gallery">language/germanf.php</filename>
+		<filename cbe_tab="gallery">language/germani.php</filename>
+		<filename cbe_tab="gallery">language/german.php</filename>
+		<filename cbe_tab="gallery">language/index.html</filename>
+		<filename cbe_tab="gallery">lightbox/effects.js</filename>
+		<filename cbe_tab="gallery">lightbox/index.html</filename>
+		<filename cbe_tab="gallery">lightbox/lightbox.css</filename>
+		<filename cbe_tab="gallery">lightbox/lightbox.js</filename>
+		<filename cbe_tab="gallery">lightbox/prototype.js</filename>
+		<filename cbe_tab="gallery">lightbox/scriptaculous.js</filename>
+		<filename cbe_tab="gallery">lightbox/images/blank.gif</filename>
+		<filename cbe_tab="gallery">lightbox/images/close.gif</filename>
+		<filename cbe_tab="gallery">lightbox/images/index.html</filename>
+		<filename cbe_tab="gallery">lightbox/images/loading.gif</filename>
+		<filename cbe_tab="gallery">lightbox/images/next.gif</filename>
+		<filename cbe_tab="gallery">lightbox/images/prev.gif</filename>
+		<filename cbe_tab="gallery">sysimages/delete.png</filename>
+		<filename cbe_tab="gallery">sysimages/edit.png</filename>
+		<filename cbe_tab="gallery">sysimages/index.html</filename>
+        </files>
+	<params>
+		<param name="gallery_maxpics" type="text" label="Anzahl max. Bilder" default="40"></param>
+		<param name="gallery_maxupload" type="text" default="5"></param>
+		<param name="gallery_permissions" type="text" default="511"></param>
+		<param name="gallery_limit" type="text" default="6"></param>
+		<param name="gallery_anzahl_spalten" type="text" default="3"></param>
+		<param name="gallery_bildbreite" type="text" default="600"></param>
+		<param name="gallery_thumbbreite" type="text" default="150"></param>
+		<param name="gallery_approving" type="text" default="0"></param>
+		<param name="gallery_pages_in_list" type="text" default="5"></param>
+		<param name="gallery_uploadfield" type="text" default="320"></param>
+		<param name="gallery_descriptionfield" type="text" default="60"></param>
+		<param name="gallery_dir" type="text" default="/components/com_cbe/enhanced/gallery/images/"></param>
+	</params>
+	<enhancedparams>
+		<enhancedparam name="profile" type="text" default="1"></enhancedparam>
+		<enhancedparam name="tabtype" type="text" default="1"></enhancedparam>
+		<enhancedparam name="enhancedname" type="text" default="gallery"></enhancedparam>
+	</enhancedparams>
+</install>
+
+
+
+

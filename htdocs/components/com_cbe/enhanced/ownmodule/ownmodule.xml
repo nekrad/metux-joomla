@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="cbe_tab" version="1.5.0">
+        <name>Eigenes Modul in einem Tab</name>
+        <author>Joomla CBE</author>
+	<creationDate>15/10/2009</creationDate>
+        <copyright>GNU GPL</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>info@joomla-cbe.de</authorEmail>
+        <authorUrl>www.joomla-cbe.de</authorUrl>
+        <version>1.0.0</version>
+        <description>Ein eigenes Modul in einem Tab</description>
+        <files>
+                <filename cbe_tab="ownmodule">ownmodule.php</filename>
+                <filename cbe_tab="ownmodule">language/german.php</filename>
+                <filename cbe_tab="ownmodule">language/english.php</filename>
+        </files>
+	<params>
+		<param name="ownmodule_moduleposition" type="list" default="cbe_position_1">
+			<option value="banner">banner</option>
+			<option value="banner2">banner2</option>
+			<option value="banner3">banner3</option>
+			<option value="banner4">banner4</option>
+			<option value="left">left</option>
+			<option value="left2">left2</option>
+			<option value="left3">left3</option>
+			<option value="right">right</option>
+			<option value="right2">right2</option>
+			<option value="right3">right3</option>
+			<option value="user1">user1</option>
+			<option value="user2">user2</option>
+			<option value="user3">user3</option>
+			<option value="user4">user4</option>
+			<option value="user5">user5</option>
+			<option value="user6">user6</option>
+			<option value="user7">user7</option>
+			<option value="user8">user8</option>
+			<option value="user9">user9</option>
+			<option value="user10">user10</option>
+			<option value="bottom">bottom</option>
+			<option value="footer">footer</option>
+			<option value="breadcrumbs">breadcrumbs</option>
+			<option value="cbe_mod_1">cbe_mod_1</option>
+			<option value="cbe_mod_2">cbe_mod_2</option>
+			<option value="cbe_mod_3">cbe_mod_3</option>
+			<option value="cbe_mod_4">cbe_mod_4</option>
+			<option value="cbe_mod_5">cbe_mod_5</option>
+		</param>
+	</params>
+	<enhancedparams>
+		<enhancedparam name="profile" type="text" default="1"></enhancedparam>
+		<enhancedparam name="tabtype" type="text" default="1"></enhancedparam>
+		<enhancedparam name="enhancedname" type="text" default="ownmodule"></enhancedparam>
+	</enhancedparams>
+</install>
