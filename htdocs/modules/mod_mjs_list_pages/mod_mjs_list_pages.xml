@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>Module List JSpace Pages</name>
+	<author>jalil</author>
+	<creationDate>October 2008</creationDate>
+	<copyright>(c)Copyright 2008 D&#39;Abronzo Vincenzo ~ jalil ~ All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>jalil@measat.org</authorEmail>
+	<authorUrl>www.joomlah.org</authorUrl>
+	<version>1.0.0</version>
+	<description>Module MJS List Pages lists all user cover pages </description>
+
+	<files>
+		<filename module="mod_mjs_list_pages">mod_mjs_list_pages.php</filename>
+		<filename>mod_mjs_list_pages.class.php</filename>
+		<filename>mod_mjs_list_pages.html.php</filename>
+		<filename>mod_mjs_list_pages/mod_mjs_list_pages.css</filename>
+		<filename>mod_mjs_list_pages/myJSpace_JavaScript_Library.js</filename>
+		<filename>mod_mjs_list_pages/myjspace_logo2_w400px.png</filename>
+		<filename>mod_mjs_list_pages/get_version_info.php</filename>
+
+	</files>
+
+	<params>
+	<param name="@spacer" type="spacer" default="Module Display Options" label="MODULE CONTROLS" description="Module Display Options" />
+
+	<param name="use_this_style" type="radio" default="1" label="Use Module Styles"  
+	description="Yes to use module style as defined in \modules\mod_mjs_list_pages\mod_mjs_list_pages.css" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="number_of_links" type="text" default="50" label="Number of Links to Display ( set 0 for all )"  description="Number of Links Displayed by this instance of module." />
+	<param name="start_link_number" type="text" default="0" label="Start with Link Number ?"  description="List Starts with this Link or Row Number" />
+
+
+	<param name="show_list_control" type="radio" default="0" label="Show List Control ( Start and Max Pages )"  
+	description="Check to Show List Control for Users" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="show_user_control_panel" type="radio" default="0" label="Show User Conrol Panel"  
+	description="Check to Show Control Panel for Users" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="wide_body" type="radio" default="0" label="Wide Body Format"  
+	description="Check to use wide body format for display in main body ( instead of traditional module position) " >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="show_summary" type="radio" default="1" label="Show User Page Summary"  
+	description="Check to Show Summary" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="words_in_summary" type="text" default="50" label="Number of words in Page Summary"  
+	description="Number of words to select from user page in page summary - Maximum 1000" >
+	</param>
+
+	<param name="sort_order" type="list" default="PTR" label="Sort Method"  
+	description="How the list is to be sorted in the display" >
+	<option value="DA">by Latest First</option>
+	<option value="DD">by Latest Last</option>
+	<option value="PT">by Page Title</option>
+	<option value="PTR">by Page Title(R)</option>
+	<option value="UN">by Username</option>
+	<option value="UNR">by Username(R)</option>
+	<option value="PH">by Page Hits</option>
+	<option value="PHR">by Page Hits(R)</option>
+	<option value="PS">by Page Size ( word count )</option>
+	<option value="PSR">by Page Size (R)</option>
+	<option value="UB">by User Bytes ( capacity )</option>
+	<option value="UBR">by User Bytes (R)</option>
+	</param>
+
+
+	<param name="show_statistics" type="radio" default="0" label="Show Statistics"  
+	description="Check to reveal Page and User Infomation" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+
+
+	<param name="datetime_format" type="list" default="jS F" label="Date and Time  Style (PHP) "  
+	description="Dates and Times presented in this format" >
+	<option value="Y-m-d">ISO 8601</option>
+	<option value="M/j/Y">American</option>
+	<option value="j/M/Y">British</option>
+	<option value="Y/n/d">Swedish</option>
+	<option value="l dS \of F Y h:i:s A">Civilian</option>
+	<option value="D M j G:i:s T Y">Military</option>
+	<option value="DATE_RFC822">UTC</option>
+	<option value="r">RFC 2822</option>
+	<option value="z-Y">Day of Year</option>
+	<option value="jS F">Simple Minded</option>
+	</param>
+
+	<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" 
+	description="A suffix to be applied to the css class of the module (table.moduletable or div.moduletable), 
+		this allows individual module styling" />
+
+	</params>
+
+</mosinstall>

@@ -1,0 +1,151 @@
+		div.mjs_summary,li.mjs_summary
+		{
+		font-size:11px;
+		margin	:0px;
+		padding	:0px;
+		padding-left:0px;
+		color:#000;
+		width:170px;
+		text-align:justify;
+		background:url('/images/stories/RG_170px.png') top center repeat-y;
+		}
+
+		div.mjs_summary p,li.mjs_summary p
+		{
+		margin	:0px;
+		padding	:10px;
+		}
+
+		div.mjs_summary p
+		{
+		font-size:11px;
+		}
+
+		#whitebox div
+		{
+		}
+
+		span#mjs_links a
+		{
+		}
+		
+		span#mjs_links a:hover
+		{
+		color:blue;
+		}
+
+		span.mjs_stats
+		{
+		border:1px #777777 solid;
+		padding:3px;
+		}
+
+		input.mjs_search
+		{
+		font-size:14px;
+		line-height:14px;
+		text-align:left;
+		padding:2px;
+		padding-left:5px;
+		}
+
+		span.mjs_captions
+		{
+		font-size:66%;
+		text-align:left;
+		padding:2px;
+		}
+
+		span.mjs_message
+		{
+		padding:3px;
+		font-size:12px;
+		}
+
+		select.sort_order
+		{
+		width:100px;
+		}
+
+		span.mjs_titles
+		{
+		padding:3px;
+		font-size:12px;
+		}
+
+		ul.menu
+		{
+		align:left;
+		text-align:left;
+		}
+
+
+		table.mjs_stats
+			{
+			border:1px #777777 solid;
+			}
+
+		td.mjs_stats_mark
+			{
+			border:1px red solid;
+			padding:3px;
+			}
+
+		td.mjs_stats
+			{
+			border:1px #777777 solid;
+			}
+
+		#mjsUserForm
+			{
+			align:left;
+			text-align:left;
+			}	
+
+
+		.mjs_latest
+			{
+			align:left;
+			text-align:left;
+			}
+
+		.mjs_user_panel 
+			{
+			width:100%;
+			border:0px #777777 solid;
+			padding:0px;
+			align:left;
+			text-align:left;
+			}
+
+		.mjs_user_panel ul li a
+			{
+			align:left;
+			text-align:left;
+			}
+
+		table.mjs_user_panel tbody
+			{
+			width:100%;
+			}	
+
+		table.mjs_user_panel tbody td
+			{
+			border:0px #777777 solid;
+			padding:0px;
+			align:left;
+			text-align:left;
+			}	
+
+		table.mjs_user_panel tbody td ul
+			{
+			align:left;
+			text-align:left;
+			list-style-type:none;
+			}
+		
+		table.mjs_user_panel tbody td a,table.mjs_user_panel tbody td a:visited
+			{
+			align:left;
+			text-align:left;
+			}
