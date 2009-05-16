@@ -1,3 +1,5 @@
 htdocs/tmp
 htdocs/cache
 htdocs/logs
+htdocs/administrator/cache/
+htdocs/media/install_*
