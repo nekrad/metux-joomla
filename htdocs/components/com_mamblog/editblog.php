@@ -17,6 +17,7 @@ defined( '_VALID_MOS' ) or die( 'Direct Access to this location is not allowed.'
 
 // Make sure they are logged in.
 $id = intval($id);
+$gid = $my->gid;
 if ( $gid && $my->username ) {
 	if ( mosMenuCheck( "", "$option", "edit", $gid ) ) {
 		switch( $action ) {
