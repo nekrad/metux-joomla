@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>ViewMJSPages</name>
+	<author>D&#39;Abronzo Vincenzo</author>
+	<creationDate>October 2007</creationDate>
+	<copyright>(c)Copyright 2008 D&#39;Abronzo Vincenzo ~ jalil ~ All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>vincenzodabronzo@gmail.com</authorEmail>
+	<authorUrl>www.vicenzodabronzo.com</authorUrl>
+	<version>0.13.9</version>
+	<description>Module View MJS</description>
+
+	<files>
+		<filename module="mod_viewmjspages">mod_viewmjspages.php</filename>
+		<filename>viewmjspages.mod.class.php</filename>
+		<filename>viewmjspages.mod.html.php</filename>
+		<filename>mod_viewmjspages/myJSpace_JavaScript_Library.js</filename>
+		<filename>mod_viewmjspages/myjspace_logo2_w400px.png</filename>
+		<filename>mod_viewmjspages/get_version_info.php</filename>
+	</files>
+
+	<params>
+	<param name="@spacer" type="spacer" default="Module Display Options" label="MODULE CONTROLS" description="Module Display Options" />
+
+	<param name="link_text_align" type="list" default="CSS" label="Link Alignment"  description="Text Alignment for myJSpace Page Links" >
+	<option value="CSS">Follow CSS</option>
+	<option value="left">Left</option>
+	<option value="center">Center</option>
+	<option value="right">Right</option>
+	<option value="justify">Justify</option>
+	</param>
+
+	<param name="link_sort_method" type="list" default="DA" label="Link Sort Method"  
+	description="How the list is to be sorted in the display" >
+	<option value="DA">by Latest First</option>
+	<option value="DD">by Latest Last</option>
+	<option value="PT">by Page Title</option>
+	<option value="PTR">by Page Title(R)</option>
+	<option value="UN">by Username</option>
+	<option value="UNR">by Username(R)</option>
+	<option value="PH">by Page Hits</option>
+	<option value="PHR">by Page Hits(R)</option>
+	<option value="PS">by Page Size ( word count )</option>
+	<option value="PSR">by Page Size (R)</option>
+	<option value="UB">by User Bytes ( capacity )</option>
+	<option value="UBR">by User Bytes (R)</option>
+	</param>
+
+	<param name="fixed_itemid" type="text" default="0" label="Fixed Itemid Number"  
+	description="Fixed Itemid will allow this module to show links to a fixed template. 
+	It overides the template setting in myJSpace Admin." >
+	</param>
+
+	<param name="use_fixed_itemid " type="radio" default="0" label="Use Fixed Itemid"  
+	description="Check to use 'Fixed Itemid Number' above, if required. In default this module will use Joomla! assigned Itemid." >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="use_this_style" type="radio" default="0" label="Use Built-in Styles"  
+	description="Yes to use module built-in Styles, No to use Template Styles" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="number_of_links" type="text" default="50" label="Number of Links to Display ( set 0 for all )"  description="Number of Links Displayed by this instance of module." />
+	<param name="start_link_number" type="text" default="0" label="Start with Link Number ?"  description="List Starts with this Link or Row Number" />
+
+	<param name="period" type="text" default="7000" label="Updating Period in milliSeconds ( future )."  
+	description="How often the display is updated.( future implementation )" />
+
+	<param name="show_user_control_panel" type="radio" default="0" label="Show User Conrol Panel"  
+	description="Check to Show Control Panel for Users" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="show_statistics" type="radio" default="0" label="Show Statistics"  
+	description="Check to reveal Page and User Infomation" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="show_legend" type="radio" default="0" label="Show Legend for Statistics"  
+	description="Check to Diplay Legend" >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="datetime_format" type="list" default="jS F" label="Date and Time  Style (PHP) "  
+	description="Dates and Times presented in this format" >
+	<option value="Y-m-d">ISO 8601</option>
+	<option value="M/j/Y">American</option>
+	<option value="j/M/Y">British</option>
+	<option value="Y/n/d">Swedish</option>
+	<option value="l dS \of F Y h:i:s A">Civilian</option>
+	<option value="D M j G:i:s T Y">Military</option>
+	<option value="DATE_RFC822">UTC</option>
+	<option value="r">RFC 2822</option>
+	<option value="z-Y">Day of Year</option>
+	<option value="jS F">Simple Minded</option>
+	</param>
+
+	<param name="show_diagnostics" type="radio" default="0" label="Diagnostics Screen"  description="Enables Diagnostics Screen Display ." >
+	<option value="0">No</option><option value="1">Yes</option>
+	</param>
+
+	<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" 
+	description="A suffix to be applied to the css class of the module (table.moduletable or div.moduletable), 
+		this allows individual module styling" />
+
+
+	</params>
+
+</mosinstall>
