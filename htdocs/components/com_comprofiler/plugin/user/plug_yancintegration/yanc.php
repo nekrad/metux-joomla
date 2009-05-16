@@ -77,7 +77,7 @@ class getNewslettersTab extends cbTabHandler {
 		if(count($rows)==0) {
 			$return = _UE_NONEWSLETTERS;
 		} else {
-			if($tab->description != null) $return .= "\t\t<div class=\"tab_Description\">".unHtmlspecialchars(getLangDefinition($tab->description))."</div>\n";
+			if($tab->description != null) $return .= "\t\t<div class=\"tab_Description\">".unHtmlspecialchars(CB_getLangDefinition($tab->description))."</div>\n";
 			$return .= $this->_getFormattedNewsletters($rows, false, _UE_NEWSLETTER_NAME, _UE_NEWSLETTER_DESCRIPTION);
 		}
 		return $return;
@@ -102,11 +102,11 @@ class getNewslettersTab extends cbTabHandler {
 			if ($row->subscribed) $return .= 'checked="checked" ';
 			$return .= "/> ";
 			if ($linesStyle) $return .= "</td>\n\t\t<td style='width:98%;' class='fieldCell'>";
-			$return .= "<span class='captionCell'>".getLangDefinition($row->list_name)."</span>";
+			$return .= "<span class='captionCell'>".CB_getLangDefinition($row->list_name)."</span>";
 			if ($row->subscribed && (!$row->confirmed)) $return .= "<br /><span class='fieldError'>("._UE_NEWSLETTER_NOT_CONFIRMED.")</span>";
 			if ($linesStyle) $return .= "<br />";
 			else $return .= "</td>\n\t\t<td class='fieldCell'>";
-			$return .= "<span class='fieldCell'>".getLangDefinition($row->list_desc)."</span>"."</td>\n";
+			$return .= "<span class='fieldCell'>".CB_getLangDefinition($row->list_desc)."</span>"."</td>\n";
 			$return .= "\t</tr>\n";
 		}
 		$return .= "\t<tr>\n\t\t<td class='captionCell' colspan='2'>"

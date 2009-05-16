@@ -66,7 +66,7 @@ class getConnectionPathsTab extends cbTabHandler {
 							$conDetail	=	$cbCon->getConnectionDetails( $prevConID, $congroup );
 							$conAvatar	=	getFieldValue( 'image', $connections[$congroup]->avatar, $connections[$congroup] );
 							$tipField	=	"<b>" . _UE_CONNECTEDSINCE . "</b> : " . dateConverter( $conDetail->membersince, 'Y-m-d', $ueConfig['date_format'] );
-							if ( getLangDefinition( $conDetail->type ) != null ) {
+							if ( CB_getLangDefinition( $conDetail->type ) != null ) {
 								$tipField	.=	"<br /><b>" . _UE_CONNECTIONTYPE . "</b> : " . getConnectionTypes( $conDetail->type );
 							}
 							if ( $conDetail->description != null ) {
@@ -267,7 +267,7 @@ class getConnectionTab extends cbTabHandler {
 				$actionIMG	=	"<a href=\"" . cbSef( "index.php?option=com_comprofiler&amp;act=connections&amp;task=acceptConnection&amp;connectionid=" . $connection->memberid ) . '"><img src="' . $live_site . "/components/com_comprofiler/images/tick.png\" border=\"0\" alt=\"" . _UE_ACCEPTCONNECTION . "\" title=\"" . _UE_ACCEPTCONNECTION . "\" /></a> <a href=\"" . cbSef( "index.php?option=com_comprofiler&amp;act=connections&amp;task=removeConnection&amp;connectionid=" . $connection->memberid ) . '"><img src="' . $live_site . "/components/com_comprofiler/images/publish_x.png\" border=\"0\" alt=\"" . _UE_REMOVECONNECTION . "\" title=\"" . _UE_DECLINECONNECTION . "\" /></a>";
 			}
 			$tipField		=	"<b>" . _UE_CONNECTEDSINCE . "</b> : " . dateConverter( $connection->membersince, 'Y-m-d', $ueConfig['date_format'] );
-			if ( getLangDefinition( $connection->type ) != null ) {
+			if ( CB_getLangDefinition( $connection->type ) != null ) {
 				$tipField	.=	"<br /><b>" . _UE_CONNECTIONTYPE . "</b> : " . getConnectionTypes( $connection->type );
 			}
 			if ( $connection->description != null ) {

@@ -73,7 +73,7 @@ class getProfileBookTab extends cbTabHandler {
 	
 			if($notify=='_ue_yes'){
 				$cbNotification = new cbNotification();
-			$res=$cbNotification->sendFromSystem($id,sprintf(_pb_MSGSUB,getLangDefinition($tab->title)),sprintf(_pb_MSGBODY,$postername,getLangDefinition($tab->title)).sprintf($autoPublish?_pb_MSGBODYAUTOAPPROVED:_pb_MSGBODYREVIEWAPPROVE,	getLangDefinition($tab->title),$this->_getAbsURLwithParam(array())));
+			$res=$cbNotification->sendFromSystem($id,sprintf(_pb_MSGSUB,CB_getLangDefinition($tab->title)),sprintf(_pb_MSGBODY,$postername,CB_getLangDefinition($tab->title)).sprintf($autoPublish?_pb_MSGBODYAUTOAPPROVED:_pb_MSGBODYREVIEWAPPROVE,	CB_getLangDefinition($tab->title),$this->_getAbsURLwithParam(array())));
 
 			}
 		}
@@ -119,10 +119,10 @@ class getProfileBookTab extends cbTabHandler {
 
 		if($notify=='_ue_yes'){
 			$cbNotification = new cbNotification();
-			$res=$cbNotification->sendFromSystem($userId, sprintf(_pb_MSGSUBEDIT, getLangDefinition($tab->title)),
-											sprintf(_pb_MSGBODYEDIT, $editedbyname, $postername, getLangDefinition($tab->title))
+			$res=$cbNotification->sendFromSystem($userId, sprintf(_pb_MSGSUBEDIT, CB_getLangDefinition($tab->title)),
+											sprintf(_pb_MSGBODYEDIT, $editedbyname, $postername, CB_getLangDefinition($tab->title))
 											.($iAmModerator ? "" : sprintf($autoPublish ? _pb_MSGBODYAUTOAPPROVED : _pb_MSGBODYREVIEWAPPROVE,
-											 getLangDefinition($tab->title),
+											 CB_getLangDefinition($tab->title),
 											 $this->_getAbsURLwithParam(array()))));
 		}
 	}
@@ -210,7 +210,7 @@ class getProfileBookTab extends cbTabHandler {
 		$return="";
 		
 		//If there is a tab description display it
-		if($tab->description != null) $return .= "\t\t<div class=\"tab_Description\">".unHtmlspecialchars(getLangDefinition($tab->description))."</div>\n";
+		if($tab->description != null) $return .= "\t\t<div class=\"tab_Description\">".unHtmlspecialchars(CB_getLangDefinition($tab->description))."</div>\n";
 	
 		//Get the tab related paramaters, these settings are global and set by administrator
 		$params=$this->params;
@@ -912,7 +912,7 @@ class getProfileBookTab extends cbTabHandler {
 	*/
 	function _setStatusMenuPBstats(&$params, $value) {
 		if ($params->get('pbStatRating', '1')) {
-			$mi = array(); $mi["_UE_MENU_STATUS"][getLangDefinition($params->get('pbStatRatingText', "_pb_DefaultRatingText"))]["duplicate"]=null;
+			$mi = array(); $mi["_UE_MENU_STATUS"][CB_getLangDefinition($params->get('pbStatRatingText', "_pb_DefaultRatingText"))]["duplicate"]=null;
 			$this->addMenu( array(	"position"	=> "menuList" ,		// "menuBar", "menuList"
 								"arrayPos"	=> $mi ,
 								"caption"	=> $value ,

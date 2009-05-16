@@ -611,7 +611,7 @@ class cbMenuTabList extends cbMenu {			// later: extends mosMenu
 				$ret .= '<td class="titleCell">';
 				if (!isset($cbMenuTabListLastTopName) or ($this->topName != $cbMenuTabListLastTopName)) {
 					$cbMenuTabListLastTopName = $this->topName;
-					$ret .= getLangDefinition($this->topName);
+					$ret .= CB_getLangDefinition($this->topName);
 				} else $ret .= "&nbsp;";
 				$ret .= "</td>\n\t\t\t\t\t\t";
 				$ret .= '<td class="fieldCell">';
@@ -701,7 +701,7 @@ class cbMenuDivsList extends cbMenu {			// later: extends mosMenu
 				$ret .= '<td class="titleCell">';
 				if (!isset($cbMenuDivsListLastTopName) or ($this->topName != $cbMenuDivsListLastTopName)) {
 					$cbMenuDivsListLastTopName = $this->topName;
-					$ret .= getLangDefinition($this->topName);
+					$ret .= CB_getLangDefinition($this->topName);
 				} else $ret .= "&nbsp;";
 				$ret .= "</td>\n\t\t\t\t\t\t";
 */
@@ -832,7 +832,7 @@ class cbMenuBar extends cbBestMenuHandler {
 		return null;
 	}
 	function languageTranslate($string) {
-		return getLangDefinition($string);
+		return CB_getLangDefinition($string);
 	}
 }	// end class cbMenuBar
 
@@ -841,7 +841,7 @@ class cbMenuList extends cbListMenuHandler {
 	function outputScripts( /*$ui=1 */ ) {
 	}
 	function languageTranslate($string) {
-		return getLangDefinition($string);
+		return CB_getLangDefinition($string);
 	}
 }	// end class cbMenuList
 
@@ -849,7 +849,7 @@ class cbMenuDivs extends cbDivsMenuHandler {
 	function outputScripts( /*$ui=1 */ ) {
 	}
 	function languageTranslate($string) {
-		return getLangDefinition($string);
+		return CB_getLangDefinition($string);
 	}
 }	// end class cbMenuDivs
 
@@ -857,7 +857,7 @@ class cbMenuUL extends cbMenuHandlerUL {
 	function outputScripts( /*$ui=1 */ ) {
 	}
 	function languageTranslate($string) {
-		return getLangDefinition($string);
+		return CB_getLangDefinition($string);
 	}
 }	// end class cbMenuUL
 
@@ -998,11 +998,11 @@ class getMenuTab  extends cbTabHandler {
 				unset($mi);
 				if ($firstSubMenuHref == "") $firstSubMenuHref = "javascript:void(0)";
 				$mi = array(); $mi[$firstMenuName]["_UE_TEAMCREDITS_CB"]='';
-				$this->_addMenuItem( $mi,getLangDefinition($firstSubMenuName),cbSef($firstSubMenuHref) );		// About...
+				$this->_addMenuItem( $mi,CB_getLangDefinition($firstSubMenuName),cbSef($firstSubMenuHref) );		// About...
 				if ($secondSubMenuName != "") {
 					if ($secondSubMenuHref == "") $secondSubMenuHref = "javascript:void(0)";
 					$mi = array(); $mi[$firstMenuName]["_UE_SECOND"]='';
-					$this->_addMenuItem( $mi,getLangDefinition($secondSubMenuName),cbSef($secondSubMenuHref) );		// Free...
+					$this->_addMenuItem( $mi,CB_getLangDefinition($secondSubMenuName),cbSef($secondSubMenuHref) );		// Free...
 				}
 			}
 		}
@@ -1069,8 +1069,8 @@ class getMenuTab  extends cbTabHandler {
 				foreach ($resultArray as $res) {
 				 	if (is_array($res)) {
 						$mi = array(); $mi["_UE_MENU_MESSAGES"][$res["caption"]]=null;
-						$this->_addMenuItem( $mi, getLangDefinition($res["caption"]),cbSef($res["url"]), "",
-						"","", getLangDefinition($res["tooltip"]),"" );
+						$this->_addMenuItem( $mi, CB_getLangDefinition($res["caption"]),cbSef($res["url"]), "",
+						"","", CB_getLangDefinition($res["tooltip"]),"" );
 				 	}
 				}
 			}
@@ -1141,8 +1141,8 @@ class getMenuTab  extends cbTabHandler {
 						."', STICKY, CAPTION,'"
 						.sprintf(_UE_CONNECTTO,htmlspecialchars(str_replace("'","&#039;",getNameFormat($user->name,$user->username,$ueConfig['name_format'])),ENT_QUOTES))
 						."', CENTER,CLOSECLICK,CLOSETEXT,'"._UE_CLOSE_OVERLIB."',WIDTH,350, ANCHOR,'cbAddConn',ANCHORALIGN,'LR','UR');";
-						// $flink="<a href=\"".$connectionurl."\" id=\"cbAddConn\" name=\"cbAddConn\" title=\"".$fmsgdesc."\">".getLangDefinition($fmsg)."</a>";
-						$flink = $connectionurl."\" id=\"cbAddConn\" name=\"cbAddConn";	//BBTRYREMOVED: "\" title=\"".$fmsgdesc."\">".getLangDefinition($fmsg)."</a>";
+						// $flink="<a href=\"".$connectionurl."\" id=\"cbAddConn\" name=\"cbAddConn\" title=\"".$fmsgdesc."\">".CB_getLangDefinition($fmsg)."</a>";
+						$flink = $connectionurl."\" id=\"cbAddConn\" name=\"cbAddConn";	//BBTRYREMOVED: "\" title=\"".$fmsgdesc."\">".CB_getLangDefinition($fmsg)."</a>";
 					} else {
 						$flink=$connectionurl;
 					}
@@ -1156,8 +1156,8 @@ class getMenuTab  extends cbTabHandler {
 							$fmsg = "_UE_REVOKECONNECTIONREQUEST";
 							$fmsgdesc=_UE_REVOKECONNECTIONREQUEST_DESC;
 						}
-						// $flink="<a href=\"".$connectionurl."\" onclick=\"return confirmSubmit();\" title=\"".$fmsgdesc."\">".getLangDefinition($fmsg)."</a>";
-						$flink = $connectionurl."\" onclick=\"return confirmSubmit();"; //BBTRYREMOVED: \" title=\"".$fmsgdesc."\">".getLangDefinition($fmsg)."</a>";
+						// $flink="<a href=\"".$connectionurl."\" onclick=\"return confirmSubmit();\" title=\"".$fmsgdesc."\">".CB_getLangDefinition($fmsg)."</a>";
+						$flink = $connectionurl."\" onclick=\"return confirmSubmit();"; //BBTRYREMOVED: \" title=\"".$fmsgdesc."\">".CB_getLangDefinition($fmsg)."</a>";
 					} else {
 						/*
 						$connectionurl=cbSef($ue_manageConnection_url);
@@ -1171,7 +1171,7 @@ class getMenuTab  extends cbTabHandler {
 				// Request/Add/Remove/Revoke Connection
 				if ( $fmsg ) {
 					$mi = array(); $mi["_UE_MENU_CONNECTIONS"][$fmsg]=null;
-					$this->_addMenuItem( $mi, getLangDefinition($fmsg), $flink /*$connectionurl*/, "",
+					$this->_addMenuItem( $mi, CB_getLangDefinition($fmsg), $flink /*$connectionurl*/, "",
 					"","", $fmsgdesc,"" );
 				}
 			}

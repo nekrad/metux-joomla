@@ -895,7 +895,7 @@ function editField( $fid = 0, $option = 'com_comprofiler', $task = 'editField' )
 
 	for ($i=0, $n=count( $tabs ); $i < $n; $i++) {
 		$tab					=&	$tabs[$i];
-	   	$tablist[]				=	moscomprofilerHTML::makeOption( $tab->tabid, getLangDefinition($tab->title) );
+	   	$tablist[]				=	moscomprofilerHTML::makeOption( $tab->tabid, CB_getLangDefinition($tab->title) );
 	}
 	
 	$lists['tabs']				=	moscomprofilerHTML::selectList( $tablist, 'tabid', 'class="inputbox" size="1" mosReq=1 mosLabel="Tab"', 'value', 'text', $row->tabid, 2 );
@@ -1148,11 +1148,11 @@ function removeField( $cid, $option ) {
 					" OR col4fields like '%|*|$id' OR col4fields like '$id|*|%' OR col4fields like '%|*|$id|*|%' OR col4fields='$id'");
 			$onList = $_CB_database->loadResult();
 			if ($onList > 0) {
-				$msg .= getLangDefinition($obj->title) . " cannot be deleted because it is on a List. \n";
+				$msg .= CB_getLangDefinition($obj->title) . " cannot be deleted because it is on a List. \n";
 				$noDelete = 1;
 			}
 			if ($obj->sys==1) {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a system field. \n";
+				$msg .= CB_getLangDefinition($obj->title) ." cannot be deleted because it is a system field. \n";
 				$noDelete = 1;
 			} 
 			if ($noDelete != 1) {
@@ -1277,7 +1277,7 @@ function _cbGetOrderingList( $sql, $chop = 30, $translate = true ) {
 	$order[]			=	moscomprofilerHTML::makeOption( 0, '0 ' . 'first' );
 	for ( $i=0, $n = count( $orders ); $i < $n; $i++ ) {
 		if ( $translate ) {
-			$text		=	getLangDefinition( $orders[$i]->text );
+			$text		=	CB_getLangDefinition( $orders[$i]->text );
 		} else {
 			$text		=	$orders[$i]->text;
 		}
@@ -1491,18 +1491,18 @@ function removeTabs( $cid, $option ) {
 			$_CB_database->setQuery( "SELECT COUNT(*) FROM #__comprofiler_fields WHERE tabid=" . (int) $id );
 			$onField = $_CB_database->loadResult();
 			if( $obj->sys > 0 ) {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
+				$msg .= CB_getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
 				$noDelete = 1;
 			} 
 			if( $obj->pluginid ) {
 				$plugin	=	new moscomprofilerPlugin( $_CB_database );
 				if ( $plugin->load( $obj->pluginid ) ) {
-					$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a tab belonging to an installed plugin. \n";
+					$msg .= CB_getLangDefinition($obj->title) ." cannot be deleted because it is a tab belonging to an installed plugin. \n";
 					$noDelete = 1;
 				}
 			} 
 			if( $onField > 0 ) {
-				$msg .= getLangDefinition($obj->title) ." is being referenced by an existing field and cannot be deleted!";
+				$msg .= CB_getLangDefinition($obj->title) ." is being referenced by an existing field and cannot be deleted!";
 				$noDelete = 1;
 			} 
 			if( $noDelete == 0 ) {

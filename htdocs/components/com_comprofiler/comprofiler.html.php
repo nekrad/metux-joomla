@@ -589,9 +589,9 @@ List Functions
 			}
 		}
 
-		$listTitleHtml			=	cbReplaceVars( getLangDefinition( $row->title ), $myUser );
-		$listTitleNoHtml		=	strip_tags( cbReplaceVars( getLangDefinition( $row->title ), $myUser, false, false ) );
-		$listDescription		=	cbReplaceVars( getLangDefinition( $row->description ), $myUser );
+		$listTitleHtml			=	cbReplaceVars( CB_getLangDefinition( $row->title ), $myUser );
+		$listTitleNoHtml		=	strip_tags( cbReplaceVars( CB_getLangDefinition( $row->title ), $myUser, false, false ) );
+		$listDescription		=	cbReplaceVars( CB_getLangDefinition( $row->description ), $myUser );
 
 		$_CB_framework->setPageTitle( $listTitleNoHtml );
 		$_CB_framework->appendPathWay( $listTitleHtml );
@@ -1072,9 +1072,9 @@ $('#checkusername,#checkemail').change( function() {
 			</div>
 			<div class="cb_form_instructions">
 				<ul>
-					<li id="cb_lost_username"><?php echo getLangDefinition(_UE_LOST_USERNAME_DESC); ?></li>
-					<li id="cb_lost_password"><?php echo getLangDefinition(_UE_LOST_PASSWORD_DESC); ?></li>
-					<li id="cb_lost_username_password"><?php echo getLangDefinition(_UE_LOST_USERNAME_PASSWORD_DESC); ?></li>
+					<li id="cb_lost_username"><?php echo CB_getLangDefinition(_UE_LOST_USERNAME_DESC); ?></li>
+					<li id="cb_lost_password"><?php echo CB_getLangDefinition(_UE_LOST_PASSWORD_DESC); ?></li>
+					<li id="cb_lost_username_password"><?php echo CB_getLangDefinition(_UE_LOST_USERNAME_PASSWORD_DESC); ?></li>
 				</ul>
 			</div>
 			<div id="cb_step1_form">
@@ -1363,8 +1363,8 @@ $('#cbcheckedadminForm').submit( cbFrmSubmitButton );
 			echo implode( '', $results );
 		}
 
-		$introMessage				=	( isset( $ueConfig['reg_intro_msg'] ) ? stripslashes( getLangDefinition( $ueConfig['reg_intro_msg'] ) ) : null );
-		$conclusionMessage			=	( isset( $ueConfig['reg_conclusion_msg'] ) ? stripslashes( getLangDefinition( $ueConfig['reg_conclusion_msg'] ) ) : null );
+		$introMessage				=	( isset( $ueConfig['reg_intro_msg'] ) ? stripslashes( CB_getLangDefinition( $ueConfig['reg_intro_msg'] ) ) : null );
+		$conclusionMessage			=	( isset( $ueConfig['reg_conclusion_msg'] ) ? stripslashes( CB_getLangDefinition( $ueConfig['reg_conclusion_msg'] ) ) : null );
 		
 		$regFormTag					=	'<form action="' . cbSef("index.php?option=".$option) . '" method="post" id="cbcheckedadminForm" name="adminForm" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="0" />
@@ -1592,7 +1592,7 @@ function confirmSubmit() {
 	$cTypes=explode("\n",$ueConfig['connection_categories']);
 	$connectionTypes=array();
 	foreach($cTypes as $cType) {
-		if(trim($cType)!=null && trim($cType)!="") $connectionTypes[]=moscomprofilerHTML::makeOption( trim($cType) , getLangDefinition(trim($cType)) );
+		if(trim($cType)!=null && trim($cType)!="") $connectionTypes[]=moscomprofilerHTML::makeOption( trim($cType) , CB_getLangDefinition(trim($cType)) );
 	}
 ?>
 <div class="contentheading"><?php echo _UE_MANAGECONNECTIONS; ?></div><br />
@@ -1758,8 +1758,8 @@ function confirmSubmit() {
 								;
 				}
 				$tipField		=	'<b>'._UE_CONNECTEDSINCE.'</b> : '.dateConverter($connected->membersince,'Y-m-d',$ueConfig['date_format']);
-				if ( getLangDefinition( $connected->type ) != null ) {
-					$tipField	.=	'<br /><b>'._UE_CONNECTIONTYPE.'</b> : '.getLangDefinition($connected->type);
+				if ( CB_getLangDefinition( $connected->type ) != null ) {
+					$tipField	.=	'<br /><b>'._UE_CONNECTIONTYPE.'</b> : '.CB_getLangDefinition($connected->type);
 				}
 				if ( $connected->description != null ) {
 					$tipField	.=	'<br /><b>'._UE_CONNECTEDCOMMENT.'</b> : '.htmlspecialchars($connected->description);

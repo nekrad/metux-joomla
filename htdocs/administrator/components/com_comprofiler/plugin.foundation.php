@@ -169,7 +169,7 @@ function cbstr_ireplace( $search, $replace, $subject ) {
  * @param  string  $text
  * @return string
  */
-function getLangDefinition($text) {
+function CB_getLangDefinition($text) {
 	// check for '::' as a workaround of bug #42770 in PHP 5.2.4 with optimizers:
 	if ( ( strpos( $text, '::' ) === false ) && defined( $text ) ) {
 		$returnText		=	constant( $text ); 
@@ -975,7 +975,7 @@ class CBuser {
 	 */
 	function replaceUserVars( $msg, $htmlspecialchars = true, $menuStats = true, $extraStrings = array(), $translateLanguage = true ){
 		if ( $translateLanguage ) {
-			$msg	=	getLangDefinition( $msg );
+			$msg	=	CB_getLangDefinition( $msg );
 		}
 		if ( strpos( $msg, '[' ) === false ) {
 			return $msg;
@@ -992,7 +992,7 @@ class CBuser {
 				if( ( ! is_object( $v ) ) && ( ! is_array( $v ) ) ) {
 					if ( ! ( ( strtolower( $k ) == "password" ) && ( strlen($v) >= 32 ) ) ) {
 						/* do not translate content ! :
-						$vTranslated		=	( $translateLanguage ? getLangDefinition( $v ) : $v );
+						$vTranslated		=	( $translateLanguage ? CB_getLangDefinition( $v ) : $v );
 						if ( is_array( $htmlspecialchars ) ) {
 							$vTranslated	=	call_user_func_array( $htmlspecialchars, array( $vTranslated ) );
 						}
@@ -1009,7 +1009,7 @@ class CBuser {
 		foreach( $extraStrings AS $k => $v) {
 			if( ( ! is_object( $v ) ) && ( ! is_array( $v ) ) ) {
 				/* do not translate content ! :
-				$vTranslated			=	( $translateLanguage ? getLangDefinition( $v ) : $v );
+				$vTranslated			=	( $translateLanguage ? CB_getLangDefinition( $v ) : $v );
 				if ( is_array( $htmlspecialchars ) ) {
 					$vTranslated		=	call_user_func_array( $htmlspecialchars, array( $vTranslated ) );
 				}

@@ -1295,7 +1295,7 @@ class cbFieldHandler extends cbPluginHandler  {
 				$imploded	=	null;
 				foreach ( $retArray as $res ) {
 					if ( isset( $res['url' ] ) ) {
-						$imploded	.=	'<a href="' . cbSef( $res["url"] ) . '" title="' . getLangDefinition( $res["tooltip"] ) . '">' . $res['title'] . '</a> ';
+						$imploded	.=	'<a href="' . cbSef( $res["url"] ) . '" title="' . CB_getLangDefinition( $res["tooltip"] ) . '">' . $res['title'] . '</a> ';
 					}
 				}
 				return $imploded;

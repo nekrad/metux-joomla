@@ -352,12 +352,12 @@ class cbEditRowView {
 			$label = $modelOfView->attributes( 'label' );
 			if ( $label ) {
 			    // add the params description to the display
-			    $html[] = '<tr><th colspan="3">' . CBTxt::Th( getLangDefinition( $label ) ) . '</th></tr>';
+			    $html[] = '<tr><th colspan="3">' . CBTxt::Th( CB_getLangDefinition( $label ) ) . '</th></tr>';
 			}
 			$description = $modelOfView->attributes( 'description' );
 			if ( $description ) {
 			    // add the params description to the display
-			    $html[] = '<tr><td colspan="3">' . CBTxt::Th( getLangDefinition( $description ) ) . '</td></tr>';
+			    $html[] = '<tr><td colspan="3">' . CBTxt::Th( CB_getLangDefinition( $description ) ) . '</td></tr>';
 			}
 		}
 		$this->_methods = get_class_methods( get_class( $this ) );
@@ -452,7 +452,7 @@ class cbEditRowView {
 		$paramValue			=	$this->get( $name );					//TBD: missing default value, but not easy to find, as it's in the view param for now: $param->attributes( 'default' ) );
 		
 		if ( $element->attributes( 'translate' ) == '_UE' ) {
-			$value			=	getLangDefinition( $value );
+			$value			=	CB_getLangDefinition( $value );
 		} elseif ( $element->attributes( 'translate' ) == 'yes' ) {
 			$value			=	CBTxt::T( $value );
 		}
@@ -870,27 +870,27 @@ class cbEditRowView {
 					$html[] 		=	'<fieldset' . $htid . ( $name ? ( ' class="cbfieldset_' . $name . '"' ) : '' ) . '>';
 				}
 				if ( $legend && ( $htmlFormatting != 'fieldsListArray' ) ) {
-				    $html[]			=	'<legend' . ( $class ? ' class="' . $class . '"' : '' ) . '>' . CBTxt::Th( getLangDefinition($legend) ) . '</legend>';
+				    $html[]			=	'<legend' . ( $class ? ' class="' . $class . '"' : '' ) . '>' . CBTxt::Th( CB_getLangDefinition($legend) ) . '</legend>';
 				}
 				if ( $htmlFormatting == 'table' ) {
 					$html[]			=	'<table class="paramlist" cellspacing="0" cellpadding="0" width="100%">';
 					if ( $description ) {
-					    $html[]		=	'<tr><td colspan="3" width="100%"><strong>' . CBTxt::Th( getLangDefinition($description) ) . '</strong></td></tr>';
+					    $html[]		=	'<tr><td colspan="3" width="100%"><strong>' . CBTxt::Th( CB_getLangDefinition($description) ) . '</strong></td></tr>';
 					}
 				} elseif ( $htmlFormatting == 'td' ) {
 					if ( $description ) {
-						$html[] 	=	'<td colspan="3" width="100%"><strong>' . CBTxt::Th( getLangDefinition($description) ) . '</strong></td>';
+						$html[] 	=	'<td colspan="3" width="100%"><strong>' . CBTxt::Th( CB_getLangDefinition($description) ) . '</strong></td>';
 					}
 				} elseif ( $htmlFormatting == 'span' ) {
 					if ( $description ) {
-						$html[]		=	'<span class="cbLabelSpan">' . CBTxt::Th( getLangDefinition($description) ) . '</span> ';
+						$html[]		=	'<span class="cbLabelSpan">' . CBTxt::Th( CB_getLangDefinition($description) ) . '</span> ';
 					}
 					$html[]			=	'<span class="cbFieldSpan">';
 				} elseif ( $htmlFormatting == 'fieldsListArray' ) {
 					// nothing
 				} else {
 					if ( $description ) {
-						$html[] 	=	'<strong>' . CBTxt::Th( getLangDefinition($description) ) . '</strong>';
+						$html[] 	=	'<strong>' . CBTxt::Th( CB_getLangDefinition($description) ) . '</strong>';
 					}
 				}
 				$html[]				=	$this->renderAllParams( $param, $control_name, $tabs, $viewType, $htmlFormatting );
@@ -1032,17 +1032,17 @@ class cbEditRowView {
 				if ( $htmlFormatting != 'fieldsListArray' ) {
 					$i						=	$this->_i++;
 					$idtab					=	$this->tabpaneNames[$tabpaneCounter] . $this->_i;
-					$html[]					=	$tabs->startTab( $this->tabpaneNames[$tabpaneCounter], CBTxt::T( getLangDefinition( $param->attributes( 'label' ) ) ), $idtab );
+					$html[]					=	$tabs->startTab( $this->tabpaneNames[$tabpaneCounter], CBTxt::T( CB_getLangDefinition( $param->attributes( 'label' ) ) ), $idtab );
 					$html[]					=	'<table class="paramlist" cellspacing="0" cellpadding="0" width="100%">';
 	
 					$tabName				=	$param->attributes( 'name' );
 					$tabTitle				=	$param->attributes( 'title' );
 					$description			=	$param->attributes( 'description' );
 					if ( $tabTitle ) {
-					    $html[]				=	'<tr><td colspan="3" width="100%"><h3' . ( $tabName ? ' class="cbTH' . $this->tabpaneNames[$tabpaneCounter] . $tabName . '"' : '' ) . '>' . CBTxt::Th( getLangDefinition( $tabTitle ) ) . '</h3></td></tr>';
+					    $html[]				=	'<tr><td colspan="3" width="100%"><h3' . ( $tabName ? ' class="cbTH' . $this->tabpaneNames[$tabpaneCounter] . $tabName . '"' : '' ) . '>' . CBTxt::Th( CB_getLangDefinition( $tabTitle ) ) . '</h3></td></tr>';
 					}
 					if ( $description || ! $tabTitle ) {
-					    $html[]				=	'<tr><td colspan="3" width="100%"><strong>' . CBTxt::Th( getLangDefinition( $description ) ) . '</strong></td></tr>';		// either description or a spacer.
+					    $html[]				=	'<tr><td colspan="3" width="100%"><strong>' . CBTxt::Th( CB_getLangDefinition( $description ) ) . '</strong></td></tr>';		// either description or a spacer.
 					}
 				}
 				$html[]						=	$this->renderAllParams( $param, $control_name, $tabs, $viewType, $htmlFormatting );
@@ -1050,7 +1050,7 @@ class cbEditRowView {
 					$html[]					=	"\n\t</table>";
 					$html[]					=	$tabs->endTab();
 					$tabNavJS[$i]->nested	=	( $tabpaneCounter > 1 );
-					$tabNavJS[$i]->name		=	CBTxt::T( getLangDefinition( $param->attributes( 'label' ) ) );
+					$tabNavJS[$i]->name		=	CBTxt::T( CB_getLangDefinition( $param->attributes( 'label' ) ) );
 					$tabNavJS[$i]->id		=	$idtab;
 					$tabNavJS[$i]->pluginclass	=	$idtab;
 				}
@@ -1086,13 +1086,13 @@ class cbEditRowView {
 	    $result = array();
 
 		$name			=	$param->attributes( 'name' );
-		$label			=	CBTxt::T( getLangDefinition($param->attributes( 'label' )));
-		$description	=	CBTxt::T( getLangDefinition(htmlspecialchars($param->attributes( 'description' ))));
+		$label			=	CBTxt::T( CB_getLangDefinition($param->attributes( 'label' )));
+		$description	=	CBTxt::T( CB_getLangDefinition(htmlspecialchars($param->attributes( 'description' ))));
 
 		$value = $this->get( $name, $param->attributes( 'default' ) );
 		
 		if ( $param->attributes( 'translate' ) == '_UE' ) {
-			$value		=	getLangDefinition( $value );
+			$value		=	CB_getLangDefinition( $value );
 		} elseif ( $param->attributes( 'translate' ) == 'yes' ) {
 			$value		=	CBTxt::T( $value );
 		}
@@ -1349,10 +1349,10 @@ class cbEditRowView {
 				} else {
 					$val = $option->attributes( 'value' );
 				}
-				$text = CBTxt::T( getLangDefinition($option->data()) );
+				$text = CBTxt::T( CB_getLangDefinition($option->data()) );
 				$options[] = moscomprofilerHTML::makeOption( $val, $text );
 			} elseif ( $option->name() == 'optgroup' ) {
-				$text = CBTxt::T( getLangDefinition( $option->attributes( 'label' ) ) );
+				$text = CBTxt::T( CB_getLangDefinition( $option->attributes( 'label' ) ) );
 				$options[] = moscomprofilerHTML::makeOptGroup( $text );
 				foreach ( $option->children() as $optGroupOption ) {
 					if ( $optGroupOption->name() == 'option' ) {
@@ -1361,7 +1361,7 @@ class cbEditRowView {
 						} else {
 							$val = $optGroupOption->attributes( 'value' );
 						}
-						$text = CBTxt::T( getLangDefinition($optGroupOption->data()) );
+						$text = CBTxt::T( CB_getLangDefinition($optGroupOption->data()) );
 						$options[] = moscomprofilerHTML::makeOption( $val, $text );
 					}
 				}
@@ -1386,7 +1386,7 @@ class cbEditRowView {
 			} else {
 				$val = $option->attributes( 'value' );
 			}
-			$text = CBTxt::T( getLangDefinition($option->data()) );
+			$text = CBTxt::T( CB_getLangDefinition($option->data()) );
 			$options[] = moscomprofilerHTML::makeOption( $val, $text );
 		}
 		return moscomprofilerHTML::radioList( $options, ''. $this->control_name( $control_name, $name ) . '', '', 'value', 'text', $value );			//TBD missing id :  id="' . $this->control_id( $control_name, $name ) . '"
@@ -1453,7 +1453,7 @@ class cbEditRowView {
 		$_CB_database->setQuery( $query );
 		$options				=	$_CB_database->loadObjectList();
 		for ($i=0, $n=count($options); $i<$n; $i++) {
-			$options[$i]->text	=	CBTxt::T( getLangDefinition( $options[$i]->text ) );
+			$options[$i]->text	=	CBTxt::T( CB_getLangDefinition( $options[$i]->text ) );
 		}
 		array_unshift( $options, moscomprofilerHTML::makeOption( '0', '- Select Field -' ) );
 

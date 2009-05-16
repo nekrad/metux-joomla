@@ -417,7 +417,7 @@ class CBfield_password extends CBfield_text {
 				}
 				$verifyField->name				=	$field->name . '__verify';
 				$verifyField->fieldid			=	$field->fieldid . '__verify';
-				$verifyField->title				=	sprintf( _UE_VERIFY_SOMETHING, getLangDefinition( $field->title ) );	// cbReplaceVars to be done only once later
+				$verifyField->title				=	sprintf( _UE_VERIFY_SOMETHING, CB_getLangDefinition( $field->title ) );	// cbReplaceVars to be done only once later
 				$verifyField->_identicalTo		=	$field->name;
 	
 				$toggleState					=	$_CB_OneTwoRowsStyleToggle;
@@ -586,7 +586,7 @@ class CBfield_select_multi_radio extends cbFieldHandler {
 				$displayStyle		=	$field->params->get( 'field_display_style' );
 				$listType			=	( $displayStyle == 1 ? 'ul' : ( $displayStyle == 2 ? 'ol' : ', ' ) );
 				for( $i = 0, $n = count( $chosen ); $i < $n; $i++ ) {
-	   				$chosen[$i]		=	getLangDefinition( $chosen[$i] );
+	   				$chosen[$i]		=	CB_getLangDefinition( $chosen[$i] );
 				}
 				return $this->_arrayToFormat( $field, $chosen, $output, $listType, $class );
 				break;
@@ -645,7 +645,7 @@ class CBfield_select_multi_radio extends cbFieldHandler {
 			case 'csv':
 				$chosen			=	$this->_explodeCBvalues( $value );
 				for( $i = 0, $n = count( $chosen ); $i < $n; $i++ ) {
-	   				$chosen[$i]		=	getLangDefinition( $chosen[$i] );
+	   				$chosen[$i]		=	CB_getLangDefinition( $chosen[$i] );
 				}
 				return $this->_arrayToFormat( $field, $chosen, $output );
 				break;
@@ -2079,16 +2079,16 @@ class CBfield_pm extends cbFieldHandler {
 					 		$imgMode			=	0;			//TBD later: make this a field parameter.
 							switch ( $imgMode ) {
 								case 0:
-									$linkItem	=	getLangDefinition( $res["caption"] );
+									$linkItem	=	CB_getLangDefinition( $res["caption"] );
 								break;
 								case 1:
 									$linkItem	=	$pmIMG;
 								break;
 								case 2:
-									$linkItem	=	$pmIMG . ' ' . getLangDefinition( $res["caption"] );
+									$linkItem	=	$pmIMG . ' ' . CB_getLangDefinition( $res["caption"] );
 								break;
 							}
-							$oReturn			.=	'<a href="' . cbSef( $res["url"] ) . '" title="' . getLangDefinition( $res["tooltip"] ) . '">' . $linkItem . '</a>';
+							$oReturn			.=	'<a href="' . cbSef( $res["url"] ) . '" title="' . CB_getLangDefinition( $res["tooltip"] ) . '">' . $linkItem . '</a>';
 					 	}
 					}
 					break;
@@ -3254,7 +3254,7 @@ class CBfield_delimiter extends cbFieldHandler {
 	 * @return mixed
 	 */
 	function getField( &$field, &$user, $output, $reason, $list_compare_types ) {
-		$value		=	cbReplaceVars( getLangDefinition( unHtmlspecialchars( $field->description ) ), $user );	//TBD: unhtml is kept for backwards database compatibility until CB 2.0
+		$value		=	cbReplaceVars( CB_getLangDefinition( unHtmlspecialchars( $field->description ) ), $user );	//TBD: unhtml is kept for backwards database compatibility until CB 2.0
 		return $this->_formatFieldOutput( $field->name, $value, $output, false );
 	}
 	/**

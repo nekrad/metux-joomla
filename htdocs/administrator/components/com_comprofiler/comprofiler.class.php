@@ -313,7 +313,7 @@ class moscomprofilerHTML {
 			} else {
 				$isReq="";
 			}
-			$html[] = "<input type=\"radio\" name=\"$tag_name\" $isReq $tag_attribs value=\"" . htmlspecialchars( $k ) . "\"$extra /> <label for=\"" . $id . "\">" . getLangDefinition($t) . "</label>";
+			$html[] = "<input type=\"radio\" name=\"$tag_name\" $isReq $tag_attribs value=\"" . htmlspecialchars( $k ) . "\"$extra /> <label for=\"" . $id . "\">" . CB_getLangDefinition($t) . "</label>";
 		}
 		return $html;
 	}
@@ -370,9 +370,9 @@ class moscomprofilerHTML {
 				}
 				$html				.=	"\n\t<option value=\"" . htmlspecialchars( $k ) . "\"$extra>";
 				if ( $htmlspecialcharText ) {
-					$html				.=	htmlspecialchars( getLangDefinition( $t ) );
+					$html				.=	htmlspecialchars( CB_getLangDefinition( $t ) );
 				} else {
-					$html				.=	getLangDefinition( $t );
+					$html				.=	CB_getLangDefinition( $t );
 				}
 				$html				.=	"</option>";
 
@@ -421,7 +421,7 @@ class moscomprofilerHTML {
 			} else {
 				$isReq="";
 			}
-			$html[] = "<input type=\"checkbox\" name=\"$tag_name\" $isReq value=\"".$k."\"$extra $tag_attribs /> <label for=\"" . $id . "\">" . getLangDefinition($t) . "</label>";
+			$html[] = "<input type=\"checkbox\" name=\"$tag_name\" $isReq value=\"".$k."\"$extra $tag_attribs /> <label for=\"" . $id . "\">" . CB_getLangDefinition($t) . "</label>";
 		}
 		return $html;
 	}
@@ -743,8 +743,8 @@ function activateUser( &$user, $ui, $cause, $mailToAdmins = true, $mailToUser = 
 		$msg = array(
 			'emailAdminSubject'	=> array( ),
 			'emailAdminMessage'	=> array( ),
-			'emailUserSubject'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_sub'] ) ) ),
-			'emailUserMessage'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_msg'] ) ) )
+			'emailUserSubject'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_sub'] ) ) ),
+			'emailUserMessage'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_msg'] ) ) )
 		);
 	} elseif ( $cause == 'SameUserRegistrationAgain' ) {
 		$activate = false;
@@ -758,15 +758,15 @@ function activateUser( &$user, $ui, $cause, $mailToAdmins = true, $mailToUser = 
 		$msg = array(
 			'emailAdminSubject'	=> array( 'sys' => _UE_REG_ADMIN_PA_SUB ),
 			'emailAdminMessage'	=> array( 'sys' => _UE_REG_ADMIN_PA_MSG ),
-			'emailUserSubject'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_sub'] ) ) ),
-			'emailUserMessage'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_msg'] ) ) )
+			'emailUserSubject'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_sub'] ) ) ),
+			'emailUserMessage'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_pend_appr_msg'] ) ) )
 		);
 	} elseif  ( $user->confirmed && ( $user->approved == 1 ) ) {
 		$msg = array(
 			'emailAdminSubject'	=> array( 'sys' => _UE_REG_ADMIN_SUB ),
 			'emailAdminMessage'	=> array( 'sys' => _UE_REG_ADMIN_MSG ),
-			'emailUserSubject'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_welcome_sub'] ) ) ),
-			'emailUserMessage'	=> array( 'sys' => getLangDefinition( stripslashes( $ueConfig['reg_welcome_msg'] ) ) )
+			'emailUserSubject'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_welcome_sub'] ) ) ),
+			'emailUserMessage'	=> array( 'sys' => CB_getLangDefinition( stripslashes( $ueConfig['reg_welcome_msg'] ) ) )
 		);
 	}
 	$msg['messagesToUser']		=	$messagesToUser;
@@ -1212,14 +1212,14 @@ function getFieldValue( $oType, $oValue=null, $user=null, $prefix=null, $imgMode
 		break;
 		CASE 'select':
 		CASE 'radio':
-			$oReturn			=	htmlspecialchars( getLangDefinition( $oValue ) );
+			$oReturn			=	htmlspecialchars( CB_getLangDefinition( $oValue ) );
 		break;
 		CASE 'multiselect':
 		CASE 'multicheckbox':
 			$oReturn			=	array();
 			$oReturn			=	explode("|*|",htmlspecialchars( $oValue ));
 			for( $i = 0; $i < count($oReturn); $i++ ) {
-   				$oReturn[$i]	=	htmlspecialchars( getLangDefinition( $oReturn[$i] ) );
+   				$oReturn[$i]	=	htmlspecialchars( CB_getLangDefinition( $oReturn[$i] ) );
 			}
 			$oReturn			=	implode( ', ', $oReturn );
 		break;
@@ -1301,16 +1301,16 @@ function getFieldValue( $oType, $oValue=null, $user=null, $prefix=null, $imgMode
 				 	if (is_array($res)) {
 						switch ($imgMode) {
 							case 0:
-								$linkItem=getLangDefinition($res["caption"]);
+								$linkItem=CB_getLangDefinition($res["caption"]);
 							break;
 							case 1:
 								$linkItem=$pmIMG;
 							break;
 							case 2:
-								$linkItem=$pmIMG.' '.getLangDefinition($res["caption"]);
+								$linkItem=$pmIMG.' '.CB_getLangDefinition($res["caption"]);
 							break;
 						}
-						$oReturn .= "<a href=\"".cbSef($res["url"])."\" title=\"".getLangDefinition($res["tooltip"])."\">".$linkItem."</a>";
+						$oReturn .= "<a href=\"".cbSef($res["url"])."\" title=\"".CB_getLangDefinition($res["tooltip"])."\">".$linkItem."</a>";
 				 	}
 				}
 			}			
@@ -1410,9 +1410,9 @@ function getFieldValue( $oType, $oValue=null, $user=null, $prefix=null, $imgMode
 		break;
 		CASE 'delimiter':
 			if ( ( $field !== null ) && ( $user !== null ) ) {
-				$oReturn = cbReplaceVars( getLangDefinition( unHtmlspecialchars( $field->description ) ), $user );	//TBD: unhtml is kept for backwards database compatibility until CB 2.0
+				$oReturn = cbReplaceVars( CB_getLangDefinition( unHtmlspecialchars( $field->description ) ), $user );	//TBD: unhtml is kept for backwards database compatibility until CB 2.0
 			} else  {
-				$oReturn = cbReplaceVars( getLangDefinition( $oValue ), $user );
+				$oReturn = cbReplaceVars( CB_getLangDefinition( $oValue ), $user );
 			}
 		break;
 		CASE 'editorta':
@@ -1923,7 +1923,7 @@ function getFieldIcons($ui, $oReq, $oProfile, $oDescription="", $oTitle="", $sho
 		}
 	}
 	if ( $display & 4 ) {
-		if ($oDescription)		$oReturn .= " " . cbFieldTip( $ui, getLangDefinition( $oDescription ), getLangDefinition( $oTitle ) );
+		if ($oDescription)		$oReturn .= " " . cbFieldTip( $ui, CB_getLangDefinition( $oDescription ), CB_getLangDefinition( $oTitle ) );
 		if ($showLabels===true)	$oReturn .= " " . cbFieldTip( $ui, _UE_FIELDDESCRIPTION, "?" ) . " " . _UE_FIELDDESCRIPTION_SHORT;
 	}
 	return "<span class='cbFieldIcons".(($showLabels) ? "Labels" : "")."'>".$oReturn."</span>";
@@ -2290,15 +2290,15 @@ function cbSpamProtect( $userid, $count ) {
 		$displayFieldIcons	=	true;
 		SWITCH ($oType){
 	//		CASE 'text':
-	//			$oReturn = "<input class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" $pSize $pMax type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
+	//			$oReturn = "<input class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" $pSize $pMax type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
 	//		break;
 			CASE 'textarea':
-				$oReturn = "<textarea class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" $pCols $pRows  name=\"".$oName."\" id=\"".$oName."\">".htmlspecialchars($oValue)."</textarea>";		//TBD: limit by pmax using JS
+				$oReturn = "<textarea class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" $pCols $pRows  name=\"".$oName."\" id=\"".$oName."\">".htmlspecialchars($oValue)."</textarea>";		//TBD: limit by pmax using JS
 			break;
 			CASE 'editorta':
 				if(!($oReadOnly > 0)) {
 					$oReturn	=	$_CB_framework->displayCmsEditor( $oName, $oValue, 600, 350, $oCols, $oRows );
-					$_CB_framework->outputCbJQuery( 'document.adminForm.'.$oName.".setAttribute('mosReq',".$oReq."); document.adminForm.".$oName.".setAttribute('mosLabel','". addslashes( getLangDefinition($oLabel) ) ."');" );
+					$_CB_framework->outputCbJQuery( 'document.adminForm.'.$oName.".setAttribute('mosReq',".$oReq."); document.adminForm.".$oName.".setAttribute('mosLabel','". addslashes( CB_getLangDefinition($oLabel) ) ."');" );
 				} else {
 					$oReturn = $oValue;
 				}
@@ -2312,37 +2312,37 @@ function cbSpamProtect( $userid, $count ) {
 			CASE 'checkbox':
 				$checked='';
 				if($oValue!='' && $oValue != null && $oValue==1) $checked=" checked=\"checked\"";
-				$oReturn = "<input $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"checkbox\" $checked name=\"".$oName."\" id=\"".$oName."\" value=\"1\" />";		
+				$oReturn = "<input $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"checkbox\" $checked name=\"".$oName."\" id=\"".$oName."\" value=\"1\" />";		
 			break;
 			CASE 'hidden':
-				$oReturn = "<input $pReadOnly mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"hidden\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
+				$oReturn = "<input $pReadOnly mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"hidden\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
 			break;
 			CASE 'password':
-				$oReturn = "<input class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"password\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
+				$oReturn = "<input class=\"inputbox\" $pReadOnly $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"password\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
 			break;
 			CASE 'date':
 				$calendars	=	new cbCalendars( $_CB_framework->getUi() );
 				$oReturn = $calendars->cbAddCalendar($oName,$oLabel,$oReq,$oValue,$oReadOnly);
 			break;
 			CASE 'emailaddress':
-				$oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $mosReq $pSize mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
+				$oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $mosReq $pSize mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
 			break;
 			CASE 'webaddress':
 				if ($oRows!=2) {
-					$oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
+					$oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValue)."\" />";
 				} else {
 					$oValuesArr=array();
 					$oValuesArr = explode("|*|",$oValue);
 					if (count($oValuesArr) < 2) $oValuesArr[1]="";
 					$oReturn = "<span class=\"webUrlSpan\">";
 					$oReturn .= "<span class=\"subTitleSpan\">"._UE_WEBURL.":</span>";
-					$oReturn .= "<span class=\"subFieldSpan\"><input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValuesArr[0])."\" />";
+					$oReturn .= "<span class=\"subFieldSpan\"><input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".htmlspecialchars($oValuesArr[0])."\" />";
 					$oReturn .= getFieldIcons($ui, $oReq, $oProfile, $oDescription, $oTitle)."</span>";
 					$displayFieldIcons = false;
 					
 					$oReturn .= "</span><span class=\"webTextSpan\">";
 					$oReturn .= "<span class=\"subTitleSpan\">"._UE_WEBTEXT.":</span>";
-					$oReturn .= "<span class=\"subFieldSpan\"><input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."Text\" id=\"".$oName."Text\" value=\"".htmlspecialchars($oValuesArr[1])."\" /></span>";
+					$oReturn .= "<span class=\"subFieldSpan\"><input class=\"inputbox\" $pReadOnly $pMax $pSize $mosReq mosLabel=\"". htmlspecialchars( CB_getLangDefinition($oLabel) ) ."\" type=\"text\" name=\"".$oName."Text\" id=\"".$oName."Text\" value=\"".htmlspecialchars($oValuesArr[1])."\" /></span>";
 					$oReturn .= "</span>";
 				}			
 				break;
@@ -3001,7 +3001,7 @@ class cbCalendars {
 		if ( $this->calendarType == 1 ) {
 			$vardisabled	=	($oReadOnly) ? ' disabled="disabled"' : '';
 
-			$return = '<input class="inputbox' . ( $oReq ? ' required' : '' ) . '"'.$vardisabled.' mosReq="'.$oReq.'" mosLabel="'. htmlspecialchars( getLangDefinition($oLabel) ) .'"'
+			$return = '<input class="inputbox' . ( $oReq ? ' required' : '' ) . '"'.$vardisabled.' mosReq="'.$oReq.'" mosLabel="'. htmlspecialchars( CB_getLangDefinition($oLabel) ) .'"'
 					. ' type="text" name="' . $oName .'" readonly="readonly" id="' . $oName . '" value="' . $oValue . '" />'
 					. "\n";
 			if (!$oReadOnly) {
@@ -3029,7 +3029,7 @@ class cbCalendars {
 					$years		=	'';
 				}
 				$vardisabled	=	($oReadOnly) ? ' disabled="disabled"' : '';
-				$return			=	'<input class="inputbox' . ( $oReq ? ' required' : '' ) . '"'.$vardisabled.' mosReq="'.$oReq.'" mosLabel="'. htmlspecialchars( getLangDefinition($oLabel) ) .'"'
+				$return			=	'<input class="inputbox' . ( $oReq ? ' required' : '' ) . '"'.$vardisabled.' mosReq="'.$oReq.'" mosLabel="'. htmlspecialchars( CB_getLangDefinition($oLabel) ) .'"'
 								.	' type="text" name="' . $oName .'" id="' . $oIdName . '" value="' . $oValue . '" />'
 								.	"\n";
 								// we do substitute both: <input .... type="text" ...> and without any type (which is IE7 behavior default text type attribute is ommitted ! + IE writes <INPUT:
@@ -3354,7 +3354,7 @@ class cbTabs extends cbTabHandler {
 
 			if ( ( $tabContent != '' ) || ( $oTab->fields && ( $oTab->_fieldsCount > 0 ) && isset( $ueConfig['showEmptyTabs'] ) && ( $ueConfig['showEmptyTabs'] == 1 ) ) ) {
 				$overlaysWidth 					=	'400';			//BB later this could be one more tab parameter...
-				$tabTitle						=	cbReplaceVars( getLangDefinition( $oTab->title ), $user );
+				$tabTitle						=	cbReplaceVars( CB_getLangDefinition( $oTab->title ), $user );
 				switch ($oTab->displaytype) {
 				//	case "template":
 				//		$html[$pos] .=	HTML_comprofiler::_cbTemplateRender( $user, 'Profile', 'drawTab', array( &$user, $oTab, $tabTitle, $tabContent, 'cb_tabid_' . $oTab->tabid ), $output );
@@ -3519,7 +3519,7 @@ class cbTabs extends cbTabHandler {
 				// get Content from super-tabs:	// experimental event:
 				$_PLUGINS->trigger( 'onAfterEditATab', array( &$oContent, &$oTab, &$user, &$postdata, $output, $formatting, $reason, $tabbed ) );
 
-				$tabTitle					=	cbReplaceVars( getLangDefinition( $oTab->title ), $user );
+				$tabTitle					=	cbReplaceVars( CB_getLangDefinition( $oTab->title ), $user );
 				if ( $ueConfig['nesttabs'] && $oTab->fields && ( ( $oTab->pluginclass == null ) || ( $oTab->sys == 2 ) ) ) {
 					if ( ! $nestResults ) {
 						$nestResults = $this->startTab("CB",_UE_PROFILETAB, 0)
@@ -3542,7 +3542,7 @@ class cbTabs extends cbTabHandler {
 											;
 					$tabNavJS[$i]->nested	=	false;
 				}
-				$tabNavJS[$i]->name			=	getLangDefinition($oTab->title);
+				$tabNavJS[$i]->name			=	CB_getLangDefinition($oTab->title);
 				$tabNavJS[$i]->id			=	$oTab->tabid;
 				$tabNavJS[$i]->pluginclass	=	$oTab->pluginclass;
 				$i++;

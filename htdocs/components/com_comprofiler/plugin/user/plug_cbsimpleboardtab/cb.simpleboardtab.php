@@ -249,14 +249,14 @@ class getForumTab extends cbTabHandler {
 		$return .= "<div class=\"sectiontableheader\" style=\"text-align:left;padding-left:0px;padding-right:0px;width:50%;\">"._UE_FORUM_STATS."</div>";
 		if ($sbUserDetails !== false) {
 		$return .= "<table cellpadding=\"5\" cellspacing=\"0\" style=\"border:0;margin:0;padding:0;\" width=\"50%\">";
-		if($sbConfig['showranking'] && ($params->get('statRanking', '1') == 1)) $return .= "<tr class=\"sectiontableentry1\"><td style=\"font-weight:bold;width:50%;\">".getLangDefinition($params->get('statRankingText', "_UE_FORUM_FORUMRANKING"))."</td><td>".$sbUserDetails->msg_userrank.($params->get('statRankingImg', '1')==1 ? $sbUserDetails->msg_userrankimg : "")."</td></tr>";
+		if($sbConfig['showranking'] && ($params->get('statRanking', '1') == 1)) $return .= "<tr class=\"sectiontableentry1\"><td style=\"font-weight:bold;width:50%;\">".CB_getLangDefinition($params->get('statRankingText', "_UE_FORUM_FORUMRANKING"))."</td><td>".$sbUserDetails->msg_userrank.($params->get('statRankingImg', '1')==1 ? $sbUserDetails->msg_userrankimg : "")."</td></tr>";
 		if ( ( isset ( $sbConfig['poststats'] ) ? $sbConfig['poststats'] : $sbConfig['postStats'] ) && (($params->get('statPosts', '1')==2) || (($params->get('statPosts', '1')==1)&&($sbUserDetails !== false)))) {
 			$return .= "<tr class=\"sectiontableentry2\"><td style=\"font-weight:bold;width:50%;\">"
-					.getLangDefinition($params->get('statPostsText', "_UE_FORUM_TOTALPOSTS"))."</td><td>".$sbUserDetails->posts."</td></tr>";
+					.CB_getLangDefinition($params->get('statPostsText', "_UE_FORUM_TOTALPOSTS"))."</td><td>".$sbUserDetails->posts."</td></tr>";
 		}
 		if ($sbConfig['showkarma'] && ($sbUserDetails !== false) && (($params->get('statKarma', '1')==2)||(($params->get('statKarma', '1')==1)&&($sbUserDetails->karma!=0)))) {
 			$return .= "<tr class=\"sectiontableentry1\"><td style=\"font-weight:bold;width:50%;\">"
-					.getLangDefinition($params->get('statKarmaText', "_UE_FORUM_KARMA"))."</td><td>".$sbUserDetails->karma."</td></tr>";
+					.CB_getLangDefinition($params->get('statKarmaText', "_UE_FORUM_KARMA"))."</td><td>".$sbUserDetails->karma."</td></tr>";
 		}
 		$return .= "</table>";
 		} else {
@@ -602,8 +602,8 @@ class getForumTab extends cbTabHandler {
 	      $subslist						=	$_CB_database->loadObjectList();
 	      $csubslist					=	count($subslist);
 		  $return 						.=	"<br /><div class=\"sectiontableheader\" style=\"text-align:left;padding-left:0px;padding-right:0px;margin:0px 0px 10px 0px;height:auto;width:100%;\">"
-										.	( defined('_UE_USER_SUBSCRIPTIONS') ? getLangDefinition( "_UE_USER_SUBSCRIPTIONS" ) :
-														( ( defined('_UE_FB_CONFIRMUNSUBSCRIBEALL') ) ? getLangDefinition( "_UE_FB_CONFIRMUNSUBSCRIBEALL" ) : "" ) )
+										.	( defined('_UE_USER_SUBSCRIPTIONS') ? CB_getLangDefinition( "_UE_USER_SUBSCRIPTIONS" ) :
+														( ( defined('_UE_FB_CONFIRMUNSUBSCRIBEALL') ) ? CB_getLangDefinition( "_UE_FB_CONFIRMUNSUBSCRIBEALL" ) : "" ) )
 										.	"<br />";
 		  $return						.=	"\n<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"margin:0px;padding:0px;width:100%;\">";
 		  $enum							=	1;	//reset value
@@ -682,8 +682,8 @@ class getForumTab extends cbTabHandler {
 			$favslist						=	$_CB_database->loadObjectList();
 			$cfavslist						=	count( $favslist );
 			$return							.=	"<br /><div class=\"sectiontableheader\" style=\"text-align:left;padding-left:0px;padding-right:0px;margin:0px 0px 10px 0px;height:auto;width:100%;\">"
-											.	( defined('_UE_FB_FAVORITES') ? getLangDefinition( "_UE_FB_FAVORITES" ) :
-												( ( defined('_UE_FB_CONFIRMUNFAVORITEALL') ) ? getLangDefinition( "_UE_FB_CONFIRMUNFAVORITEALL" ) : "" ) )
+											.	( defined('_UE_FB_FAVORITES') ? CB_getLangDefinition( "_UE_FB_FAVORITES" ) :
+												( ( defined('_UE_FB_CONFIRMUNFAVORITEALL') ) ? CB_getLangDefinition( "_UE_FB_CONFIRMUNFAVORITEALL" ) : "" ) )
 											.	"<br />";
 			$return							.=	 "\n<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"margin:0px;padding:0px;width:100%;\">";
 			$enum							=	1;		//reset value

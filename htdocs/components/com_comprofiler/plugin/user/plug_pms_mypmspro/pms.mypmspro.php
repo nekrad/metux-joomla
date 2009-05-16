@@ -757,7 +757,7 @@ class getmypmsproTab extends cbPMSHandler {
 		$return .= "\n\t<div class=\"sectiontableentry".$_CB_OneTwoRowsStyleToggle."\" style=\"padding-bottom:5px;\">\n";
 		$_CB_OneTwoRowsStyleToggle = ($_CB_OneTwoRowsStyleToggle == 1 ? 2 : 1);
 		if($showTitle) $return .= "\t\t<div class=\"titleCell\" style=\"align: left; text-align:left; margin-left: 0px;\">"
-							.unHtmlspecialchars(getLangDefinition($tab->title)).(($showSubject && $capabilities["subject"])?"" : ":")."</div>\n";
+							.unHtmlspecialchars(CB_getLangDefinition($tab->title)).(($showSubject && $capabilities["subject"])?"" : ":")."</div>\n";
 		$return .= $this->_writeTabDescription( $tab, $user );
 
 		$base_url = $this->_getAbsURLwithParam(array());

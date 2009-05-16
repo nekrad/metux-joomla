@@ -645,7 +645,7 @@ class cbInstallerPlugin extends cbInstaller {
 			foreach( $adminmenusnode->children() AS $menu ) {
 				if ( $menu->name() == "menu" ) {
 					$action		=	$menu->attributes('action');
-					$text		=	getLangDefinition($menu->data());
+					$text		=	CB_getLangDefinition($menu->data());
 					$menusArr[]	=	$text . ":" . $action;
 				}
 			}

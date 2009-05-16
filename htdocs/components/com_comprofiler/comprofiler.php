@@ -794,7 +794,7 @@ function usersList( $uid ) {
 
 	for ( $i=0, $n=count( $plists ); $i < $n; $i++ ) {
 		$plist				=&	$plists[$i];
-		$listTitleNoHtml	=	strip_tags( cbReplaceVars( getLangDefinition( $plist->title ), $myUser, false, false ) );
+		$listTitleNoHtml	=	strip_tags( cbReplaceVars( CB_getLangDefinition( $plist->title ), $myUser, false, false ) );
 	   	$publishedlists[]	=	moscomprofilerHTML::makeOption( $plist->listid, $listTitleNoHtml );
 	}
 
@@ -1651,7 +1651,7 @@ function login( $username=null, $passwd2=null ) {
 						$row->store();		// just in case the activation code was missing
 					}
 					$cbNotification = new cbNotification();
-					$cbNotification->sendFromSystem($row->id,getLangDefinition(stripslashes($ueConfig['reg_pend_appr_sub'])),getLangDefinition(stripslashes($ueConfig['reg_pend_appr_msg'])));
+					$cbNotification->sendFromSystem($row->id,CB_getLangDefinition(stripslashes($ueConfig['reg_pend_appr_sub'])),CB_getLangDefinition(stripslashes($ueConfig['reg_pend_appr_msg'])));
 					$resultError = _LOGIN_NOT_CONFIRMED;
 				}
 				elseif ($row->approved == 0){
@@ -2432,9 +2432,9 @@ function getConnectionTypes( $types ) {
 	$types		=	explode( "|*|", $types );
 	foreach( $types AS $type ) {
 		if( $typelist == null ) {
-			$typelist	=	getLangDefinition( $type );
+			$typelist	=	CB_getLangDefinition( $type );
 		} else {
-			$typelist	.=	", " . getLangDefinition( $type );	
+			$typelist	.=	", " . CB_getLangDefinition( $type );	
 		}
 	}
 	return $typelist;

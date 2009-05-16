@@ -104,8 +104,8 @@ function cbcheckAll_button( n ) {
     <tr class="<?php echo "row$k"; ?>">
       <td><?php echo $i+1+$pageNav->limitstart;?></td>
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->listid; ?>" onClick="isChecked(this.checked);" /></td>
-      <td> <a href="#editList" onClick="return listItemTask('cb<?php echo $i;?>','editList')"><?php echo htmlspecialchars( getLangDefinition($row->title) ); ?></a></td>
-      <td><?php echo htmlspecialchars( getLangDefinition($row->description) ); ?></td>
+      <td> <a href="#editList" onClick="return listItemTask('cb<?php echo $i;?>','editList')"><?php echo htmlspecialchars( CB_getLangDefinition($row->title) ); ?></a></td>
+      <td><?php echo htmlspecialchars( CB_getLangDefinition($row->description) ); ?></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>','<?php echo $task3;?>')"><img src="<?php echo $imgpath.$img3;?>" width="16" height="16" border="0" alt="" /></a></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>','<?php echo $task4;?>')"><img src="<?php echo $imgpath.$img4;?>" width="16" height="16" border="0" alt="" /></a></td>
 	  <td><?php 
@@ -164,7 +164,7 @@ function cbcheckAll_button( n ) {
 		initToolTip(2);
 
 		global $_CB_Backend_Title;
-		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-lists', "Community Builder List: <small>" . ( $row->listid ? "Edit" . ' [ '. htmlspecialchars( getLangDefinition( $row->title ) ) .' ]' : "New" ) . '</small>' ) );
+		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-lists', "Community Builder List: <small>" . ( $row->listid ? "Edit" . ' [ '. htmlspecialchars( CB_getLangDefinition( $row->title ) ) .' ]' : "New" ) . '</small>' ) );
 
 		if ( $row->listid && ( ! $row->published ) ) {
 			echo '<div class="cbWarning">List is not published</div>' . "\n";
@@ -183,7 +183,7 @@ function cbcheckAll_button( n ) {
 				if(trim($col1field)!='' && trim($col1field)!=null) {
 					$text			=	array_search($col1field,$fields);
 					if ( is_string( $text ) ) {
-						$col1options .= "<option value=\"".$col1field."\">". htmlspecialchars( getLangDefinition($text) ) ."\n";
+						$col1options .= "<option value=\"".$col1field."\">". htmlspecialchars( CB_getLangDefinition($text) ) ."\n";
 						$fieldids[] = $col1field;
 					} else {
 						$notFoundFielIds[]	=	$col1field;
@@ -196,7 +196,7 @@ function cbcheckAll_button( n ) {
 				if(trim($col2field)!='' && trim($col2field)!=null) { 
 					$text			=	array_search($col2field,$fields);
 					if ( is_string( $text ) ) {
-						$col2options .= "<option value=\"".$col2field."\">". htmlspecialchars( getLangDefinition($text) ) ."\n";
+						$col2options .= "<option value=\"".$col2field."\">". htmlspecialchars( CB_getLangDefinition($text) ) ."\n";
 						$fieldids[]			=	$col2field;
 					} else {
 						$notFoundFielIds[]	=	$col2field;
@@ -209,7 +209,7 @@ function cbcheckAll_button( n ) {
 				if(trim($col3field)!='' && trim($col3field)!=null) { 
 					$text			=	array_search($col3field,$fields);
 					if ( is_string( $text ) ) {
-						$col3options .= "<option value=\"".$col3field."\">". htmlspecialchars( getLangDefinition($text) ) ."\n";
+						$col3options .= "<option value=\"".$col3field."\">". htmlspecialchars( CB_getLangDefinition($text) ) ."\n";
 						$fieldids[]			=	$col3field;
 					} else {
 						$notFoundFielIds[]	=	$col3field;
@@ -222,7 +222,7 @@ function cbcheckAll_button( n ) {
 				if(trim($col4field)!='' && trim($col4field)!=null) { 
 					$text			=	array_search($col4field,$fields);
 					if ( is_string( $text ) ) {
-						$col4options .= "<option value=\"".$col4field."\">". htmlspecialchars( getLangDefinition($text) ) ."\n";
+						$col4options .= "<option value=\"".$col4field."\">". htmlspecialchars( CB_getLangDefinition($text) ) ."\n";
 						$fieldids[]			=	$col4field;
 					} else {
 						$notFoundFielIds[]	=	$col4field;
@@ -343,13 +343,13 @@ if ( count( $notFoundFielIds ) > 0 ) {
 		echo '<div class="cbWarning">Following fields are in list but not visible in here for following reason(s):<ul>';
 		foreach ( $problemFields as $f ) {
 			if ( $f->published != 1 ) {
-				echo '<li>Field "' . getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is not published !";
+				echo '<li>Field "' . CB_getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is not published !";
 			}
 			if ( $f->profile <= 0 ) {
-				echo '<li>Field "' . getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is not displayed on profile !";
+				echo '<li>Field "' . CB_getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is not displayed on profile !";
 			}
 			if ( $f->pluginpublished != 1 ) {
-				echo '<li>Field "' . getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is from plugin \"" . $f->pluginname . "\" but this plugin is not published !";
+				echo '<li>Field "' . CB_getLangDefinition( $f->title ) . ' (' . $f->name . ')" ' . " is from plugin \"" . $f->pluginname . "\" but this plugin is not published !";
 			}
 		}
 		echo '</ul>If you save this users list now, the fields listed above will be removed from this users list. If you want to keep these fields in this list, cancel now and go to Components / Community Builder / Field Manager.</div>' . "\n";
@@ -808,7 +808,7 @@ function shDiv(objID,sh) {
 							} else {
 								$sortfieldName	=	$sortfield->name;
 							}
-							echo "<option value=\"" . $sortfieldName . "\">". htmlspecialchars( getLangDefinition($sortfield->title) ) ."</option>\n";
+							echo "<option value=\"" . $sortfieldName . "\">". htmlspecialchars( CB_getLangDefinition($sortfield->title) ) ."</option>\n";
 						}
 					?>
 				</select><select name=direction><option value="ASC">ASC</option><option value="DESC">DESC</option></select><input type=button onclick="moveOption2(this.form.sortfieldlist, sort, this.form.direction.value);" value=" Add "><br />
@@ -822,7 +822,7 @@ function shDiv(objID,sh) {
 								} else {
 									$sortfiNam		=	$sortpart['field'];
 								}
-								echo '<option value="' . $sortfiNam . ' ' . $sortpart['dir'] . '">' . htmlspecialchars( getLangDefinition($sortpart['title']) ) . ' [' . $sortpart['dir'] . "]</option>\n";
+								echo '<option value="' . $sortfiNam . ' ' . $sortpart['dir'] . '">' . htmlspecialchars( CB_getLangDefinition($sortpart['title']) ) . ' [' . $sortpart['dir'] . "]</option>\n";
 							}
 						}
 		
@@ -867,7 +867,7 @@ function shDiv(objID,sh) {
 			$_CB_database->setQuery("SELECT title FROM #__comprofiler_fields WHERE name='".$filterparts[$i]['field']."' LIMIT 1");
 			$filtertitle=$_CB_database->loadResult();
 			$filterparts[$i]['value']=$filterlist;
-			$filterparts[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts[$i]['field'],getLangDefinition($filtertitle),$filterlist));
+			$filterparts[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts[$i]['field'],CB_getLangDefinition($filtertitle),$filterlist));
 		
 			$i++;
 		}
@@ -878,7 +878,7 @@ function shDiv(objID,sh) {
 				<select name="filterfieldlist">
 					<?php
 						foreach ($filterfields AS $filterfield) {
-							echo "<option value=\"`".$filterfield->name."`\">". htmlspecialchars( getLangDefinition($filterfield->title) ) ."\n";
+							echo "<option value=\"`".$filterfield->name."`\">". htmlspecialchars( CB_getLangDefinition($filterfield->title) ) ."\n";
 						}
 		
 					?>
@@ -947,7 +947,7 @@ function shDiv(objID,sh) {
 				<select name="fieldlist" size="10" multiple>
 					<?php
 						foreach ( $fields as $field ) {
-							echo "<option value=\"".$field->fieldid."\">".htmlspecialchars( getLangDefinition($field->title) )."\n";
+							echo "<option value=\"".$field->fieldid."\">".htmlspecialchars( CB_getLangDefinition($field->title) )."\n";
 						}
 		
 					?>
@@ -1127,7 +1127,7 @@ function shDiv(objID,sh) {
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->fieldid; ?>" onClick="isChecked(this.checked);" /></td>
       <td> <a href="#editField" onClick="return listItemTask('cb<?php echo $i;?>','editField')">
         <?php echo htmlspecialchars( $row->name ); ?> </a> </td>
-      <td><?php echo htmlspecialchars( getLangDefinition( $row->title ) ); ?></td>
+      <td><?php echo htmlspecialchars( CB_getLangDefinition( $row->title ) ); ?></td>
       <td><?php
       		if ( $row->pluginid && ( $row->fieldpluginpublished == 0 ) ) {
       			echo '<span style="color:red;" title="field will not be visible as field plugin \'' . htmlspecialchars( $row->fieldpluginname ) . '\' is not published.">';
@@ -1146,7 +1146,7 @@ function shDiv(objID,sh) {
       		} elseif ( $row->tabpluginid && ( $row->pluginpublished == 0 ) ) {
       			echo '<span style="color:red;" title="field will not be visible as tab\'s plugin \'' . htmlspecialchars( $row->pluginname ) . '\' is not published.">';
       		}
-			echo htmlspecialchars( getLangDefinition( $row->tab ) );
+			echo htmlspecialchars( CB_getLangDefinition( $row->tab ) );
      		if ( $row->tabenabled == 0 || ( $row->tabpluginid && ( $row->pluginpublished == 0 ) ) ) {
      			echo '</span>';
      		}
@@ -1218,7 +1218,7 @@ function shDiv(objID,sh) {
 		initToolTip( 2 );
 
 		global $_CB_Backend_Title;
-		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-fields', "Community Builder Field" . ': <small>' . ( $row->fieldid ? "Edit" . ' [ ' . htmlspecialchars( getLangDefinition( $row->title ) ) . ' ] ' : "New" ) . '</small>' ) );
+		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-fields', "Community Builder Field" . ': <small>' . ( $row->fieldid ? "Edit" . ' [ ' . htmlspecialchars( CB_getLangDefinition( $row->title ) ) . ' ] ' : "New" ) . '</small>' ) );
 
 		if ( $row->fieldid && ( ! $row->published ) ) {
 			echo '<div class="cbWarning">Field is not published</div>' . "\n";
@@ -1672,8 +1672,8 @@ ob_end_clean();
       <td><?php echo $i+1+$pageNav->limitstart;?></td>
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->tabid; ?>" onclick="isChecked(this.checked);" /></td>
       <td> <a href="#editTab" onclick="return listItemTask('cb<?php echo $i;?>','editTab')">
-        <?php echo htmlspecialchars( getLangDefinition($row->title) ); ?> </a> </td>
-	<td><?php echo htmlspecialchars( getLangDefinition($row->description) ); ?></td>
+        <?php echo htmlspecialchars( CB_getLangDefinition($row->title) ); ?> </a> </td>
+	<td><?php echo htmlspecialchars( CB_getLangDefinition($row->description) ); ?></td>
 	<td><?php echo htmlspecialchars( $row->displaytype ); ?></td>
 	<td><?php
       		if ( $row->pluginid && ( $row->pluginpublished == 0 ) ) {
@@ -1742,7 +1742,7 @@ ob_end_clean();
 		$_CB_framework->outputCbJQuery( '' );
 
 		global $_CB_Backend_Title;
-		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-tabs', "Community Builder Tab: <small>" . ( $row->tabid ? "Edit" . ' [ '. htmlspecialchars( getLangDefinition( $row->title ) ) .' ]' : "New" ) . '</small>' ) );
+		$_CB_Backend_Title	=	array( 0 => array( 'cbicon-48-tabs', "Community Builder Tab: <small>" . ( $row->tabid ? "Edit" . ' [ '. htmlspecialchars( CB_getLangDefinition( $row->title ) ) .' ]' : "New" ) . '</small>' ) );
 
 		if ( $row->tabid && ( ! $row->enabled ) ) {
 			echo '<div class="cbWarning">Tab is not published</div>' . "\n";
@@ -3404,7 +3404,7 @@ echo $tabs->endPane();
 	    $nameA = '';
 		$filesInstalled = true;
 		if ( $row->id ) {
-			$nameA = '[ '. htmlspecialchars( getLangDefinition( $row->name ) ) .' ]';
+			$nameA = '[ '. htmlspecialchars( CB_getLangDefinition( $row->name ) ) .' ]';
 			
 			$xmlfile	=	$_PLUGINS->getPluginXmlPath( $row );
 			$filesInstalled = file_exists($xmlfile);
