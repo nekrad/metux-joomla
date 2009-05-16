@@ -1,0 +1,73 @@
+/* CSS Document */
+.table_row_title{
+	background-color:#538eba;
+	color:#FFFFFF;
+	font-weight:bold;
+
+}
+.table_row_first{
+	background-color:#FFFFFF;
+}
+.table_row_second{
+	background-color:#f5fbff;
+}	
+.clsFloatLeft{
+	float:left;
+}
+.clsFloatRight{
+	float:right;
+}
+.clsClearBoth{
+	clear:both;
+}
+#clsTableTdPadd{
+	padding-top:6px;
+	padding-bottom:6px;
+}
+#clsDivMarginTop10{
+	margin-top:10px;
+} 
+#divBlogDetails{
+	font-size:11px;
+	text-align:right;
+}
+.clsTDBorderTop{
+	border-top:1px solid #CCCCCC;
+}
+.clsLinkedBlog{
+	border-bottom:1px solid #EEEEEE;
+	color:#4A4A4A;
+	font-family:Tahoma;
+	font-size:2em;
+	font-weight:normal;
+	letter-spacing:0;
+	line-height:1.35em;
+
+	background-image:url(Images/icons/myblog.gif);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+	padding-left:40px;
+}
+.clsImgPad{
+	padding:6px 5px 0px 0px;
+}
+.clsImgPadLeft{
+	padding-left:5px;
+}
+.clsPostTitle{
+	font-weight:bold;
+	font-size:18px;
+}
+.clsCommentTitle{
+	font-weight:bold;
+	margin-top:5px;
+}
+.clsBGCommentTop{
+	margin-top:5px;
+	background-image:url(Images/icons/comment_bg.jpg);
+	background-repeat:repeat-x;
+	background-position:top;
+	height:35px;
+	font-size:18px;
+	font-weight:bold;
+}
