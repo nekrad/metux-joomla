@@ -132,8 +132,10 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 		$this->params = $menu->getParams( $menuitemid );
 	    }
 	}
-	if ($v = $this->params->get($n))
+
+	if ((is_object($n)) && ($v = $this->params->get($n)))
 	    return $v;
+
 	return $_REQUEST{$n};
     }
 
