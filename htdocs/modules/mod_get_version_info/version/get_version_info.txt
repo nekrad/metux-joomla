@@ -1,0 +1,73 @@
+This version information is intended and the main version detector, for joomla and joomla extension programs.
+The use if simple enough...
+
+Constant _J1 represents Joomla 1.X Series, 
+Constant _J5 represents Joomla 1.5 Series. 
+
+Values of the Constants defined are as follows...
+
+	Joomla Version 1.0	Joomla Version 1.5 LEGACY	Joomla Version 1.5
+_J1		1				2					0
+_J5 		0				0					1
+
+
+Examples 
+--------
+
+Example (1)
+
+Variables $mosConfig_live_site & $mosConfig_absolute_path; are very important variables
+for the correct functioning of Joomla. The example below restores the vars for your use, regardless of the 
+version of Joomla running.
+
+//...............................................................................
+		if (constant('_J1'))
+		{
+		global $mainframe,$mosConfig_live_site,$mosConfig_absolute_path;
+		}
+		else if (constant('_J5'))
+		{
+		$mosConfig_live_site=JURI::root();
+		$mosConfig_absolute_path = JPATH_SITE;
+		}
+//...............................................................................
+
+Example (2)
+
+When and if you need to detect and cater for Legacy mode, use the vaule of the constant,
+instead of just its trueness. The following example obtains template information.
+In legacy mode, template information canot be obtained using Joomla 1.0 method, thus
+extensions written to read templates need to use Joomla 1.5 services when operating in 
+legacy mode.
+
+//...............................................................................
+			if (constant('_J1')==1)
+			{
+				$rows=page_getTemplates( 0 );
+			}
+			else if (constant('_J5') OR constant('_J1')==2)
+			{
+				global $mainframe;
+				$template_server=new TemplatesHelper();
+				$templateBaseDir=MYROOTDIR.DS."templates";
+				$rows=$template_server->parseXMLTemplateFiles($templateBaseDir);
+			} 
+//...............................................................................
+
+
+Other variables and constants declared.
+--------------------------------------
+
+Constant Joomla will now carry textual information about the specific Joomla install.
+It spits out the following info in the format below
+
+Joomla (evolution) (generation) (breed) (Legacy Mode)
+
+This, echo Joomla will yield Joomla 1.0.15 on Joomla 1.0.15.
+
+
+---------------------------------------------------------------------------------------
+
+~ jalil ~
+
+08:31 2008-06-20

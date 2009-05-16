@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>Module Get Version </name>
+	<author>jalil</author>
+	<creationDate>October 2008</creationDate>
+	<copyright>(c)Copyright September 2008 ~ jalil ~ All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>jalil@measat.org</authorEmail>
+	<authorUrl>www.joomlah.org</authorUrl>
+	<version>1.0.0</version>
+	<description>Module Get Version provides a common get version info for all Joomla</description>
+
+	<files>
+		<filename module="mod_get_version_info">mod_get_version_info.php</filename>
+		<filename>version/get_version_info.php</filename>
+		<filename>version/get_version_info.txt</filename>
+	</files>
+
+	<params>
+	</params>
+
+</mosinstall>
