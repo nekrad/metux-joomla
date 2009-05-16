@@ -103,8 +103,9 @@ class MCloud_View_MediaList_Base
     function getMediaList_Featured($limit, $media_class)
     {
 	global $remoteclient, $my;
+
 	if (!$_REQUEST{'featured_group_id'})
-	    print "Missing featured_group_id<br>\n";
+	    syslog(LOG_WARNING, "com_mcloud: missing featured_group_id");
 
 	return $this->_f($remoteclient->getMediaVisibleForUser(array(
 	    'username'		=> $my->username,
