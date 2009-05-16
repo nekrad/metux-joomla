@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Edit a group">
+                <message>
+                        <![CDATA[Edit a group]]>
+                </message>
+        </layout>
+	<state>
+                <name>Edit an group</name>
+                <description></description>	
+		<url>
+			<param name="group_id" type="text" label="Group-ID" default=""/>
+		</url>
+	</state>
+</metadata>

@@ -1,0 +1,17 @@
+<p style="font-weight: bold; font-style: italic">
+    This medium is only availabe in order to pay a small fee..
+</p>
+<p>
+    Price: {MEDIUM:PRICE}
+</p>
+
+<p>
+<form action="/">
+    <input type="hidden" name="view"        value="medium-buy"  />
+    <input type="hidden" name="medium_id"   value="{MEDIUM:ID}" />
+    <input type="hidden" name="confirm_buy" value="1" />
+    <input type="hidden" name="option"      value="{CURRENT:OPTION}" />
+    <input type="hidden" name="Itemid"      value="{CURRENT:ITEM_ID}" />
+    <input type="submit"                    value="Buy medium" />
+</form>
+</p>

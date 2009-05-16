@@ -1,0 +1,6 @@
+Package: com-mcloud
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 0.0.0.1
+Description: MediaCloud client component
+Priority: optional

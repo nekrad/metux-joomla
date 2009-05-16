@@ -1,0 +1,27 @@
+/* MCloud: main stylesheet file */
+
+.mcloud_uploadform	
+{
+}
+
+.mcloud_uploadform	#title
+{
+    width:		200px;
+}
+.mcloud_uploadform	#description
+{
+    width:		200px;
+}
+.mcloud_uploadform	#tags
+{
+    width:		200px;
+}
+.mcloud_uploadform	#price
+{
+    width:		200px;
+}
+.mcloud_uploadform	.tab_left
+{
+    width:		150px;
+    xx-vertical-align:	top;
+}

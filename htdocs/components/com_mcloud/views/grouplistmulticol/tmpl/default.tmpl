@@ -1,0 +1,51 @@
+
+    <patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+	{LANG:MCLOUD:GROUPLIST:CAPTION}
+    </patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore">
+	<h1> {PAGE_TITLE} </h1>
+	<table width="100%">
+	    <tr>
+		<th style="font-size: 12pt;">
+		    {CAPTION_0}
+		</th>
+		<th style="font-size: 12pt;">
+		    {CAPTION_1}
+		</th>
+		<th style="font-size: 12pt;">
+		    {CAPTION_2}
+		</th>
+	    </tr>
+	    <tr>
+		<td valign="top">
+		    <ul>
+	<patTemplate:tmpl name="component:group-list:entry:0" unusedvars="ignore">
+			<li> <a href="{GROUP:URL}"> {GROUP:TITLE} </a> </li>
+	</patTemplate:tmpl>
+		    </ul>
+		</td>
+		<td valign="top">
+		    <ul>
+	<patTemplate:tmpl name="component:group-list:entry:1" unusedvars="ignore">
+			<li> <a href="{GROUP:URL}"> {GROUP:TITLE} </a> </li>
+	</patTemplate:tmpl>
+		    </ul>
+		</td>
+		<td valign="top">
+		    <ul>
+	<patTemplate:tmpl name="component:group-list:entry:2" unusedvars="ignore">
+			<li> <a href="{GROUP:URL}"> {GROUP:TITLE} </a> </li>
+	</patTemplate:tmpl>
+		    </ul>
+		</td>
+	    </tr>
+	</table>
+    </patTemplate:tmpl>
+</patTemplate:tmpl>

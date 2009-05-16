@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="List groups">
+                <message>
+                        <![CDATA[List groups]]>
+                </message>
+        </layout>
+        <state>
+                <name>List groups</name>
+                <description>Shows an group list</description>
+                <url>
+<!--                        <param name="bond_id" type="text" default="" label="Bond ID" /> -->
+                </url>
+                <params>
+                </params>
+        </state>
+</metadata>

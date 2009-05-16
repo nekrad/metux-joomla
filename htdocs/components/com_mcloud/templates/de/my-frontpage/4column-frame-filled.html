@@ -1,0 +1,54 @@
+<style>
+TABLE.mediatable
+{
+    width:		100%;
+    text-align:		center;
+}
+
+TABLE.mediatable TR
+{
+    text-align:		center;
+    padding-bottom:	24px;
+    }
+
+TABLE.mediatable TR TH
+{
+    text-align:		center;
+    font-size:		large;
+/*    background-image:	url(images/bg_button_3d.gif); */
+    width:		25%;
+    height:		30px;
+    padding-top:	0px;
+    padding-bottom:	0px;
+    padding-right:	10px;
+/*    border-bottom:	1px solid black; */
+}
+
+TABLE.mediatable TR.head
+{
+    border:	1px sold black;
+    padding-bottom:	24px;
+    border:		1px solid red;
+}
+
+TABLE.mediatable TR.head TH
+{
+    padding-bottom:	24px;
+    border:		2px;
+}
+
+</style>
+
+
+<table cellpadding="1" align="center" class="mediatable" style= "background: url(/images/background_uservideos_4table.jpg)" no-repeat; width="770" height="1500" align="center">
+    <tr>
+	<th> Neueste		</th>
+	<th> Meist gesehene	</th>
+	<th> Meist bewertete	</th>
+	<th> Meist kommentiert	</th>
+    </tr>
+    <tr>
+	<th colspan="4" xstyle="border: 1px solid black"> <hr> </td>
+    </tr>
+{MEDIA:LIST:ELEMENTS}
+</table>

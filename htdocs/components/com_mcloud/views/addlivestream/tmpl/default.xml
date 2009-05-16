@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Add livestream">
+                <message>
+                        <![CDATA[Add livestream]]>
+                </message>
+        </layout>
+        <state>
+                <name>Add livestream</name>
+                <description>Add an livestream station</description>
+                <url>
+<!--                        <param name="bond_id" type="text" default="" label="Bond ID" /> -->
+                </url>
+                <params>
+                </params>
+        </state>
+</metadata>

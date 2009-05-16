@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="MCLOUD CATEGORY LIST LAYOUT">
+		<message>
+			<![CDATA[MCLOUD CATEGORY LIST LAYOUT DESC]]>
+		</message>
+	</layout>
+	<state>
+		<name>MediaCloud: Categories list</name>
+		<description>Shows a list of available media categories</description>
+		<url>
+			<param name="categories_layout" type="radio" default="2column" label="Category list layout">
+				<option value="list"> Simple list </option>
+				<option value="2column"> 2 Columns table </option>
+				<option value="3column"> 3 Columns table </option>
+			</param>
+			<param name="medialist_layout"  type="radio" default="3column" label="Media list Layout">
+				<option value="list"> Simple list </option>
+				<option value="2column"> 2 Columns table </option>
+				<option value="3column"> 3 Columns table </option>
+			</param>
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>

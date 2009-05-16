@@ -1,0 +1,73 @@
+
+    <patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+	Add livestream
+    </patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore">
+
+<h1> {LANG:MCLOUD:ADDLIVESTREAM:CAPTION} </h1>
+<form name="videoupload" action="./" method="GET">
+
+    <input type="hidden" name="option"     value="{CURRENT:COMPONENT}">
+    <input type="hidden" name="view"       value="{CURRENT:VIEW}">
+    <input type="hidden" name="media_ns"   value="{NAMESPACE}">
+    <input type="hidden" name="owner_ns"   value="{NAMESPACE}">
+    <input type="hidden" name="owner_name" value="{CURRENT:USERNAME}">
+    <input type="hidden" name="task"       value="addlivestream">
+    <input type="hidden" name="visibility" value="public">
+
+	<table cellpadding="0" cellspacing="0" border="0">
+	    <tr>
+		<td width="150"> {LANG:MCLOUD:ADDLIVESTREAM:TITLE}
+			<font class="required">*</font>
+		</td>
+		<td>
+			<input name="title" value="" class="inputbox" size="20" maxlength="50" style="width: 200px;" foo="bar"/>
+		</td>
+	    </tr>
+	    <tr>
+		<td valign="top"> {LANG:MCLOUD:ADDLIVESTREAM:DESCRIPTION} <font class="required">*</font> </td>
+		<td valign="top">
+			<textarea rows="4" cols="20" name="description" class="inputbox" style="width: 200px;"></textarea>
+		</td>
+	    </tr>
+	    <tr>
+		<td>{LANG:MCLOUD:TAGS} <font class="required">*</font> </td>
+		<td><input name="tags" class="inputbox" size="20" style="width: 200px;" /></td>
+	    </tr>
+	    <tr>
+		<td> {LANG:MCLOUD:ADDLIVESTREAM:STREAM-URL}: </td>
+		<td> <input name="stream_url" type="text" class="inputbox"> </td>
+	    </tr>
+	    <tr>
+		<td> {LANG:MCLOUD:ADDLIVESTREAM:STREAM-TYPE}: </td>
+		<td> 
+		    <select name="stream_type" class="inputbox">
+			<option value="livestream/mplayer2"> MediaPlayer </option>
+			<option value="livestream/flash"> Flash     </option>
+<!--			<option value="livestream/real">  RealVideo </option> -->
+		    </select>
+		</td>
+	    </tr>
+	    <tr>
+		<td> {LANG:MCLOUD:ADDLIVESTREAM:CATEGORY}: </td>
+		<td>
+		    <select name="category_id" class="inputbox">
+			{CATEGORY_SELECT}
+		    </select>
+		</td>
+	    <tr>
+		<td width="150"></td>
+		<td><input type="submit" class="inputbox" value="{LANG:MCLOUD:ADDLIVESTREAM:SUBMIT}" /></td>
+	    </tr>
+	</table>
+</form>
+    </patTemplate:tmpl>
+    
+</patTemplate:tmpl>

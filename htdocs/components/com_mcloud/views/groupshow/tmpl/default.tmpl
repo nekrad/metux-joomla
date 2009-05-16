@@ -1,0 +1,120 @@
+
+    <patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+	{LANG:MCLOUD:GROUPSHOW:CAPTION}
+    </patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore">
+
+	<h1> {LANG:MCLOUD:GROUPSHOW:CAPTION}: {GROUP:TITLE} </h1>
+
+	<p class="mcloud_showgroup_desc">
+{GROUP:DESCRIPTION}
+	</p>
+
+	<patTemplate:tmpl name="component:no-media-visible" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:PUBLIC-MEDIA} </h2>	    
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:media-visible" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:PUBLIC-MEDIA} </h2>
+	<table class="mcloud_showgroup_medialist">
+	    <patTemplate:tmpl name="component:media-visible:entry" unusedvars="ignore">
+
+	    <tr>
+		<td width="100" valign="top">
+		    <a href="{MEDIUM:URL}"><img width="100" src="{THUMB:URL}"></a>
+		</td>
+		<td width="*" valign="top">
+		    <div> <a href="{MEDIUM:URL}"> {MEDIUM:TITLE} </a></div>
+		    <div> {LANG:MCLOUD:MEDIALIST:CATEGORY}: <a href="{CATEGORY:URL}"> {CATEGORY:NAME} </a></div>
+		    <div> {MEDIUM:DESCRIPTION} </div>
+		</td>
+		<td width="{INFOWIDTH}" valign="top">
+		    <div> {LANG:MCLOUD:MEDIALIST:BY}: <a href="{MEDIUM:OWNERS-MEDIA}">{MEDIUM:OWNER_NAME}</a> </div>
+		</td>
+	    </tr>
+
+	    </patTemplate:tmpl>
+	</table>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:admin" unusedvars="ignore" visibility="hidden">
+	<div class="gadmin">
+	    <a href="{URL:GROUP:EDIT}">
+		<img src="http://mediaportal.metux.de/components/com_mcloud/images/icons/cog.png" border="0"/>
+		{LANG:MCLOUD:GROUPSHOW:EDIT}
+	    </a>
+	    <a href="{URL:GROUP:DELETE}"> 
+		<input type="image" src="/components/com_mcloud/images/icons/delete.png" alt="{LANG:MCLOUD:GROUPSHOW:DELETE}">
+		{LANG:MCLOUD:GROUPSHOW:DELETE}
+	    </a>		
+	</div>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:no-media-approved" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:APPROVED-MEDIA} </h2>	
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:media-approved" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:APPROVED-MEDIA} </h2>
+	<table class="mcloud_showgroup_medialist" width="100%">
+	    <patTemplate:tmpl name="component:media-approved:entry" unusedvars="ignore">
+
+	    <tr>
+		<td width="100" valign="top">
+		    <a href="{MEDIUM:URL}"><img width="100" src="{THUMB:URL}"></a>
+		</td>
+		<td width="*" valign="top">
+		    <div> <a href="{MEDIUM:URL}"> {MEDIUM:TITLE} </a></div>
+		    <div> {MEDIUM:DESCRIPTION} </div>
+		</td>
+		<td width="{INFOWIDTH}" valign="top">
+		    <div> {LANG:MCLOUD:MEDIALIST:BY}: <a href="{MEDIUM:OWNERS-MEDIA}">{MEDIUM:OWNER_NAME}</a> </div>
+		    <div> {LANG:MCLOUD:MEDIALIST:CATEGORY}: <a href="{CATEGORY:URL}"> {CATEGORY:NAME} </a></div>
+		</td>
+	    </tr>
+
+	    </patTemplate:tmpl>
+	</table>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:no-media-unapproved" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:UNAPPROVED-MEDIA} </h2>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:media-unapproved" unusedvars="ignore" visibility="hidden">
+	    <h2> {LANG:MCLOUD:GROUPSHOW:UNAPPROVED-MEDIA} </h2>
+	<table class="mcloud_showgroup_medialist" width="100%">
+	    <patTemplate:tmpl name="component:media-unapproved:entry" unusedvars="ignore">
+
+	    <tr>
+		<td width="100" valign="top">
+		    <a href="{MEDIUM:URL}"><img width="100" src="{THUMB:URL}"></a>
+		</td>
+		<td width="*" valign="top">
+		    <div> <a href="{MEDIUM:URL}"> {MEDIUM:TITLE} </a></div>
+		    <div> {MEDIUM:DESCRIPTION} </div>
+		</td>
+		<td width="{INFOWIDTH}" valign="top">
+		    <div> {LANG:MCLOUD:MEDIALIST:BY}: <a href="{MEDIUM:OWNERS-MEDIA}">{MEDIUM:OWNER_NAME}</a> </div>
+		    <div> {LANG:MCLOUD:MEDIALIST:CATEGORY}: <a href="{CATEGORY:URL}"> {CATEGORY:NAME} </a></div>
+		</td>
+		<td valign="top">
+		    <div> <a href="{MEDIUM:URL:APPROVE}">{LANG:MCLOUD:GROUPSHOW:APPROVE}</a> </div>
+		    <div> <a href="{MEDIUM:URL:REMOVE}">{LANG:MCLOUD:GROUPSHOW:REMOVE}</a></div>
+		</td>
+	    </tr>
+
+	    </patTemplate:tmpl>
+	</table>
+	</patTemplate:tmpl>
+
+    </patTemplate:tmpl>
+    
+</patTemplate:tmpl>

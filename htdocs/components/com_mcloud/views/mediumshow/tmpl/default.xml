@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Show medium">
+                <message>
+                        <![CDATA[Show medium]]>
+                </message>
+        </layout>
+        <state>
+                <name>Show medium<name>
+                <description>Shows an individual medium</description>
+                <url>
+			    <param name="medium_id" type="text" default="" label="Medium ID" />
+                </url>
+                <params>
+                </params>
+        </state>
+</metadata>

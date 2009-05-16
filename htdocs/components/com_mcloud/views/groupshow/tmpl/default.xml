@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+        <layout title="Show group">
+                <message>
+                        <![CDATA[Show group]]>
+                </message>
+        </layout>
+        <state>
+                <name>Show group<name>
+                <description>Shows an individual group</description>
+                <url>
+			    <param name="group_id" type="text" default="" label="Group ID" />
+                </url>
+                <params>
+                </params>
+        </state>
+</metadata>

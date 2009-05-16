@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mosinstall type="component">
+   <name>mcloud</name>
+   <creationDate>July 2008</creationDate>
+   <author>Enrico Weigelt</author>
+   <copyright>
+	Copyright 2008 metux IT service.
+    </copyright>
+   <authorEmail>weigelt@metux.de</authorEmail>
+   <authorUrl>http://www.metux.de</authorUrl>
+   <version>1.2</version>
+   <description>Joomla Frontend for the mediacloud media hosting service</description>
+   <files folder="frontend">
+      <filename>images/icons/cog.png</filename>
+      <filename>images/icons/delete.png</filename>
+      <filename>images/icons/edit.png</filename>
+      <filename>images/icons/exclamation.png</filename>
+      <filename>images/icons/group_delete.png</filename>
+      <filename>images/icons/group_add.png</filename>
+      <filename>images/default_thumb.jpg</filename>
+      <filename>js/swfobject.js</filename>
+      <filename>source/be/groups.php</filename>
+      <filename>source/be/usrfunc.php</filename>
+      <filename>source/comments.php</filename>
+      <filename>source/groups.php</filename>
+      <filename>source/grpmove.php</filename>
+      <filename>mcloud.class.php</filename>
+      <filename>mcloud.html.php</filename>
+      <filename>mcloud.php</filename>
+   </files>
+   <installfile>install.mcloud.php</installfile>
+   <administration>
+      <menu>MediaCloud</menu>
+      <submenu>
+         <menu task="users">Benutzer</menu>
+         <menu task="serversettings">Server Settings</menu>
+      </submenu>
+      <files folder="administrator">
+         <filename>admin.mcloud.html.php</filename>
+         <filename>admin.mcloud.php</filename>
+         <filename>config.mcloud.php</filename>
+         <filename>source/JMCloud_Admin_GeneralSettings.class.php</filename>
+         <filename>source/JMCloud_Admin_Homepage.class.php</filename>
+         <filename>source/JMCloud_Admin_ServerSettings.class.php</filename>
+         <filename>source/JMCloud_Admin_Users.class.php</filename>
+      </files>
+   </administration>
+</mosinstall>

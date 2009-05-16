@@ -1,0 +1,37 @@
+
+    <patTemplate:tmpl name="component:page_title" unusedvars="ignore">
+	{LANG:MCLOUD:GROUPLIST:CAPTION}
+    </patTemplate:tmpl>
+
+<patTemplate:tmpl name="component" unusedvars="ignore">
+
+    <patTemplate:tmpl name="component:error" unusedvars="ignore">
+	error
+    </patTemplate:tmpl>
+
+    <patTemplate:tmpl name="component:view" unusedvars="ignore">
+
+	<h1> {LANG:MCLOUD:GROUPLIST:CAPTION} </h1>
+
+	<patTemplate:tmpl name="component:group-list" unusedvars="ignore">
+	<table class="mcloud_grouplist">
+	    <patTemplate:tmpl name="group-entry" unusedvars="ignore">
+	    <tr>
+		<td width="*" valign="top">
+		    <div class="mcloud_grouplist_ent_title"><a href="{GROUP:URL}">{GROUP:TITLE}</a></div>
+		    <div class="mcloud_grouplist_ent_desc">{GROUP:DESCRIPTION}</div>
+		</td>
+		<td>
+		    <div class="mcloud_grouplist_ent_admin"> {LANG:MCLOUD:GROUPLIST:ADMIN}: {GROUP:OWNER_NAME} </div>
+		</td>
+	    </tr>
+	    </patTemplate:tmpl>
+	</table>
+	</patTemplate:tmpl>
+
+	<patTemplate:tmpl name="component:no-groups" unusedvars="ignore">
+	    <div class="padding"> {LANG:MCLOUD:GROUPLIST:NOGROUPS} </div>
+	</patTemplate:tmpl>
+    </patTemplate:tmpl>
+    
+</patTemplate:tmpl>
