@@ -3974,7 +3974,7 @@ function getFieldsForCBForm ( &$rowFields, &$rowFieldValues, $regErrorMSG=null )
 			$vardisabled = ($rowFields[$i]->readonly > 0) ? ' disabled="disabled"' : '';
 			if($rowFields[$i]->type=='radio') {
 				$rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::radioListTable( $Values, $rowFields[$i]->name,
-					'class="inputbox" size="1" '.$vardisabled.'mosReq="'.$rowFields[$i]->required.'" mosLabel="'.getLangDefinition($rowFields[$i]->title).'"',
+					'class="inputbox" size="1" '.$vardisabled.'mosReq="'.$rowFields[$i]->required.'" mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"',
 					'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->cols, $rowFields[$i]->rows, $rowFields[$i]->size, $rowFields[$i]->required);
 			} else {
 				$ks=explode("|*|",$k);
@@ -3984,11 +3984,11 @@ function getFieldsForCBForm ( &$rowFields, &$rowFieldValues, $regErrorMSG=null )
 				}
 				if($rowFields[$i]->type=='multicheckbox') {
 					$rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::checkboxListTable( $Values, $rowFields[$i]->name."[]",
-						'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.$vardisabled.' mosLabel="'.getLangDefinition($rowFields[$i]->title).'"',
+						'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.$vardisabled.' mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"',
 						'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->cols, $rowFields[$i]->rows, $rowFields[$i]->size, $rowFields[$i]->required);
 				} else {
 					$rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::selectList( $Values, $rowFields[$i]->name."[]",
-						'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.$vardisabled.' mosReq="'.$rowFields[$i]->required.'" mosLabel="'.getLangDefinition($rowFields[$i]->title).'"',
+						'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.$vardisabled.' mosReq="'.$rowFields[$i]->required.'" mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"',
 						'fieldtitle', 'fieldtitle', $k);
 				}
 			}
@@ -4101,7 +4101,7 @@ function getFieldsForCBForm ( &$rowFields, &$rowFieldValues, $regErrorMSG=null )
 //		if(isset($_POST[$rowFields[$i]->name])) $value=$cbFields->prepareFieldDataSave($rowFields[$i]->type,$rowFields[$i]->name,$_POST[$rowFields[$i]->name]);
 //		$rowExtras->$field = $value;
 //		if ($value == "" && $rowFields[$i]->required == 1 && !in_array($rowFields[$i]->type, array("delimiter", "hidden"))) {
-//			$reqErrors[] = getLangDefinition($rowFields[$i]->title) . " : " . unHtmlspecialchars(_UE_REQUIRED_ERROR);
+//			$reqErrors[] = CBE_getLangDefinition($rowFields[$i]->title) . " : " . unHtmlspecialchars(_UE_REQUIRED_ERROR);
 //		}
 //	}
 //
@@ -4208,13 +4208,13 @@ function getFieldsForCBForm ( &$rowFields, &$rowFieldValues, $regErrorMSG=null )
 //	$modSub=null;
 //	$modMSG=null;
 //	if($confirmed==0) {
-//		$cbNotification->sendFromSystem($user[0],getLangDefinition($ueConfig['reg_pend_appr_sub']),getLangDefinition($ueConfig['reg_pend_appr_msg']));
+//		$cbNotification->sendFromSystem($user[0],CBE_getLangDefinition($ueConfig['reg_pend_appr_sub']),CBE_getLangDefinition($ueConfig['reg_pend_appr_msg']));
 // 	} elseif($approved==0 && $confirmed==1) {
-//		$cbNotification->sendFromSystem($user[0],getLangDefinition($ueConfig['reg_pend_appr_sub']),getLangDefinition($ueConfig['reg_pend_appr_msg']));
+//		$cbNotification->sendFromSystem($user[0],CBE_getLangDefinition($ueConfig['reg_pend_appr_sub']),CBE_getLangDefinition($ueConfig['reg_pend_appr_msg']));
 //		$modSub=_UE_REG_ADMIN_PA_SUB;
 //		$modMSG=_UE_REG_ADMIN_PA_MSG;
 // 	} else {
-//		// done in activateUser() below: $cbNotification->sendFromSystem($user[0],getLangDefinition($ueConfig['reg_welcome_sub']),getLangDefinition($ueConfig['reg_welcome_msg']));
+//		// done in activateUser() below: $cbNotification->sendFromSystem($user[0],CBE_getLangDefinition($ueConfig['reg_welcome_sub']),CBE_getLangDefinition($ueConfig['reg_welcome_msg']));
 //		$modSub=_UE_REG_ADMIN_SUB;
 //		$modMSG=_UE_REG_ADMIN_MSG;
 //		// activateUser($user[0], false); // Disable for AEC
@@ -4339,7 +4339,7 @@ function getFieldsForCBForm ( &$rowFields, &$rowFieldValues, $regErrorMSG=null )
 //						$resultError = _LOGIN_REJECTED;
 //					} else if ( $row->confirmed != 1 ) {
 //						$cbNotification = new cbNotification();
-//						$cbNotification->sendFromSystem($row->id,getLangDefinition($ueConfig['reg_pend_appr_sub']),getLangDefinition($ueConfig['reg_pend_appr_msg']));
+//						$cbNotification->sendFromSystem($row->id,CBE_getLangDefinition($ueConfig['reg_pend_appr_sub']),CBE_getLangDefinition($ueConfig['reg_pend_appr_msg']));
 //						$resultError = _LOGIN_NOT_CONFIRMED;
 //					} else if ( $row->approved == 0 ) {
 //						$resultError = _LOGIN_NOT_APPROVED;

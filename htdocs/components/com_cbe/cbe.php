@@ -843,7 +843,7 @@ $tabs->startPane($pID);//for identification
 									//		$fieldValue = cbe_wordwrap($fieldValue, $rowFields[$i]->cols, 1);
 									//	}
 									//}
-									$fieldtitle = getLangDefinition($rowFields[$i]->title);
+									$fieldtitle = CBE_getLangDefinition($rowFields[$i]->title);
 									$evenodd = $t % 2;
 									if ($evenodd == 0)
 									$class = 'sectiontableentry1';
@@ -886,12 +886,12 @@ $tabs->startPane($pID);//for identification
 									if ($rowFields[$i]->title == '-null-') {
 										$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">&nbsp;</td></tr>\n";
 									} else {
-										$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">". getLangDefinition($rowFields[$i]->title) ."</td></tr>\n";
+										$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">". CBE_getLangDefinition($rowFields[$i]->title) ."</td></tr>\n";
 									}
 									if ($rowFields[$i]->information == '-null-' || $rowFields[$i]->infotag == 'none') {
 										$tfield .= "<tr><td colspan=\"2\" class=\"CBEfieldInfoCell\">&nbsp;</td></tr>\n";
 									} else if (($rowFields[$i]->infotag != 'none') && $rowFields[$i]->information != '-null-') {
-										$tfield .= "</tr>\n<tr>\n<td colspan=\"2\" class=\"CBEfieldInfoCell\">". getLangDefinition($rowFields[$i]->information) ."</td>\n";
+										$tfield .= "</tr>\n<tr>\n<td colspan=\"2\" class=\"CBEfieldInfoCell\">". CBE_getLangDefinition($rowFields[$i]->information) ."</td>\n";
 									}
 									if ($rowFields[$i]->infotag == "both") {
 										$tabhasfilledfield = 1;
@@ -1023,7 +1023,7 @@ $tabs->startPane($pID);//for identification
 							//		$fieldValue = cbe_wordwrap($fieldValue, $rowFields[$i]->cols, 1);
 							//	}
 							//}
-							$fieldtitle = getLangDefinition($rowFields[$i]->title);
+							$fieldtitle = CBE_getLangDefinition($rowFields[$i]->title);
 							$evenodd = $t % 2;
 							if ($evenodd == 0)
 							$class = 'sectiontableentry1';
@@ -1066,12 +1066,12 @@ $tabs->startPane($pID);//for identification
 							if ($rowFields[$i]->title == '-null-') {
 								$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">&nbsp;</td></tr>\n";
 							} else {
-								$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">". getLangDefinition($rowFields[$i]->title) ."</td></tr>\n";
+								$tfield .= "<tr><td colspan=\"2\" class=\"CBEspacerCell\">". CBE_getLangDefinition($rowFields[$i]->title) ."</td></tr>\n";
 							}
 							if ($rowFields[$i]->information == '-null-' || $rowFields[$i]->infotag == 'none') {
 								$tfield .= "<tr><td colspan=\"2\" class=\"CBEfieldInfoCell\">&nbsp;</td></tr>\n";
 							} else if (($rowFields[$i]->infotag != 'none') && $rowFields[$i]->information != '-null-') {
-								$tfield .= "</tr>\n<tr>\n<td colspan=\"2\" class=\"CBEfieldInfoCell\">". getLangDefinition($rowFields[$i]->information) ."</td>\n";
+								$tfield .= "</tr>\n<tr>\n<td colspan=\"2\" class=\"CBEfieldInfoCell\">". CBE_getLangDefinition($rowFields[$i]->information) ."</td>\n";
 							}
 							if ($rowFields[$i]->infotag == "both") {
 								$tabhasfilledfield = 1;
@@ -1197,7 +1197,7 @@ function usersList( $option, $uid, $submitvalue) {
 
 	for ($i=0, $n=count( $plists ); $i < $n; $i++) {
 		$plist =& $plists[$i];
-		$publishedlists[] = JHTML::_('select.option', $plist->listid, getLangDefinition($plist->title) );
+		$publishedlists[] = JHTML::_('select.option', $plist->listid, CBE_getLangDefinition($plist->title) );
 	}
 
 	if(!isset($_POST['listid']) && !isset($_REQUEST['listid'])) {
@@ -1245,7 +1245,7 @@ function usersList( $option, $uid, $submitvalue) {
 				. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 				$cfield = $database->loadObjectList();
 				$cfield = $cfield[0];
-				if($row[0]->col1captions==1)  $oTitle =  getLangDefinition($cfield->title).": ";
+				if($row[0]->col1captions==1)  $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 				else $oTitle='';
 				$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 			}
@@ -1269,7 +1269,7 @@ function usersList( $option, $uid, $submitvalue) {
 				. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 				$cfield = $database->loadObjectList();
 				$cfield = $cfield[0];
-				if($row[0]->col2captions==1) $oTitle =  getLangDefinition($cfield->title).": ";
+				if($row[0]->col2captions==1) $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 				else $oTitle='';
 				$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 			}
@@ -1287,7 +1287,7 @@ function usersList( $option, $uid, $submitvalue) {
 			. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 			$cfield = $database->loadObjectList();
 			$cfield = $cfield[0];
-			if($row[0]->col3captions==1)  $oTitle =  getLangDefinition($cfield->title).": ";
+			if($row[0]->col3captions==1)  $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 			else $oTitle='';
 			$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 		}
@@ -1305,7 +1305,7 @@ function usersList( $option, $uid, $submitvalue) {
 				. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 				$cfield = $database->loadObjectList();
 				$cfield = $cfield[0];
-				if($row[0]->col4captions==1)  $oTitle =  getLangDefinition($cfield->title).": ";
+				if($row[0]->col4captions==1)  $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 				else $oTitle='';
 				$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 			}
@@ -1690,15 +1690,15 @@ function registerForm( $option, $emailpass,$regErrorMSG=null ) {
 			$multi_o = 1;
 		}
 		if(count($Values) > 0) {
-			if($rowFields[$i]->type=='radio') $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::radioList( $Values, $rowFields[$i]->name, 'class="inputbox" size="1" mosLabel="'.getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->required);
+			if($rowFields[$i]->type=='radio') $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::radioList( $Values, $rowFields[$i]->name, 'class="inputbox" size="1" mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->required);
 			else {
 				$ks=explode("|*|",$k);
 				$k = array();
 				foreach($ks as $kv) {
 					$k[]->fieldtitle=$kv;
 				}
-				if($rowFields[$i]->type=='multicheckbox') $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::checkboxList( $Values, $rowFields[$i]->name."[]", 'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.' mosLabel="'.getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k,$rowFields[$i]->required);
-				else $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::selectList( $Values, $rowFields[$i]->name."[]", 'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.' mosLabel="'.getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->required,0,$multi_o);
+				if($rowFields[$i]->type=='multicheckbox') $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::checkboxList( $Values, $rowFields[$i]->name."[]", 'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.' mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k,$rowFields[$i]->required);
+				else $rowFieldValues['lst_'.$rowFields[$i]->name] = moscbeHTML::selectList( $Values, $rowFields[$i]->name."[]", 'class="inputbox" size="'.$rowFields[$i]->size.'" '.$multi.' mosLabel="'.CBE_getLangDefinition($rowFields[$i]->title).'"', 'fieldtitle', 'fieldtitle', $k, $rowFields[$i]->required,0,$multi_o);
 			}
 		}
 	}
@@ -3053,7 +3053,7 @@ function cbsearch( $option, $uid, $submitvalue)
 			{
 				$fieldid = $rowField->fieldid;
 				$name = $rowField->name;
-				$title = getLangDefinition($rowField->title);
+				$title = CBE_getLangDefinition($rowField->title);
 				$type = $rowField->type;
 				$rangeflag = $rowField->range;
 
@@ -3087,7 +3087,7 @@ function cbsearch( $option, $uid, $submitvalue)
 							{
 								$i= ($i==1) ? 2 : 1;
 								$Value=$Value->fieldtitle;
-								$langValue = getLangDefinition($Value);
+								$langValue = CBE_getLangDefinition($Value);
 								$options .= '<input type="checkbox" name="'.$name.'[]" value = "'.$Value.'" >'.$langValue.'</input>'."\n";
 								if ( $i == 2 ) {
 //									$options .= "<br>";
@@ -3128,7 +3128,7 @@ function cbsearch( $option, $uid, $submitvalue)
 							// iterate through $Values, appending them to $options
 							foreach ( $Values as $Value ) {
 								$Value=$Value->fieldtitle;
-								$langValue = getLangDefinition($Value);
+								$langValue = CBE_getLangDefinition($Value);
 								$options .= '<option value="'.$Value.'" ';
 								$options .= ">$langValue</option> \n";
 							}
@@ -3190,7 +3190,7 @@ function cbsearch( $option, $uid, $submitvalue)
 
 							{
 								$Value=$Value->fieldtitle;
-								$langValue = getLangDefinition($Value);
+								$langValue = CBE_getLangDefinition($Value);
 								$options .= '<option value="'.$Value.'" ';
 								$options .= ">$langValue</option>\n";
 							}
@@ -3798,7 +3798,7 @@ function cbsearchlist( $option, $uid, $submitvalue)
 
 	{
 		$plist =& $plists[$i];
-		$publishedlists[] = JHTML::_('select.option',  $plist->listid, getLangDefinition($plist->title) );
+		$publishedlists[] = JHTML::_('select.option',  $plist->listid, CBE_getLangDefinition($plist->title) );
 	}
 
 	if(empty($act_search_ses->listid))
@@ -3851,7 +3851,7 @@ function cbsearchlist( $option, $uid, $submitvalue)
 				$cfield = $database->loadObjectList();
 				$cfield = $cfield[0];
 				if($row[0]->col1captions==1)
-				$oTitle =  getLangDefinition($cfield->title).": ";
+				$oTitle =  CBE_getLangDefinition($cfield->title).": ";
 				else $oTitle='';
 				$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 			}
@@ -3889,7 +3889,7 @@ function cbsearchlist( $option, $uid, $submitvalue)
 
 				if($row[0]->col2captions==1)
 
-				$oTitle =  getLangDefinition($cfield->title).": ";
+				$oTitle =  CBE_getLangDefinition($cfield->title).": ";
 
 				else
 
@@ -3917,7 +3917,7 @@ function cbsearchlist( $option, $uid, $submitvalue)
 			. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 			$cfield = $database->loadObjectList();
 			$cfield = $cfield[0];
-			if($row[0]->col3captions==1)  $oTitle =  getLangDefinition($cfield->title).": ";
+			if($row[0]->col3captions==1)  $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 			else $oTitle='';
 			$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 		}
@@ -3944,7 +3944,7 @@ function cbsearchlist( $option, $uid, $submitvalue)
 				. "\nWHERE f.published = 1 AND f.fieldid=".$col[$i]);
 				$cfield = $database->loadObjectList();
 				$cfield = $cfield[0];
-				if($row[0]->col4captions==1)  $oTitle =  getLangDefinition($cfield->title).": ";
+				if($row[0]->col4captions==1)  $oTitle =  CBE_getLangDefinition($cfield->title).": ";
 				else $oTitle='';
 				$lfields .=  " \".getFieldValue('".$cfield->type."',\$user->".$cfield->name.",\$user,'".$oTitle."').\"";
 

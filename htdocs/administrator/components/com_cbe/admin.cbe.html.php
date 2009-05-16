@@ -55,8 +55,8 @@ for ($i=0, $n=count( $rows ); $i < $n; $i++) {
     <tr class="<?php echo "row$k"; ?>">
       <td><?php echo $i+1+$pageNav->limitstart;?></td>
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->listid; ?>" onClick="isChecked(this.checked);" /></td>
-      <td> <a href="#editList" onClick="return listItemTask('cb<?php echo $i;?>','editList')"><?php echo getLangDefinition($row->title); ?></a></td>
-      <td><?php echo getLangDefinition($row->description); ?></td>
+      <td> <a href="#editList" onClick="return listItemTask('cb<?php echo $i;?>','editList')"><?php echo CBE_getLangDefinition($row->title); ?></a></td>
+      <td><?php echo CBE_getLangDefinition($row->description); ?></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
 ','<?php echo $task3;?>')"><img src="<?php echo $imgpath.$img3;?>" width="12" height="12" border="0" alt="" /></a></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
@@ -214,8 +214,8 @@ function searchManage( &$rows, $pageNav, $search, $option )
       <th width="10%" class="title"><?php echo _UE_CBE_FM_FIELDNAME; ?></th>
       <th width="10%" class="title"><?php echo _UE_CBE_FM_FIELDTYPE; ?></th>
       <th width="5%" class="title"><?php echo _UE_CBE_SM_RANGE; ?>?</th>
-      <th width="5%" class="title"><?php echo getLangDefinition($enhanced_Config['searchtab1']); ?></th>
-      <th width="5%" class="title"><?php echo getLangDefinition($enhanced_Config['searchtab2']); ?></th>
+      <th width="5%" class="title"><?php echo CBE_getLangDefinition($enhanced_Config['searchtab1']); ?></th>
+      <th width="5%" class="title"><?php echo CBE_getLangDefinition($enhanced_Config['searchtab2']); ?></th>
       <th width="5%" class="title"><?php echo _UE_CBE_SM_MODULE; ?>?</th>
       <th width="5%" class="title" colspan="2"><?php echo _UE_CBE_FM_RE_ORDER; ?></th>
           </tr>
@@ -242,7 +242,7 @@ for ($i=0; $i < $n; $i++) {
       <td><?php echo $i+1+$pageNav->limitstart;?></td>
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->fieldid; ?>" onClick="isChecked(this.checked);" /></td>
       <td><?php echo $row->name; ?></td>
-      <td><?php echo getLangDefinition($row->title); ?></td>
+      <td><?php echo CBE_getLangDefinition($row->title); ?></td>
       <td><?php echo $row->type; ?></td>
 
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
@@ -302,7 +302,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 		for ($i=0, $n=count( $col1fields ); $i < $n; $i++) {
 			$col1field =& $col1fields[$i];
 			if(trim($col1field)!='' && trim($col1field)!=null) {
-				$col1options .= "<option value=\"".$col1field."\">".getLangDefinition(array_search($col1field,$fields))."\n";
+				$col1options .= "<option value=\"".$col1field."\">".CBE_getLangDefinition(array_search($col1field,$fields))."\n";
 				if($i>0) $fieldids .= ",";
 				$fieldids .= "'".$col1field."'";
 			}
@@ -312,7 +312,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 		for ($i=0, $n=count( $col2fields ); $i < $n; $i++) {
 			$col2field =& $col2fields[$i];
 			if(trim($col2field)!='' && trim($col2field)!=null) {
-				$col2options .= "<option value=\"".$col2field."\">".getLangDefinition(array_search($col2field,$fields))."\n";
+				$col2options .= "<option value=\"".$col2field."\">".CBE_getLangDefinition(array_search($col2field,$fields))."\n";
 				$fieldids .= ",";
 				$fieldids .= "'".$col2field."'";
 			}
@@ -322,7 +322,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 		for ($i=0, $n=count( $col3fields ); $i < $n; $i++) {
 			$col3field =& $col3fields[$i];
 			if(trim($col3field)!='' && trim($col3field)!=null) {
-				$col3options .= "<option value=\"".$col3field."\">".getLangDefinition(array_search($col3field,$fields))."\n";
+				$col3options .= "<option value=\"".$col3field."\">".CBE_getLangDefinition(array_search($col3field,$fields))."\n";
 				$fieldids .= ",";
 				$fieldids .= "'".$col3field."'";
 			}
@@ -332,7 +332,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 		for ($i=0, $n=count( $col4fields ); $i < $n; $i++) {
 			$col4field =& $col4fields[$i];
 			if(trim($col4field)!='' && trim($col4field)!=null) {
-				$col4options .= "<option value=\"".$col4field."\">".getLangDefinition(array_search($col4field,$fields))."\n";
+				$col4options .= "<option value=\"".$col4field."\">".CBE_getLangDefinition(array_search($col4field,$fields))."\n";
 				$fieldids .= ",";
 				$fieldids .= "'".$col4field."'";
 			}
@@ -430,7 +430,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 					<?php
 					for ($i=0, $n=count( $sortfields ); $i < $n; $i++) {
 						$sortfield =& $sortfields[$i];
-						echo "<option value=\"`".$sortfield->name."`\">".getLangDefinition($sortfield->title)."\n";
+						echo "<option value=\"`".$sortfield->name."`\">".CBE_getLangDefinition($sortfield->title)."\n";
 					}
 
 					?>
@@ -440,7 +440,7 @@ function editList( &$row, $lists, $fields, $option, $tabid ) {
 					for ($i=0, $n=count( $sortparts ); $i < $n; $i++) {
 						$sortpart = $sortparts[$i];
 						if($sortpart['field']!='') {
-							echo "<option value=\"`".$sortpart['field']."` ".$sortpart['dir']."\">".getLangDefinition($sortpart['title'])." [".$sortpart['dir']."]\n";
+							echo "<option value=\"`".$sortpart['field']."` ".$sortpart['dir']."\">".CBE_getLangDefinition($sortpart['title'])." [".$sortpart['dir']."]\n";
 						}
 					}
 
@@ -482,7 +482,7 @@ foreach($filterlists as $filterlist) {
 	$database->setQuery("SELECT title FROM #__cbe_fields WHERE name='".$filterparts[$i]['field']."' LIMIT 1");
 	$filtertitle=$database->loadResult();
 	$filterparts[$i]['value']=$filterlist;
-	$filterparts[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts[$i]['field'],getLangDefinition($filtertitle),$filterlist));
+	$filterparts[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts[$i]['field'],CBE_getLangDefinition($filtertitle),$filterlist));
 
 	$i++;
 }
@@ -493,7 +493,7 @@ foreach($filterlists as $filterlist) {
 				<select name="filterfieldlist">
 					<?php
 					foreach ($filterfields AS $filterfield) {
-						echo "<option value=\"`".$filterfield->name."`\">".getLangDefinition($filterfield->title)."\n";
+						echo "<option value=\"`".$filterfield->name."`\">".CBE_getLangDefinition($filterfield->title)."\n";
 					}
 
 					?>
@@ -573,7 +573,7 @@ foreach($filterlists as $filterlist) {
 					<?php
 					for ($i=0, $n=count( $fields ); $i < $n; $i++) {
 						$field =& $fields[$i];
-						echo "<option value=\"".$field->fieldid."\">".getLangDefinition($field->title)."\n";
+						echo "<option value=\"".$field->fieldid."\">".CBE_getLangDefinition($field->title)."\n";
 					}
 
 					?>
@@ -702,7 +702,7 @@ for ($i=0, $n=count( $rows ); $i < $n; $i++) {
 	$task4 = $row->registration ?  'fieldRegistrationNo' : 'fieldRegistrationYes';
 
 	if ($i > 0 && $row->tabid != $rows[$i-1]->tabid) {
-		echo "<th class=\"title\" colspan=\"14\"><center>".getLangDefinition($row->tab)."</centcer></th>";
+		echo "<th class=\"title\" colspan=\"14\"><center>".CBE_getLangDefinition($row->tab)."</centcer></th>";
 	}
 ?>
     <tr class="<?php echo "row$k"; ?>">
@@ -710,9 +710,9 @@ for ($i=0, $n=count( $rows ); $i < $n; $i++) {
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->fieldid; ?>" onClick="isChecked(this.checked);" /></td>
       <td> <a href="#editField" onClick="return listItemTask('cb<?php echo $i;?>','editField')">
         <?php echo $row->name; ?> </a> </td>
-      <td><?php echo getLangDefinition($row->title); ?></td>
+      <td><?php echo CBE_getLangDefinition($row->title); ?></td>
       <td><?php echo $row->type; ?></td>
-      <td><?php echo getLangDefinition($row->tab); ?></td>
+      <td><?php echo CBE_getLangDefinition($row->tab); ?></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
 ','<?php echo $task;?>')"><img src="<?php echo $imgpath.$img;?>" width="12" height="12" border="0" alt="" /></a></td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
@@ -1169,8 +1169,8 @@ for ($i=0, $n=count( $rows ); $i < $n; $i++) {
       <td><?php echo $i+1+$pageNav->limitstart;?></td>
       <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->tabid; ?>" onClick="isChecked(this.checked);" /></td>
       <td> <a href="#editTab" onClick="return listItemTask('cb<?php echo $i;?>','editTab')">
-        <?php echo getLangDefinition($row->title); ?> </a> </td>
-	<td><?php echo getLangDefinition($row->description); ?> </td>
+        <?php echo CBE_getLangDefinition($row->title); ?> </a> </td>
+	<td><?php echo CBE_getLangDefinition($row->description); ?> </td>
       <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
 ','<?php echo $task3;?>')"><img src="<?php echo $imgpath.$img3;?>" width="12" height="12" border="0" alt="" /></a></td>
       <td>
@@ -1732,7 +1732,7 @@ foreach($filterlists_me as $filterlist_me) {
 	$database->setQuery("SELECT title FROM #__cbe_fields WHERE name='".$filterparts_me[$i]['field']."' LIMIT 1");
 	$filtertitle_me=$database->loadResult();
 	$filterparts_me[$i]['value']=$filterlist_me;
-	$filterparts_me[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts_me[$i]['field'],getLangDefinition($filtertitle_me),$filterlist_me));
+	$filterparts_me[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts_me[$i]['field'],CBE_getLangDefinition($filtertitle_me),$filterlist_me));
 
 	$i++;
 }
@@ -1744,7 +1744,7 @@ foreach($filterlists_me as $filterlist_me) {
 				<select name="filterfieldlist_me">
 					<?php
 					foreach ($filterfields AS $filterfield) {
-						echo "<option value=\"`".$filterfield->name."`\">".getLangDefinition($filterfield->title)."\n";
+						echo "<option value=\"`".$filterfield->name."`\">".CBE_getLangDefinition($filterfield->title)."\n";
 					}
 
 					?>
@@ -1856,7 +1856,7 @@ foreach($filterlists_you as $filterlist_you) {
 	$database->setQuery("SELECT title FROM #__cbe_fields WHERE name='".$filterparts_you[$i]['field']."' LIMIT 1");
 	$filtertitle_you=$database->loadResult();
 	$filterparts_you[$i]['value']=$filterlist_you;
-	$filterparts_you[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts_you[$i]['field'],getLangDefinition($filtertitle_you),$filterlist_you));
+	$filterparts_you[$i]['title']=str_replace(array("'","`"),"",str_replace($filterparts_you[$i]['field'],CBE_getLangDefinition($filtertitle_you),$filterlist_you));
 
 	$i++;
 }
@@ -1868,7 +1868,7 @@ foreach($filterlists_you as $filterlist_you) {
 				<select name="filterfieldlist_you">
 					<?php
 					foreach ($filterfields AS $filterfield) {
-						echo "<option value=\"`".$filterfield->name."`\">".getLangDefinition($filterfield->title)."\n";
+						echo "<option value=\"`".$filterfield->name."`\">".CBE_getLangDefinition($filterfield->title)."\n";
 					}
 
 					?>
@@ -5480,8 +5480,8 @@ function show_AdMods( &$rows, $pageNav, $search, $option ) {
 	    <tr class="<?php echo "row$k"; ?>">
 	      <td><?php echo $i+1+$pageNav->limitstart;?></td>
 	      <td><input type="checkbox" id="cb<?php echo $i;?>" name="cid[]" value="<?php echo $row->id; ?>" onClick="isChecked(this.checked);" /></td>
-	      <td> <a href="#editAdMods" onClick="return listItemTask('cb<?php echo $i;?>','editAdMods')"><?php echo getLangDefinition($row->title); ?></a></td>
-	      <td><?php echo getLangDefinition($row->content); ?></td>
+	      <td> <a href="#editAdMods" onClick="return listItemTask('cb<?php echo $i;?>','editAdMods')"><?php echo CBE_getLangDefinition($row->title); ?></a></td>
+	      <td><?php echo CBE_getLangDefinition($row->content); ?></td>
 	      <td width="10%"><a href="javascript: void(0);" onClick="return listItemTask('cb<?php echo $i;?>
 	','<?php echo $task3;?>')"><img src="<?php echo $imgpath.$img3;?>" width="12" height="12" border="0" alt="" /></a></td>
 	      <td><?php echo $row->position; ?></td>

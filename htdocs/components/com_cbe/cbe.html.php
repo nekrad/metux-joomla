@@ -284,11 +284,11 @@ var cbeDefaultFieldBackground;
 		echo "\t if (cbe_geocoder_dto == 1) {\n";
 		echo "\t\t if (cbe_geocoder_as_error == 1) {\n";
 		echo "\t\t\t iserror = 1;\n";
-		echo "\t\t\t errorMSG += \"".getLangDefinition("_UE_CBE_GEOCODER_E_ASNOTDONE")."\";\n";
+		echo "\t\t\t errorMSG += \"".CBE_getLangDefinition("_UE_CBE_GEOCODER_E_ASNOTDONE")."\";\n";
 		echo "\t\t }\n";
 		echo "\t\t if (cbe_geocoder_dto_success == 0 && cbe_geocoder_as_error == 0) {\n";
 		echo "\t\t\t iserror = 1;\n";
-		echo "\t\t\t errorMSG += \"".getLangDefinition("_UE_CBE_GEOCODER_E_ASNOSUCCESS")."\";\n";
+		echo "\t\t\t errorMSG += \"".CBE_getLangDefinition("_UE_CBE_GEOCODER_E_ASNOSUCCESS")."\";\n";
 		echo "\t\t }\n";
 		echo "\t }\n";
 	}
@@ -1073,8 +1073,8 @@ function usersList($row,$lfields,$lists,$listid)
 		$acl =& JFactory::getACL();
 		$database = &JFactory::getDBO();
 		
-		$mainframe->setPageTitle(getLangDefinition($row->title));
-		$mainframe->appendMetaTag('keywords',getLangDefinition($row->title));
+		$mainframe->setPageTitle(CBE_getLangDefinition($row->title));
+		$mainframe->appendMetaTag('keywords',CBE_getLangDefinition($row->title));
 		
 		$search = cbGetEscaped(trim( strtolower( $search)));
 		$Itemid_ul = JRequest::getVar('Itemid', '');
@@ -1177,7 +1177,7 @@ function validate(){
 
   <table width="100%" cellpadding="4" cellspacing="0" border="0" align="center" class="contentpane">
   	<tr>
-  	  <td colspan="2"><span class="contentheading"><?php echo getLangDefinition($row->title); ?></span></td>
+  	  <td colspan="2"><span class="contentheading"><?php echo CBE_getLangDefinition($row->title); ?></span></td>
   	</tr>
   <tr>
   <form name="ueform" method="post" action="<?php echo $ue_base_url;?>&action=search" >
@@ -1237,19 +1237,19 @@ function validate(){
 		$active_col = 0;
 		if ($row->col1enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col1title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col1title)."</b></td>\n";
 		}
 		if ($row->col2enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col2title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col2title)."</b></td>\n";
 		}
 		if ($row->col3enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col3title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col3title)."</b></td>\n";
 		}
 		if ($row->col4enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col4title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col4title)."</b></td>\n";
 		}
 		?>		
         </tr>
@@ -1392,7 +1392,7 @@ echo "  background: ".$enhanced_Config['searchtab_color']."; \n";
 echo "} \n";
 echo "</style> \n";
 $tabs->startPane( 'cbsearchprofiletabpane' );
-$tabs->startPanel( getLangDefinition($enhanced_Config['searchtab1']), 'cbsearchtab1' );
+$tabs->startPanel( CBE_getLangDefinition($enhanced_Config['searchtab1']), 'cbsearchtab1' );
 
 echo '<table border="0" cellspacing="0" cellpadding="2">';
 
@@ -1419,7 +1419,7 @@ echo '</table>';
 $tabs->endPanel();
 
 if ($enhanced_Config['show_advanced_search_tab']=='1') { 
-	$tabs->startPanel( getLangDefinition($enhanced_Config['searchtab2']), 'cbsearchtab2' );
+	$tabs->startPanel( CBE_getLangDefinition($enhanced_Config['searchtab2']), 'cbsearchtab2' );
 	echo '<table border="0" cellspacing="0" cellpadding="2">';
 ?>
 
@@ -1603,19 +1603,19 @@ function cbsearchlist($row,$lfields,$lists,$listid,$act_search_ses,$submitvalue)
 		$active_col = 0;
 		if ($row->col1enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col1title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col1title)."</b></td>\n";
 		}
 		if ($row->col2enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col2title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col2title)."</b></td>\n";
 		}
 		if ($row->col3enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col3title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col3title)."</b></td>\n";
 		}
 		if ($row->col4enabled) {
 			$active_col++;
-			echo "<td><b>".getLangDefinition($row->col4title)."</b></td>\n";
+			echo "<td><b>".CBE_getLangDefinition($row->col4title)."</b></td>\n";
 		}
 		?>		
         </tr>
@@ -2038,22 +2038,22 @@ for($i=0, $n=count( $rowFields ); $i < $n; $i++) {
 		if ($rowFields[$i]->title=='-null-') {
 			$pfields .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">&nbsp;</td>\n";
 		} else {
-			$pfields .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">". getLangDefinition($rowFields[$i]->title) ."</td>\n";
+			$pfields .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">". CBE_getLangDefinition($rowFields[$i]->title) ."</td>\n";
 		}
 		if ($rowFields[$i]->information) {
 			if ($rowFields[$i]->information=='-null-') {
 				$pfields .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">&nbsp;</td>\n";
 			} else {
-				$pfields .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">". getLangDefinition($rowFields[$i]->information) ."</td>\n";
+				$pfields .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">". CBE_getLangDefinition($rowFields[$i]->information) ."</td>\n";
 			}
 		}
 	} else {
 	
 		if ($rowFields[$i]->information && ($rowFields[$i]->infotag == 'tag' || $rowFields[$i]->infotag == 'both')) {
 			$CBEtip = getCBEtip($rowFields[$i]->title,$rowFields[$i]->information);
-			$pfields .= "\t\t\t<td class=\"titleCell\"><div style=\"border-bottom:2px dotted #FB0303;\" ".$CBEtip.">". getLangDefinition($rowFields[$i]->title) .":</div></td>";
+			$pfields .= "\t\t\t<td class=\"titleCell\"><div style=\"border-bottom:2px dotted #FB0303;\" ".$CBEtip.">". CBE_getLangDefinition($rowFields[$i]->title) .":</div></td>";
 		} else {
-			$pfields .= "\t\t\t<td class=\"titleCell\">". getLangDefinition($rowFields[$i]->title) .":</td>";
+			$pfields .= "\t\t\t<td class=\"titleCell\">". CBE_getLangDefinition($rowFields[$i]->title) .":</td>";
 		}
 		if($regErrorMSG!=null && isset($_POST[$rowFields[$i]->name])) {
 			$oValue = $_POST[$rowFields[$i]->name];

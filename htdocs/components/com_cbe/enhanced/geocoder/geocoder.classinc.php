@@ -145,7 +145,7 @@ $re_ouput .= "}\n";
 $re_ouput .= "</style>\n";
 
 $re_output .= "\n\n<table cellpadding='5' cellspacing='0' border='0' width='100%'>\n";
-$re_output .= "\t\t<br /><div><b>".getLangDefinition($tab->description)."</b></div><br />\n";
+$re_output .= "\t\t<br /><div><b>".CBE_getLangDefinition($tab->description)."</b></div><br />\n";
 // if ($enhanced_Config['geocoder_show_single_addrfield']== '1') {
 	$re_output .= "<tr><td>"._UE_CBE_GEOCODER_E_ADDR."</td>";
 	$re_output .= "<td><textarea name=\"GeoAddr\" id=\"GeoAddr\" rows=\"7\" cols=\"30\" onChange=\"act_geo_btn();\"".$GeoAddr_readonly.">";

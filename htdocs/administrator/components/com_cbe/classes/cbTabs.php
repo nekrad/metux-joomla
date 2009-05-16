@@ -182,13 +182,13 @@ class cbTabs {
 			if($oFContent!="") $oContent .= $oFContent;
 			if($oContent!="") {
 				if($ueConfig['nesttabs'] && $oTab->fields) {
-					$oNest .= $this->startTab("CBNest",getLangDefinition($oTab->title),$oTab->tabid);
+					$oNest .= $this->startTab("CBNest",CBE_getLangDefinition($oTab->title),$oTab->tabid);
 					$oNest .= "\n\t\t\t<table cellpadding=\"5\" cellspacing=\"0\" border=\"0\" width=\"90%\"><tr><td>";
 					$oNest .= $oContent;
 					$oNest .= "\n\t</td></tr></table>";
 					$oNest .= $this->endTab();
 				} else {
-					$results .= $this->startTab("CB",getLangDefinition($oTab->title),$oTab->tabid);
+					$results .= $this->startTab("CB",CBE_getLangDefinition($oTab->title),$oTab->tabid);
 					$results .= "\n\t\t\t<table cellpadding=\"5\" cellspacing=\"0\" border=\"0\" width=\"95%\"><tr><td>";
 					$results .= $oContent;
 					$results .= "\n\t</td></tr></table>";
@@ -235,7 +235,7 @@ class cbTabs {
 				}
 				$t++;
 				$results .= "\n\t\t\t\t<tr class=".$class.">";
-				$results .= "\n\t\t\t\t\t<td style=\"font-weight:bold;width:40%;\">". getLangDefinition($oField->title) .":</td>";
+				$results .= "\n\t\t\t\t\t<td style=\"font-weight:bold;width:40%;\">". CBE_getLangDefinition($oField->title) .":</td>";
 
 				$results .= "\n\t\t\t\t\t<td>".$oValue."</td>";
 				$results .= "\n\t\t\t\t</tr>";
@@ -382,8 +382,8 @@ class cbTabs {
 			if($oFContent!="") $oContent .= $oFContent;
 			if($oContent!="") {
 
-				$results .= $this->startTab("CB",getLangDefinition($oTab->title),$oTab->tabid);
-				//$results .= $pane->startPanel(getLangDefinition($oTab->title),$oTab->tabid);
+				$results .= $this->startTab("CB",CBE_getLangDefinition($oTab->title),$oTab->tabid);
+				//$results .= $pane->startPanel(CBE_getLangDefinition($oTab->title),$oTab->tabid);
 				$results .= "\n\t\t\t<table cellpadding=\"5\" cellspacing=\"0\" border=\"0\" width=\"95%\"><tr><td>";
 				$results .= $oContent;
 				$results .= "\n\t</td></tr></table>";
@@ -416,7 +416,7 @@ function _getEditTabContents($tab,$user) {
 		$fieldJS=' ';
 		if(count($rowFields)>0) {
 			$results .= "\t<table cellpadding=\"5\" cellspacing=\"0\" border=\"0\" width=\"100%\">\n";
-			if($tab->description != null) $results .= "\t\t<br /><div><b>".getLangDefinition($tab->description)."</b></div><br />\n";
+			if($tab->description != null) $results .= "\t\t<br /><div><b>".CBE_getLangDefinition($tab->description)."</b></div><br />\n";
 			foreach($rowFields AS $rowField) {
 				$k = "\$user->".$rowField->name;
 				eval("\$k = \"$k\";");
@@ -455,15 +455,15 @@ function _getEditTabContents($tab,$user) {
 					$multi_o = 1;
 				}
 				if(count($Values) > 0) {
-					if($rowField->type=='radio') $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::radioList( $Values, $rowField->name, 'class="inputbox" size="1" mosReq="'.$adminReq.'" mosLabel="'.getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly);
+					if($rowField->type=='radio') $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::radioList( $Values, $rowField->name, 'class="inputbox" size="1" mosReq="'.$adminReq.'" mosLabel="'.CBE_getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly);
 					else {
 						$ks=explode("|*|",$k);
 						$k = array();
 						foreach($ks as $kv) {
 							$k[]->fieldtitle=$kv;
 						}
-						if($rowField->type=='multicheckbox') $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::checkboxList( $Values, $rowField->name."[]", 'class="inputbox" size="'.$rowField->size.'" '.$multi.' mosLabel="'.getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly);
-						else $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::selectList( $Values, $rowField->name."[]", 'class="inputbox" size="'.$rowField->size.'" '.$multi.' mosReq="'.$adminReq.'" mosLabel="'.getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly, $multi_o);
+						if($rowField->type=='multicheckbox') $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::checkboxList( $Values, $rowField->name."[]", 'class="inputbox" size="'.$rowField->size.'" '.$multi.' mosLabel="'.CBE_getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly);
+						else $rowFieldValues['lst_'.$rowField->name] = moscbeHTML::selectList( $Values, $rowField->name."[]", 'class="inputbox" size="'.$rowField->size.'" '.$multi.' mosReq="'.$adminReq.'" mosLabel="'.CBE_getLangDefinition($rowField->title).'"', 'fieldtitle', 'fieldtitle', $k, $adminReq, $rowField->readonly, $multi_o);
 					}
 				}
 				$fieldValueList="";
@@ -474,22 +474,22 @@ function _getEditTabContents($tab,$user) {
 					if ($rowField->title == '-null-') {
 						$results .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">&nbsp;</td>\n";
 					} else {
-						$results .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">". getLangDefinition($rowField->title) ."</td>\n";
+						$results .= "\t\t\t<td colspan=\"".$colspan."\" class=\"CBEspacerCell\">". CBE_getLangDefinition($rowField->title) ."</td>\n";
 					}
 					if ($rowField->information) {
 						if ($rowField->information=='-null-') {
 							$results .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">&nbsp;</td>\n";
 						} else {
-							$results .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">". getLangDefinition($rowField->information) ."</td>\n";
+							$results .= "\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"".$colspan."\" class=\"CBEfieldInfoCell\">". CBE_getLangDefinition($rowField->information) ."</td>\n";
 						}
 					}
 				} else {
-					if(getLangDefinition($rowField->title)!="") {
+					if(CBE_getLangDefinition($rowField->title)!="") {
 						if ($rowField->information && ($rowField->infotag == 'tag' || $rowField->infotag == 'both')) {
 							$CBEtip = getCBEtip($rowField->title, $rowField->information);
-							$results .= "\t\t\t<td class=\"titleCell\"><div style=\"border-bottom:2px dotted #FB0303;\" ".$CBEtip.">". getLangDefinition($rowField->title) .":</div></td>";
+							$results .= "\t\t\t<td class=\"titleCell\"><div style=\"border-bottom:2px dotted #FB0303;\" ".$CBEtip.">". CBE_getLangDefinition($rowField->title) .":</div></td>";
 						} else {
-							$results .= "\t\t\t<td class=\"titleCell\">". getLangDefinition($rowField->title) .":</td>";
+							$results .= "\t\t\t<td class=\"titleCell\">". CBE_getLangDefinition($rowField->title) .":</td>";
 						}
 						$colspan=1;
 					}

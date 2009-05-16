@@ -50,7 +50,7 @@ class moscbeHTML extends JHTML {
 				$f_options = "</td><td>";
 			}
 			
-			$html .= "\n\t <input type=\"radio\" name=\"$tag_name\" $isReq $pReadOnly $tag_attribs value=\"".$k."\"$extra> " . getLangDefinition($t) . $f_options;
+			$html .= "\n\t <input type=\"radio\" name=\"$tag_name\" $isReq $pReadOnly $tag_attribs value=\"".$k."\"$extra> " . CBE_getLangDefinition($t) . $f_options;
 		}
 		$html .= "\n";
 		$html .= "</td></tr> </table> \n";
@@ -89,7 +89,7 @@ class moscbeHTML extends JHTML {
 				$extra .= ($k == stripslashes($selected) ? " selected=\"selected\"" : '');
 			}
 			$html .= "\n\t<option value=\"".$k."\"$extra>";
-			$html .= getLangDefinition($t);
+			$html .= CBE_getLangDefinition($t);
 			$html .= "</option>";
 		}
 		$html .= "\n</select>\n";
@@ -137,7 +137,7 @@ class moscbeHTML extends JHTML {
 				$f_options = "</td><td>";
 			}
 
-			$html .= "\n\t<input type=\"checkbox\" name=\"$tag_name\" mosReq=\"$isReq\"".$pReadOnly."value=\"".$k."\"$extra $tag_attribs />" . getLangDefinition($t) . $f_options;
+			$html .= "\n\t<input type=\"checkbox\" name=\"$tag_name\" mosReq=\"$isReq\"".$pReadOnly."value=\"".$k."\"$extra $tag_attribs />" . CBE_getLangDefinition($t) . $f_options;
 		}
 		$html .= "\n";
 		$html .= "</td></tr> </table> \n";

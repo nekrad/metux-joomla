@@ -222,14 +222,14 @@ function createEmail($row,$type,$ueConfig,$rowAdmin=null,$includePWD=0) {
 	global $mosConfig_sitename;
 
 // PK edit
-	$ueConfig['reg_reject_sub']	= getLangDefinition($ueConfig['reg_reject_sub']);
-	$ueConfig['reg_reject_msg']	= getLangDefinition($ueConfig['reg_reject_msg']);
-	$ueConfig['reg_pend_appr_sub']	= getLangDefinition($ueConfig['reg_pend_appr_sub']);
-	$ueConfig['reg_pend_appr_msg']	= getLangDefinition($ueConfig['reg_pend_appr_msg']);
-	$ueConfig['reg_welcome_sub']	= getLangDefinition($ueConfig['reg_welcome_sub']);
-	$ueConfig['reg_welcome_msg']	= getLangDefinition($ueConfig['reg_welcome_msg']);
-	$ueConfig['reg_unregister_sub']	= getLangDefinition($ueConfig['reg_unregister_sub']);
-	$ueConfig['reg_unregister_msg']	= getLangDefinition($ueConfig['reg_unregister_msg']);
+	$ueConfig['reg_reject_sub']	= CBE_getLangDefinition($ueConfig['reg_reject_sub']);
+	$ueConfig['reg_reject_msg']	= CBE_getLangDefinition($ueConfig['reg_reject_msg']);
+	$ueConfig['reg_pend_appr_sub']	= CBE_getLangDefinition($ueConfig['reg_pend_appr_sub']);
+	$ueConfig['reg_pend_appr_msg']	= CBE_getLangDefinition($ueConfig['reg_pend_appr_msg']);
+	$ueConfig['reg_welcome_sub']	= CBE_getLangDefinition($ueConfig['reg_welcome_sub']);
+	$ueConfig['reg_welcome_msg']	= CBE_getLangDefinition($ueConfig['reg_welcome_msg']);
+	$ueConfig['reg_unregister_sub']	= CBE_getLangDefinition($ueConfig['reg_unregister_sub']);
+	$ueConfig['reg_unregister_msg']	= CBE_getLangDefinition($ueConfig['reg_unregister_msg']);
 // PK end
 
 	SWITCH($type) {
@@ -462,7 +462,7 @@ function getNameFormat($name,$uname,$format) {
 	}
 	return $returnName;
 }
-function getLangDefinition($text) {
+function CBE_getLangDefinition($text) {
 	if(defined($text)) $returnText = constant($text);
 	else $returnText = $text;
 	return $returnText;
@@ -494,14 +494,14 @@ function getFieldValue($oType,$oValue=null,$user=null,$prefix=null, $cols=null) 
 		break;
 		CASE 'select':
 		CASE 'radio':
-		$oReturn = getLangDefinition($oValue);
+		$oReturn = CBE_getLangDefinition($oValue);
 		break;
 		CASE 'multiselect':
 		CASE 'multicheckbox':
 			$oValue_tmp = explode("|*|", $oValue);
 			$oCount = count($oValue_tmp);
 			for($i=0; $i < $oCount; $i++) {
-				$oValue_tmp[$i] = getLangDefinition($oValue_tmp[$i]);
+				$oValue_tmp[$i] = CBE_getLangDefinition($oValue_tmp[$i]);
 			}
 			$oReturn = implode(";", $oValue_tmp);
 			
@@ -584,7 +584,7 @@ function getFieldValue($oType,$oValue=null,$user=null,$prefix=null, $cols=null) 
 		if ($cols > 0) {
 			$oReturn = cbe_wordwrap($oValue, $cols, 1);
 		} else {
-			$oReturn = getLangDefinition($oValue);
+			$oReturn = CBE_getLangDefinition($oValue);
 		}
 		break;
 		CASE 'geo_calc_dist':
@@ -630,7 +630,7 @@ function getFieldValue($oType,$oValue=null,$user=null,$prefix=null, $cols=null) 
 			$oReturn = $user_age;
 		break;
 		DEFAULT:
-		$oReturn = getLangDefinition($oValue);
+		$oReturn = CBE_getLangDefinition($oValue);
 		break;
 	}
 	if($prefix != null && ($oReturn != null || $oReturn != '')) $oReturn = $prefix.$oReturn;
@@ -657,10 +657,10 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 	}
 	SWITCH ($oType){
 		CASE 'text':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		CASE 'textarea':
-		 $oReturn = "<textarea class=\"inputbox\" $pReadOnly onkeyup=\"limitText(this,$oMaxLen)\"mosReq=".$oReq." $pMax mosLabel=\"".getLangDefinition($oLabel)."\" $pCols $pRows  name=\"".$oName."\">".$oValue."</textarea>";
+		 $oReturn = "<textarea class=\"inputbox\" $pReadOnly onkeyup=\"limitText(this,$oMaxLen)\"mosReq=".$oReq." $pMax mosLabel=\"".CBE_getLangDefinition($oLabel)."\" $pCols $pRows  name=\"".$oName."\">".$oValue."</textarea>";
 		break;
 		CASE 'editorta':
 		 if ($oReadOnly == "0") {
@@ -675,7 +675,7 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 }
 		//echo $fieldJS;
 		 if ($oReadOnly == "0") {
-		 	$oReturn .= " <script> document.adminForm.".$oName.".setAttribute('mosReq',".$oReq."); document.adminForm.".$oName.".setAttribute('mosLabel','".getLangDefinition($oLabel)."'); </script>";
+		 	$oReturn .= " <script> document.adminForm.".$oName.".setAttribute('mosReq',".$oReq."); document.adminForm.".$oName.".setAttribute('mosLabel','".CBE_getLangDefinition($oLabel)."'); </script>";
 		 }
 		break;
 		CASE 'select':
@@ -687,13 +687,13 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		CASE 'checkbox':
 		 $checked='';
 		 if($oValue!='' && $oValue != null && $oValue==1) $checked="CHECKED";
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"checkbox\" $checked name=\"".$oName."\" value=\"1\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"checkbox\" $checked name=\"".$oName."\" value=\"1\" />";
 		break;
 		CASE 'hidden':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosLabel=\"".getLangDefinition($oLabel)."\" type=\"hidden\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"hidden\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		CASE 'password':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"password\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"password\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		CASE 'date':
 		 $dFind=array("d","m","y","Y");
@@ -702,9 +702,9 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 else $oValue=dateConverter($oValue,'Y-m-d',$ueConfig['date_format']);
 		 $sqlFormat = "Y-m-d";
 		 if ($oReadOnly == '1') {
-		 	$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 	$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		 } else {
-		 	$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" onBlur=\"checkCalDate($oName);\" />";
+		 	$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" onBlur=\"checkCalDate($oName);\" />";
 		 }
 		 if($oReadOnly!=1) $oReturn .= "<input type=\"reset\" class=\"button\" value=\"...\" onClick=\"return showCalendar2('".$oName."', '".str_replace($dFind, $dReplace, $ueConfig['date_format'])."',0,0);\" />";
 		break;
@@ -715,7 +715,7 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 else $oValue=dateConverter($oValue,'Y-m-d',$ueConfig['date_format']);
 		 $sqlFormat = "Y-m-d";
 		 if ($oReadOnly == '1') {
-		 	$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 	$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		 } else {
 		 	$oValue_hid = '';
 		 	if (empty($oValue) && !empty($oFieldDefault)) {
@@ -724,7 +724,7 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 		$oValue_hid = $oValue;
 		 	}
 			list($df_lowRange, $df_highRange) = explode(",", $oFieldRange);
-		 	$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" "
+		 	$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" "
 		 		 ."cbe_type=\"".$oType."\" lowRange=\"".$df_lowRange."\" highRange=\"".$df_highRange."\" value=\"".$oValue."\" "
 		 		 ."onBlur=\"checkCalDateRange($oName);\" onChange=\"updateHiddenData($oName,".$oName."_hid);\" />";
 		 	$oReturn .= "<input type=\"hidden\" id=\"".$oName."_hid\" name=\"".$oName."_hid\" value=\"".$oValue_hid."\" />";
@@ -741,16 +741,16 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 list($df_day,$df_month,$df_year) = explode("-",$oValue);
 		 $sqlFormat = "Y-m-d";
 		 if ($oReadOnly == '1') {
-		 	//$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
-		 	$oReturn  = "<select class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_day\" name=\"".$oName."_day\" /> \n";
+		 	//$oReturn = "<input class=\"inputbox\" readonly mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 	$oReturn  = "<select class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_day\" name=\"".$oName."_day\" /> \n";
 		 	$oReturn .= "<option>".$df_day."</option> \n";
 		 	$oReturn .= "</select> \n";
 		 	$oReturn .= " - ";
-		 	$oReturn .= "<select class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_mon\" name=\"".$oName."_mon\" /> \n";
+		 	$oReturn .= "<select class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_mon\" name=\"".$oName."_mon\" /> \n";
 		 	$oReturn .= "<option>".$df_month."</option> \n";
 		 	$oReturn .= "</select> \n";
 		 	$oReturn .= " - ";
-		 	$oReturn .= "<select cbe_type=\"".$oType."\" cbe_name=\"".$oName."\" class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_year\" name=\"".$oName."_year\" /> \n";
+		 	$oReturn .= "<select cbe_type=\"".$oType."\" cbe_name=\"".$oName."\" class=\"\inputbox\" DISABLED disabled=\"disabled\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_year\" name=\"".$oName."_year\" /> \n";
 		 	$oReturn .= "<option>".$df_year."</option> \n";
 		 	$oReturn .= "</select> \n";
 		 	$oReturn .= "<input type=\"hidden\" id=\"".$oName."_hid\" name=\"".$oName."_hid\" value=\"".$oValue_hid."\" />";
@@ -768,8 +768,8 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 		list($df_lowRange, $df_highRange) = explode(",", $oFieldRange);
 		 		
 		 	}
-		 	//$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" onBlur=\"checkCalDate($oName); checkCalDateRange($oName);\" />";
-		 	$oReturn  = "<select class=\"\inputbox\" mosLabel=\"".getLangDefinition($oLabel."_day")."\" type=\"select\" id=\"".$oName."_day\" name=\"".$oName."_day\" "
+		 	//$oReturn = "<input class=\"inputbox\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" id=\"".$oName."\" name=\"".$oName."\" value=\"".$oValue."\" onBlur=\"checkCalDate($oName); checkCalDateRange($oName);\" />";
+		 	$oReturn  = "<select class=\"\inputbox\" mosLabel=\"".CBE_getLangDefinition($oLabel."_day")."\" type=\"select\" id=\"".$oName."_day\" name=\"".$oName."_day\" "
 		 		  ."onBlur=\"cbe_checkDateSelect('".$oName."', 1);\" /> \n";
 			for ($i=1; $i < 32; $i++) {
 				$_select = '';
@@ -780,7 +780,7 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 			}
 		 	$oReturn .= "</select> \n";
 			$oReturn .= " - ";
-			$oReturn .= "<select class=\"\inputbox\" mosLabel=\"".getLangDefinition($oLabel."_mon")."\" type=\"select\" id=\"".$oName."_mon\" name=\"".$oName."_mon\" "
+			$oReturn .= "<select class=\"\inputbox\" mosLabel=\"".CBE_getLangDefinition($oLabel."_mon")."\" type=\"select\" id=\"".$oName."_mon\" name=\"".$oName."_mon\" "
 				  ."onChange=\"cbe_checkDayCount('".$oName."');\"/> \n";
 			for ($i=1; $i < 13; $i++) {
 				$_select = '';
@@ -791,7 +791,7 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 			}
 		 	$oReturn .= "</select> \n";
 			$oReturn .= " - ";
-			$oReturn .= "<select cbe_type=\"".$oType."\" cbe_name=\"".$oName."\" mosReq=".$oReq." class=\"\inputbox\" mosLabel=\"".getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_year\" name=\"".$oName."_year\" "
+			$oReturn .= "<select cbe_type=\"".$oType."\" cbe_name=\"".$oName."\" mosReq=".$oReq." class=\"\inputbox\" mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"select\" id=\"".$oName."_year\" name=\"".$oName."_year\" "
 				  ."onChange=\"cbe_checkDayCount('".$oName."');\"/> \n";
 			// $_stop = 0; $_stop = $df_highRange - $df_lowRange + 1;
 			$_stop = 0; $_stop = $df_highRange - $df_lowRange;
@@ -809,19 +809,19 @@ function getFieldEntry($oType,$oName,$oInformation,$oInfoTag,$oValue,$oReq,$oLab
 		 //if($oReadOnly!=1) $oReturn .= "<input type=\"reset\" class=\"button\" value=\"...\" onClick=\"return showCalendar2('".$oName."', '".str_replace($dFind, $dReplace, $ueConfig['date_format'])."');\" />";
 		break;
 		CASE 'emailaddress':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly $pMax onBlur=\"isValidEmailAddress(this);\" mosReq=".$oReq." $pSize mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly $pMax onBlur=\"isValidEmailAddress(this);\" mosReq=".$oReq." $pSize mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		CASE 'webaddress':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $pSize mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly $pMax $pSize mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" type=\"text\" name=\"".$oName."\" id=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		case 'spacer':
 		 $oReturn= "";
 		break;
 		CASE 'numericfloat':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly onBlur=\"isNummericFieldFloat(this);\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly onBlur=\"isNummericFieldFloat(this);\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 		CASE 'numericint':
-		 $oReturn = "<input class=\"inputbox\" $pReadOnly onBlur=\"isNummericFieldInt(this);\" mosReq=".$oReq." mosLabel=\"".getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
+		 $oReturn = "<input class=\"inputbox\" $pReadOnly onBlur=\"isNummericFieldInt(this);\" mosReq=".$oReq." mosLabel=\"".CBE_getLangDefinition($oLabel)."\" $pSize $pMax type=\"text\" name=\"".$oName."\" value=\"".$oValue."\" />";
 		break;
 
 	}
@@ -1270,7 +1270,7 @@ Function getContactTab($tab,$user,$action,$ui) {
 	$noproIMG = " <img src='".substr_replace(JURI::root(), '', -1, 1)."/components/com_cbe/images/noprofiles.gif' width='11' height='14' alt='-' title='"._UE_FIELDNOPROFILE."' />";
 	$return="";
 	$return .= "<table cellpadding='5' cellspacing='0' border='0' width='100%'>\n";
-	$return .= "\t\t<br /><div><b>".getLangDefinition($tab->description)."</b></div><br />\n";
+	$return .= "\t\t<br /><div><b>".CBE_getLangDefinition($tab->description)."</b></div><br />\n";
 	$return .= "		<tr>\n";
 	$return .= "			<td class='titleCell'>"._UE_UNAME."</td>\n";
 	$return .= "			<td>";

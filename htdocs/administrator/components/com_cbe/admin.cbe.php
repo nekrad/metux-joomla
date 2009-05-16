@@ -1269,7 +1269,7 @@ function editField( $fid='0', $option='com_cbe' ) {
 
 	for ($i=0, $n=count( $tabs ); $i < $n; $i++) {
 		$tab =& $tabs[$i];
-		$tablist[] = JHTML::_('select.option',  $tab->tabid, getLangDefinition($tab->title) );
+		$tablist[] = JHTML::_('select.option',  $tab->tabid, CBE_getLangDefinition($tab->title) );
 	}
 
 	$lists['tabs'] = JHTML::_('select.genericlist',  $tablist, 'tabid', 'class="inputbox" size="1" mosReq=1 mosLabel="Tab"', 'value', 'text', $row->tabid );
@@ -1498,15 +1498,15 @@ function removeField( $cid, $option ) {
 			" WHERE sortfields LIKE '%".$obj->name."%'OR filterfields LIKE '%".$obj->name."%'");
 			$onList2 = $database->loadResult();
 			if($onList > 0 || $onList2 > 0) {
-				$msg .= getLangDefinition($obj->title) . " cannot be deleted because it is on a List. \n";
+				$msg .= CBE_getLangDefinition($obj->title) . " cannot be deleted because it is on a List. \n";
 				$noDelete = 1;
 			}
 			if($obj->sys==1) {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a system field. \n";
+				$msg .= CBE_getLangDefinition($obj->title) ." cannot be deleted because it is a system field. \n";
 				$noDelete = 1;
 			}
 			if($obj->delete_able==0) {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is an enhanced-function (system) field. \n";
+				$msg .= CBE_getLangDefinition($obj->title) ." cannot be deleted because it is an enhanced-function (system) field. \n";
 				$noDelete = 1;
 			}
 			if($noDelete != 1) {
@@ -1679,7 +1679,7 @@ function editTab( $tid='0', $option='com_cbe' ) {
 	$nest_tab_list = $database->loadObjectList();
 	if (count($nest_tab_list) != 0) {
 		foreach ($nest_tab_list as $nest_tab) {
-			$tabnid[] = JHTML::_('select.option',  $nest_tab->tabid, getLangDefinition($nest_tab->title) );
+			$tabnid[] = JHTML::_('select.option',  $nest_tab->tabid, CBE_getLangDefinition($nest_tab->title) );
 		}
 	}
 
@@ -1756,11 +1756,11 @@ function removeTabs( $cid, $option, $ret=null ) {
 			$database->setQuery("SELECT COUNT(*) FROM #__cbe_fields WHERE tabid='$id'");
 			$onField = $database->loadResult();
 			if($obj->sys==1) {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
+				$msg .= CBE_getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
 				$noDelete = 1;
 			}
 			if ($obj->plugin=='getContactTab') {
-				$msg .= getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
+				$msg .= CBE_getLangDefinition($obj->title) ." cannot be deleted because it is a system tab. \n";
 				$noDelete = 1;
 			}
 			if($onField>0) {

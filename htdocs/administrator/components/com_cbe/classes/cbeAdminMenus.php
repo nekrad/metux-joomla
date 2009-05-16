@@ -24,7 +24,7 @@ class cbeAdminMenus {
 		if (count($tab_cats) > 0) {
 			$tab_catn = array();
 			foreach ($tab_cats as $tab_cat) {
-				$tab_cat->text = getLangDefinition($tab_cat->text);
+				$tab_cat->text = CBE_getLangDefinition($tab_cat->text);
 				if ($tab_cat->enhp != "") {
 					$tab_cat->text = $tab_cat->text." -EnhTab- ";
 				}
