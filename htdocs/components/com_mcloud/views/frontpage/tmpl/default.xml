@@ -21,6 +21,11 @@
 				<option value="2column"> 2 Columns </option>
 				<option value="3column"> 3 Columns </option>
 			</param>
+			<param name="player_enabled"       type="radio" default="1" label="Player enabled" description="Should the frontpage player be shown?">
+				<option value="1"> Enabled </option>
+				<option value="0"> Disabled </option>
+			</param>
+			<param name="player_headline"      type="text" default=""    label="Player headline text" />			
 			<param name="player_widget_width"  type="text" default="200" label="Player widget width" />
 			<param name="player_widget_height" type="text" default="225" label="Player widget height" />
 			<param name="player_menu_height"   type="text" default="260" label="Player menu height" />

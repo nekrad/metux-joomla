@@ -62,8 +62,12 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 
     function render_player($medium_url, $medium, $player_width, $player_height, $medialist)
     {
-	return
+	$enabled = JRequest::getInt("player_enabled");
+
+	if ($enabled)
+	    return
 	    _template_fillout('frontpage/player-frame', array(
+		'FRONTPAGE:PLAYER-FRAME:HEADLINE'	=> JRequest::getString('player_headline'),
 		'PLAYER:WIDGET'		=> $this->render_player_box($medium_url, $medium, $player_width, $player_height),
 		'MEDIUM:1:TITLE'	=> $medialist[1]{'title'},
 		'MEDIUM:1:URL'		=> $this->_mlink(1),
@@ -78,6 +82,8 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
 		'MEDIUM:6:TITLE'	=> $medialist[6]{'title'},
 		'MEDIUM:6:URL'		=> $this->_mlink(6)
 	    ));
+	else
+	    return "";
     }
 
     function render_topmedia()
