@@ -10,33 +10,6 @@ class MCloud_View_Frontpage extends MCloud_View_MediaList_Base
     var $template_prefix = 'frontpage';
     var $default_width   = 300;
     var $default_height  = 225;
-    var $medialist = array
-    (
-	1 => array(
-	    'title'	=> 'Television Europe TV',
-	    'medium_id'	=> 3726934
-	),
-	2 => array(
-	    'title'	=> 'ATV News',
-	    'medium_id'	=> 3291266
-	),
-	3 => array(
-	    'title'	=> 'Viaggio in Liguria',
-	    'medium_id'	=> 3726874
-	),
-	4 => array(
-	    'title'	=> 'Da Ai Television',
-	    'medium_id'	=> 3726910
-	),
-	5 => array(
-	    'title'	=> 'Lifestyle Plus TV',
-	    'medium_id'	=> 1972306
-	),
-	6 => array(
-	    'title'	=> 'Lifestyle Plus TV',
-	    'medium_id'	=> 1972306
-	)
-    );
 
     function render_player_box_video($medium_url, $medium, $player_width, $player_height)
     {
