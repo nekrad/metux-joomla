@@ -116,13 +116,9 @@ class MC_RemoteClient
 
     function queryGroups($param)
     {
-	$urlpar = $param;
-	$urlpar{'namespace'} = $this->namespace;
-	$urlpar{'token'}     = $this->helper->Group_Query_Key($urlpar);
-
-	$query_url = $this->prefix.'/query_groups.php?'.$this->_mk_urlpar($urlpar);
-	$r = implode('',file($query_url));
-	$result = json_decode($r,true);
+	$result = $this->_rpcexec(
+	    "group-query-global",
+	    $param);
 
 	if ($result{'status'} != 'ok')
 	    throw new Exception("query failed: ".serialize($result));
