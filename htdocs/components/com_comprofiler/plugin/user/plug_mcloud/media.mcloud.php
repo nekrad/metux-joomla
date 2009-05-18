@@ -15,15 +15,14 @@ $_PLUGINS->registerFunction( 'onAfterDeleteUser', 'userDeleted','getMCloudMediaT
 
 // import the mediacloud config
 // FIXME: should check whether com_mcloud is installed !
-ini_set('include_path', ini_get('include_path').
-	':components/com_mcloud:../components/com_mcloud');
+ini_set('include_path', ini_get('include_path').':'.JPATH_SITE);
 
 require_once('mcloud-client.conf.php');
 ini_set('include_path', ini_get('include_path').':'.MEDIACLOUD_CLASSES);
 
 require_once('MC_ClientHelper.class.php');
 require_once('MC_RemoteClient.class.php');
-require_once('source/MCloud_URL.class.php');
+require_once(JPATH_SITE.'/components/com_mcloud/source/MCloud_URL.class.php');
 
 /**
 * Connections Tab Class for handling the Connections List CB tab (other parts are still in core CB)
