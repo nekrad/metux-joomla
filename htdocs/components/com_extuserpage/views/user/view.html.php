@@ -159,11 +159,16 @@ class ExtUserPageViewUser extends JView
 	{
 		global $mainframe;
 
-		$this->userinfo = $this->getUserInfo(JRequest::getString('username'));
+		$this->username = JRequest::getString('username');
+		if ((!$this->username) || ($this->username == '***SELF***'))
+		{
+			$usr = JFactory::getUser();
+			$this->username = $usr->username;
+		}
+	
+		$this->userinfo = $this->getUserInfo($this->username);
 		$this->prepareMenu();
 
-#		$user =& JFactory::getUser();
-#
 #		// Get the page/component configuration
 #		$params = &$mainframe->getParams();
 #
@@ -184,9 +189,7 @@ class ExtUserPageViewUser extends JView
 #		$document->setTitle( $params->get( 'page_title' ) );
 #
 #		// Set pathway information
-#		$this->assignRef('user'   , $user);
 #		$this->assignRef('params',		$params);
-#
 		
 		/* render the content stuff / sub-pages */
 		if (!is_array($ent = $this->getCurSubEnt()))

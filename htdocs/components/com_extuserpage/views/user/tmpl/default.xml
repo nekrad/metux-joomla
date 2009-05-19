@@ -10,6 +10,7 @@
 		<description>DEFAULT USER LAYOUT DESC</description>
 		<params>
 				<param name="welcome_desc" type="textarea" default="" label="Welcome Description" rows="10" cols="50" description="PARAMWELCOMEDESC" />
+				<param name="username"     type="text"     default="***SELF***" label="User name" description="The user to show" />
 		</params>
 	</state>
 </metadata>
