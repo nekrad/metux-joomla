@@ -91,6 +91,18 @@ DIV.javamenu	.menu	ul	li
 {
     padding:	5px;
 }
+
+#mylsfm_fleck
+{
+    position: absolute; 
+    top: 7; 
+    left: 658; 
+    width: 457; 
+    height: 397; 
+    background-image:url(<?php echo $imgdir ?>/fleck.png);
+    x-z-index: -1;
+}
+
 </style>
 
 </head>
@@ -126,10 +138,11 @@ DIV.javamenu	.menu	ul	li
     </tr>
 </table>
 
-<table width="890" cellpadding="0"  cellspacing="0">
-    <tr background="/templates/mylsfm/images/naviground.png" height="30">
-	<td>
-		<ul id="nav" style="margin-left: 190">
+<table width="890" cellpadding="0" cellspacing="0">
+    <tr background="<?php echo $imgdir ?>/headbar1.png" height="200">
+	<td valign="top">
+	    <div style="z-index: 8; margin-left: 190;">
+		<ul id="nav">
 		    <div class="javamenu">
 <jdoc:include type="modules" name="top_menu"/>
 		    </div>
@@ -149,21 +162,19 @@ sfHover = function() {
 if (window.attachEvent) window.attachEvent("onload", sfHover);
 		    </script>
 		</ul>
+	    </div>
 	</td>
-    </tr>
-    <tr style="width: 890" background="<?php echo $imgdir ?>/headerground.png" height="180">
-	<td> &nbsp; </td>
     </tr>
 </table>
 
-<!-- <table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table> -->
+<div id="mylsfm_fleck"> </div>
 
 <table border="0" cellpadding="0" cellspacing="12" width="890" style="background-image:url(<?php echo $imgdir ?>/seitenground.png);background-repeat: repeat-y;background-position: center">
     <tr>
-	<td valign="top" width="620">
+	<td valign="top" width="620" style="z-index: 8">
 	    <jdoc:include type="component" />
 	</td>
-	<td valign="top">
+	<td valign="top" style="z-index: 8">
 	    <jdoc:include type="modules" name="right" style="rounded"/>
 	</td>
     </tr>
