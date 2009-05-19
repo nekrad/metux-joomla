@@ -1,3 +1,10 @@
+<?php
+
+$tmpldir = '/templates/'.$this->template;
+$cssdir  = $tmpldir.'/css';
+$imgdir  = $tmpldir.'/images';
+
+?>
 <html>
     <head>
 <jdoc:include type="head" />
@@ -87,7 +94,7 @@ DIV.javamenu	.menu	ul	li
 
 <table><tr><td width="3"></td><td>
 
-<table background="http://www.mylsfm.de/templates/mylsfm/images/bannerground.png" width="850" cellpadding="0" cellspacing="0" height="120"><tr><td valign="top"><script type='text/javascript'><!--//<![CDATA[
+<table background="/templates/mylsfm/images/bannerground.png" width="850" cellpadding="0" cellspacing="0" height="120"><tr><td valign="top"><script type='text/javascript'><!--//<![CDATA[
    var m3_u = (location.protocol=='https:'?'https://www.livestylefm.de/werbung/www/delivery/ajs.php':'http://www.livestylefm.de/werbung/www/delivery/ajs.php');
    var m3_r = Math.floor(Math.random()*99999999999);
    if (!document.MAX_used) document.MAX_used = ',';
@@ -103,9 +110,9 @@ DIV.javamenu	.menu	ul	li
    document.write ("'><\/scr"+"ipt>");
 //]]>--></script><noscript><a href='http://www.livestylefm.de/werbung/www/delivery/ck.php?n=a46014ad&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://www.livestylefm.de/werbung/www/delivery/avw.php?campaignid=1&amp;n=a46014ad' border='0' alt='' /></a></noscript></td></tr></table>
 
-<table background="http://www.mylsfm.de/templates/mylsfm/images/headerground1.png" width="890" cellpadding="0"  cellspacing="0" height="10"><tr><td></td></tr></table>
+<table background="/templates/mylsfm/images/headerground1.png" width="890" cellpadding="0"  cellspacing="0" height="10"><tr><td></td></tr></table>
 
-<table background="http://www.mylsfm.de/templates/mylsfm/images/naviground.png" width="890" cellpadding="0"  cellspacing="0" height="30"><tr><td><table background="http://www.mylsfm.de/templates/mylsfm/images/naviground.png" width="890" cellpadding="0" cellspacing="0" height="30"><tr><td width="190"></td><td><ul id="nav">
+<table background="/templates/mylsfm/images/naviground.png" width="890" cellpadding="0"  cellspacing="0" height="30"><tr><td><table background="/templates/mylsfm/images/naviground.png" width="890" cellpadding="0" cellspacing="0" height="30"><tr><td width="190"></td><td><ul id="nav">
 	
 <div class="javamenu">
 
@@ -187,11 +194,14 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 </ul></div>
 </td></tr></table></td></tr></table>
 
-<table background="http://www.mylsfm.de/templates/mylsfm/images/headerground.png" width="890" cellpadding="0"  cellspacing="0" height="180"><tr><td></td></tr></table>
+<table background="/templates/mylsfm/images/headerground.png" width="890" cellpadding="0"  cellspacing="0" height="180"><tr><td></td></tr></table>
 
-<table background="http://www.mylsfm.de/templates/mylsfm/images/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
+<table background="/templates/mylsfm/images/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
 
-<table border="0" cellpadding="0" cellspacing="0" width="890" style="background-image:url(<?php echo $this->baseurl ?>/templates/mylsfm/images/seitenground.png);background-repeat: repeat-y;background-position: center"><tr><td width="4"></td><td>
+<table border="0" cellpadding="0" cellspacing="0" width="890" style="background-image:url(<?php echo $imgdir ?>/seitenground.png);background-repeat: repeat-y;background-position: center">
+    <tr>
+	<td width="4"></td>
+	<td valign="top">
 <table border="0" cellpadding="0" cellspacing="0" width="620" style="background-image:url(<?php echo $this->baseurl ?>/templates/lsfmradio/images/seitenground.png);background-repeat: repeat-y;background-position: center"><tr><td><jdoc:include type="component" /></td></tr></table></td><td valign="top"><jdoc:include type="modules" name="right" style="rounded"/></td><td width="10"></td></tr></table>
 
 </td></tr></table>
