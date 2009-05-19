@@ -1,6 +1,6 @@
 <?php
 
-$tmpldir = '/templates/'.$this->template;
+$tmpldir = 'templates/'.$this->template;
 $cssdir  = $tmpldir.'/css';
 $imgdir  = $tmpldir.'/images';
 
@@ -12,11 +12,10 @@ $imgdir  = $tmpldir.'/images';
         <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css"
             type="text/css" />
             
-            <?php if($this->direction == 'rtl') : ?>
+<?php if($this->direction == 'rtl') : ?>
             <script src="diveinfuegen.js" type="text/javascript"> 
-            <link href="templates/<?php echo $this->template ?>/css/template.css" rel="stylesheet"
-                type="text/css" />
-                <?php endif; ?>
+            <link href="<?php echo $cssdir ?>/template.css" rel="stylesheet" type="text/css" />
+<?php endif; ?>
 
 <style type="text/css">
 #nav li ul ul {
@@ -171,9 +170,7 @@ DIV.javamenu	.menu	ul	li
 
 <jdoc:include type="modules" name="top_menu"/>
 	
-	
 </div>
-
 
 	<!-- etc. -->
 
@@ -194,15 +191,20 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 </ul></div>
 </td></tr></table></td></tr></table>
 
-<table background="/templates/mylsfm/images/headerground.png" width="890" cellpadding="0"  cellspacing="0" height="180"><tr><td></td></tr></table>
+<table background="<?php echo $imgdir ?>/headerground.png" width="890" cellpadding="0"  cellspacing="0" height="180"><tr><td></td></tr></table>
 
-<table background="/templates/mylsfm/images/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
+<table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
 
 <table border="0" cellpadding="0" cellspacing="0" width="890" style="background-image:url(<?php echo $imgdir ?>/seitenground.png);background-repeat: repeat-y;background-position: center">
     <tr>
-	<td width="4"></td>
+	<td valign="top" width="620">
+	    <jdoc:include type="component" />
+	</td>
 	<td valign="top">
-<table border="0" cellpadding="0" cellspacing="0" width="620" style="background-image:url(<?php echo $this->baseurl ?>/templates/lsfmradio/images/seitenground.png);background-repeat: repeat-y;background-position: center"><tr><td><jdoc:include type="component" /></td></tr></table></td><td valign="top"><jdoc:include type="modules" name="right" style="rounded"/></td><td width="10"></td></tr></table>
+	    <jdoc:include type="modules" name="right" style="rounded"/>
+	</td>
+    </tr>
+</table>
 
 </td></tr></table>
 
