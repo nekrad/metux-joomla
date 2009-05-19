@@ -131,6 +131,30 @@ class ExtUserPageViewUser extends JView
 		$this->assignRef('titlepage_body', $this->userinfo{'cb.cb_titlepage'});
 	}
 
+	function _request_component($component, $params)
+	{
+		$url = 'http://'.$_SERVER['HTTP_HOST'].'/?option='.$component.'&template=componentonly';
+		foreach ($params as $walk => $cur93)
+		    $url .= '&'.urlencode($walk).'='.urlencode($cur93);
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_COOKIE, session_name()."=".session_id());
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		return curl_exec($curl);
+	}
+
+	function render_type_blog()
+	{
+		$text = $this->_request_component('com_blog', array
+		(
+			'blog_hide_header'	=> 1,
+			'blog_username'		=> $this->userinfo{'user.name'}
+		));
+		$this->assignRef('blog_body', $text);
+	}
+
 	function display( $tpl = null)
 	{
 		global $mainframe;

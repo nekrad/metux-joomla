@@ -42,4 +42,7 @@ foreach ($this->menu as $mwalk => $mcur93)
 <?=$this->titlepage_body; ?>
 
 </div>
-<?php } ?>
+<?php } 
+      else if ($this->menu_ent{'type'} == 'blog') {
+    	print $this->blog_body;
+      } ?>
