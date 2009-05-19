@@ -89,7 +89,7 @@ DIV.javamenu	.menu	ul	li
 
 #mylsfm_main
 {
-    padding:	5px;
+    padding:	0px;
 }
 
 #mylsfm_fleck
@@ -101,6 +101,19 @@ DIV.javamenu	.menu	ul	li
     height: 397; 
     background-image:url(<?php echo $imgdir ?>/fleck.png);
     x-z-index: -1;
+}
+
+#mylsfm_headbar
+{
+    z-index: 8; 
+    height: 200; 
+    width: 890; 
+    background-image: url("<?php echo $imgdir ?>/headbar1.png");
+}
+
+#mylsfm_headbar > UL
+{
+    margin-left: 150;
 }
 
 </style>
@@ -138,16 +151,13 @@ DIV.javamenu	.menu	ul	li
     </tr>
 </table>
 
-<table width="890" cellpadding="0" cellspacing="0">
-    <tr background="<?php echo $imgdir ?>/headbar1.png" height="200">
-	<td valign="top">
-	    <div style="z-index: 8; margin-left: 190;">
-		<ul id="nav">
-		    <div class="javamenu">
+<div id="mylsfm_headbar">
+    <ul id="nav">
+        <div class="javamenu">
 <jdoc:include type="modules" name="top_menu"/>
-		    </div>
+        </div>
 
-		    <script language="Javascript">
+        <script language="Javascript">
 sfHover = function() {
 	var sfEls = document.getElementById("nav").getElementsByTagName("LI");
 	for (var i=0; i<sfEls.length; i++) {
@@ -160,12 +170,9 @@ sfHover = function() {
 	}
 }
 if (window.attachEvent) window.attachEvent("onload", sfHover);
-		    </script>
-		</ul>
-	    </div>
-	</td>
-    </tr>
-</table>
+        </script>
+    </ul>
+</div>
 
 <div id="mylsfm_fleck"> </div>
 
