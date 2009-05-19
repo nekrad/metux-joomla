@@ -31,14 +31,15 @@ class BlogModelBlog extends JModel
 		parent::__construct();
 	}
 	
+
 	/**
-	 * Gets the Company Profile
-	 * @return string The greeting to be displayed to the user
+	 * Gets a list of blog entries, optionally filtered by username 
+	 * @return array the blog records
 	 */
-	function fncGetBlogList()
+	function fncGetBlogList($username = false)
 	{
 		global $mainframe, $option;
-		
+
 		$config = JFactory::getConfig();
 		// Get the pagination request variables
  		
@@ -48,11 +49,20 @@ class BlogModelBlog extends JModel
 		// In case limit has been changed, adjust limitstart accordingly
 		$this->setState('limitstart', ($this->getState('limit') != 0 ? (floor($this->getState('limitstart') / $this->getState('limit')) * $this->getState('limit')) : 0));
 
-		$db		=& JFactory::getDBO();				
-		$query	= "SELECT post.*, user.name AS postedby
+		$db =& JFactory::getDBO();
+
+		if ($username)
+		    $query = "SELECT post.*, user.name AS postedby
+				FROM #__blog_postings AS post LEFT JOIN #__users AS user ON post.user_id = user.id
+				WHERE published = '1' AND user.username = ".$db->quote($username)." ORDER BY post_date DESC";
+		else
+		    $query = "SELECT post.*, user.name AS postedby
 				FROM #__blog_postings AS post LEFT JOIN #__users AS user ON post.user_id = user.id
 				WHERE published = '1' ORDER BY post_date DESC";
+
 		$bloglist = $this->_getList( $query, $this->getState('limitstart'), $this->getState('limit'));
+		if (!is_array($bloglist))
+		    $bloglist = array();
 		return @$bloglist;
 	}
 	

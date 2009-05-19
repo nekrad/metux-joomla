@@ -11,12 +11,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view');
 
-/**
- * HTML View class for the HelloWorld Component
- *
- * @package    HelloWorld
- */
-
 class BlogViewBlog extends JView
 {
 	function display($tpl = null)
@@ -28,16 +22,18 @@ class BlogViewBlog extends JView
 		// Push a model into the view
 		$model			= &$this->getModel();
 		$modelBlogList	= &$this->getModel( 'Blog' );
-		
-		$bloglists = $modelBlogList->fncGetBlogList();
 
+		$bloglists = $modelBlogList->fncGetBlogList(JRequest::getString('blog_username'));
 		$pagination = $modelBlogList->getPagination();
-		
+
+		$show_header = (JRequest::getString('blog_hide_header') ? false : true);
+
 		$this->assignRef('user'  , $user);
 		$this->assignRef('pagination'  , $pagination);			
 		$this->assignRef('BlogCommentCount'  , $BlogCommentCount);			
 		$this->assignRef('modelBlogList'  , $modelBlogList);
 		$this->assignRef('bloglists'  , $bloglists);
+		$this->assignRef('show_header', $show_header);
 		parent::display($tpl);
 
 	}

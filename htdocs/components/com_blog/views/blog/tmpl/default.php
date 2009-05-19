@@ -5,7 +5,11 @@ $Itemid = JRequest::getVar( 'Itemid', 0, 'get', 'int' );
 <link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/components/com_blog/style.css">
 <form action="<?php echo JRoute::_( 'index.php?option=com_blog&view=blog' ); ?>" method="post" id="josForm" name="josForm">
 <div>
+<?php
+    if ($this->show_header) {
+?>
 	<div class="clsLinkedBlog"><?php echo JText::_( 'Smart Blog' ); ?></div>
+<?php } ?>
 	<div id="clsTableTdPadd">
 		<?php if($this->user->get('id') > 0){ ?>
 		<div class="clsFloatRight">	
