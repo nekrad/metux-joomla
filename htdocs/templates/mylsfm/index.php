@@ -98,7 +98,10 @@ DIV.javamenu	.menu	ul	li
 
 <div id="mylsfm_main">
 
-<table background="/templates/mylsfm/images/bannerground.png" width="850" cellpadding="0" cellspacing="0" height="120"><tr><td valign="top"><script type='text/javascript'><!--//<![CDATA[
+<table background="/templates/mylsfm/images/bannerground.png" width="850" cellpadding="0" cellspacing="0" height="120">
+    <tr>
+	<td valign="top">
+	    <script type='text/javascript'><!--//<![CDATA[
    var m3_u = (location.protocol=='https:'?'https://www.livestylefm.de/werbung/www/delivery/ajs.php':'http://www.livestylefm.de/werbung/www/delivery/ajs.php');
    var m3_r = Math.floor(Math.random()*99999999999);
    if (!document.MAX_used) document.MAX_used = ',';
@@ -112,7 +115,16 @@ DIV.javamenu	.menu	ul	li
    if (document.context) document.write ("&context=" + escape(document.context));
    if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
    document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://www.livestylefm.de/werbung/www/delivery/ck.php?n=a46014ad&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://www.livestylefm.de/werbung/www/delivery/avw.php?campaignid=1&amp;n=a46014ad' border='0' alt='' /></a></noscript></td></tr></table>
+//]]>-->
+	    </script>
+	    <noscript>
+		<a href='http://www.livestylefm.de/werbung/www/delivery/ck.php?n=a46014ad&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'>
+		    <img src='http://www.livestylefm.de/werbung/www/delivery/avw.php?campaignid=1&amp;n=a46014ad' border='0' alt='' />
+		</a>
+	    </noscript>
+	</td>
+    </tr>
+</table>
 
 <table width="890" cellpadding="0"  cellspacing="0">
     <tr background="/templates/mylsfm/images/naviground.png" height="30">
