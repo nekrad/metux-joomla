@@ -86,12 +86,17 @@ DIV.javamenu	.menu	ul	li
 {
     width:	200px	!important;
 }
+
+#mylsfm_main
+{
+    padding:	5px;
+}
 </style>
 
 </head>
 <body>
 
-<table><tr><td width="3"></td><td>
+<div id="mylsfm_main">
 
 <table background="/templates/mylsfm/images/bannerground.png" width="850" cellpadding="0" cellspacing="0" height="120"><tr><td valign="top"><script type='text/javascript'><!--//<![CDATA[
    var m3_u = (location.protocol=='https:'?'https://www.livestylefm.de/werbung/www/delivery/ajs.php':'http://www.livestylefm.de/werbung/www/delivery/ajs.php');
@@ -109,19 +114,9 @@ DIV.javamenu	.menu	ul	li
    document.write ("'><\/scr"+"ipt>");
 //]]>--></script><noscript><a href='http://www.livestylefm.de/werbung/www/delivery/ck.php?n=a46014ad&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://www.livestylefm.de/werbung/www/delivery/avw.php?campaignid=1&amp;n=a46014ad' border='0' alt='' /></a></noscript></td></tr></table>
 
-<!--
-<table background="/templates/mylsfm/images/headerground1.png" width="890" cellpadding="0"  cellspacing="0" height="10">
-    <tr>
-	<td>
-	</td>
-    </tr>
-</table>
--->
-
 <table width="890" cellpadding="0"  cellspacing="0">
     <tr background="/templates/mylsfm/images/naviground.png" height="30">
 	<td>
-<!--	    <div style="margin-left: 190"> -->
 		<ul id="nav" style="margin-left: 190">
 		    <div class="javamenu">
 <jdoc:include type="modules" name="top_menu"/>
@@ -142,7 +137,6 @@ sfHover = function() {
 if (window.attachEvent) window.attachEvent("onload", sfHover);
 		    </script>
 		</ul>
-<!-- 	    </div> -->
 	</td>
     </tr>
     <tr style="width: 890" background="<?php echo $imgdir ?>/headerground.png" height="180">
@@ -150,9 +144,9 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
     </tr>
 </table>
 
-<table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
+<!-- <table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table> -->
 
-<table border="0" cellpadding="0" cellspacing="0" width="890" style="background-image:url(<?php echo $imgdir ?>/seitenground.png);background-repeat: repeat-y;background-position: center">
+<table border="0" cellpadding="0" cellspacing="12" width="890" style="background-image:url(<?php echo $imgdir ?>/seitenground.png);background-repeat: repeat-y;background-position: center">
     <tr>
 	<td valign="top" width="620">
 	    <jdoc:include type="component" />
@@ -163,16 +157,15 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
     </tr>
 </table>
 
-</td></tr></table>
+    </div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
 try {
 var pageTracker = _gat._getTracker("UA-1443658-31");
 pageTracker._trackPageview();
-} catch(err) {}</script>
+} catch(err) {}
+    </script>
 </body>
 </html>
