@@ -189,9 +189,12 @@ sfHover = function() {
 if (window.attachEvent) window.attachEvent("onload", sfHover);
 </script>
 </ul></div>
-</td></tr></table></td></tr></table>
-
-<table background="<?php echo $imgdir ?>/headerground.png" width="890" cellpadding="0"  cellspacing="0" height="180"><tr><td></td></tr></table>
+</td></tr></table></td>
+</tr>
+<tr style="width: 890" background="<?php echo $imgdir ?>/headerground.png" height="180">
+    <td> &nbsp; </td>
+</tr>
+</table>
 
 <table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
 
