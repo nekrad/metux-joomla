@@ -33,13 +33,13 @@ $imgdir  = $tmpldir.'/images';
 
 #nav a {
 	display: block;
-    width:10em;
+	width:10em;
 }
 
 #nav li {
 	float: left;
-	width: 5em;
-    padding: 0.3em;
+	width: 4em;
+	padding: 0.3em;
 }
 
 #nav li ul {
@@ -95,8 +95,8 @@ DIV.javamenu	.menu	ul	li
 #mylsfm_fleck
 {
     position: absolute; 
-    top: 7; 
-    left: 658; 
+    top: 3; 
+    left: 651;
     width: 457; 
     height: 397; 
     background-image:url(<?php echo $imgdir ?>/fleck.png);
@@ -106,7 +106,7 @@ DIV.javamenu	.menu	ul	li
 #mylsfm_headbar
 {
     z-index: 8; 
-    height: 200; 
+    height: 199; 
     width: 890; 
     background-image: url("<?php echo $imgdir ?>/headbar1.png");
 }
