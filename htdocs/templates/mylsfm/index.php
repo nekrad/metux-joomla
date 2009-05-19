@@ -109,72 +109,25 @@ DIV.javamenu	.menu	ul	li
    document.write ("'><\/scr"+"ipt>");
 //]]>--></script><noscript><a href='http://www.livestylefm.de/werbung/www/delivery/ck.php?n=a46014ad&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://www.livestylefm.de/werbung/www/delivery/avw.php?campaignid=1&amp;n=a46014ad' border='0' alt='' /></a></noscript></td></tr></table>
 
-<table background="/templates/mylsfm/images/headerground1.png" width="890" cellpadding="0"  cellspacing="0" height="10"><tr><td></td></tr></table>
-
-<table background="/templates/mylsfm/images/naviground.png" width="890" cellpadding="0"  cellspacing="0" height="30"><tr><td><table background="/templates/mylsfm/images/naviground.png" width="890" cellpadding="0" cellspacing="0" height="30"><tr><td width="190"></td><td><ul id="nav">
-	
-<div class="javamenu">
-
 <!--
-<li><a href="http://www.mylsfm.de">Home</a>
-		
-        </li>
-
-	<li><a href="#">News</a>
-		<ul id="submenu">
-			<li><a href="http://www.livestylefm.de/index.php/news/5-music.html">Music News</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/news/6-radio.html">Radio News</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/news/9-movie.html">Movie News</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/news/7-stars.html">Promi News</a></li>
-		</ul>
-	</li>
-<li><a href="#">On Air</a>
-		<ul id="submenu">
-			<li><a href="http://www.livestylefm.de/index.php/wunschbox.html">Wunschbox</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/programm.html">Programm</a></li>
-			</ul>
-	</li>
-<li><a href="#">Music</a>
-		<ul id="submenu">
-			<li><a href="#">Songtexte</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/charts.html">Charts</a></li>
-		</ul>
-	</li>
-<li><a href="#">Shows</a>
-		<ul id="submenu">
-			<li><a href="#">Cinema World</a></li>
-			<li><a href="#">LSFM Late Night</a></li>
-			<li><a href="#">Julien vs. Massi</a></li>
-		</ul>
-	</li>
-<li><a href="#">Lounge</a>
-		<ul id="submenu">
-			<li><a href="#">Registrieren</a></li>
-			<li><a href="#">Mitglieder Lounge</a></li>
-		</ul>
-	</li>
-
-<li><a href="#">Extras</a>
-		<ul id="submenu">
-			<li><a href="http://video.livestylefm.de" target="_blank">Top Videos</a></li>
-		</ul>
-	</li>
-<li><a href="#">Inside</a>
-		<ul id="submenu">
-			<li><a href="http://www.livestylefm.de/index.php/impressum.html">Impressum</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/bewerbung.html">Bewerbung</a></li>
-			<li><a href="http://www.livestylefm.de/index.php/teamliste.html">Unser Team</a></li>
-		</ul>
-	</li>
+<table background="/templates/mylsfm/images/headerground1.png" width="890" cellpadding="0"  cellspacing="0" height="10">
+    <tr>
+	<td>
+	</td>
+    </tr>
+</table>
 -->
 
+<table width="890" cellpadding="0"  cellspacing="0">
+    <tr background="/templates/mylsfm/images/naviground.png" height="30">
+	<td>
+<!--	    <div style="margin-left: 190"> -->
+		<ul id="nav" style="margin-left: 190">
+		    <div class="javamenu">
 <jdoc:include type="modules" name="top_menu"/>
-	
-</div>
+		    </div>
 
-	<!-- etc. -->
-
-<script language="Javascript">
+		    <script language="Javascript">
 sfHover = function() {
 	var sfEls = document.getElementById("nav").getElementsByTagName("LI");
 	for (var i=0; i<sfEls.length; i++) {
@@ -187,13 +140,14 @@ sfHover = function() {
 	}
 }
 if (window.attachEvent) window.attachEvent("onload", sfHover);
-</script>
-</ul></div>
-</td></tr></table></td>
-</tr>
-<tr style="width: 890" background="<?php echo $imgdir ?>/headerground.png" height="180">
-    <td> &nbsp; </td>
-</tr>
+		    </script>
+		</ul>
+<!-- 	    </div> -->
+	</td>
+    </tr>
+    <tr style="width: 890" background="<?php echo $imgdir ?>/headerground.png" height="180">
+	<td> &nbsp; </td>
+    </tr>
 </table>
 
 <table background="<?php echo $imgdir ?>/spaceground.png" width="890" cellpadding="0"  cellspacing="0" height="40"><tr><td></td></tr></table>
