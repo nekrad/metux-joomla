@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>componentonly</name>
+	<version>1.2.0</version>
+	<creationDate>2009-05-19</creationDate>
+	<author>metux IT service</author>
+	<authorEmail>weigelt@metux.de</authorEmail>
+	<authorUrl>http://www.metux.de</authorUrl>
+	<copyright></copyright>
+	<license>GNU/GPL version 2</license>
+	<description>Shows only the raw component - for embedding</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+</install>
