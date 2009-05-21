@@ -33,16 +33,6 @@ foreach ($this->menu as $mwalk => $mcur93)
 </div>
 
 <p> &nbsp; </p>
-
-<?php if ($this->menu_ent{'type'} == 'title') {	?>
-
 <br />
-<div>
 
-<?=$this->titlepage_body; ?>
-
-</div>
-<?php } 
-      else if ($this->menu_ent{'type'} == 'blog') {
-    	print $this->blog_body;
-      } ?>
+<?php echo $this->box_body; ?>

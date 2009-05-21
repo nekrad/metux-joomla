@@ -32,14 +32,14 @@ class ExtUserPageViewUser extends JView
 	    'title'		=> array
 	    (
 		label		=> 'Titelseite',
-		type		=> 'title'
+		type		=> 'titlepage'
 	    ),
 	    'aboutme'		=> array
 	    (
 		label		=> '&Uuml;ber mich',
 		type		=> 'aboutme'
 	    ),
-	    'activities'	=> array
+	    'guestbook'		=> array
 	    (
 		label		=> 'G&auml;stebuch',
 		type		=> 'guestbook'
@@ -60,7 +60,7 @@ class ExtUserPageViewUser extends JView
 	function getUserInfo($username)
 	{
 	    	global $database;
-		
+
 		$userinf = array();
 		$dbo = JFactory::getDBO();
 
@@ -126,12 +126,17 @@ class ExtUserPageViewUser extends JView
 		}
 	}
 
-	function render_type_title()
+	function render_box($boxtype, $param)
 	{
-		$this->assignRef('titlepage_body', $this->userinfo{'cb.cb_titlepage'});
+	    require_once(JPATH_SITE.'/components/com_extuserpage/JExtUP_Box.class.php');
+	    $fn = JPATH_SITE.'/components/com_extuserpage/boxes/'.$boxtype.'.php';
+	    require_once($fn);
+	    $cls = 'JExtUP_Box_'.$boxtype;
+	    $box = new $cls($this, $param);
+	    $this->assignRef('box_body', $box->render());
 	}
 
-	function _request_component($component, $params)
+	function request_component($component, $params)
 	{
 		$url = 'http://'.$_SERVER['HTTP_HOST'].'/?option='.$component.'&template=componentonly';
 		foreach ($params as $walk => $cur93)
@@ -145,16 +150,6 @@ class ExtUserPageViewUser extends JView
 		return curl_exec($curl);
 	}
 
-	function render_type_blog()
-	{
-		$text = $this->_request_component('com_blog', array
-		(
-			'blog_hide_header'	=> 1,
-			'blog_username'		=> $this->userinfo{'user.name'}
-		));
-		$this->assignRef('blog_body', $text);
-	}
-
 	function display( $tpl = null)
 	{
 		global $mainframe;
@@ -165,7 +160,7 @@ class ExtUserPageViewUser extends JView
 			$usr = JFactory::getUser();
 			$this->username = $usr->username;
 		}
-	
+
 		$this->userinfo = $this->getUserInfo($this->username);
 		$this->prepareMenu();
 
@@ -190,7 +185,7 @@ class ExtUserPageViewUser extends JView
 #
 #		// Set pathway information
 #		$this->assignRef('params',		$params);
-		
+
 		/* render the content stuff / sub-pages */
 		if (!is_array($ent = $this->getCurSubEnt()))
 		{
@@ -198,15 +193,7 @@ class ExtUserPageViewUser extends JView
 		    return;
 		}
 
-		switch ($t = $ent{'type'})
-		{
-			case 'title':		$this->render_type_title();			break;
-			case 'blog':		$this->render_type_blog();			break;
-			case 'guestbook':	$this->render_type_guestbook();			break;
-			case 'aboutme':		$this->render_type_aboutme();			break;
-			case 'activities':	$this->render_type_activities();		break;
-			default:		print "<b> unsupported sub type: $t</b>";	break;
-		}
+		$this->render_box($ent{'type'}, array());
 
 		$this->assignRef('userinfo', $this->userinfo);
 		$this->assignRef('menu',     $this->menu);
