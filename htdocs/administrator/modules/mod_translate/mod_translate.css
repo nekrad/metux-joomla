@@ -1,0 +1,15 @@
+#module-status span.modtranslate {
+	background-image:none;
+	line-height:16px;
+	height:16px;
+	padding-top:0px;
+}
+#module-status  span.modtranslate #select_language_id{
+	border: 1px solid #cccccc;
+	margin-bottom:3px;
+	padding:0px;
+}
+#module-status span.modtranslate img.jfimg {
+	margin-top:2px;
+}
+

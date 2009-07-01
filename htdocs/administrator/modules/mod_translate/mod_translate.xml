@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" client="administrator"  version="1.5.0" position="status">
+	<name>Direct Translation</name>
+	<author>Geraint Edwards</author>
+	<creationDate>27 August 2008</creationDate>
+	<copyright>(C) 2007-2008 Geraint Edwards. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>via website</authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>2.0 RC1</version>
+	<description>This module provides a direct link JoomFish translations for selected item. Remember to publish this module to status position.</description>
+	<files>
+		<filename module="mod_translate">mod_translate.php</filename>
+		<filename>mod_translate.png</filename>
+		<filename>mod_translate_no.png</filename>
+		<filename>elements/index.html</filename>
+		<filename>elements/dtcomps.php</filename>
+	</files>
+	<params addpath="/administrator/modules/mod_translate/elements">
+        <param name="linktype" type="radio" default="newwindow" label="How to open translation">
+             <option value="newwindow">New Window</option>
+             <option value="samewindow">Same Window</option>
+        </param>
+		<param name="components" type="dtcomps" rows="50" cols="50" default="" label="Components" description="Component parameters - separated with a space." />
+	</params>
+</install>
