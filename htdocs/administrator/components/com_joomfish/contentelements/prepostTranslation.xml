@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="joomfish">
+	<name>Joomfish - PrePost Translation</name>
+	<author>Geraint Edwards</author>
+	<creationDate>Januray 2008</creationDate>
+	<copyright>(C) 2008. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.0</version>
+	<description>Joomfish Demo Pre and Post Translation Handler</description>
+	<files>
+		<filename plugin="prepostTranslation">prepostTranslation.php</filename>
+	</files>
+	<params>
+	</params>
+</install>
