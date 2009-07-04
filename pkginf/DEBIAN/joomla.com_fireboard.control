@@ -1,0 +1,6 @@
+Package: fireboard-15
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.4.0
+Description: Fireboard Component for Joomla 1.5
+Priority: optional
