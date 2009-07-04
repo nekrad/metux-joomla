@@ -1,0 +1,6 @@
+Package: com-mamblog
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.1.0
+Description: Mamblog Blogging component (fixed for 1.5+legacy)
+Priority: optional

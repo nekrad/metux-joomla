@@ -1,0 +1,173 @@
+30 Oct 2005 (Olle Johansson)
+   - The mosParseParams() function is only loaded if it doesn't already exist.
+   - Added config option to choose whether to use Joomla! wysiwyg editor or not.
+   - Added config option to set width and height of wysiwyg editor.
+   - Added error messages when installing and uninstalling component.
+   - Installation and uninstallation keeps running even if errors are encountered.
+   - Created html function for showAdminPages() and showHeader() in administrator.
+   - Changed all yes/no select lists to use the mosHTML::yesnoSelectList() method.
+   - Joomlaboard Forum Support as commenting system support code by Jan de Graaff added.
+   - safeStrip is always run on entries when listing blogs, not only when the string is too long.
+   - Matches up the frontpage setting with mask value.
+   - Added configuration option to select if username or user should be used to show author on blog entries.
+   - Fixed support for AkoComment and made it possible to have the comment form when viewing blog entries internally.
+   - Changed adminstrator pages to new tab format.
+   - BUGFIX: Removed double references to css class componentheading for blog title
+   - BUGFIX: Changed option=content to option=com_content in all links.
+   - BUGFIX: Fixed a problem with the safeStrip function.
+   - BUGFIX: Fixed a problem with the mosMenuCheck, access to edit page now adheres to the access rights of the 'Write a blog entry' menu item.
+   - BUGFIX: Don't remove newlines in text.
+   - BUGFIX: Moved edit icon when listing blog entries to after title.
+   - Added Spanish formal translation sent in by Frank D. Martínez.
+   - Added an Italian language file sent in by Francesco.
+   - Added Russian translation file sent in by dikud from the Russian Mambo translation team.
+   - Added french translation file sent in by Julien Rey.
+
+6 Sep 2004 (Olle Johansson)
+   - Fixed a problem with archived entries showing up on user blogs.
+   - Added support for SEF Advance.
+   - Fixed a problem with the restriction on entry length in lists on PHP 4.3 and above.
+   - Rereleased v1.0 RC2
+
+3 Sep 2004 (Olle Johansson)
+   - Added function to show archive of the current user.
+   - Added instructions about different types of links.
+   - Entry title is now clickable.
+   - Added support for opening comments in popup window for AkoComment.
+   - Added support for commenting without redirection to the content item, using MX Comment component (an extension of AkoComment).
+   - It's now possible to view single items internally.
+   - A new option to show only the comment form for an item added.
+   - All content items for Mamblog are now removed when the component is uninstalled.
+   - Component doesn't require the name of the section to be "Mamblog" any longer.
+   - Itemid is loaded from the database if it wasn't supplied in the url.
+   - A new config option to restrict the number of characters of each entry to show in the list.
+   - Released v1.0 RC2
+
+18 Jul 2004 (Olle Johansson)
+   - Added Itemid to the menu links added by the installation file.
+
+8 Jun 2004 (Olle Johansson)
+   - Added informal german language file sent in by Vlad.
+
+6 Jun 2004 (Olle Johansson)
+   - Updated the call to mosMenuCheck since it has been changed *AGAIN*.
+   - Remove "Show my blogs" user menu entry when uninstalling.
+   - Added Itemid to all links.
+   - Fixed the "Show all blog entries" link on the main Mamblog page.
+   - Changed all frontend links to use SEF links.
+   - Changed wording from "frontpage" to "main Mamblog page" to avoid confusion.
+   - Updated the Swedish language file.
+   - Mamblog now uses the internal Mambo date format function and should be automatically localized.
+
+5 Jun 2004 (Olle Johansson)
+   - Released v1.0 Release Candidate 1
+
+6 May 2004 (Olle Johansson)
+   - Added ignore list to bind for added security.
+   - Fixed problem with wysiwygpro in Mambo 4.5 Stable 1.0.7. Ugly wysiwygpro editor code for subsequent editor fields makes it impossible to call the first field 'fulltext'.
+   - Now uses Username instead of name to show a users blog since name isn't necessarily unique.
+   - Archive value changed to "-1" from "2" to comply with the Mambo archiving system.
+   - Hopefully fixed a display problem with MSIE.
+   - Fixed some xhtml inconsistencies
+   - Added the ability for users to delete their entries.
+   - If there are more entries than the current count, a link to all entries will be shown.
+   - Added a link to the users own blog list in the user menu when installing.
+
+25 Mar 2004 (Olle Johansson)
+   - Fixed a bug with entry title not being saved.
+   - Fixed a bug causing the html to be broken when editing.
+
+23 Mar 2004 (Olle Johansson)
+   - Added a config option to change the title of the blog entry list.
+   - Added support for the new AkoComment comment system.
+   - Fixed WysiwygPro problem.
+   - Released Mamblog 1.0 beta 2
+
+20 Mar 2004 (Olle Johansson)
+   - Changed some language strings to remove references to "boxes".
+   - Added the function mosMakeHtmlSafe() to the blog entry editing.
+   - The default menu item for Mamblog should now appear at the end of the main menu.
+
+13 Mar 2004 (Olle Johansson)
+   - Fixed comment link when showing blog entries in columns (thanks to Gary for the fix!)
+   - Removed obsolete override column configuration and added a new Viewing setting for columns instead.
+   - Did some refactoring on the the show blog entry code.
+
+12 Mar 2004 (Olle Johansson)
+   - Changed default access level of Write a blog menu item to Registered.
+   - Updated the readme file and removed obsolete information.
+
+10 Mar 2004 (Olle Johansson)
+   - Added code to show link to comment system (thanks to koolitz/Birks)
+   - Added support for all html editors supported by Mambo.
+   - Released Mamblog 1.0 beta 1
+
+12 Nov 2003 (Olle Johansson)
+   - Fixed a problem with a function being deprecated in Mambo 4.5 beta 1.0.3
+   - Renamed the component to Mamblog, all files updated to reflect this.
+   - Removed info about mod_rewrite since this didn't work with SEF in beta 1.0.3.
+   - Removed unneed class file.
+   - Added logo made by David Hagman.
+   - Released Mamblog 1.0 alfa 3
+
+7 Nov 2003 (Olle Johansson)
+   - Fixed missing language files in boxblog.xml.
+   - Added icon to information submenu item in the admin interface.
+   - Removed error_reporting() in admin script.
+
+6 Nov 2003 (Olle Johansson)
+   - Added norwegian language file (thanks to sokratex for sending this in).
+
+31 Oct 2003 (Olle Johansson)
+   - Updated the english language file with correct use of blog and blog entry.
+   - Added dutch language file (thanks to Joris van den Wittenboer for this).
+
+30 Oct 2003 (Olle Johansson)
+   - Fixed a notice showing up when not using the border color attribute.
+
+29 Oct 2003 (Olle Johansson)
+   - Added Swedish language file (Thanks to Martin Fröjdh for the translation)
+   - Removed error_reporting() to withold notices from other scripts.
+   - Removed unnecessary readme file.
+   - Changed some of the default settings.
+   - Released BoxBlog 1.0 alfa 2
+
+26 Oct 2003 (Olle Johansson)
+   - Made all appearance attributes admin configurable.
+   - Always shows header with correct user name when viewing blogs.
+   - All extra attributes admin configurable and makes use of preset values.
+   - Moved all remaining html into boxblog.html.php
+   - All scripts now run without notices in error_reporting(E_ALL)
+   - Added config script.
+   - Added link to the users archive when showing all blogs from a user.
+   - It's now possible to change what should be the default page if nothing is
+     selected, all blogs, all frontpage blogs, show a user, a users archive,
+     from a specific date or the current date.
+   - Added a default category for the section during the install so
+     that it is possible to list blogs from the normal admin content
+     page.
+   - Added access restrictions so that the edit page adheres to the
+     user type access setting of the "Write a blog" user menu item.
+   - Released BoxBlog 1.0 alfa 1
+
+25 Oct 2003 (Olle Johansson)
+   - Made username into link to all blogs of that user.
+   - Fixed a problem when linking by username if the username has spaces in it.
+   - Fixed the .htaccess file to allow linking by username directly.
+
+24 Oct 2003 (Olle Johansson)
+   - Added a user menu item to add new blogs.
+   - Removed More... text if there are no more items.
+
+23 Oct 2003 (Olle Johansson)
+   - The script now uses the mos_content table instead of creating its own.
+   - Listing of blogs by user, user archive, date, frontpage and all finished.
+   - The style attributes are used when an item is shown.
+   - Made it configurable if the listing of blogs should adhere to the
+     column setting in the template.
+
+22 Oct 2003 (Olle Johansson)
+   - Finished viewing of a blog item and access restrictions.
+
+19 Oct 2003 (Olle Johansson)
+   - Updated the script to work with Mambo 4.5 beta 1.0.2

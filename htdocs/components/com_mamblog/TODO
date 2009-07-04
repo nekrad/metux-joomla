@@ -1,0 +1,9 @@
+Todo:
+* remove decodeEntities() - only a hack for ancient php versions
+* add MVC view descriptors (myblog, etc)
+
+
+Done:
+* convert all language stuff to 1.5 API
+* add an API/class for URL rendering
+* add an "add entry" button to the show-blogs view
