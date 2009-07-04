@@ -1,0 +1,57 @@
+﻿@charset "UTF-8";
+
+@media screen,projection
+ {
+	#page_margins
+	{
+		width:980px;
+		min-width:980px;
+		max-width:none
+	}
+
+	#main
+	{
+		float:left;
+		width:100%
+	}
+
+	#col1
+	{
+		width:480px;
+		float:left;
+		margin-left:240px
+	}
+
+	#col1_content
+	{
+		padding-left:10px;
+		padding-right:10px
+	}
+
+	#col2
+	{
+		width:240px;
+		float:left;
+		margin-left:-720px
+	}
+
+	#col2_content
+	{
+		padding-left:20px;
+		padding-right:10px
+	}
+
+	#col3
+	{
+		margin-left:-5px;
+		margin-right:0;
+		width:240px;
+		float:right
+	}
+
+	#col3_content
+	{
+		padding-left:10px;
+		padding-right:20px
+	}
+}

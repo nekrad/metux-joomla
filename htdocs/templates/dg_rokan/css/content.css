@@ -1,0 +1,222 @@
+@charset "UTF-8";
+
+@media all
+ {
+	html *
+	{
+		font-size:100.01%
+	}
+
+	textarea,pre,tt,code
+	{
+		font-family:"Courier New", Courier, monospace
+	}
+
+	body
+	{
+		font-family:'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;
+		font-size:75%;
+		color:#444
+	}
+
+	#header h1
+	{
+		font-size:2.5em;
+		letter-spacing:-2px;
+		line-height:65%;
+		color:#000
+	}
+
+	#header span
+	{
+		color:#999
+	}
+
+	p
+	{
+		line-height:1.5em;
+		margin:0 0 1em
+	}
+
+	ul,ol,dl
+	{
+		line-height:1.5em;
+		margin:0 0 1em 1em
+	}
+
+	li
+	{
+		margin-left:1.5em;
+		line-height:1.5em
+	}
+
+	dd
+	{
+		margin:0 0 1em 2em
+	}
+
+	blockquote
+	{
+		margin:0 0 1em 1.5em
+	}
+
+	pre,code
+	{
+		font-family:monospace;
+		font-size:1.1em
+	}
+
+	acronym,abbr
+	{
+		letter-spacing:.07em;
+		border-bottom:.1em dashed #c00;
+		cursor:help
+	}
+
+	.note
+	{
+		background:#dfd;
+		border-top:1px #bdb dotted;
+		border-bottom:1px #bdb dotted;
+		padding:1em
+	}
+
+	.important
+	{
+		background:#ffd;
+		border-top:1px #ddb dotted;
+		border-bottom:1px #ddb dotted;
+		padding:1em
+	}
+
+	.warning
+	{
+		background:#fdd;
+		border-top:1px #dbb dotted;
+		border-bottom:1px #dbb dotted;
+		padding:1em
+	}
+
+	.float_left
+	{
+		float:left;
+		display:inline;
+		margin-right:1em;
+		margin-bottom:0.15em
+	}
+
+	.float_right
+	{
+		float:right;
+		display:inline;
+		margin-left:1em;
+		margin-bottom:0.15em
+	}
+
+	.center
+	{
+		text-align:center;
+		margin:0.5em auto
+	}
+
+	a
+	{
+		color:#f90;
+		text-decoration:none
+	}
+
+	a:focus,a:hover,a:active
+	{
+		color:#f90;
+		text-decoration:underline
+	}
+
+	#topnav a
+	{
+		color:#f1f880;
+		font-weight:400;
+		background:transparent
+	}
+
+	#topnav a:focus,#topnav a:hover,#topnav a:active
+	{
+		background-color:transparent;
+		border:none;
+		text-decoration:none;
+		font-weight:700
+	}
+
+	#footer a
+	{
+		color:#999;
+		background:transparent;
+		font-weight:700
+	}
+
+	#footer a:focus,#footer a:hover,#footer a:active
+	{
+		color:#f90;
+		background-color:transparent;
+		text-decoration:underline
+	}
+
+	table
+	{
+		width:auto;
+		border-collapse:collapse;
+		margin-bottom:0.5em
+	}
+
+	table.full
+	{
+		width:100%
+	}
+
+	table.fixed
+	{
+		table-layout:fixed
+	}
+
+	th,td
+	{
+		padding:0.5em
+	}
+
+	thead th
+	{
+		background:#444;
+		color:#fff
+	}
+
+	tbody th
+	{
+		background:#ccc;
+		color:#333
+	}
+
+	tbody th.sub
+	{
+		background:#ddd;
+		color:#333
+	}
+
+	hr
+	{
+		color:#fff;
+		background:transparent;
+		border:0;
+		border-bottom:1px #eee solid;
+		margin:0 0 0.5em;
+		padding:0 0 0.5em
+	}
+
+	dt,strong,b
+	{
+		font-weight:700
+	}
+
+	cite,blockquote,em,i
+	{
+		font-style:italic
+	}
+}

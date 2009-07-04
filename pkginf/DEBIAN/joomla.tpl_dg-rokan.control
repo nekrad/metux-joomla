@@ -1,0 +1,6 @@
+Package: tmpl-jth-nimbuse
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.0.0
+Description: DG-Rokan Frontend Template
+Priority: optional

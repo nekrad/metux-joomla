@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://dev.joomla.org/xml/1.5/template-install.dtd">
+<install version="1.5" type="template">
+	<name>dg_rokan</name>
+	<creationDate>Ramadhan 1429</creationDate>
+	<author>Tobacamp-Dani Gunawan</author>
+	<authorEmail>tobacamp@gmail.com</authorEmail>
+	<authorUrl>http://www.tobacamp.com</authorUrl>
+	<copyright></copyright>
+	<license>GNU/GPL</license>
+	<version>1.0.0</version>
+	<description>Rokan, a free template for Joomla! 1.5. Contact us if you need custom template. Tobacamp, Joomla! Templates and Extensions. More templates and extensions at http://tobacamp.com.
+	</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>index.html</filename>
+		<filename>favicon.ico</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>images/index.html</filename>
+		<filename>images/logo_tobacamp.png</filename>
+		<filename>images/left_background.png</filename>
+		<filename>images/header_bg.gif</filename> 
+		<filename>css/index.html</filename>
+		<filename>css/template.css</filename>
+		<filename>css/patch_template.css</filename>
+		<filename>css/joomla.css</filename>
+		<filename>css/navigation.css</filename>
+		<filename>css/layout.css</filename>
+		<filename>css/layout_ext.css</filename>
+		<filename>css/layout_fixed.css</filename>
+		<filename>css/content.css</filename>
+		<filename>css/print.css</filename>
+		<filename>css/print_draft.css</filename>
+		<filename>css/iehacks.css</filename>		
+		<filename>css/iepngfix.htc</filename>
+	</files>
+	<positions>
+		<position>breadcrumb</position>
+		<position>banner</position>
+		<position>left</position>
+		<position>right</position>
+		<position>top</position>
+		<position>topnav</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>footer</position>
+		<position>debug</position>
+		<position>syndicate</position>
+	</positions>
+</install>

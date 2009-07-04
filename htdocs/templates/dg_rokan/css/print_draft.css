@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@import url(print.css);
+
+@media print
+{
+  #col1, #col1_content { float:none; width: 100%; margin: 0; padding: 0; border: 0; }
+
+  #col2 { display:none; }
+  #col3 { display:none; }
+}
