@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="template" version="1.0.x">
+	<name>gmagzz</name>
+	<creationDate>September 20, 2008</creationDate>
+	<author>Gizdoo.com</author>
+	<copyright>GPL</copyright>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.gizdoo.com</authorUrl>
+	<version>1.0</version>
+	<description>Gmagzz template for joomla 1.0.x version</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>js/iepngfix.htc</filename>
+		<filename>js/pngfix.js</filename>
+		<filename>js/unitpngfix.js</filename>
+		<filename>splitmenu.php</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+	<images>
+		<filename>images/active_menu.png</filename>
+		<filename>images/all.png</filename>
+		<filename>images/bg_topmodule.png</filename>
+		<filename>images/content_bg.png</filename>
+		<filename>images/date.png</filename>
+		<filename>images/date1.png</filename>
+		<filename>images/guide.png</filename>
+		<filename>images/header.png</filename>
+		<filename>images/home.png</filename>
+		<filename>images/inputbox.png</filename>
+		<filename>images/logo.png</filename>
+		<filename>images/modulebg.png</filename>
+		<filename>images/readmore.png</filename>
+		<filename>images/rss.png</filename>
+		<filename>images/searchbox.png</filename>
+		<filename>images/tophead_bg.png</filename>
+		<filename>images/topmenubg.png</filename>
+		<filename>images/topnav.png</filename>
+		<filename>images/top_logo.png</filename>
+		<filename>images/wrap_bg.png</filename>
+		<filename>js/clear.gif</filename>
+	</images>
+	<css>
+		<filename>css/template_css.css</filename>
+	</css>
+</mosinstall>

@@ -1,0 +1,6 @@
+Package: tmpl-gmagzz
+Section: webapps/joomla-1.0
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.0.0
+Description: gmagzz Frontend Template
+Priority: optional
