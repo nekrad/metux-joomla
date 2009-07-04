@@ -1,0 +1,906 @@
+body {
+	text-align: center; /* required for centering the page in IE */
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../images/cp_bg.png);
+	background-repeat: repeat-x;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color:#333333;
+	line-height:20px;
+	background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, p, ul, li, img {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	font: 12px Arial,sans-serif;
+}
+
+h1,h2,h3,.componentheading, .contentheading{
+font: normal normal 200% "Trebuchet MS",Arial,sans-serif; color: #222222;}
+h1{font-size:120%}
+h2{font-size:160%}
+h3{font-size:120%}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}	
+
+#left .moduletable, #left .moduletable_menu, #right .moduletable, #right .moduletable_menu, #right .moduletable_text, #left .moduletable_text {
+	padding:6px;
+}
+
+#top-ad {
+float:right;
+margin-top:36px;
+margin-right:33px;
+width:468px;
+}
+
+a:link ,  a:visited, a:active {
+	text-decoration: underline;	
+	color: #0066CC;
+	font-weight: bold;
+	outline: none;
+
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+}
+
+#wrapper {
+	position:static;
+	width: 990px;
+	margin: 0 auto; /* centering the page */
+	text-align: left;
+	padding-bottom:45px
+}
+
+#header {
+	position:static;
+	height: 118px;
+	background-image:url(../images/head.png)
+}
+
+#Menu {
+	position:static;
+	background-image:url(../images/menu.png);
+	width: 990px;
+	height:28px;
+}
+
+#container {
+	background-repeat: repeat-y;
+	background-image:url(../images/body-none.png)
+}
+
+#innerContainer {
+	margin-right: 12px;
+	margin-left: 12px;
+	height:100%;
+}
+
+#FlashHeadpiece {
+	background-color:#FFF;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+}
+
+#left {
+	float: left;
+	width: 172px;
+	position:relative;
+	padding-bottom:4px;
+}
+
+#right {
+	float:right;
+	width:266px;
+}
+
+.latestnews, .mostread, .popular {
+	font: 11px Arial,sans-serif;
+	list-style-type:none;
+}
+
+li.mostread, li.latestnews {
+	padding-bottom:4px;
+}
+
+li.mostread a:link, li.latestnews a:link, li.higestrated a:link, li.mostread a:visited, li.latestnews a:visited, li.higestrated a:visited {
+	padding-left: 14px;
+	background-image: url(../images/starbullet.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+}
+
+li.mostread a:hover, li.latestnews a:hover, li.higestrated a:hover {
+	background-image: url(../images/starbullet-hover.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+}
+
+#content {
+	float:right;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	width:936px;
+}
+
+#content p {
+	line-height:20px;
+	font-size:12px;
+}
+
+#content ul {
+	list-style-type: none;
+}
+
+#content li {
+	line-height:20px;
+	font-size: 12px;
+	padding-left:14px;
+	background-image: url(../images/bluearrowbullet.png);
+	background-repeat: no-repeat;
+	background-position: left 4px;
+}
+
+#clear {
+	height: 0px;
+	clear:both;	
+}
+
+.clear {
+    clear: both;
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#footer {
+	height: 50px;
+	clear:both;
+	text-align:center;
+	background-image:url(../images/footer.png)	
+}
+
+#search {
+	float:left;
+	width:300px;
+	padding-top:2px;
+}
+
+		/*Horizontal Nav*/
+		
+#nav {
+	float: right;
+}
+
+#nav ul,#nav li{
+	list-style-type:none;
+	margin:0;
+}
+
+#nav {
+	position:static;
+	margin-right: 36px;
+	font-size: 12px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+}
+
+#nav li {
+	float:left;
+	font-size: 12px;
+	text-align: center;
+	display: inline;
+	vertical-align: middle;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+}
+
+#nav a {
+	float:left;
+	height: 27px;
+	line-height: 26px;
+	text-decoration:none;	
+	color: #000000;
+	font-weight: bold;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+#nav a:hover {
+	color: #fff;
+	background-repeat: repeat-x;
+	background-position: 0px;
+}
+
+#nav li.activelink a,#nav li.activelink a:hover{
+	color: #fff;
+	background-image: url(../images/buttonhover.png);
+	background-color: #3399CC;
+}
+
+#nav a:link#active_menu-nav, #nav a:visited#active_menu-nav{
+	color: #fff;
+	background-image: url(../images/buttonhover.png);
+	background-color: #3399CC;
+}
+
+	/*Vertical Nav*/
+
+.menu {  
+	list-style-type: none;text-indent: 5px; position:relative;
+	width: 172px!important;
+	margin-left:-6px;
+}
+
+
+
+ul.menu {	
+	padding-left: 0;
+	list-style-type: none;
+	font-family: Arial, Helvetica, sans-serif;
+	border-bottom: 1px solid #CCCCCC;
+	width: 172px!important;
+}
+
+ul.menu a {
+	display: block;
+	padding: 3px;
+	width: 166px;
+
+	background-color: #ccc;
+	border-top: 1px solid #CCCCCC;
+}
+
+ul.menu  a:link,  ul.menu  a:visited {
+	color:#000000;
+	text-decoration: none;
+	font-weight: bold;
+	background-image:url(../images/vertnavbutton.png);
+	background-repeat:repeat-x;
+
+}
+
+ul.menu  a:hover {
+	color: #fff;
+	background-image:none;
+	background-repeat:repeat-x;
+}
+
+ul.menu .active a {
+	background-image:none;
+	background-repeat:repeat-x;
+}
+
+/* default joomla styles */
+
+.adminform {
+
+}
+
+.article_seperator {
+
+}
+
+.back_button {
+
+}
+
+.blog {
+
+}
+
+.blog_more {
+
+}
+
+.blogsection {
+
+}
+
+.button {
+
+}
+
+.buttonheading {
+
+}
+
+.category {
+
+}
+
+.clip {
+
+}
+
+.componentheading {
+	font-family: "Trebuchet MS",Tahoma, Verdana, Arial;
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom:10px;
+}
+
+.contact_email {
+
+}
+
+.content_rating {
+
+}
+
+.content_vote {
+
+}
+
+.contentdescription {
+
+}
+
+.contentheading {
+	font-family: "Trebuchet MS",Tahoma, Verdana, Arial;
+	font-size: 20px;
+	font-weight: bold;
+	color: #0066CC;
+}
+
+.contentpagetitle {
+
+}
+
+.contentpane {
+
+}
+
+.contentpaneopen {
+
+}
+
+.contenttoc {
+
+}
+
+.createdate  {
+	font-style:italic;
+}
+
+.dtree {
+
+}
+
+.dTreeNode {
+
+}
+
+.editlinktip {
+
+}
+
+.expander {
+
+}
+
+.highlight {
+
+}
+
+.inputbox {
+
+}
+
+.item {
+
+}
+
+.message {
+
+}
+
+.message {
+
+}
+
+.modifydate {
+
+}
+
+.module {
+
+}
+
+.mosimage {
+
+}
+
+.mosimage_caption {
+
+}
+
+.mostread {
+
+}
+
+.newsfeed {
+
+}
+
+.node {
+
+}
+
+.pagenav {
+
+}
+
+.pagenav_next {
+
+}
+
+.pagenav_prev {
+
+}
+
+.pagenavbar {
+
+}
+
+.pagenavcounter {
+
+}
+
+.paramlist {
+
+}
+
+.pathway {
+
+}
+
+.poll {
+
+}
+
+table .pollstableborder{
+	text-align:left;
+}
+
+.pollstableborder td {
+	text-align: left;
+}
+
+.profiler {
+
+}
+
+.readon {
+
+}
+
+.row1 {
+
+}
+
+.row2 {
+
+}
+
+.search {
+	padding-top:1px;
+	margin-left:20px;
+}
+
+.searchintro {
+
+}
+
+.sectiontableentry1 {
+	font-size: 12px;
+	color: #333333;
+}
+
+.sectiontableentry2 {
+	font-size: 12px;
+	color: #000;
+}
+
+.sectiontablefooter {
+
+}
+
+.sectiontableheader {
+
+}
+
+.small, .modifydate, .createdate {
+	font-style:italic;
+	font-size:11px;
+}
+
+.smalldark {
+
+}
+
+.syndicate {
+
+}
+
+.syndicate_text {
+
+}
+
+.tab {
+
+}
+
+.tabclass1 {
+
+}
+
+.tabclass2 {
+
+}
+
+.tab-page {
+
+}
+
+.text_area {
+
+}
+
+.toclink {
+
+}
+
+.toolbar {
+
+}
+
+.tooltip {
+
+}
+
+.wrapper {
+
+}
+
+table.poll thead {
+	font-size: 16px;
+}
+
+h3 {
+	font-family: "Trebuchet MS",Tahoma, Verdana, Arial;
+	font-size: 18px;
+	font-weight: bold;
+	color: #222222;
+	padding-bottom:5px;
+}
+
+h2 {
+	font-family: "Trebuchet MS",Tahoma, Verdana, Arial;
+	font-size: 20px;
+	font-weight: bold;
+	color: #222222;
+	padding-top: 5px;
+	padding-bottom:5px;
+}
+
+#mod_login_password, #mod_login_username {
+	width:145px;
+	color: #FFF;
+}
+
+#search .moduletable {
+	padding-top:1px;
+	margin-left:20px;
+}
+
+#mod_search_searchword, #keyword{
+	width:145px;
+	background-image: url(../images/searchBackground.png);
+	background-repeat: repeat-x;
+}
+
+#mod_search_searchword.inputbox:hover, #mod_search_searchword.inputbox:focus, #keyword.inputbox:hover , #keyword.inputbox:focus {
+	border: 1px solid #666666;
+	color: #000;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+	text-align:left;
+}
+
+input, select {
+	font: 12px "Lucida Grande",	 Arial,sans-serif;
+}
+
+select, .inputbox {
+	padding: 2px;
+	padding-top:2px;
+	padding-left:5px;
+	margin-bottom:1px;
+}
+
+textarea {
+	padding-left: 2px;
+}
+
+.button, input.button, a.button {
+	border: 1px solid #2F2F2F;
+	padding: 1px 5px!important;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.button:hover  {
+	background: url(../images/vertnavbutton.png) repeat-x top #333;
+	color: #000;
+	cursor: pointer;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.button:active, .button:focus {
+	border: 1px solid #222222;
+}
+
+.inputbox {
+	border: 1px solid #CCCCCC;
+	background: #FFFFFF;
+	color: #111;
+}
+
+#left .inputbox {
+	background-image: url(../images/vertnavbutton.png);
+	background-repeat: repeat-x;
+}
+
+.inputbox:hover, .inputbox:focus {
+	border: 1px solid #606060;
+	color: #000000;
+}
+
+fieldset.js_loginflat {
+	border: 0px;
+	padding: 8px;
+	margin-left: 12px;
+	margin-right: 12px;
+	font: 11px Arial,sans-serif;
+	text-align: center;
+	vertical-align:top;
+}
+
+fieldset.js_loginflat .inputbox {width:145px; }
+
+fieldset.js_loginflat legend {display:none}
+
+.moduletableflat {
+	text-align:center;
+	vertical-align:top;
+}
+
+
+
+.bearright {top:25px; right:15px; position:absolute;}
+
+
+
+fieldset {
+	border:0px;
+}
+
+#form-login li {
+	list-style-type:none;
+}
+
+.buttonheading a img{
+	border:0px;
+}
+
+.line {
+	color: #CCCCCC;
+}
+
+#colorfield-border {
+	float:left;
+	position:relative;
+	top:158px;
+	left:138px;
+}
+
+#colorfield-link {
+	float:left;
+	position:relative;
+	top:180px;
+	left:76px;
+}
+
+#bear {
+	position:relative;
+	font-size:10px;
+	color:#CCCCCC;
+	width: 300px;
+	float:right;
+	text-align:right;
+	padding-bottom:20px;
+	padding-right:15px;
+}
+
+#bear a:link, #bear a:visited {
+	color: #CCCCCC;
+	text-decoration: none;
+} 
+
+#bear a:hover {
+	color: #222222;
+	text-decoration: none;
+	cursor: pointer;
+} 
+
+#bear a img{
+	border: 0px;
+}
+
+.joomla-template-design {
+	position: absolute;
+	top: 0px;
+	right: 15px;
+}
+
+.joomla-template {
+	position:absolute;
+	top:5px;
+	right:48px;
+	display:block;
+}
+
+a.divlink, a.divlink:link, a.divlink:visited  {
+	display:block;
+	width:100%; /*width needs to be specified to work in IE*/
+	height:100%; /*height needs to be specified to work in IE*/
+	/*Other browsers expand the link to full width and height.*/
+	line-height:0px;
+	font-size:0px;
+	color: #222222;
+}
+
+.colorpicker img {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	padding-right:2px;
+}
+
+.colorpicker a:link, .colorpicker a:visited, .colorpicker a {
+	text-decoration: none;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+#colorpicker {
+	width: 260px;
+	text-align: center;
+	padding-top: 10px;
+}
+               
+/*virtuemart CSS*/
+
+#vmMainPage H4 {
+	font: normal normal 180% "Trebuchet MS",Arial,sans-serif; color: #0066CC;
+}
+
+#vmMainPage img {
+	text-decoration: none;
+}
+
+#vmMainPage a {
+	font-size: 12px;
+}
+
+div .vmRecent {
+	border:#CCCCCC dotted 1px;
+	padding:10px;
+}
+
+.moduletablecat {
+	padding-top: 6px;
+	padding-right: 6px;
+	padding-bottom: 6px;
+	padding-left: 6px;
+	margin-left:5px;
+	margin-right:5px;
+	background-color:#FFFFFF;
+	border:dotted #999999 1px;
+}
+
+.moduletablecat a {
+	font-size: 12px;
+
+}
+
+.moduletablerandomproduct td {
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.moduletablerandomproduct a img  {
+	padding-left:5px;
+	padding-right:5px;
+	border:#FFF solid 1px;
+}
+.moduletablerandomproduct a:hover img  {
+	border:solid 1px;
+}
+
+.moduletablerandomproduct td span {
+	font-size: 12px;
+	color: #333333;
+}
+
+#nav a:hover {
+	background-image: url(../images/buttonhover.png);
+	background-color: #0066FF;
+}
+
+ul.menu  a:hover {
+	background-color: #0066FF;
+	background-image:url(../images/vertnavbutton-hover.png);
+}
+
+ul.menu .active a {
+	background-color: #0066FF;;
+	color: #fff;
+	background-image:url(../images/vertnavbutton-hover.png);
+}
+
+a:link ,  a:visited, a:hover, .componentheading, .contentheading, #vmMainPage H4 {
+	color: #0066FF;
+}
+
+.button, input.button, a.button {
+	background: url(../images/button-bg.gif) repeat-x top #0066FF;
+	color: #FFFFFF;
+}
+
+#nav a:link#active_menu-nav, #nav a:visited#active_menu-nav{
+	color: #fff;
+	background-image: url(../images/buttonhover.png);
+	background-color: #0066FF;
+}
+div .vmRecent {
+	border:#0066FF dotted 1px;
+	padding:10px;
+}
+.moduletablerandomproduct a:hover img  {
+	border:#0066FF solid 1px;
+}
+

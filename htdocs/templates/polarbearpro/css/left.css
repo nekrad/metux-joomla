@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Left */
+
+#content {
+	padding-left:0px;
+	width: 766px;
+}
+
+#container {
+	background-image:url(<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/body-left.png);
+}

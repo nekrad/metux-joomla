@@ -1,0 +1,46 @@
+ul.menu a
+
+{
+
+display: block;
+
+padding: 3px;
+
+width: 172px;
+
+background-color: #000;
+
+
+}
+
+#left .moduletable, #left .moduletable_menu, #right .moduletable, #right .moduletable_menu, #right .moduletable_text, #left .moduletable_text {
+
+padding:6px;
+
+}
+
+#right {
+
+width:250px;
+
+
+
+}
+
+#content {
+
+	float:right;
+
+	padding-top: 15px;
+
+	padding-right: 15px;
+
+	padding-bottom: 15px;
+
+	width:950px;
+
+	}
+	
+.moduletablecat {
+width:160px;
+}

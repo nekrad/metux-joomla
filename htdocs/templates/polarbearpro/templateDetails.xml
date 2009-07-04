@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>PolarBearPro</name>
+	<creationDate>12 SEPT 2008</creationDate>
+	<version>1.1</version>
+	<author>Big Bear</author>
+    <authorEmail>info@joomlabear.com</authorEmail>
+    <authorUrl>http://www.joomlabear.com</authorUrl>
+	<copyright>Copyright (C) 2007 - 2008 Joomlabear ltd. All rights reserved.</copyright>
+	<license>CC Attribution 3.0 Unported</license>
+	<description><![CDATA[
+	PolarBearPro is brought to you by the clever bears at <a href="www.joomlabear.com">www.joomlabear.com</a>. Visit us for other great free joomla templates
+	]]></description>
+	<files>
+		<filename>index.php</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>images/buttonhover.png</filename>
+		<filename>images/joomla-template-by-joomlabear.png</filename>
+		<filename>images/vertnavbutton.png</filename>
+		<filename>images/vertnavbutton-hover.png</filename>
+		<filename>images/starbullet.gif</filename>
+		<filename>images/starbullet-hover.gif</filename>
+		<filename>images/cp_bg.png</filename>
+		<filename>images/body.png</filename>
+		<filename>images/footer.png</filename>
+		<filename>images/head.png</filename>
+		<filename>images/menu.png</filename>
+		<filename>images/bluearrowbullet.png</filename>
+		<filename>images/button-bg.gif</filename>
+		<filename>images/headpieceback-bear.png</filename>
+		<filename>images/searchBackground.png</filename>
+		<filename>images/body-right.png</filename>
+		<filename>images/body-none.png</filename>
+		<filename>images/body-left.png</filename>
+		<filename>css/template.css</filename>
+		<filename>css/ie6.css</filename>
+		<filename>css/left.css</filename>
+		<filename>css/right.css</filename>
+		<filename>css/leftRight.css</filename>
+		<filename>params.ini</filename>
+	</files>
+	<positions>
+		<position>top-nav</position>
+		<position>left</position>
+		<position>search</position>
+		<position>right</position>
+		<position>feature</position>
+		<position>breadcrumbs</position>
+		<position>footer</position>
+		<position>top-banner-468-60</position>
+	</positions>
+	<params>
+	</params>
+</install>
