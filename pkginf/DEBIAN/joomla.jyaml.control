@@ -1,0 +1,6 @@
+Package: jyaml
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 3.0.0.0
+Description: YAML admin component
+Priority: optional
