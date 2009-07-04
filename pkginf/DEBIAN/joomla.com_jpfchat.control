@@ -1,0 +1,6 @@
+Package: com-jpfchat
+Section: webapps/joomla-1.5
+Maintainer: Enrico Weigelt, metux IT service <weigelt@metux.de>
+Version: 1.0.1.0
+Description: JPFchat component
+Priority: optional
