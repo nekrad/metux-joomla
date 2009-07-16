@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="ArtForms: Show form">
+		<message>
+			<![CDATA[ArtForms: Show form]]>
+		</message>
+	</layout>
+	<state>
+		<name>ArtForms: show form</name>
+		<description>ArtForms: show form</description>
+		<url>
+			<param name="formid"  type="text"  default="0" label="Form ID" />
+		</url>
+		<params>
+		</params>
+	</state>
+</metadata>
