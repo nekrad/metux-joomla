@@ -63,6 +63,46 @@ if(!isset($mosConfig_emailpass) || is_null($mosConfig_emailpass)) $mosConfig_ema
 
 $oldignoreuserabort = null;
 
+// 1.5 style adaption
+if (!$task)
+{
+    switch (@$_REQUEST{'view'})
+    {
+	case 'buddy-manage':		$task = 'manageConnections';	break;
+        case 'user-search':		$task = 'usersList';		break;
+	case 'user-list':		$task = 'usersList';		break;
+	case 'user-profile':		$task = 'userProfile';		break;
+	case 'user-register':		$task = 'registers';		break;
+	case 'password-lost':		$task = 'lostPassword';		break;
+	case 'password-request':	$task = 'sendNewPass';		break;
+	case 'login':			$task = 'login-form';		break;
+	case 'login-form':		$task = 'login-form';		break;
+	case 'tab-class':		$task = 'tabclass';		break;
+	case 'register':		$task = 'registers';		break;
+    }
+}
+
+// get in the patTemplate engine
+require_once('libraries/pattemplate/patTemplate.php');
+
+global $tmpl_engine;
+$tmpl_engine = new patTemplate();
+$tmpl_engine->setBaseDir('components/com_comprofiler/templates/'.$_REQUEST{'lang'}.'/');
+$tmpl_engine->addGlobalVar('CURRENT:LANG',   $_REQUEST{'lang'});
+$tmpl_engine->addGlobalVar('CURRENT:OPTION', $_REQUEST{'option'});
+$tmpl_engine->addGlobalVar('CURRENT:VIEW',   $_REQUEST{'view'});
+$tmpl_engine->addGlobalVar('CURRENT:TASK',   $_REQUEST{'task'});
+$tmpl_engine->addGlobalVar('CURRENT:TASK',   $_REQUEST{'task'});
+
+function _cb_view_show($name)
+{
+    global $tmpl_engine, $CB_Prefix;
+    $classname = 'CB_View_'.$name;
+    require_once($CB_Prefix.'views/'.strtolower($name).'/'.$classname.'.class.php');
+    $view = new $classname();
+    $view->show();
+}
+
 switch( $task ) {
 
 	case "userDetails":
@@ -115,7 +155,12 @@ switch( $task ) {
 	$oldignoreuserabort = ignore_user_abort(true);
 	login();
 	break;
-	
+
+	case 'login-form':
+	    $oldignoreuserabort = ignore_user_abort(true);
+	    _cb_view_show('Login');
+	break;
+
 	case "logout":
 	$oldignoreuserabort = ignore_user_abort(true);
 	logout();

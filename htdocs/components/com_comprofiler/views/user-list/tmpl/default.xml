@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="CB: User list">
+		<message>
+			<![CDATA[CB: Search for users]]>
+		</message>
+	</layout>
+	<state>
+		<name>Community-Builder: Search for users Layout</name>
+		<description>Community-Builder: Search for users</description>
+		<url>
+			<param name="listid" type="text" default="0" label="List ID" />
+		</url>
+	</state>
+</metadata>
