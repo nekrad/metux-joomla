@@ -1487,14 +1487,17 @@ function getFieldValue( $oType, $oValue=null, $user=null, $prefix=null, $imgMode
 		CASE 'image':
 			if(is_dir($mainframe->getCfg('absolute_path')."/components/com_comprofiler/plugin/language/".$mosConfig_lang."/images")) $fileLang=$mosConfig_lang;
 			else $fileLang="default_language";
-			
 			if($user->avatarapproved==0) $oValue="components/com_comprofiler/plugin/language/".$fileLang."/images/tnpendphoto.jpg";
 			elseif(($user->avatar=='' || $user->avatar==null) && $user->avatarapproved==1) $oValue = "components/com_comprofiler/plugin/language/".$fileLang."/images/tnnophoto.jpg";
 			elseif(strpos($user->avatar,"gallery/")===false) $oValue="images/comprofiler/tn".$oValue;
 			else $oValue="images/comprofiler/".$oValue;
 
-			if(!is_file($mainframe->getCfg('absolute_path')."/".$oValue)) $oValue = "components/com_comprofiler/plugin/language/".$fileLang."/images/tnnophoto.jpg";
-			if(is_file($mainframe->getCfg('absolute_path')."/".$oValue)) {
+			// little hack to allow external URLs for avatar images
+			if (!is_file($mainframe->getCfg('absolute_path')."/".$oValue)) $oValue = "components/com_comprofiler/plugin/language/".$fileLang."/images/tnnophoto.jpg";
+
+			if (preg_match('~^([A-Za-z0-9]+://)~', $user->avatar))
+			    $oValue = $user->avatar;
+
 				$onclick = null;
 				$aTag = null;
 				if($ueConfig['allow_profilelink']==1) {
@@ -1503,7 +1506,6 @@ function getFieldValue( $oType, $oValue=null, $user=null, $prefix=null, $imgMode
 					$aTag = "<a href=\"".$profileURL."\">";
 				}
 				$oReturn = $aTag."<img src=\"".$oValue. "\" ".$onclick." alt=\"\" style=\"border-style: none;\" />".($aTag ? "</a>" : "");
-			}
 		break;
 		CASE 'status':
 			if ( $ueConfig['allow_onlinestatus'] == 1 ) {
