@@ -1417,7 +1417,8 @@ function login( $username=null, $passwd2=null ) {
 			. "\n WHERE u.username='".$username."' AND u.id = ue.id"
 			);
 			$row = null;
-			if ( $_CB_database->loadObject( $row ) && cbHashPassword( $passwd2, $row ) ) {
+			$_CB_database->loadObject( $row );
+			if ( count($row) && cbHashPassword( $passwd2, $row ) ) {
 				$pluginResults = $_PLUGINS->trigger( 'onDuringLogin', array( &$row, 1, &$return ) );
 				if ( is_array( $pluginResults ) && count( $pluginResults ) ) {
 					foreach ( $pluginResults as $res ) {
