@@ -237,6 +237,8 @@ class getContactTab extends cbTabHandler {
 
 		if ( ( count( $userParams ) > 0 ) && in_array( $_CB_framework->getCfg( "frontend_userparams" ), array( '1', null) ) ) {
 			//Loop through each parameter and render it appropriately.
+		    if (is_array($userParams))
+		    {
 			foreach($userParams AS $userParam) {
 				$return .= "<tr>\n";
 				$return .= "<td class=\"titleCell\">" . $userParam[0] . ":</td>\n";
@@ -244,6 +246,7 @@ class getContactTab extends cbTabHandler {
 				$return .= getFieldIcons($ui, false, false, (isset($userParam[2]) && class_exists("JText") ? JText::_($userParam[2]) : null), (isset($userParam[3]) && class_exists("JText") ? JText::_($userParam[3]) : null));
 				$return .= "</td></tr>\n";	
 			}
+		    }
 		}
 		if($ui==2) {
 			$myGid			=	userGID( $my->id );
