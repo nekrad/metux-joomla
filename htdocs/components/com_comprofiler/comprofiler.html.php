@@ -97,7 +97,7 @@ function submitbutton(mfrm) {
 	<div class="contentheading" ><?php
 	echo sprintf(_UE_EMAILFORMTITLE,"<a href=\"".sefRelToAbs( "index.php?option=com_comprofiler&amp;task=UserDetails&amp;user=".$rowTo->id )."\">".getNameFormat($rowTo->name,$rowTo->username,$ueConfig['name_format'])."</a>");
 	?></div>
-	<form action="<?php echo sefRelToAbs("index.php?option=$option".getCBprofileItemid(true)); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
+	<form action="<?php echo sefRelToAbs("index.php?option=com_comprofiler".getCBprofileItemid(true)); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
 		<br /><?php echo _UE_EMAILFORMSUBJECT; ?><br />
 <?php
 	if (is_array($results)) {
@@ -127,7 +127,7 @@ function submitbutton(mfrm) {
 	echo cbGetSpoofInputTag();
 	echo "\t\t" . cbGetAntiSpamInputTag();
 ?>
-		<input type="hidden" name="option" value="<?php echo $option; ?>" />
+		<input type="hidden" name="option" value="com_comprofiler" />
 		<input type="hidden" name="task" value="sendUserEmail" />
 		<input type="submit" class="button" value="<?php echo _UE_SENDEMAIL; ?>" />
 	</form>
@@ -249,7 +249,7 @@ if ($version == 1) {
 	}
 }
 //--><!]]></script>
-<form action="<?php echo sefRelToAbs("index.php?option=$option".getCBprofileItemid(true)); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
+<form action="<?php echo "index.php?option=com_comprofiler&amp;".getCBprofileItemid(true); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
 <!-- TAB -->
 <table cellspacing="0" cellpadding="4" border="0" width="100%">
 	<tr>
@@ -271,9 +271,10 @@ echo "</td></tr></table>";
 ?>
 	<input class="button" type="submit" value="<?php echo $submitvalue; ?>" />
 	<input type="button" class="button" name="btncancel" value="<?php echo _UE_CANCEL; ?>" onclick="window.location='<?php
-									 echo sefRelToAbs("index.php?option=" . htmlspecialchars( cbGetParam( $_REQUEST, 'option' ) ) . ( ( $user->id == $my->id ) ? '' : ( '&amp;uid=' . $user->id ) ) . getCBprofileItemid( true )); ?>';" />
+									 echo sefRelToAbs("index.php?option=com_comprofiler".(($user->id == $my->id) ? '' : ( '&amp;uid=' . $user->id ) ) . getCBprofileItemid( true )); ?>';" />
 	<input type="hidden" name="id" value="<?php echo $user->id;?>" />
 	<input type="hidden" name="task" value="saveUserEdit" />
+	<input type="hidden" name="option" value="com_comprofiler" />
 	<?php
 	echo cbGetSpoofInputTag();
 ?>
@@ -969,7 +970,7 @@ Registration Functions
 //TODO: Add ability to change password on form.
 		?>
 <table cellpadding="4" cellspacing="0" border="0" width="98%" class="contentpane">
-  <form action="<?php echo sefRelToAbs("index.php?option=".$option); ?>" id="adminForm" name="adminForm" method="post">
+  <form action="<?php echo sefRelToAbs("index.php?option=com_comprofiler"); ?>" id="adminForm" name="adminForm" method="post">
     <tr>
       <td colspan="2"><div class="componentheading"><?php echo _PROMPT_PASSWORD; ?></div></td>
     </tr>
@@ -995,7 +996,7 @@ Registration Functions
 	}
 ?>
     <tr>
-      <td colspan="2"> <input type="hidden" name="option" value="<?php echo $option;?>" />
+      <td colspan="2"> <input type="hidden" name="option" value="com_comprofiler" />
         <input type="hidden" name="task" value="sendNewPass" />
         <?php
 	echo cbGetSpoofInputTag();
@@ -1260,7 +1261,7 @@ function cbSendUsernameCheck(meButton) {
 <div style="align:center;" id="cbIconsTop"><?php
 		echo getFieldIcons(1,true,true,"","",true);		// to remove top icons explanation just comment or remove this line
 ?></div>
-<form action="<?php echo sefRelToAbs("index.php?option=".$option); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
+<form action="<?php echo sefRelToAbs("index.php?option=com_comprofiler"); ?>" method="post" id="adminForm" name="adminForm" onsubmit="return submitbutton(this)">
 <table cellpadding="5" cellspacing="0" border="0" width="98%" class="contentpane" id="registrationTable">
     <tr>
       <td colspan="2" width="100%"><div class="componentheading"><?php echo _REGISTER_TITLE; ?></div></td>
@@ -1307,7 +1308,7 @@ function cbSendUsernameCheck(meButton) {
 		<input type="hidden" name="id" value="0" />
 		<input type="hidden" name="gid" value="0" />
 		<input type="hidden" name="emailpass" value="<?php echo $emailpass;?>" />
-		<input type="hidden" name="option" value="<?php echo $option; ?>" />
+		<input type="hidden" name="option" value="com_comprofiler" />
 		<input type="hidden" name="task" value="saveregisters" />
 		<?php
 		echo cbGetSpoofInputTag( $cbSpoofString );
@@ -1443,7 +1444,7 @@ function pendingApprovalUsers($option,$users) {
 ?>    
 <br />                    
 <span class='contentheading'><?php echo _UE_USERAPPROVAL_MODERATE; ?></span><br /><br />
-          <form action='<?php echo sefRelToAbs("index.php?option=$option".($Itemid ? "&amp;Itemid=".$Itemid : "")); ?>' method='post' id='adminForm' name='adminForm'>
+          <form action='<?php echo sefRelToAbs("index.php?option=com_comprofiler".($Itemid ? "&amp;Itemid=".$Itemid : "")); ?>' method='post' id='adminForm' name='adminForm'>
           <table width='100%' border='0' cellpadding='4' cellspacing='2'>
 		<thead><tr align='left'>
 		<th>&nbsp;</th>
@@ -1468,7 +1469,7 @@ function pendingApprovalUsers($option,$users) {
 		.'<input class="button" style="background-color:#FCC;" onclick="this.form.task.value=\'rejectUser\';this.form.submit();" type="button" value="'._UE_REJECT.'" /></td></tr>';
 		echo "</table>\n";
 		echo "<input type='hidden' name='task' value='' />\n";
-		echo "<input type='hidden' name='option' value='".$option."' />\n";
+		echo "<input type='hidden' name='option' value='com_comprofiler' />\n";
 		echo cbGetSpoofInputTag();
 		echo "</form>\n";
 }

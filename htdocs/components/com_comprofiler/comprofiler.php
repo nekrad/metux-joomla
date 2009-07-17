@@ -890,7 +890,7 @@ function sendNewPass( $option ) {
 	);
 
 	if (!($user_id = $_CB_database->loadResult()) || !$checkusername || !$confirmEmail) {
-		cbRedirect(sefRelToAbs("index.php?option=$option&task=lostPassword".($Itemid ? "&Itemid=".$Itemid : "")),_ERROR_PASS );
+		cbRedirect(sefRelToAbs("index.php?option=com_comprofiler&task=lostPassword".($Itemid ? "&Itemid=".$Itemid : "")),_ERROR_PASS );
 	}
 
 	$newpass = cbMakeRandomString( 8, true );
@@ -919,9 +919,9 @@ function sendNewPass( $option ) {
 			die("SQL error" . $_CB_database->stderr(true));
 		}
 
-	 	cbRedirect(sefRelToAbs("index.php?option=$option&task=done".($Itemid ? "&Itemid=".$Itemid : "")),_NEWPASS_SENT );
+	 	cbRedirect(sefRelToAbs("index.php?option=com_comprofiler&task=done".($Itemid ? "&Itemid=".$Itemid : "")),_NEWPASS_SENT );
 	 } else { 
-		cbRedirect(sefRelToAbs("index.php?option=$option&task=done".($Itemid ? "&Itemid=".$Itemid : "")),_UE_NEWPASS_FAILED );
+		cbRedirect(sefRelToAbs("index.php?option=com_comprofiler&task=done".($Itemid ? "&Itemid=".$Itemid : "")),_UE_NEWPASS_FAILED );
 	}
 }
 
