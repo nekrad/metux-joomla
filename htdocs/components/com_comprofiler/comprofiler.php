@@ -41,6 +41,7 @@ include_once($_CB_adminpath."/plugin.class.php");
 include_once($_CB_adminpath."/comprofiler.class.php");
 include_once($_CB_adminpath."/imgToolbox.class.php");
 
+$CB_Prefix      = $mainframe->getCfg( 'absolute_path' ).'/components/com_comprofiler/';
 $UElanguagePath	= $mainframe->getCfg( 'absolute_path' ).'/components/com_comprofiler/plugin/language';
 $UElanguage		= $mainframe->getCfg( 'lang' );
 if ( ! file_exists( $UElanguagePath . '/' . $mosConfig_lang . '/' . $mosConfig_lang . '.php' ) ) {
