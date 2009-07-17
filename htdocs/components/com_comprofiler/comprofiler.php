@@ -612,8 +612,9 @@ function usersList($uid) {
 
 	$_PLUGINS->trigger( 'onBeforeQueryUsersList', array( &$queryFrom, 1 ) );	// $uid = 1
 
-	$_CB_database->setQuery( "SELECT COUNT(*) " . $queryFrom );
-	$total			=	$_CB_database->loadResult();
+	$_CB_database->setQuery( "SELECT COUNT(*) as count " . $queryFrom );
+	$total		=	$_CB_database->loadAssoc();
+	$total = $total{'count'};
 
 	if ( ( $limit > $total ) || ( $limitstart >= $total ) ) {
 		$limitstart = 0;
