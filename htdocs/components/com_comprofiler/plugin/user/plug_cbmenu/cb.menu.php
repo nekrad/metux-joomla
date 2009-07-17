@@ -839,7 +839,7 @@ class getMenuTab  extends cbTabHandler {
 		if ($firstMenuName != "") {
 			$mi = array(); $mi[$firstMenuName]='';
 		//	$this->_addMenuItem( $mi,$firstMenuName,"javascript:void(0)" );		// Community
-			if ($firstSubMenuName != "") {
+			if (@$firstSubMenuName != "") {
 				unset($mi);
 				if ($firstSubMenuHref == "") $firstSubMenuHref = "javascript:void(0)";
 				$mi = array(); $mi[$firstMenuName]["_UE_TEAMCREDITS_CB"]='';
