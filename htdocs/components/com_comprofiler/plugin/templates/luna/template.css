@@ -1,0 +1,307 @@
+/* Community Builder 1.0.2 template file */
+/* Name: Luna. DO NOT MODIFY: also used for backend. */
+
+/* For registration and user profile titles and fields: */
+
+.cbFields {
+	margin:0px;
+	padding:0px;
+	border-width:0px;
+	width:97%;
+}
+.cbFields td {
+	padding:5px;
+}
+.titleCell, table.content_table td.titleCell {
+	font-weight:bold;
+	width:125px;
+}
+.captionCell , table.content_table td.captionCell {
+	font-weight:bold;
+	text-align:	left;
+	vertical-align:top;
+	padding:0px 0px 8px 0px;
+}
+.fieldCell , table.content_table td.fieldCell, .fieldCell td, .tab_Description  {
+	font-weight:normal;
+	text-align:	left;
+	vertical-align:top;
+	padding:0px 0px 8px 0px;
+}
+fieldCell input, .fieldCell select {
+	margin-top:0px;
+	margin-left:0px;
+	vertical-align: top;
+}
+.fieldError {
+	color: red;
+	padding:0px 0px 8px 0px;
+}
+.cbMulti td {
+	padding-right:8px;
+}
+.tab_Description {
+	font-weight:bold;
+	padding: 8px 0px;
+}
+.delimiterCell {
+	font-weight:bold;
+	font-size:125%;
+}
+.descriptionCell {
+	font-weight:normal;
+	font-size:95%;
+}
+.cbSortHead {
+	text-decoration:underline;
+}
+.cbSortHeadSelected {
+	text-decoration:none;
+	font-weight:bolder;
+	color:black;
+}
+
+/* webaddress field with rows=2 formatting: */
+.webUrlSpan   {	position: relative; display: block; height:2em; }
+.webTextSpan  {	position: relative;  height:2em; }
+.subTitleSpan { padding-right: 250px; }
+.subFieldSpan { position: absolute; top: 0px; left: 9em; }
+
+/* For positioning user profile div positions: */
+.cbProfile	 {	margin: 5px;				border-width: 0px;	padding: 0px;	}
+.cbPosHead, .cbPosTop, .cbPosLeft, .cbPosMiddle, .cbPosRight, .cbPosTabMain, .cbPosUnderAll {
+				margin: 0px 0px 10px 0px;	border-width: 0px;	padding: 0px;	}
+.cbPosTop	 {	vertical-align: bottom;	}
+.cbPosLeft   {	float:	left;	text-align:	left;	}
+.cbPosMiddle {	float:	left;	text-align:	center;	}
+.cbPosRight  {	float:	right;	text-align:	right;	}
+.cbClr		 {	clear:	both;	}
+
+/* For dynamic tabs on user profile and edit user: */
+
+.dynamic-tab-pane-control h2 {
+	text-align:	center;
+	width:		auto;
+}
+.dynamic-tab-pane-control h2 a {
+	display:	inline;
+	width:		auto;
+}
+.dynamic-tab-pane-control a:hover {
+	background: transparent;
+}
+.dynamic-tab-pane-control.tab-pane {
+	position:	relative;
+	width:		100%;		/* width needed weird IE bug */
+	margin-right:	-2px;	/* to make room for the shadow */
+}
+.dynamic-tab-pane-control .tab-row .tab {
+	width:			70px;
+	height:			16px;
+	background: 	url("tab.png") no-repeat;
+
+	position:		relative;
+	top:			0px;
+	display:		inline;
+	float:			left;
+	overflow:		hidden;
+	
+	cursor:			Default;
+
+	margin:			1px -1px 1px 2px;
+	padding:		2px 0px 0px 0px;
+	border:			0px;
+
+	z-index:		1;
+	font:			11px Tahoma,sans-serif;
+	white-space:	nowrap;
+	text-align:		center;
+}
+.dynamic-tab-pane-control .tab-row .tab.hover {
+	font:				11px Tahoma,sans-serif;
+	width:				70px;
+	height:				16px;
+	background:			url("tab.hover.png") no-repeat;
+}
+.dynamic-tab-pane-control .tab-row .tab.selected,
+.dynamic-tab-pane-control .tab-row .tab.selected:hover {
+	width:			74px;
+	height:			18px;
+	background:		url("tab.active.png") no-repeat;
+	border-bottom-width:	0px;
+	z-index:		3;
+	padding:		2px 0px 0px 0px;
+	margin:			1px -3px -1px 0px;
+	top:			-2px;
+	font:			11px Tahoma,sans-serif;
+}
+.dynamic-tab-pane-control .tab-row .tab a {
+	font:				11px Tahoma,sans-serif;
+	color:				Black;
+	text-decoration:	none;
+	cursor:				default;
+}
+.dynamic-tab-pane-control .tab-page {
+	clear:			both;
+	border:			1px solid rgb( 145, 155, 156 );
+	background:		rgb( 252, 252, 254 );
+	z-index:		2;
+	position:		relative;
+	top:			-2px;
+	width:			100%;
+	/*
+	filter:			progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#fff4f3ee, GradientType=0)
+				progid:DXImageTransform.Microsoft.Shadow(Color=#ff919899, Strength=2, Direction=135);
+	*/
+}
+.dynamic-tab-pane-control .tab-row {
+	z-index:		1;
+	white-space:	nowrap;
+}
+.dynamic-tab-pane-control .tab-page .tab-content {
+	margin: 10px;
+}
+
+/* For tool-tips: */
+
+.cb-tips-font {font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; color: #000000;}
+.cb-tips-capfont {font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 10px; font-weight: bold; color:  #FFFFFF;}
+.cb-tips-closefont {font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color:  #FFFFFF; text-align: right;}
+.cb-tips-closefont a:link, .cb-tips-closefont a:visited {color:  #FFFFFF;}
+.cb-tips-closefont a:hover {color: #00CCFF;}
+.cb-tips-fg {background-color: #CCCCFF;}
+.cb-tips-bg {background-color: #333399;}
+.cb-tips-button, .cb-tips-button:link, .cb-tips-button:visited, .cb-tips-hover  {
+	margin: 0px 0.5em 0.5em 0;	padding: 0;	white-space: nowrap;	text-align: center; display: block; width: 8em;
+	background:#EEE;
+	color:black;
+	font:bold 11px Tahoma,sans-serif;
+	border:2px solid #888;
+	text-decoration:none;
+	padding: 2px 0px 4px 0px;
+}
+.cb-tips-button:hover , .cb-tips-hover:hover {
+	background:#FFC73C;
+	color:black;
+	text-decoration:none;
+}
+
+/* For connections display: connectionBox */
+/* For images moderation: containerBox */
+
+.cbConnectionPaths { width: 100%;	text-align: center; }
+.connectionBox, .containerBox {
+	float:left;
+
+	padding: 4px;
+	margin: 5px 3px;
+	background: white;
+	border: 1px groove #cccccc;
+	border-color: #AAA #444 #444 #AAA;
+	text-align: center;
+}
+
+/* For tab positions: */
+#cbPosUpper		{	border: 0px solid;	width:100%	}
+#cbPosHead		{	text-align: left;	border: 0px;	vertical-align: top; 	width:	100%;	}
+#cbPosLeft		{	text-align: left;	border: 0px;	vertical-align: bottom;	}
+#cbPosMiddle	{	text-align:	center;	border: 0px;	vertical-align: bottom;	}
+#cbPosRight		{	text-align:	right;	border: 0px;	vertical-align: bottom;	}
+#cbPosTabMain	{	text-align: left;	border: 0px;	}
+#cbPosUnderAll	{	text-align: center;	border: 0px;	}
+/* For User Profile Title */
+#cbProfileTitle { }
+/* For User Profile Status List Display */
+.cbStatusList { }
+
+/***** menu BestCSS *****/
+@media print {	.cbMenu, .cbSSmenu	{	visibility:hidden;	}	}
+/* BestCSS Menu Functional: */
+.cbpMenu		{	margin: 0px;	padding: 0px;		z-index: 4;	}
+.cbMenu, .cbSSmenu {margin: 0px !important;	padding: 0px !important;	white-space: nowrap;	text-align: left;	float: left;	list-style: none outside none;
+					width: 8em;	}
+.cbMenu ul		{	position: absolute;			left: auto;			z-index: 32001;	}	/* second-level lists */
+.cbMenu ul ul	{	margin: -1em 0px 0px 10em;	z-index: 32001;	}						/* third-and-above-level lists N/A yet */
+.cbMenu span, .cbSSmenu span 			{		display: none;	}
+.cbMenu a		{	text-align: center;	}
+.cbSSmenu a		{	text-align: left;			display: block;		width: 100%;	}
+.cbSSmenu li	{	list-style: none outside none;	display: block;		width: 100%;	}
+html>body .cbMenu a, html>body .cbMenu a:visited, html>body .cbMenu a:hover, html>body .cbMenu a:active,
+html>body .cbSSmenu a, html>body .cbSSmenu a:visited, html>body .cbSSmenu a:hover, html>body .cbSSmenu a:active {	width:auto;	}
+.cbSSmenu img	{	margin-right: 8px;			border: none;	}
+.cbSSmenu img.hr {	margin: 1px 0px 1px 0px;	display:block;		width:100%;			height:1px;		}
+#conteneurmenu	{	height: 40px;	}
+/* BestCSS Menu Decoration: */
+.cbMenu, .cbSSmenu {
+	background:#EEE;
+	color:black;
+	font: bold 11px Tahoma,sans-serif;
+	border:1px solid #888;
+	padding:0px;
+}
+.cbMenu {
+	margin-right: 0.5em !important;
+}
+.cbSSmenu {
+	width: auto;
+	margin-top: 0.3em !important;
+}
+.cbSSmenu li {
+	padding: 0px !important;
+	margin: 0px !important;
+	background: #EEE;
+	padding-bottom: 0px;
+	width:auto;
+/*	border-right: 1px solid #CDCDCC;*/
+}
+.cbMenu a, .cbSSmenu a, .cbMenu a:link, .cbMenu a:visited, .cbMenu a:hover, .cbSSmenu a:link, .cbSSmenu a:visited, .cbSSmenu a:hover {
+	display: block;
+	font: bold 11px Tahoma,sans-serif;
+	text-decoration:none;
+	color:black;
+	padding: 2px 5px 4px 3px;
+	margin: 0px;
+}
+.cbSSmenu a, .cbSSmenu a:link, .cbSSmenu a:visited, .cbSSmenu a:hover {
+	padding: 2px 4px 3px 5px;
+}
+.cbSSmenu ul:hover, .cbSSmenu a:hover, .cbSSmenu a:focus, .cbMenu a:hover, .cbMenu a:focus {
+	background:#FFC73C;
+	color:black;
+	text-decoration:none;
+	margin: 0px;
+}
+
+div.cbclearboth:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+div.cbclearboth {display:inline-block;}
+/* Hides from IE-mac \*/
+* html div.cbclearboth {height: 1%;}
+div.cbclearboth {display: block;}
+/* End hide from IE-mac */
+
+
+/* Backend Administration only in luna: */
+
+/* ??? */
+.cbNoShow {visibility: hidden;}
+
+.cbWarning {
+	margin: 10px 3px;
+	padding: 5px 50px;
+	border: 1px solid #cc0000;
+	min-height: 22px;
+	text-align: left;
+	width: 88%;
+	color: red;
+	font-weight: bold;
+	font-size: 18px;
+	background: #ffffcc url("../../../../../includes/js/ThemeOffice/warning.png") no-repeat;
+	background-position: 20px 7px;
+	clear:both;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbinstall version="1.0" type="plugin" group="templates">
+	<name>Dark</name>
+	<author>MamboJoe and Beat</author>
+	<creationDate>2006-11-18</creationDate>
+	<copyright>(C) 2005-2006 joomlapolis.com</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>beat@joomlapolis.com</authorEmail>
+	<authorUrl>www.joomlapolis.com</authorUrl>
+	<version>1.1</version>
+	<description>Default Dark Template for Community Builder</description>
+	<files>
+		<filename plugin="dark">calendar.css</filename>
+		<filename>index.html</filename>
+		<filename>menuarrow.gif</filename>
+		<filename>noprofiles.gif</filename>
+		<filename>profiles.gif</filename>
+		<filename>required.gif</filename>
+		<filename>template.css</filename>
+		<filename>tooltip.png</filename>
+	</files>
+    <params>	
+    </params>	   
+</cbinstall>

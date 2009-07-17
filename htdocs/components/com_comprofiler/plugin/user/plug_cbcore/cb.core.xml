@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbinstall version="1.0" type="plugin" group="user">
+	<name>CB Core</name>
+	<author>JoomlaJoe and Beat</author>
+	<creationDate>2007-07-16</creationDate>
+	<copyright>(C) 2005-2007 joomlapolis.com</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>beat@joomlapolis.com</authorEmail>
+	<authorUrl>www.joomlapolis.com</authorUrl>
+	<version>1.1</version>
+	<description>Core CB Tabs and Events.</description>
+	<files>
+		<filename plugin="cb.core">cb.core.php</filename>
+		<filename>index.html</filename>
+	</files>
+    <params>	
+    </params>
+	<tabs>
+		<tab name="_UE_CONTACT_INFO_HEADER" description="" class="getContactTab" fields="1" position="cb_main" displaytype="tab">
+			<params>
+			</params>
+			<fields>
+			</fields>
+		</tab>
+		<tab name="_UE_PORTRAIT" description="" class="getPortraitTab" fields="0" position="cb_head" displaytype="html">
+			<params>
+				<param name="portrait_descrPos" type="list" default="above" label="Display description" description="Choose where to display description text. To display &quot;[edit photo]&quot;, type following into description: [menu style=&quot;color:green;&quot; caption=&quot;&amp;91;edit your photo&amp;93;&quot; img=&quot;&quot;] _UE_MENU_EDIT : _UE_UPDATEAVATAR [/menu]">
+					<option value="above">Above portrait</option>
+					<option value="below">Below portrait</option>
+				</param>
+			</params>
+			<fields>
+			</fields>
+		</tab>
+		<tab name="_UE_PROFILE_PAGE_TITLE" description="" class="getPageTitleTab" fields="0" position="cb_head" displaytype="html">
+			<params>
+				<param name="title" type="text" size="25" default="_UE_PROFILE_TITLE_TEXT" label="User Profile Title text" description="Page title text. Enter text to be displayed as profile page title. %s will be replaced by user-name depending on global settings. Or use language-dependant _UE_PROFILE_TITLE_TEXT (default)" />
+			</params>
+			<fields>
+			</fields>
+		</tab>
+	</tabs>
+</cbinstall>

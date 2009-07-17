@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+  <mosinstall type="module">
+    <name>CB Login</name>
+    <creationDate>2007-08-08</creationDate>
+    <author>JoomlaJoe and Beat</author>
+    <copyright>(C) 2005 - 2007 Joomlapolis.com. This module is released under the GNU/GPL v2 License</copyright>
+    <authorEmail>beat@joomlapolis.com</authorEmail>
+    <authorUrl>www.joomlapolis.com</authorUrl>
+    <version>1.1</version>
+    <description>Login module to be used with Community Builder instead of the Login module.</description> 
+    <files>
+      <filename module="mod_cblogin">mod_cblogin.php</filename>
+      <filename>mod_cblogin/mail.gif</filename>
+      <filename>mod_cblogin/users.gif</filename>
+    </files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (mod_login), this allows individual module styling" />
+		<param name="horizontal" type="list" default="0" label="Module orientation" description="Default orientation is vertical for left or right module positions (recommended when displaying avatar). The horizontal orientation is for a compact horizontal module position and does NOT support avatar display.">
+			<option value="0">Vertical</option>
+			<option value="1">Horizontal</option>
+		</param>
+		<param name="compact" type="list" default="0" label="Display type" description="By default, the field names are displayed outside the boxes: username: [___] password: [___]. In compact mode, field names are inside fields: [username___] [xxx___] and texts are shorter.">
+			<option value="0">Default</option>
+			<option value="1">Compact</option>
+		</param>
+		<param name="pretext" type="textarea" cols="20" rows="5" default="" label="Pre-text" description="This is the Text or HTML that is displayed above the login form" />
+		<param name="posttext" type="textarea" cols="20" rows="5" label="Post-text" description="This is the Text or HTML that is displayed below the login form" />
+		<param name="login" type="text" default="" label="Login Redirection URL" description="What page will the login redirect to after login. If let blank will reload current page" />
+		<param name="logout" type="text" default="index.php" label="Logout Redirection URL" description="What page will the logout redirect to after logout. If let blank will reload current page. If set to index.php , it will go to home-page, avoiding unauthorized access messages." />
+		<param name="show_lostpass" type="radio" default="1" label="Lost password" description="Show/Hide the lost password? link">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_newaccount" type="radio" default="1" label="Create account" description="Show/Hide the create account text and link">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="name_lenght" type="text" default="10" label="Username length" description="The length in characters the textbox should have not max. characters the box may contain." />
+		<param name="pass_lenght" type="text" default="10" label="Password length" description="The length in characters the textbox should have not max. characters the box may contain." />
+		<param name="login_message" type="radio" default="0" label="Login Message" description="Show/Hide the javascript Pop-up indicating Login Success">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="logout_message" type="radio" default="0" label="Logout Message" description="Show/Hide the javascript Pop-up indicating Logout Success">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="remember_enabled" type="list" default="1" label="Remember-me checkox" description="Show/Hide the standard Remember-me checkbox. It is possible to have it checked or unchecked by default or always">
+			<option value="1">Show unchecked</option>
+			<option value="3">Show checked</option>
+			<option value="0">Hide unchecked</option>
+			<option value="2">Hide checked</option>
+		</param>
+		<param name="greeting" type="radio" default="1" label="Greeting" description="Show/Hide the simple greeting text">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="name" type="list" default="0" label="Name/Username" description="Choose what to display with the greeting text">
+			<option value="0">Username</option>
+			<option value="1">Name</option>
+			<option value="2">First Name</option>
+		</param>
+		<param name="show_avatar" type="list" default="0" label="Show avatar when logged-in" description="Only for Vertical orientation: Select \'Show always\' to show avatar of the logged-in user or \'no image\' picture if none to encourage users to choose avatar. Select \'Show avatar only if chosen\' to avoid \'No image\' display. The \'Pending approval\' image is always displayed.">
+			<option value="0">Hide</option>
+			<option value="1">Show only if chosen</option>
+			<option value="2">Show always</option>
+		</param>
+		<param name="avatar_position" type="list" default="default" label="Avatar position" description="Default position means centered alone on a line. Left (recommended with avatar if enough space in template) means text flows on the right side of it. Right means the opposite.">
+			<option value="default">Default</option>
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="pms_type" type="list" default="0" label="Private Messaging System" description="Choose the system you have installed." >
+			<option value="0">No system installed</option>
+			<option value="1">PMS Open Source</option>
+			<option value="2">PMS Pro</option>
+			<option value="4">PMS Enhanced 1.x</option>
+			<option value="6">PMS Enhanced 2.x</option>
+			<option value="3">uddeIM</option>
+			<option value="5">Clexus PMS</option>
+			<option value="7">Missus PMS</option>
+			<option value="8">JIM</option>
+		</param>
+		<param name="show_pms" type="list" default="0" label="Private Messages Notification" description="Choose if you want to display count of unread PMS messages. PMS integration must be activated in CB configuration." >
+			<option value="0">Do not show</option>
+			<option value="1">Show only if messages</option>
+			<option value="2">Show also if no messages</option>
+		</param>
+		<param name="show_connection_notifications" type="list" default="0" label="Connections Notification" description="Choose if you want to display Connections notifications for pending approvals etc. Connections must be activated in CB configuration." >
+			<option value="0">Do not show</option>
+			<option value="1">Show only if pending notifications</option>
+		</param>
+		<param name="https_post" type="list" default="0" label="HTTPS (encrypted) login, register and lost password" description="You need https configured on your host for this. This feature is only in Joomla 1.0.13 + Joomla 1.5 and higher" >
+			<option value="0">same as page (default)</option>
+			<option value="1">use https for posting login then same</option>
+			<option value="2">use https (encrypted) for login and after login</option>
+		</param>
+	</params>
+  </mosinstall>
