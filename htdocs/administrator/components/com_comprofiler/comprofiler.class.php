@@ -2712,9 +2712,16 @@ function cbSpamProtect( $userid, $count ) {
 		return $uidArry[$oID];
 	}
 
-	function allowAccess( $accessgroupid, $recurse, $usersgroupid) {
-		global $_CB_database;
-	
+	function allowUserAccess ( $accessgroupid, $user )
+	{
+	    global $acl;
+	    return allowAccess($accessgroupid, 'RECURSE', $acl->get_group_id($user->usertype));
+	}
+
+	function allowAccess( $accessgroupid, $recurse, $usersgroupid) 
+	{
+		global $_CB_database, $acl, $my;
+
 		if ($accessgroupid == -2 || ($accessgroupid == -1 && $usersgroupid > 0)) {
 			//grant public access or access to all registered users
 			return true;

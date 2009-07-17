@@ -430,10 +430,13 @@ function setUserDBrequest( $uid ) {
 	return true;
 }
 
-function userProfile( $option, $uid, $submitvalue) {
+function userProfile( $option, $uid, $submitvalue) 
+{
 	global $_CB_database, $_REQUEST, $ueConfig,$my, $acl, $mosConfig_allowUserRegistration;
-	if ( isset( $_REQUEST['user'] ) ) {
-		if ( ! allowAccess( $ueConfig['allow_profileviewbyGID'], 'RECURSE', userGID( $my->id ) ) ) {
+	if (isset($_REQUEST['user']))
+	{
+		if (!allowUserAccess($ueConfig['allow_profileviewbyGID'], $my))
+		{
 			if (	( $my->id < 1 )
 				&&	( ! ( ( ( $mosConfig_allowUserRegistration == '0' )
 		   				    && ( ( ! isset($ueConfig['reg_admin_allowcbregistration']) ) || $ueConfig['reg_admin_allowcbregistration'] != '1' ) )
@@ -531,6 +534,7 @@ function usersList($uid) {
 			$listid			=	(int) cbGetParam( $_GET, 'listid', 0 );
 		}
 	}
+	
 	if ( ! ( $listid > 0 ) ) {
 		echo _UE_NOLISTFOUND;
 		return;
@@ -546,7 +550,9 @@ function usersList($uid) {
 		echo _UE_LIST_DOES_NOT_EXIST;
 		return;
 	}
-	if (!allowAccess( $row->useraccessgroupid,'RECURSE', userGID($uid))) {
+
+	if (!allowUserAccess($row->useraccessgroupid, $my))
+	{
 		echo _UE_NOT_AUTHORIZED;
 		return;
 	}
