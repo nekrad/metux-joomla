@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="CB: User profile">
+		<message>
+			<![CDATA[CB: Show the current user's profile]]>
+		</message>
+	</layout>
+	<state>
+		<name>Community-Builder: User profile Layout</name>
+		<description>Community-Builder: Show the current user's profile</description>
+		<params>
+			<param name="comp_description" type="textarea" default="" label="Description Text" rows="5" cols="30" description="Description for page"/>
+			<param name="@spacer" type="spacer" default="" label="" description="" />
+		</params>
+	</state>
+</metadata>

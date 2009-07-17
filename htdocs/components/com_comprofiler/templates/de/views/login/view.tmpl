@@ -1,0 +1,32 @@
+
+<patTemplate:tmpl name="view:login" unusedvars="ignore">
+
+<form action="/index.php?option={CURRENT:OPTION}&amp;task=login&amp;lang={CURRENT:LANG}" method="post" style="margin:0px;">
+    <input type="hidden" name="op2" value="login" />
+    <input type="hidden" name="lang" value="{CURRENT:LANG}" />
+    <input type="hidden" name="force_session" value="1" />
+    <input type="hidden" name="return" value="/" />
+    <input type="hidden" name="message" value="0" />
+
+ <p>Bitte loggen Sie sich ein, um Videos hoch zu laden.</p>   
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mod_login">
+	<tr>
+	    <td>
+		<input type="text"     name="username" id="mod_login_username" class="inputbox" size="10" alt="Benutzername" value="Benutzername" onfocus="if (this.value=='Benutzername') this.value=''" onblur="if(this.value=='') { this.value='Benutzername'; return false; }" /><br /><input type="password" name="passwd" id="mod_login_password" class="inputbox" size="10" alt="Passwort" value="pasw" onfocus="if (this.value=='pasw') this.value=''" onblur="if(this.value=='') { this.value='pasw'; return false; }" /><br />
+		<input type="hidden"   name="jd317d7f4c8f244a4dd29cc807b3ab9d0" value="1" />
+		<input type="checkbox" name="remember" id="mod_login_remember" class="inputbox" value="yes" /> <span id="mod_login_remembermetext"><label for="mod_login_remember">Angemeldet bleiben</label></span><br />
+		<input type="submit"   name="Submit" class="button" value="Anmelden" />
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<a href="/index.php?option={CURRENT:OPTION}&amp;task=lostPassword&amp;lang={CURRENT:LANG}" class="mod_login">
+		    Passwort vergessen?
+		</a>
+	    </td>
+	</tr>
+    </table>
+</form>
+<p>Wenn Sie noch kein Benutzerkonto haben, dann registrieren Sie sich bitte hier:<br>
+<a href="/index.php?option=com_comprofiler&view=register&Itemid=145&amp;lang={CURRENT:LANG}">Registrieren</a></p>
+</patTemplate:tmpl>
