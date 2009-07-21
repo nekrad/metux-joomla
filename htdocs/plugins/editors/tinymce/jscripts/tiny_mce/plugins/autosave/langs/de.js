@@ -1,5 +1,5 @@
-// DE lang variables $Id: de.js 4 2007-08-24 18:24:26Z sisko1990 $
+/* $Id: de.js 484 2009-06-24 10:44:43Z sisko1990 $ */
 
 tinyMCE.addToLang('',{
-autosave_unload_msg : 'Alle Ver&auml;nderungen an dieser Seite werden verloren gehen, wenn Sie diese Seite jetzt verlassen!'
+autosave_unload_msg : 'Alle Ver\u00e4nderungen an dieser Seite werden verloren gehen, wenn Sie diese Seite jetzt verlassen!'
 });

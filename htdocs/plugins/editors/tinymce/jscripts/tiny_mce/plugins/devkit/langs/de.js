@@ -1,4 +1,4 @@
-// DE lang variables $Id: de.js 261 2008-05-16 11:39:41Z cirtap $
+/* $Id: de.js 484 2009-06-24 10:44:43Z sisko1990 $ */
 
 tinyMCE.addToLang('devkit',{
 title : 'TinyMCE Development Kit',

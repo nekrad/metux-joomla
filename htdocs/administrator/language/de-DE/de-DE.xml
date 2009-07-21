@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: de-DE.xml 479 2009-06-03 18:32:16Z sisko1990 $ -->
+<!-- $Id: de-DE.xml 490 2009-07-01 20:40:10Z sisko1990 $ -->
 <metafile version="1.5" client="administrator">
 	<name>German (Germany-Switzerland-Austria)</name>
-	<version>1.5.11.1</version>
-	<creationDate>03.06.2009</creationDate>
+	<version>1.5.12.1</version>
+	<creationDate>01.07.2009</creationDate>
 	<author>J!German</author>
 	<authorEmail>info@jgerman.de</authorEmail>
 	<authorUrl>www.jgerman.de</authorUrl>
