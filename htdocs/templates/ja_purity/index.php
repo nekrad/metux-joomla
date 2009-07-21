@@ -150,6 +150,16 @@ function makeTransBG() {
 <?php endif; ?>
 <!-- END: MAIN NAVIGATION -->
 
+<!-- BEGIN: MAIN NAVIGATION 2 -->
+<?php if ($this->countModules('hornav2')): ?>
+<div id="ja-mainnavwrap">
+	<div id="ja-mainnav" class="clearfix">
+	<jdoc:include type="modules" name="hornav2" />
+	</div>
+</div>
+<?php endif; ?>
+<!-- END: MAIN NAVIGATION 2 -->
+
 <div id="ja-containerwrap<?php echo $divid; ?>">
 <div id="ja-containerwrap2">
 	<div id="ja-container">
