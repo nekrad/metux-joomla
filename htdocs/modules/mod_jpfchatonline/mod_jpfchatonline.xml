@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0">
+	<name>jpfchat15online</name>
+	<author>Vizimetrics, Inc</author>
+	<creationDate>July 2008</creationDate>
+	<copyright>Copyright 2008 Vizimetrics. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>tim@jpfchat.com</authorEmail>
+	<authorUrl>www.jpfchat.com</authorUrl>
+	<version>1.0.0</version>
+   <description><![CDATA[
+        <a href="http://www.jpfchat.com/index2.php?option=com_versions&catid=4&myVersion=1.0.0" target="_blank" >CHECK FOR MOST CURRENT VERSION</a><br /><br />
+        <img src='../modules/mod_jpfchatonline/jpfchatonline.png' alt='jPFChat' /><br /><br />
+	    jPFChat is a joomla 1.0.x CHAT component (based on utChat) using phpfreechat 1.1 <a href="http://www.phpfreechat.net/">phpfreechat.net</a>
+	    <br />	
+  	    This module provides a front-end display of users currently chatting.  
+	    <br /><br />	
+	    Written by: Tim Milo - <a href="mailto:tim@jPFChat.com">tim@jPFChat.com</a> - <a href="http://www.jPFChat.com/">jPFChat.com</a><br />
+	    <br /><br />CREDITS<br />
+  	    utChat: Yann Sallou <a href="mailto:syan@joomlagora.org">syan@joomlagora.org</a>
+	    <br />
+  	    phpFreeChat: Stephane Gully <a href="mailto:contact@phpfreechat.net">contact@phpfreechat.net</a> - <a href="http://www.phpfreechat.net/">phpfreechat.net</a>
+	    <br />
+  	    <br />  ]]>
+	</description>
+	<files>
+		<filename module="mod_jpfchatonline">mod_jpfchatonline.php</filename>
+		<filename>jpfchatonline.png</filename>
+	</files>
+	<params>
+	   <param name="moduleclass_sfx" type="text" default="" label="Module CSS Suffix" description="A suffix to be applied to the CSS class of the module (table.moduletable).  This allows individual module styling." />
+         <param name="channel" type="text" default="" label="Channel" description="Restrict output to users on the specified channel (NULL for the whole server)" />
+         <param name="timeout" type="text" default="" label="TimeOut" description="Time to wait before a nickname is considered offline" />
+     	   <param name="display_what" type="radio" default="1" label="What to Show" description="Should the module display the NUMBER of users online, or the NAMES of users online?">
+		<option value="1">Number of Users</option>
+		<option value="0">Names of Users</option>
+	   </param>
+	</params>
+</install>
