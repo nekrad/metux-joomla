@@ -24,4 +24,19 @@ $return	= modLoginHelper::getReturnURL($params, $type);
 
 $user =& JFactory::getUser();
 
+if (is_object($item = JSite::getMenu()->getItem($params->get('lostpw'))))
+    $link_lostpw = $item->link;
+else
+    $link_lostpw = JRoute::_( 'index.php?option=com_user&view=reset' );
+
+if (is_object($item = JSite::getMenu()->getItem($params->get('lostname'))))
+    $link_lostname = $item->link;
+else
+    $link_lostname = JRoute::_( 'index.php?option=com_user&view=remind' );
+
+if (is_object($item = JSite::getMenu()->getItem($params->get('register'))))
+    $link_register = $item->link;
+else
+    $link_register = JRoute::_( 'index.php?option=com_user&view=register' );
+
 require(JModuleHelper::getLayoutPath('mod_login'));

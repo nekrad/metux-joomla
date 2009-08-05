@@ -34,5 +34,8 @@
 			<option value="0">No</option>
 			<option value="1">Yes</option>
 		</param>
+		<param name="lostpw" type="menuitem" default="" disable="separator" label="Lost-Password Redirection URL" description="PARAMLOSTPWREDIRECTURL" />
+		<param name="lostname" type="menuitem" default="" disable="separator" label="Lost-Username Redirection URL" description="PARAMLOSTNAMEREDIRECTURL" />
+		<param name="register" type="menuitem" default="" disable="separator" label="Registration Redirection URL" description="PARAMLOSTNAMEREDIRECTURL" />
 	</params>
 </install>

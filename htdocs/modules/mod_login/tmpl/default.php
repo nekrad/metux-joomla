@@ -52,11 +52,11 @@ endif; ?>
 	</fieldset>
 	<ul>
 		<li>
-			<a href="<?php echo JRoute::_( 'index.php?option=com_user&view=reset' ); ?>">
+			<a href="<?php echo $link_lostpw; ?>">
 			<?php echo JText::_('FORGOT_YOUR_PASSWORD'); ?></a>
 		</li>
 		<li>
-			<a href="<?php echo JRoute::_( 'index.php?option=com_user&view=remind' ); ?>">
+			<a href="<?php echo $link_lostname; ?>">
 			<?php echo JText::_('FORGOT_YOUR_USERNAME'); ?></a>
 		</li>
 		<?php
