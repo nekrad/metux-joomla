@@ -180,17 +180,17 @@ class JTableUser extends JTable
 
 
 		// check for existing email
-		$query = 'SELECT id'
-			. ' FROM #__users '
-			. ' WHERE email = '. $this->_db->Quote($this->email)
-			. ' AND id != '. (int) $this->id
-			;
-		$this->_db->setQuery( $query );
-		$xid = intval( $this->_db->loadResult() );
-		if ($xid && $xid != intval( $this->id )) {
-			$this->setError( JText::_( 'WARNREG_EMAIL_INUSE' ) );
-			return false;
-		}
+#		$query = 'SELECT id'
+#			. ' FROM #__users '
+#			. ' WHERE email = '. $this->_db->Quote($this->email)
+#			. ' AND id != '. (int) $this->id
+#			;
+#		$this->_db->setQuery( $query );
+#		$xid = intval( $this->_db->loadResult() );
+#		if ($xid && $xid != intval( $this->id )) {
+#			$this->setError( JText::_( 'WARNREG_EMAIL_INUSE' ) );
+#			return false;
+#		}
 
 		return true;
 	}
