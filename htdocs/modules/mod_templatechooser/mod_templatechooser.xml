@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="2.3.1">
+	<name>Template Chooser</name>
+	<author>Frederik Teerlinck</author>
+	<version>2.3.1</version>
+	<description>Template Chooser for Joomla 1.5</description>
+	<files>
+		<filename module="mod_templatechooser">mod_templatechooser.php</filename>
+		<filename>helper.php</filename>
+		<filename>CHANGELOG.txt</filename>
+		<filename>thumbnail.png</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>element/template.php</filename>
+	</files>
+	<params addpath="/modules/mod_templatechooser/element">
+		<param name="title_length" type="text" default="20" label="Max. Name Length" description="This is the maximum length of the template name to display (default 20)" />
+		<param name="show_preview" type="radio" default="0" label="Show Preview" description="Template preview is to be shown">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="preview_width" type="text" default="140" label="Width" description="This is the width of the preview image (default 140)" />
+		<param name="preview_height" type="text" default="90" label="Height" description="This is the height of the preview image (default 90)" />
+		<param name="select_templates" type="template" default="1" label="Select templates" description="Select the templates which will be shown in the template chooser" />
+	</params>
+</install>

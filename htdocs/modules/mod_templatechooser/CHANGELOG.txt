@@ -1,0 +1,22 @@
+###### version 2.3.1 released #######
+- Resolved W3C validation problems
+
+###### version 2.3 released #######
+- Resolved compatibility issue with joomla 1.5.3
+
+###### version 2.2 released #######
+- removed the php notice in backend:
+Notice: Undefined offset: 4 in ...mod_templatechooser\element\template.php on line 31
+
+###### version 2.1 released #######
+- removed the php notice:
+Undefined index: jos_change_template in http://--/mod_templatechooser.php 
+
+###### version 2.0 released #######
+- new feature: In the backend you get a list of all templates and you can select which templates you want to show or hide in your module. By default all templates are shown.
+- module now inside a div (class="templatechooser") to allow easier formatting
+- removed the moduleprefix parameter from the backend as it did nothing
+- bugfix: changing the template no longer jumps to the homepage, but just reloads the current page
+
+###### version 1.x released #######
+initial release. Contains same functionality as the core template chooser module of joomla 1.0.x
