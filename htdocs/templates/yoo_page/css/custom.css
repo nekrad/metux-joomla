@@ -1,0 +1,80 @@
+/*
+ * This CSS file is for customization purpose only
+ *
+ * To make it easier to update a YOOtheme template to the latest version use
+ * this custom.css file for small CSS modifications.
+ *
+ * How it works:
+ * For example if you want to change a color which is applied in layout.css
+ * just copy the original styling into this file right after the commented
+ * section. Do this for all CSS modifications.
+ *
+ * In case you have to update the template save the custom.css file on your computer.
+ * De-install and re-install the updated template version. And copy your saved
+ * custom.css file back in place. Now compare your modification with the new CSS
+ * files and make sure they are working.
+ *
+ * To activate the loading of this file goto the template folder and take a look
+ * at css/template.css.php at the last line. Uncomment follwing line:
+ * // include(PATH_ROOT . 'custom.css');
+ */ 
+
+
+
+/*
+ * layout.css
+ */
+
+
+
+/*
+ * general.css
+ */
+
+
+
+/*
+ * menus.css
+ */
+
+
+
+/*
+ * modules.css
+ */
+
+
+
+/*
+ * joomla.css
+ */
+
+
+
+/*
+ * extensions.css
+ */
+
+
+
+/*
+ * [color]-[specific].css
+ * Place here your color specific CSS changes depending on your choosen color variation
+ */
+
+
+
+/*
+ * ie7hacks.css
+ * use IE7 browser hacks to apply the styling only to IE7
+ * For example: Star-Plus-HTML-Hack: *:first-child+html #YOURSELECTOR { attribute:value; }
+ */
+
+
+
+/*
+ * ie6hacks.css
+ * Use IE6 browser hacks to apply the styling only to IE6
+ * For example: Star-HTML-Hack: * html #YOURSELECTOR { attribute:value; }
+ */
+ 

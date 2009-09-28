@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>yoo_page</name>
+	<version>1.5.8</version>
+	<creationDate>January 2007</creationDate>
+	<author>YOOtheme</author>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+    <copyright>Copyright (C) 2007 - 2008 YOOtheme Ltd. &amp; Co. KG</copyright>
+    <license></license>
+	<description><![CDATA[
+<img src="../templates/yoo_page/template_thumbnail.png" align="right" style="margin: 0px 0px 10px 10px;" />
+
+<div style="font-size: 13px;">
+Page is the February 2008 template of the YOOtheme club.
+<br /><br /><span style="color: #ff0000;"><b>NOTE: It is not free or public. This template is for members of the YOOtheme club only.</b></span>
+<br /><br />YOOtheme website<br /><a href="http://www.yootheme.com/">http://www.yootheme.com</a>.
+<br /><br />YOOtheme demo server<br /><a href="http://demo.yootheme.com/">http://demo.yootheme.com</a>.
+<br /><br />YOOtools website<br /><a href="http://www.yootools.com/">http://www.yootools.com</a>.
+<br /><br />Help for all YOOtheme products: YOOtorials website<br /><a href="http://www.yootorials.com/">http://www.yootorials.com</a>.
+</div>
+
+<h3 style="clear: both;">Changelog</h3>
+
+<b>1.5.8</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Fixed YOOsearch template addons<br />
+</div>
+<br /><br />
+
+<b>1.5.7</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Added support for updated YOOlogin module<br />
+</div>
+<br /><br />
+
+<b>1.5.6</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Added support for YOOsearch module 1.5.1<br />
+</div>
+<br /><br />
+
+<b>1.5.5</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Added support for YOOsearch module<br />
+- Fixed Apple Ipod Touch Icon<br />
+</div>
+<br /><br />
+
+<b>1.5.4</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Fixed Shadowbox mootools adapter issue (shadowbox_packed.js)<br />
+</div>
+<br /><br />
+
+<b>1.5.3</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Added Shadowbox feature<br />
+- Added Custom CSS file<br />
+</div>
+<br /><br />
+
+<b>1.5.2</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Fixed IE6 Header styling<br />
+- Fixed background images in YOOmenu system<br />
+</div>
+<br /><br />
+
+<b>1.5.1</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Fixed Header Background<br />
+</div>
+<br /><br />
+
+<b>1.5.0</b><br />
+<div style="margin: 0px 0px 0px 10px;">
+- Initial Release<br />
+</div>
+<br /><br />
+
+]]></description>
+	<files>
+		<filename>component.php</filename>
+		<filename>raw.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>apple_touch_icon.png</filename>
+		<filename>index.php</filename>
+		<filename>params.ini</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>css/beige/beige-layout.css</filename>
+		<filename>css/black/black-layout.css</filename>
+		<filename>css/editor.css</filename>
+		<filename>css/editor_content.css</filename>
+		<filename>css/extensions.css</filename>
+		<filename>css/general.css</filename>
+		<filename>css/green/green-layout.css</filename>
+		<filename>css/grey/grey-layout.css</filename>
+		<filename>css/ie6hacks.css</filename>
+		<filename>css/ie7hacks.css</filename>
+		<filename>css/iehacks.css</filename>
+		<filename>css/joomla.css</filename>
+		<filename>css/custom.css</filename>
+		<filename>css/layout.css</filename>
+		<filename>css/lilac/lilac-layout.css</filename>
+		<filename>css/menus.css</filename>
+		<filename>css/modules.css</filename>
+		<filename>css/popups.css</filename>
+		<filename>css/red/red-layout.css</filename>
+		<filename>css/rose/rose-layout.css</filename>
+		<filename>css/template.css.php</filename>
+		<filename>css/turquoise/turquoise-layout.css</filename>
+		<filename>css/yellow/yellow-layout.css</filename>
+		<filename>html/com_search/search/default.php</filename>
+		<filename>html/com_search/search/yoosearch.php</filename>
+		<filename>html/mod_mainmenu/default.php</filename>
+		<filename>html/mod_mainmenu/yoomenu.php</filename>
+		<filename>html/mod_search/default.php</filename>
+		<filename>lib/js/x.gif</filename>
+		<filename>lib/js/mootools.js.php</filename>
+		<filename>lib/js/template.js.php</filename>
+		<filename>lib/js/yoo_ie6fix.js</filename>
+		<filename>lib/js/yoo_tools.js</filename>
+		<filename>lib/js/addons/accordionmenu.js</filename>
+		<filename>lib/js/addons/base.js</filename>
+		<filename>lib/js/addons/dropdownmenu.js</filename>
+		<filename>lib/js/addons/ie6fix.js</filename>
+		<filename>lib/js/lightbox/shadowbox.js</filename>
+		<filename>lib/js/lightbox/shadowbox-mootools.js</filename>
+		<filename>lib/js/lightbox/shadowbox_packed.js</filename>
+		<filename>lib/js/lightbox/css/loading.gif</filename>
+		<filename>lib/js/lightbox/css/overlay-85.png</filename>
+		<filename>lib/js/lightbox/css/shadowbox.css</filename>
+		<filename>lib/js/mootools/mootools-release-1.11.js</filename>
+		<filename>lib/js/reflection/reflection.js</filename>
+		<filename>lib/js/reflection/reflection_packed.js</filename>
+		<filename>lib/php/yoolayout.php</filename>
+		<filename>lib/php/yootools.php</filename>
+		<filename>images/arrow.png</filename>
+		<filename>images/beige/header_t.png</filename>
+		<filename>images/beige/page_body_bg.png</filename>
+		<filename>images/beige/page_footer_bg.png</filename>
+		<filename>images/beige/wrapper_tl.png</filename>
+		<filename>images/beige/wrapper_tr.png</filename>
+		<filename>images/black/header_t.png</filename>
+		<filename>images/black/page_body_bg.png</filename>
+		<filename>images/black/page_footer_bg.png</filename>
+		<filename>images/black/wrapper_tl.png</filename>
+		<filename>images/black/wrapper_tr.png</filename>
+		<filename>images/blockquote_big_end.png</filename>
+		<filename>images/blockquote_big_end_ie6.png</filename>
+		<filename>images/blockquote_big_start.png</filename>
+		<filename>images/blockquote_big_start_ie6.png</filename>
+		<filename>images/blockquote_end.png</filename>
+		<filename>images/blockquote_end_ie6.png</filename>
+		<filename>images/blockquote_start.png</filename>
+		<filename>images/blockquote_start_ie6.png</filename>
+		<filename>images/div_alert.png</filename>
+		<filename>images/div_download.png</filename>
+		<filename>images/div_info.png</filename>
+		<filename>images/div_tip.png</filename>
+		<filename>images/emailButton.png</filename>
+		<filename>images/em_directory.png</filename>
+		<filename>images/em_file.png</filename>
+		<filename>images/footer_anchor.png</filename>
+		<filename>images/footer_anchor_white.png</filename>
+		<filename>images/green/header_t.png</filename>
+		<filename>images/green/page_body_bg.png</filename>
+		<filename>images/green/page_footer_bg.png</filename>
+		<filename>images/green/wrapper_tl.png</filename>
+		<filename>images/green/wrapper_tr.png</filename>
+		<filename>images/grey/header_t.png</filename>
+		<filename>images/grey/page_body_bg.png</filename>
+		<filename>images/grey/page_footer_bg.png</filename>
+		<filename>images/grey/wrapper_tl.png</filename>
+		<filename>images/grey/wrapper_tr.png</filename>
+		<filename>images/headermodule_l.png</filename>
+		<filename>images/headermodule_l_ie6.png</filename>
+		<filename>images/headermodule_m.png</filename>
+		<filename>images/headermodule_m_ie6.png</filename>
+		<filename>images/headermodule_r.png</filename>
+		<filename>images/headermodule_r_ie6.png</filename>
+		<filename>images/header_b.png</filename>
+		<filename>images/header_bl.png</filename>
+		<filename>images/header_bl_blue.png</filename>
+		<filename>images/header_bl_green.png</filename>
+		<filename>images/header_bl_orange.png</filename>
+		<filename>images/header_bl_pink.png</filename>
+		<filename>images/header_br.png</filename>
+		<filename>images/header_br_blue.png</filename>
+		<filename>images/header_br_green.png</filename>
+		<filename>images/header_br_orange.png</filename>
+		<filename>images/header_br_pink.png</filename>
+		<filename>images/header_b_blue.png</filename>
+		<filename>images/header_b_green.png</filename>
+		<filename>images/header_b_orange.png</filename>
+		<filename>images/header_b_pink.png</filename>
+		<filename>images/header_t.png</filename>
+		<filename>images/left_module_header.png</filename>
+		<filename>images/lilac/header_t.png</filename>
+		<filename>images/lilac/page_body_bg.png</filename>
+		<filename>images/lilac/page_footer_bg.png</filename>
+		<filename>images/lilac/wrapper_tl.png</filename>
+		<filename>images/lilac/wrapper_tr.png</filename>
+		<filename>images/list_arrow.png</filename>
+		<filename>images/list_arrow_big.png</filename>
+		<filename>images/list_arrow_big_ie6.png</filename>
+		<filename>images/list_arrow_ie6.png</filename>
+		<filename>images/list_check.png</filename>
+		<filename>images/list_checkbox.png</filename>
+		<filename>images/list_checkbox_big.png</filename>
+		<filename>images/list_checkbox_big_ie6.png</filename>
+		<filename>images/list_checkbox_ie6.png</filename>
+		<filename>images/list_check_big.png</filename>
+		<filename>images/list_check_big_ie6.png</filename>
+		<filename>images/list_check_ie6.png</filename>
+		<filename>images/list_disc.png</filename>
+		<filename>images/list_disc_big.png</filename>
+		<filename>images/list_disc_big_ie6.png</filename>
+		<filename>images/list_disc_ie6.png</filename>
+		<filename>images/list_plus.png</filename>
+		<filename>images/list_plus_big.png</filename>
+		<filename>images/list_plus_big_ie6.png</filename>
+		<filename>images/list_plus_ie6.png</filename>
+		<filename>images/list_star.png</filename>
+		<filename>images/list_star_big.png</filename>
+		<filename>images/list_star_big_ie6.png</filename>
+		<filename>images/list_star_ie6.png</filename>
+		<filename>images/menu_dropdown_bg.png</filename>
+		<filename>images/menu_level2_item.png</filename>
+		<filename>images/menu_level2_item_parent.png</filename>
+		<filename>images/menu_tab_l.png</filename>
+		<filename>images/menu_tab_r.png</filename>
+		<filename>images/middle_module_bl.png</filename>
+		<filename>images/middle_module_bl_black.png</filename>
+		<filename>images/middle_module_bl_blue.png</filename>
+		<filename>images/middle_module_bl_dotted.png</filename>
+		<filename>images/middle_module_bl_green.png</filename>
+		<filename>images/middle_module_bl_grey.png</filename>
+		<filename>images/middle_module_bl_new.png</filename>
+		<filename>images/middle_module_bl_pick.png</filename>
+		<filename>images/middle_module_bl_top.png</filename>
+		<filename>images/middle_module_bl_white.png</filename>
+		<filename>images/middle_module_bl_yellow.png</filename>
+		<filename>images/middle_module_br.png</filename>
+		<filename>images/middle_module_br_black.png</filename>
+		<filename>images/middle_module_br_blue.png</filename>
+		<filename>images/middle_module_br_dotted.png</filename>
+		<filename>images/middle_module_br_green.png</filename>
+		<filename>images/middle_module_br_grey.png</filename>
+		<filename>images/middle_module_br_new.png</filename>
+		<filename>images/middle_module_br_pick.png</filename>
+		<filename>images/middle_module_br_top.png</filename>
+		<filename>images/middle_module_br_white.png</filename>
+		<filename>images/middle_module_br_yellow.png</filename>
+		<filename>images/middle_module_tl.png</filename>
+		<filename>images/middle_module_tl_black.png</filename>
+		<filename>images/middle_module_tl_blue.png</filename>
+		<filename>images/middle_module_tl_dotted.png</filename>
+		<filename>images/middle_module_tl_green.png</filename>
+		<filename>images/middle_module_tl_grey.png</filename>
+		<filename>images/middle_module_tl_new.png</filename>
+		<filename>images/middle_module_tl_pick.png</filename>
+		<filename>images/middle_module_tl_top.png</filename>
+		<filename>images/middle_module_tl_white.png</filename>
+		<filename>images/middle_module_tl_yellow.png</filename>
+		<filename>images/middle_module_tr.png</filename>
+		<filename>images/middle_module_tr_black.png</filename>
+		<filename>images/middle_module_tr_blue.png</filename>
+		<filename>images/middle_module_tr_dotted.png</filename>
+		<filename>images/middle_module_tr_green.png</filename>
+		<filename>images/middle_module_tr_grey.png</filename>
+		<filename>images/middle_module_tr_new.png</filename>
+		<filename>images/middle_module_tr_pick.png</filename>
+		<filename>images/middle_module_tr_top.png</filename>
+		<filename>images/middle_module_tr_white.png</filename>
+		<filename>images/middle_module_tr_yellow.png</filename>
+		<filename>images/page_body_bg.png</filename>
+		<filename>images/page_footer_bg.png</filename>
+		<filename>images/pdf_button.png</filename>
+		<filename>images/printButton.png</filename>
+		<filename>images/red/header_t.png</filename>
+		<filename>images/red/page_body_bg.png</filename>
+		<filename>images/red/page_footer_bg.png</filename>
+		<filename>images/red/wrapper_tl.png</filename>
+		<filename>images/red/wrapper_tr.png</filename>
+		<filename>images/right_module_header.png</filename>
+		<filename>images/rose/header_t.png</filename>
+		<filename>images/rose/page_body_bg.png</filename>
+		<filename>images/rose/page_footer_bg.png</filename>
+		<filename>images/rose/wrapper_tl.png</filename>
+		<filename>images/rose/wrapper_tr.png</filename>
+		<filename>images/search_bg.png</filename>
+		<filename>images/search_bg_blue.png</filename>
+		<filename>images/search_bg_green.png</filename>
+		<filename>images/search_bg_orange.png</filename>
+		<filename>images/search_bg_pink.png</filename>
+		<filename>images/search_button.png</filename>
+		<filename>images/styleswitcher_fontlarge.png</filename>
+		<filename>images/styleswitcher_fontmedium.png</filename>
+		<filename>images/styleswitcher_fontsmall.png</filename>
+		<filename>images/styleswitcher_widthfluid.png</filename>
+		<filename>images/styleswitcher_widththin.png</filename>
+		<filename>images/styleswitcher_widthwide.png</filename>
+		<filename>images/submenu_level1_item.png</filename>
+		<filename>images/submenu_level1_item_parent.png</filename>
+		<filename>images/submenu_level2_item.png</filename>
+		<filename>images/submenu_level2_item_icon.png</filename>
+		<filename>images/submenu_level3_item_icon.png</filename>
+		<filename>images/submenu_level4_item_icon.png</filename>
+		<filename>images/topmenu_item_bg.png</filename>
+		<filename>images/top_module_sep.png</filename>
+		<filename>images/turquoise/header_t.png</filename>
+		<filename>images/turquoise/page_body_bg.png</filename>
+		<filename>images/turquoise/page_footer_bg.png</filename>
+		<filename>images/turquoise/wrapper_tl.png</filename>
+		<filename>images/turquoise/wrapper_tr.png</filename>
+		<filename>images/wrapper_tl.png</filename>
+		<filename>images/wrapper_tr.png</filename>
+		<filename>images/yellow/header_t.png</filename>
+		<filename>images/yellow/page_body_bg.png</filename>
+		<filename>images/yellow/page_footer_bg.png</filename>
+		<filename>images/yellow/wrapper_tl.png</filename>
+		<filename>images/yellow/wrapper_tr.png</filename>
+	</files>
+	<positions>
+		<position>absolute</position>
+		<position>topmenu</position>
+		<position>search</position>
+		<position>header</position>
+		<position>logo</position>
+		<position>menu</position>
+		<position>banner</position>
+		<position>top</position>
+		<position>breadcrumb</position>
+		<position>left</position>
+		<position>right</position>
+		<position>bottom</position>
+		<position>footer</position>
+		<position>top1</position>
+		<position>top2</position>
+		<position>top3</position>
+		<position>top4</position>
+		<position>bottom1</position>
+		<position>bottom2</position>
+		<position>bottom3</position>
+		<position>bottom4</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>user5</position>
+		<position>user6</position>
+		<position>user7</position>
+		<position>user8</position>
+		<position>user9</position>
+		<position>advert1</position>
+		<position>advert2</position>
+		<position>advert3</position>
+		<position>advert4</position>
+		<position>content1</position>
+		<position>content2</position>
+		<position>content3</position>
+		<position>content4</position>
+		<position>content5</position>
+		<position>content6</position>
+		<position>content7</position>
+		<position>content8</position>
+		<position>content9</position>
+		<position>debug</position>
+	</positions>
+	<params>
+		<param name="color" type="list" default="default" label="Template Color" description="Template color variation to use">
+			<option value="default">Blue</option>
+			<option value="green">Green</option>
+			<option value="yellow">Yellow</option>
+			<option value="turquoise">Turquoise</option>
+			<option value="grey">Grey</option>
+			<option value="rose">Rose</option>
+			<option value="lilac">Lilac</option>
+			<option value="black">Black</option>
+			<option value="beige">Beige</option>
+			<option value="red">Red</option>
+
+		</param>
+		<param name="item1Color" type="list" default="default" label="Item1 Color" description="Used color when menu item1 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item2Color" type="list" default="blue" label="Item2 Color" description="Used color when menu item2 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item3Color" type="list" default="pink" label="Item3 Color" description="Used color when menu item3 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item4Color" type="list" default="orange" label="Item4 Color" description="Used color when menu item4 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item5Color" type="list" default="green" label="Item5 Color" description="Used color when menu item5 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item6Color" type="list" default="default" label="Item6 Color" description="Used color when menu item6 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item7Color" type="list" default="default" label="Item7 Color" description="Used color when menu item7 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item8Color" type="list" default="default" label="Item8 Color" description="Used color when menu item8 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item9Color" type="list" default="default" label="Item9 Color" description="Used color when menu item9 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="item10Color" type="list" default="default" label="Item10 Color" description="Used color when menu item10 is active">
+			<option value="default">Grey</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="orange">Orange</option>
+			<option value="blue">Blue</option>
+		</param>
+		<param name="layout" type="list" default="left" label="Layout Style" description="Left column is aligned to the left/right">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="date" type="radio" default="1" label="Show Date" description="Show/Hide the date">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="styleswitcherFont" type="radio" default="1" label="Show Font Styleswitcher" description="Show/Hide the stylswitcher for font size">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="styleswitcherWidth" type="radio" default="0" label="Show Width Styleswitcher" description="Show/Hide the stylswitcher for width">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fontDefault" type="list" default="font-medium" label="Default Font Size" description="Set the default font size when template is loaded for the first time">
+			<option value="font-small">Small</option>
+			<option value="font-medium">Medium</option>
+			<option value="font-large">Large</option>
+		</param>
+		<param name="widthDefault" type="list" default="width-wide" label="Default Width" description="Set the default width when template is loaded for the first time">
+			<option value="width-thin">Thin</option>
+			<option value="width-wide">Wide</option>
+			<option value="width-fluid">Fluid</option>
+		</param>
+		<param name="widthThinPx" type="text" default="780" label="Width Thin" description="Set the template width for style 'width-thin' in pixels" />
+		<param name="widthWidePx" type="text" default="940" label="Width Wide" description="Set the template width for style 'width-wide' in pixels" />
+		<param name="widthFluidPx" type="text" default="0.9" label="Width Fluid" description="Set the template width for style 'width-fluid' in percent" />
+		<param name="loadMootools" type="radio" default="1" label="Enable Mootools" description="Enable/Disable Mootools 1.11 javascript library">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="loadJavascript" type="radio" default="1" label="Enable Javascripts" description="Enable/Disable all the templates javascripts">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>

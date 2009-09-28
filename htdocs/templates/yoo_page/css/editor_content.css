@@ -1,0 +1,14 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+ 
+body{
+	margin:0;
+	padding:0;
+	text-align: left;
+	background: white;
+	background-image: none;
+}

@@ -1,0 +1,46 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+body#page {
+	background: #9084C2;
+}
+
+div#page-body {
+	background: #ffffff url(../images/lilac/page_body_bg.png) 50% 0 repeat-x;
+}
+
+div.wrapper-tl {
+	background: #ffffff url(../images/lilac/wrapper_tl.png) 0 0 no-repeat;
+}
+
+div.wrapper-tr {
+	background: url(../images/lilac/wrapper_tr.png) 100% 0 no-repeat;
+}
+
+div#header {
+	background: url(../images/lilac/page_body_bg.png) 50% 0 repeat-x;
+}
+
+div#header div.header-t {
+	background: url(../images/lilac/header_t.png) 50% 0 no-repeat;
+}
+
+div#date {
+	color: #ffffff;
+}
+
+div#page-footer {
+	background: url(../images/lilac/page_footer_bg.png) 50% 0 repeat-x;
+}
+
+div#footer {
+	color: #ffffff;
+}
+
+div#footer a.anchor {
+	background: url(../images/footer_anchor_white.png) 0 0 no-repeat;
+}

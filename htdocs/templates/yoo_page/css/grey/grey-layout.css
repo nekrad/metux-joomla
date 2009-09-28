@@ -1,0 +1,34 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+body#page {
+	background: #A9B1B9;
+}
+
+div#page-body {
+	background: #ffffff url(../images/grey/page_body_bg.png) 50% 0 repeat-x;
+}
+
+div.wrapper-tl {
+	background: #ffffff url(../images/grey/wrapper_tl.png) 0 0 no-repeat;
+}
+
+div.wrapper-tr {
+	background: url(../images/grey/wrapper_tr.png) 100% 0 no-repeat;
+}
+
+div#header {
+	background: url(../images/grey/page_body_bg.png) 50% 0 repeat-x;
+}
+
+div#header div.header-t {
+	background: url(../images/grey/header_t.png) 50% 0 no-repeat;
+}
+
+div#page-footer {
+	background: url(../images/grey/page_footer_bg.png) 50% 0 repeat-x;
+}

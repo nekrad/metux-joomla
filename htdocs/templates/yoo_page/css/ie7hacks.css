@@ -1,0 +1,16 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+/* joomla */
+div#yoo-search input {
+	width: 91px;
+}
+
+/* general */
+ol.disc {
+	padding: 0px 0px 0px 32px;
+}

@@ -1,0 +1,196 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+/*
+ * layout
+ */
+
+div#header div.header-t {
+	height: 170px;
+}
+
+div#styleswitcher a {
+	cursor: pointer;  
+}
+
+div#banner {
+	right: -140px;
+	width: 120px;
+}
+
+div#top {
+	height: 60px;  
+}
+
+div#middle .background {
+	 
+	height: 140px;  
+}
+
+div#page-footer {
+	height: 210px;  
+}
+
+div#bottom {
+	height: 60px;
+}
+
+/*
+ * menus
+ */
+ 
+/*
+ * modules
+ */
+
+#headermodule div.module div {
+	background: url(../images/headermodule_l_ie6.png) 0 0 no-repeat;
+}
+
+#headermodule div.module div div {
+	background: url(../images/headermodule_r_ie6.png) 100% 0 no-repeat;
+}
+
+#headermodule div.module div div div {
+	width: 0px;
+	overflow: visible;
+	background: url(../images/headermodule_m_ie6.png) 0 0 repeat-x;
+}
+
+#left div.module div div div,
+#left div.module-dotted div div div,
+#left div.module-grey div div div,
+#left div.module-black div div div,
+#left div.module-blue div div div,
+#left div.module-green div div div,
+#left div.module-yellow div div div,
+#left div.module-new div div div,
+#left div.module-top div div div,
+#left div.module-pick div div div {
+	height: 70px;  
+	overflow: visible;
+}
+
+#left div.module_menu div div div,
+#left div.module-white div div div {
+	height: 10px;  
+	overflow: visible;
+}
+
+#left div.module div div div div,
+#left div.module_menu div div div div,
+#left div.module-white div div div div,
+#left div.module-dotted div div div div,
+#left div.module-grey div div div div,
+#left div.module-black div div div div,
+#left div.module-blue div div div div,
+#left div.module-green div div div div,
+#left div.module-yellow div div div div,
+#left div.module-new div div div div,
+#left div.module-top div div div div,
+#left div.module-pick div div div div {
+	height: auto;  
+}
+
+#right div.module div div div,
+#right div.module-dotted div div div,
+#right div.module-grey div div div,
+#right div.module-black div div div,
+#right div.module-blue div div div,
+#right div.module-green div div div,
+#right div.module-yellow div div div,
+#right div.module-new div div div,
+#right div.module-top div div div,
+#right div.module-pick div div div {
+	height: 70px;  
+	overflow: visible;
+}
+
+#right div.module_menu div div div,
+#right div.module-white div div div {
+	height: 10px;  
+	overflow: visible;
+}
+
+#right div.module div div div div,
+#right div.module_menu div div div div,
+#right div.module-white div div div div,
+#right div.module-dotted div div div div,
+#right div.module-grey div div div div,
+#right div.module-black div div div div,
+#right div.module-blue div div div div,
+#right div.module-green div div div div,
+#right div.module-yellow div div div div,
+#right div.module-new div div div div,
+#right div.module-top div div div div,
+#right div.module-pick div div div div {
+	height: auto;  
+}
+	
+/*
+ * joomla
+ */
+ 
+div#yoo-search input {
+	width: 88px;
+}
+
+/*
+ * general
+ */
+ 
+ol.disc {
+	padding: 0px 0px 0px 32px;
+}
+
+ul.arrow li { background: url(../images/list_arrow_ie6.png) 0 0 no-repeat; }
+ul.arrow-big li { background: url(../images/list_arrow_big_ie6.png) 0 0 no-repeat; }
+ul.checkbox li { background: url(../images/list_checkbox_ie6.png) 0 0 no-repeat; }
+ul.checkbox-big li { background: url(../images/list_checkbox_big_ie6.png) 0 0 no-repeat; }
+ul.check li { background: url(../images/list_check_ie6.png) 0 0 no-repeat; }
+ul.check-big li { background: url(../images/list_check_big_ie6.png) 0 0 no-repeat; }
+ul.star li { background: url(../images/list_star_ie6.png) 0 0 no-repeat; }
+ul.star-big li { background: url(../images/list_star_big_ie6.png) 0 0 no-repeat; }
+ul.plus li { background: url(../images/list_plus_ie6.png) 0 0 no-repeat; }
+ul.plus-big li { background: url(../images/list_plus_big_ie6.png) 0 0 no-repeat; }
+
+ol.disc {
+	background: url(../images/list_disc_ie6.png) 0 0 repeat-y;
+}
+
+ol.disc-big {
+	background: url(../images/list_disc_big_ie6.png) 0 0 repeat-y;
+}
+
+blockquote {
+	background: url(../images/blockquote_start_ie6.png) 0 0 no-repeat;
+}
+
+blockquote p {
+	background: url(../images/blockquote_end_ie6.png) 100% 100% no-repeat;
+}
+
+blockquote.big {
+	background: url(../images/blockquote_big_start_ie6.png) 0 0 no-repeat;
+}
+
+blockquote.big p {
+	background: url(../images/blockquote_big_end_ie6.png) 100% 100% no-repeat;
+}
+
+/*
+ * extensions
+ */
+
+/* YOOlogin */
+#page span.quick span.yoo-login span.logout {
+	width: 131px;
+}
+
+#page span.quick span.yoo-login span.logout .greeting {
+	width: 100px;
+}

@@ -1,0 +1,314 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+/*
+ * links
+ */
+
+a:link, a:visited {
+	color: #aa1428;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: underline;
+}
+
+body.green a:link, body.green a:visited { color: #5a8c00; }
+body.green a:hover { color: #73c800; }
+body.pink a:link, body.pink a:visited { color: #aa2dd2; }
+body.pink a:hover { color: #fa4bff; }
+body.orange a:link, body.orange a:visited { color: #ff3200; }
+body.orange a:hover { color: #ff6400; }
+body.blue a:link, body.blue a:visited { color: #1e87c8; }
+body.blue a:hover { color: #00afff; }
+
+/*
+ * unsorted lists
+ */
+ 
+ul.arrow, ul.arrow-big,
+ul.checkbox, ul.checkbox-big,
+ul.check, ul.check-big,
+ul.star, ul.star-big,
+ul.plus, ul.plus-big {
+	margin: 10px 10px 10px 20px;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+}
+
+ul.arrow li,
+ul.checkbox li,
+ul.check li,
+ul.star li,
+ul.plus li {
+	margin: 10px 0px 10px 0px;
+	padding: 7px 0px 6px 35px;
+	font-weight: bold;
+	line-height: 100%
+}
+
+ul.arrow-big li,
+ul.checkbox-big li,
+ul.check-big li,
+ul.star-big li,
+ul.plus-big li {
+	margin: 15px 0px 15px 0px;
+	padding: 15px 0px 15px 60px;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+ul.arrow li { background: url(../images/list_arrow.png) 0 0 no-repeat; }
+ul.arrow-big li { background: url(../images/list_arrow_big.png) 0 0 no-repeat; }
+ul.checkbox li { background: url(../images/list_checkbox.png) 0 0 no-repeat; }
+ul.checkbox-big li { background: url(../images/list_checkbox_big.png) 0 0 no-repeat; }
+ul.check li { background: url(../images/list_check.png) 0 0 no-repeat; }
+ul.check-big li { background: url(../images/list_check_big.png) 0 0 no-repeat; }
+ul.star li { background: url(../images/list_star.png) 0 0 no-repeat; }
+ul.star-big li { background: url(../images/list_star_big.png) 0 0 no-repeat; }
+ul.plus li { background: url(../images/list_plus.png) 0 0 no-repeat; }
+ul.plus-big li { background: url(../images/list_plus_big.png) 0 0 no-repeat; }
+
+
+/*
+ * ordered lists
+ */
+ 
+ol.disc, ol.disc-big {
+	margin: 10px 10px 10px 20px;
+	padding: 0px 0px 0px 15px;
+}
+
+ol.disc {
+	padding: 0px 0px 0px 27px;
+	background: url(../images/list_disc.png) 0 0 repeat-y;
+}
+
+ol.disc li {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 6px 12px;
+	font-weight: bold;
+	line-height: 28px;
+}
+
+ol.disc-big {
+	padding: 0px 0px 0px 45px;
+	font-size: 200%;
+	background: url(../images/list_disc_big.png) 0 0 repeat-y;
+}
+
+ol.disc-big li {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 12px 20px;
+	font-weight: bold;
+	line-height: 45px;
+}
+
+/*
+ * highlighted div and span boxes
+ */
+
+span.note,
+span.info,
+span.alert,
+span.download,
+span.tip {
+	display: block;
+}
+
+div.note, span.note {
+	margin: 10px 0px 10px 0px;
+	padding: 5px 10px 5px 10px;
+	background: #f4f5f6;
+	border-top: 1px dotted #aab4be;
+	border-bottom: 1px dotted #aab4be;
+	text-align:justify;
+}
+
+div.info, span.info,
+div.alert, span.alert,
+div.download, span.download,
+div.tip, span.tip {
+	margin: 10px 0px 10px 0px;
+	padding: 7px 10px 7px 35px;
+}
+
+div.info, span.info {
+	background: #f4f5f6 url(../images/div_info.png) 3px 3px no-repeat;
+	border-top: 1px dotted #aab4be;
+	border-bottom: 1px dotted #aab4be;
+}
+
+div.alert, span.alert {
+	background: #fff5eb url(../images/div_alert.png) 3px 3px no-repeat;
+	border-top: 1px dotted #ffb4a0;
+	border-bottom: 1px dotted #ffb4a0;
+}
+
+div.download, span.download {
+	background: #f5faeb url(../images/div_download.png) 3px 3px no-repeat;
+	border-top: 1px dotted #78be5a;
+	border-bottom: 1px dotted #78be5a;
+}
+
+div.tip, span.tip {
+	background: #fffdeb url(../images/div_tip.png) 3px 3px no-repeat;
+	border-top: 1px dotted #ffc864;
+	border-bottom: 1px dotted #ffc864;
+}
+
+/*
+ * highlighted quotations
+ */
+
+blockquote {
+	margin: 10px 0px 10px 0px;
+	padding: 10px 35px 10px 35px;
+	background: url(../images/blockquote_start.png) 0 0 no-repeat;
+	text-align:justify;
+}
+
+blockquote p {
+	margin: 0px -35px -10px 0px;
+	padding: 0px 35px 10px 0px;
+	background: url(../images/blockquote_end.png) 100% 100% no-repeat;
+}
+
+blockquote.big {
+	margin: 10px 0px 10px 0px;
+	padding: 50px 50px 50px 50px;
+	background: url(../images/blockquote_big_start.png) 0 0 no-repeat;
+	font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+	font-size: 300%;
+	text-transform: uppercase;
+	font-weight: bold;
+	line-height: 100%;
+	text-align: left;
+}
+
+blockquote.big p {
+	margin: 0px -50px -50px 0px;
+	padding: 0px 30px 50px 0px;
+	background: url(../images/blockquote_big_end.png) 100% 100% no-repeat;
+}
+
+/*
+ * preformatted text elements
+ */
+
+pre {
+	margin: 2px 0px 2px 0px;
+	padding: 10px 10px 10px 10px;
+	border: 1px dotted #aab4be;
+	border-left: 20px solid #b4b4b4;
+	background: #f4f5f6;
+	font-size: 90%;
+	/* Browser specific (not valid) styles to make preformatted text wrap */
+	/* white-space: pre-wrap;       /* css-3 */
+	/* white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+}
+
+
+/*
+ * highlighted emphasis
+ */
+
+em.box, em.file, em.directory {
+	font-family: "Courier New", Courier, monospace;
+	font-style: normal;
+}
+
+em.box { 
+	padding: 0px 2px 0px 2px;
+	background:#f4f5f6;
+	border: 1px dotted #aab4be;
+}
+
+em.file { 
+	padding: 0px 0px 0px 13px;
+	background: transparent url(../images/em_file.png) 0 1px no-repeat;
+	color: #000000;
+}
+
+em.directory { 
+	padding: 0px 0px 0px 16px;
+	background: transparent url(../images/em_directory.png) 0 1px no-repeat;
+	color: #000000;
+}
+
+/*
+ * headings
+ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-bottom: 0px;
+	margin-bottom: 5px;
+	line-height: 100%;
+}
+
+h1 {
+	font-size: 300%;
+	font-weight: normal;
+	color: #7887A0;
+}
+
+h2 {
+	font-size: 250%;
+	color: #b4b4be;
+}
+
+h3 {
+	font-size: 200%;
+	color: #646478;
+}
+
+h4 {
+	font-size: 175%;
+	font-weight: normal;
+	color: #7887A0;
+}
+
+h5 {
+	font-size: 150%;
+	color: #878796;
+}
+
+h6 {
+	font-size: 125%;
+	color: #7887A0;
+}
+
+body.green h1, body.green h4, body.green h6 { color: #739141; }
+body.pink h1, body.pink h4, body.pink h6 { color: #c83cbe; }
+body.orange h1, body.orange h4, body.orange h6 { color: #f06400; }
+body.blue h1, body.blue h4, body.blue h6 { color: #5591d7; }
+
+/*
+ * forms
+ */
+
+ 
+ 
+fieldset { border: 1px solid #ccc; }
+legend { background: #fff; }
+textarea, input[type='text'], select { border: 1px solid #ccc; background: #fff; }
+textarea:hover, input[type='text']:hover, input[type='password']:hover, select:hover { border-color: #aaa; }
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus { border-color: #888; outline: 2px solid #ddd; }
+input[type='button'], input[type='submit'], input[type='checkbox'], input[type='image'], input[type='radio'], input[type='reset'], select, button { cursor: pointer; }
+input[type='hidden'] { display:none; }
+
+fieldset { padding: 0 1em 1em 1em; margin: 1.6em 0; }  
+legend { padding: 0 .8em 0 .8em; }
+legend+* { margin-top: 1em; }  
+textarea, input[type='text'], input[type='password'] { padding: .1em 0 .1em .4em; }
+option { padding: 0 .4em .1em; }
+form div { margin-bottom: .8em; }
+button, input[type='button'] { padding: .2em .3em .2em .1em; line-height: 100%; }

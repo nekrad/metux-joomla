@@ -1,0 +1,51 @@
+/*
+ * YOOtheme CSS file
+ *
+ * @author yootheme.com
+ * @copyright Copyright (C) 2007 YOOtheme Ltd. & Co. KG. All rights reserved.
+ */ 
+
+/*
+ * YOOsearch
+ */
+
+#page div.default div.yoo-search div.resultbox {
+	position: absolute;
+	right: -9px;
+	top: 24px;
+	z-index: 20;
+}
+
+/*
+ * YOOlogin
+ */
+
+#page span.quick span.yoo-login span.login {
+	width: 231px;
+	height: 45px;
+	overflow: visible;
+	font-size: 150%;
+}
+
+#page span.quick span.yoo-login span.login .login-button-text,
+#page span.quick span.yoo-login span.login .login-button-icon {
+	margin-right: 0px;
+}
+
+#page span.quick span.yoo-login span.login .lostpassword, 
+#page span.quick span.yoo-login span.login .lostusername,
+#page span.quick span.yoo-login span.login .registration {
+	margin-top: 5px;
+}
+
+#page span.quick span.yoo-login span.logout {
+	height: 30px;
+	margin-top: 10px;
+	overflow: visible;
+	font-size: 130%;
+}
+
+#page span.quick span.yoo-login span.logout .logout-button-text,
+#page span.quick span.yoo-login span.logout .logout-button-icon {
+	margin-right: 0px;
+}
