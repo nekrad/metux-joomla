@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="1.5"  client="site" >
+	<tag>he-IL</tag>
+	<name>Hebrew (Israel)</name>
+	<description>Joomla!Hebrew Site Translation - by Mati (MtK) Kochen</description>
+	<version>1.5.0-RC4</version>
+	<creationDate>Nov 2007</creationDate>
+	<author>Mati (MtK) Kochen - Hebrew Translation Team Coordinator - joomla.co.il</author>
+	<authorUrl>www.smartmtk.com</authorUrl>
+	<authorEmail>mtk@smartmtk.com</authorEmail>
+	<copyright>(C) 2007 - 2008 Mati (MtK) Kochen. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<metadata>
+		<name>Hebrew (Israel)</name>
+		<tag>he-IL</tag>
+		<rtl>1</rtl>
+		<locale>he_IL.utf-8, heb_IL.utf-8, he, hebrew</locale>
+		<winCodePage>windows-1255</winCodePage>
+		<backwardLang>hebrew</backwardLang>
+		<pdfFontName>freesans</pdfFontName>
+	</metadata>
+	<params />
+</metafile>
