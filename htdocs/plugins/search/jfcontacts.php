@@ -1,8 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2008 Think Network GmbH, Munich
- * Copyright (C) 2005-0008 Open Source Matters. All rights reserved.
+ * Copyright (C) 2003 - 2009 Think Network GmbH, Munich
  * 
  * All rights reserved.  The Joom!Fish project is a set of extentions for 
  * the content management system Joomla!. It enables Joomla! 
@@ -26,9 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: jfcontent.searchbot.php 838 2008-01-09 16:16:41Z geraint $
+ * $Id: jfcontacts.php 1251 2009-01-07 16:16:41Z apostolov $
  * @package joomfish
- * @subpackage jfcontent
+ * @subpackage jfcontacts
  *
 */
 
