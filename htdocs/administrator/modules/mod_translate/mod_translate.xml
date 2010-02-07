@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <install type="module" client="administrator"  version="1.5.0" position="status">
 	<name>Direct Translation</name>
 	<author>Geraint Edwards</author>
-	<creationDate>27 August 2008</creationDate>
-	<copyright>(C) 2007-2008 Geraint Edwards. All rights reserved.</copyright>
+	<creationDate>31 March 2009</creationDate>
+	<copyright>2003-2009 Think Network GmbH, Munich. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL</license>
-	<authorEmail>via website</authorEmail>
-	<authorUrl>www.gwesystems.com</authorUrl>
-	<version>2.0 RC1</version>
+	<authorEmail>support@joomfish.net</authorEmail>
+	<authorUrl>www.joomfish.net</authorUrl>
+	<version>2.0.3</version>
 	<description>This module provides a direct link JoomFish translations for selected item. Remember to publish this module to status position.</description>
 	<files>
 		<filename module="mod_translate">mod_translate.php</filename>
