@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install version="1.5" type="plugin" group="system">
 	<name>Joomfish - Basic Router</name>
-	<license>Think Network, Open Source License</license>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<author>Geraint Edwards</author>
 	<authorEmail>support@joomfish.net</authorEmail>
 	<authorUrl>http://www.joomfish.net</authorUrl>
-	<creationDate>27 August 2008</creationDate>
-	<copyright>2003 - 2008, Think Network GmbH, Munich</copyright>
-	<version>2.0 - RC1</version>
+	<creationDate>31 March 2009</creationDate>
+	<copyright>2003 - 2009, Think Network GmbH, Munich</copyright>
+	<version>2.0.3</version>
 	<description>When activated this bot provides language determination and basic routing. Must be enabled unless you are using a SEF plugin that performs the same tasks.</description>
 	<files>
 		<filename plugin="jfrouter">jfrouter.php</filename>
@@ -21,11 +21,6 @@
 		<language tag="en-GB">en-GB.plg_system_jfrouter.ini</language>
    	</languages>	
 	<params addpath="/plugins/system/jfrouter/elements">
-		<param name="jfrouter" type="radio" default="1"
-			description="Use JF Router if available - this is a project sponsors only addon" label="Use JF Router if available">
-			<option value="0">No</option>
-			<option value="1">Yes</option>
-		</param>
 		<param name="determitLanguage" type="radio" default="1" label="Enable Language determination" description="If an unkown user comes to your site - try to determinate the language based on the browser settings.">
 			<option value="0">No</option>
 			<option value="1">Yes</option>
@@ -41,7 +36,7 @@
 			<option value="1">Yes</option>
 		</param>
 		<param name="enableCookie" type="radio" default="1"
-			description="Switch off the cookie only if you have a different solution to define the once selected language, e.g. via an URL. " label="Save user language in a cookie">
+			description="Switch off the cookie only if you have a different solution to define the once selected language, e.g. via an URL." label="Save user language in a cookie">
 			<option value="0">No</option>
 			<option value="1">Yes</option>
 		</param>

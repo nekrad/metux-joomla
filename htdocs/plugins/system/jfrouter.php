@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  * 
  * All rights reserved.  The Joom!Fish project is a set of extentions for 
  * the content management system Joomla!. It enables Joomla! 
@@ -9,25 +9,25 @@
  * which are stored in the database.
  *
  * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
+ * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
- * The "GNU Lesser General Public License" (LGPL) is available at
- * http: *www.gnu.org/copyleft/lgpl.html
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ReadMe,v 1.2 2005/03/15 11:07:01 akede Exp $
+ * $Id: jfrouter.php 1251 2009-01-07 11:07:01 apostolov Exp $
  * @package joomfish
- * @subpackage system.jfdatabase_bot
+ * @subpackage jfrouter
  * @version 2.0
  *
 */
@@ -87,18 +87,6 @@ class plgSystemJFRouter extends JPlugin{
 		$app	= &JFactory::getApplication();
 		$router = &$app->getRouter();
 
-		// Joomfish aware siterouter
-		if ($this->params->get("jfrouter",1)){
-			if (file_exists(dirname(__FILE__).DS."jfrouterpro".DS."jfrouter.php")){
-				include_once(dirname(__FILE__).DS."jfrouterpro".DS."jfrouter.php");
-				$config =& JFactory::getConfig();
-				$opts['mode'] = $config->getValue('config.sef');
-				$router = new JFRouter($opts);
-			}
-		}
-
-		// end Joomfish aware siterouter
-
 		// atttach build rules for language
 		$router->attachBuildRule("routeJFRule");
 
@@ -117,17 +105,16 @@ class plgSystemJFRouter extends JPlugin{
 
 		$registry =& JFactory::getConfig();
 
-		// Find language without loading strings
-		$conf	=& JFactory::getConfig();
-		$locale	= $conf->getValue('config.language');
-
-		$mosConfig_lang          = $locale;
-		$GLOBALS['mosConfig_defaultLang'] = $mosConfig_lang;        // Save the default language of the site
+		// Find language without loading strings		
+		$locale	= $registry->getValue('config.language');
+		
+		// Attention - we need to access the site default values
+		// #12943 explains that a user might overwrite the orignial settings based on his own profile
+		$langparams = JComponentHelper::getParams('com_languages');
+		$registry->setValue("config.defaultlang",$langparams->get("site"));
 
 		// get params from registry in case function called statically
 		$params = $registry->getValue("jfrouter.params");
-
-		$registry->setValue("config.defaultlang", $mosConfig_lang);
 
 		$determitLanguage 		= $params->get( 'determitLanguage', 1 );
 		$newVisitorAction		= $params->get( 'newVisitorAction', 'browser' );
@@ -136,7 +123,7 @@ class plgSystemJFRouter extends JPlugin{
 
 		// get instance of JoomFishManager to obtain active language list and config values
 		$jfm =&  JoomFishManager::getInstance();
-
+	
 		$client_lang = '';
 		$lang_known = false;
 		$jfcookie = JRequest::getVar('jfcookie', null ,"COOKIE");
@@ -153,13 +140,18 @@ class plgSystemJFRouter extends JPlugin{
 			}
 		}
 
-		/*		if ( $client_lang != '' && ($requestlang = $uri->getVar("lang","")) ) {
-		if( $requestlang != '' ) {
-		$client_lang = $requestlang;
+		// no language choosen - Test plugin e.g. IP lookup tool
+		if ( !$lang_known)	{
+			// setup Joomfish pluginds
+			$dispatcher	   =& JDispatcher::getInstance();
+			$iplang="";
+			JPluginHelper::importPlugin('joomfish');
+			$dispatcher->trigger('onDiscoverLanguage', array (& $iplang));
+			if ($iplang!=""){
+				$client_lang = $iplang;
+				$lang_known = true;
+			}
 		}
-		// no language chooses - assume from browser configuration
-		}*/
-
 		if ( !$lang_known && $determitLanguage &&
 		key_exists( 'HTTP_ACCEPT_LANGUAGE', $_SERVER ) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ) {
 
@@ -173,7 +165,8 @@ class plgSystemJFRouter extends JPlugin{
 					break;
 
 				case 'site':
-					$jfLang = TableJFLanguage::createByJoomla( $mosConfig_lang );
+					// We accept that this default locale might be overwritten by user settings!
+					$jfLang = TableJFLanguage::createByJoomla( $locale );
 					$client_lang = $jfLang->getLanguageCode();
 					break;
 
@@ -187,7 +180,7 @@ class plgSystemJFRouter extends JPlugin{
 					$active_code = array();
 					$activeLanguages = $jfm->getActiveLanguages();
 					if( count( $activeLanguages ) == 0 ) {
-						return $mosConfig_lang;
+						return;
 					}
 
 					foreach ($activeLanguages as $alang) {
@@ -229,7 +222,7 @@ class plgSystemJFRouter extends JPlugin{
 			$jfLang = TableJFLanguage::createByISO( $client_lang, false );
 		}
 		else if( $jfLang === null) {
-			$jfLang = TableJFLanguage::createByJoomla( $mosConfig_lang );
+			$jfLang = TableJFLanguage::createByJoomla( $locale );
 		}
 
 		if( !$lang_known && $use302redirect ) {
@@ -286,8 +279,6 @@ class plgSystemJFRouter extends JPlugin{
 			$registry->setValue("config.language",$jfLang->code);
 			$registry->setValue("joomfish.language",$jfLang);
 
-			$GLOBALS['iso_client_lang'] = $jfLang->getLanguageCode();
-
 			$href = JRoute::_($href,false);
 			
 			header( 'HTTP/1.1 303 See Other' );
@@ -296,10 +287,10 @@ class plgSystemJFRouter extends JPlugin{
 		}
 
 		if( isset($jfLang) && $jfLang->code != "" && ($jfLang->active  || $jfm->getCfg("frontEndPreview") )) {
-			$mosConfig_lang = $jfLang->code;
+			$locale = $jfLang->code;
 		} else {
-			$jfLang = TableJFLanguage::createByJoomla( $mosConfig_lang );
-			if( !$jfLang->active ) {
+			$jfLang = TableJFLanguage::createByJoomla( $locale );
+		if( !$jfLang->active ) {
 			?>
 			<div style="background-color: #c00; color: #fff">
 				<p style="font-size: 1.5em; font-weight: bold; padding: 10px 0px 10px 0px; text-align: center; font-family: Arial, Helvetica, sans-serif;">
@@ -310,7 +301,7 @@ class plgSystemJFRouter extends JPlugin{
 			$activeLanguages = $jfm->getActiveLanguages();
 			if( count($activeLanguages) > 0 ) {
 				$jfLang = $activeLanguages[0];
-				$mosConfig_lang = $jfLang->code;
+				$locale = $jfLang->code;
 			}
 			else {
 				// No active language defined - using system default is only alternative!
@@ -319,24 +310,16 @@ class plgSystemJFRouter extends JPlugin{
 			$client_lang = ($jfLang->shortcode!='') ? $jfLang->shortcode : $jfLang->iso;
 		}
 
-
-		$overwriteGlobalConfig =  $params->get( 'overwriteGlobalConfig', 0 );
-		if($overwriteGlobalConfig ) {
-			// We should overwrite additional global variables based on the language parameter configuration
-			$langParams = new JParameter( $jfLang->params );
-			foreach ($langParams->toArray() as $key => $value) {
-				$GLOBALS['mosConfig_' .$key] =$value;
-			}
-		}
-
 		if ($enableCookie){
 			setcookie( "lang", "", time() - 1800, "/" );
 			setcookie( "jfcookie", "", time() - 1800, "/" );
 			setcookie( "jfcookie[lang]", $client_lang, time()+24*3600, '/' );
 		}
 		
-		$GLOBALS['iso_client_lang'] = $client_lang;
-		$GLOBALS['mosConfig_lang'] = $jfLang->code;
+		if( defined("_JLEGACY") ) {
+			$GLOBALS['iso_client_lang'] = $client_lang;
+			$GLOBALS['mosConfig_lang'] = $jfLang->code;
+		}
 
 		$registry->setValue("config.multilingual_support", true);
 
@@ -347,40 +330,31 @@ class plgSystemJFRouter extends JPlugin{
 		$registry->setValue("config.lang_site",$jfLang->code);
 		$registry->setValue("config.language",$jfLang->code);
 		$registry->setValue("joomfish.language",$jfLang);
-		/*
-		}
-		else if ($client_lang=="eng") {
-		$mainframe->setLanguage("en-GB");
-		$registry->setValue("config.jflang", "english");
-		$mainframe->setUserState('application.lang','en-GB');
-		}
-		*/
+
 		// Force factory static instance to be updated if necessary
 		$lang =& JFactory::getLanguage();
 		if ($jfLang->code != $lang->getTag()){
-			$lang =& JFactory::_createLanguage();
+			// Must not assign by reference in order to overwrite the existing reference to the static instance of the language
+			$lang = JFactory::_createLanguage();
 		}
-
 		// no need to set locale for this ISO code its done by JLanguage
 		
-		// Get the global configuration object
-		$registry =& JFactory::getConfig();
-
-		// Load the configuration values into the registry
-		$registry->loadObject($config);
-
 		// overwrite with the valued from $jfLang
-		$params = new JParameter($jfLang->params);
-		$paramarray = $params->toArray();
-		foreach ($paramarray as $key=>$val) {
-			$registry->setValue("config.".$key,$val);
-
-			if (defined("_JLEGACY")){
-				$name = 'mosConfig_'.$key;
-				$GLOBALS[$name] = $val;
+		$jfparams = JComponentHelper::getParams("com_joomfish");
+		$overwriteGlobalConfig =  $jfparams->get( 'overwriteGlobalConfig', 0 );
+		if($overwriteGlobalConfig ) {
+			// We should overwrite additional global variables based on the language parameter configuration
+			$params = new JParameter($jfLang->params);
+			$paramarray = $params->toArray();
+			foreach ($paramarray as $key=>$val) {
+				$registry->setValue("config.".$key,$val);
+	
+				if (defined("_JLEGACY")){
+					$name = 'mosConfig_'.$key;
+					$GLOBALS[$name] = $val;
+				}
 			}
 		}
-
 	}
 
 	/**
@@ -495,6 +469,20 @@ class plgSystemJFRouter extends JPlugin{
 					}
 					// does the segment match the prefix
 					if ($segcompare==$prefix){
+																				
+						// This section forces the current url static to include the language string which means the base tag is correct - but ONLY on the home page
+						// restricting this to the homepage means no risk for image paths etc.
+						$homepage = true;
+						for ($seg2=$seg+1;$seg2<count($segments);$seg2++) {
+							$segment = $segments[$seg2];
+							if (strlen($segment)>0) $homepage = false;
+						}
+						if ($homepage){
+							$current =& JURI::current();
+							$uri	 = & JURI::getInstance();
+							$current = $uri->toString( array('scheme', 'host', 'port', 'path'));
+						}
+
 						unset($segments[$seg]);//array_shift($segments);
 						$uri->setPath(implode("/",$segments));
 

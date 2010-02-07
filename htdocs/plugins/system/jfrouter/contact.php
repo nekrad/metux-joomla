@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich, 2007-2008 GWE Systems Ltd
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich, 2007-2009 GWE Systems Ltd
  * 
  * All rights reserved.  The Joom!Fish project is a set of extentions for 
  * the content management system Joomla!. It enables Joomla! 
@@ -9,25 +9,25 @@
  * which are stored in the database.
  *
  * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
+ * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
- * The "GNU Lesser General Public License" (LGPL) is available at
- * http: *www.gnu.org/copyleft/lgpl.html
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ReadMe,v 1.2 2005/03/15 11:07:01 akede Exp $
+ * $Id: contact.php 1251 2009-01-07 11:07:01 apostolov Exp $
  * @package joomfish
- * @subpackage system.jfrouter
+ * @subpackage jfrouter
  * @version 2.0
  *
 */
