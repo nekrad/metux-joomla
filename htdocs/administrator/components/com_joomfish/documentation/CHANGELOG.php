@@ -1,7 +1,7 @@
 <?
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -26,7 +26,7 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: CHANGELOG.php 1175 2008-09-09 04:36:06Z akede $
+ * $Id: CHANGELOG.php 1291 2009-03-31 12:42:27Z akede $
  *
 */
 
@@ -63,6 +63,160 @@ Legend:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+==== 31 March 2009 Joom!Fish 2.0.3 Stable release =====
+
+2009-03-31 Alex Kempkens
+ - Usage of PHP5 variable declaration in jfdatabase plugin; ^ to PHP4 declaration
+ # Installation issue in Joomla 1.5.10
+ # reverted ~ Rename Norwegian Flag; after discussion with NO coordinator
+
+2009-03-31 Geraint Edwards
+ ~ change Norwegian flag to match ISO name
+
+ 2009-03-27 Geraint Edwards
+ ~ Enable translation of menu aliases
+
+2009-03-19 Geraint Edwards
+~ Rename Norwegian Flag
+~ New Georgian Flag
+
+2009-03-14 Alex Kempkens
++ New configuration parameter to switch off the default language in the backend view
+! New translation tag added for the config value
+! Default value is: show default language (as current behavior)
+# Translation model changed to determin the languages instead of JFManager
++ JFModel to integrate centralized method for getting the default site language
+# changed translation views to show language selection depending on config
+
+2009-02-06 Geraint Edwards
+# Check collation/charset before creating
+# Make Check for database key creation mysql 4.1 compliant#
+# [#14622] Workaround for bug in Mysql 5.1.30 with null field values - for existing installations
+
+2009-01-29 Alex Kempkens
+ # Re: Error deleting orphan files..., thx to lesther
+ # Error 500 when deleting language - thx to pellemans
+
+==== 27 January 2009 Joom!Fish 2.0.2 Stable release =====
+
+2009-01-26 Geraint Edwards
+# [#14622] Workaround for bug in Mysql 5.1.30 with null field values
+
+2009-01-16 Geraint Edwards
+ # Make Joomfish respect limit and count args of setquery - needed to enable content table localisation plugin to work properly
+
+2009-01-09 Geraint Edwards
+ # Fix language switcher - when switching on sub menus the parent menu item was not translated
+
+==== 7 January 2009 Joom!Fish 2.0.1 Stable release =====
+
+2009-01-07
+ # Minor change in the banner content element (http://www.joomfish.net/forum/viewtopic.php?f=16&t=2961)
+
+2009-01-06 Ivo Apostolov
+ ^ Change of headers, version info, adding license. Preparation for 2.0.1
+ # Fixing a lot of issues around the language files. Thanks Tassu and Localicer.
+
+2009-01-05 Geraint Edwards commited the fix / Ivo Apostolov (adding the to the log)
+ # Fixing the bug with SEF addresses within the frontend module
+
+2009-01-02 Ivo Apostolov
+ # Fixing hardcoded database string. Thanks stevekwok (http://www.joomfish.net/forum/viewtopic.php?f=28&t=2917)
+
+==== 31 December 2008 Joom!Fish 2.0 Stable public release =====
+
+2008-12-24 Geraint Edwards
+ # [#14089] intercept.jdatabasemysql.php : Missing back quotes in sql request
+ # incorrect use of assigning the language variable by reference instead of by value
+
+2008-12-23 Alex Kempkens
+ # Corrected usage of translated texts in the various views
+ + Language tag for statistics in the sub-menu
+ # [#14028] Mod translate generates error if no language exists or is active
+ # [12658] language codes are now determint and maped by the language manager. This sound also resolve the issue related to the migration
+ # [#14038] Add unlink in the installation routine for prePost_translations.xml
+ # [#14105] Deleting non translated item gives inappropriate message.
+ # [#13951] change copy delete icons to new style in edit translation
+
+2008-12-07 Ivo Apostolov
+ # Language file field has no reason to be editable. See http://www.joomfish.net/forum/viewtopic.php?f=28&t=2727
+
+2008-12-05 Geraint Edwards
+ # [#13991] Filtering on sections/categories lead to blank list on return
+ + [#13536] Adding filter for archived articles
+ ^ Changed logic of language/CE selection so that javascript checks that both are real values before sumitting the form :)
+
+2008-12-04 Geraint Edwards
+ # [#13994] Apostrophe is not escaped in filtering and leads to a mass SQL error
+ # [#13996] Fix the modal of the Direct Translations module - added auto close of modal window
+ # [#13852] Content Element Installer - missing JFile import
+
+2008-12-03 Geraint Edwards
+ # Renable correct testing for overwritting global config values
+ # [#13178] Correct the escaping of language config values
+ # [#12752] Disable rather than remove languages suppressed by menu localisation plugin
+
+2008-12-02 Geraint Edwards
+ # in getNumRows must allow fallback language otherwise contenttablelocalisation plugin is skipped
+ # [#12747] enable publishers and above to see unpublished translations in the front by default
+ # Remove "x" default value for defaulttext in language configuration
+ # [#13613] Add content element field ebuttons - false=> no editor buttons, array => buttons to suppress.  Default is to suppress readmore
+
+2008-11-30 Alex Kempkens
+ # Admin Module for translations now automatically opens the translation dialog
+
+2008-11-27 Ivo Apostolov
+ # Correcting the SQL file - spelling
+
+2008-11-26 Alex Kempkens
+ # [13899] Fixed issue with missing translation plugin and language file localtion (thx JM)
+ # Reshaped the translate module for a better user experience
+ # [#12943] Front-end editing saves in translation in stead of 'normal' article when user sets front-end language
+
+2008-11-25 Geraint Edwards
+ # [#13854] Fields in jf_content
+ # [#12803] Copy function doesn't works when found the symbol '
+ ^ [#13856] Add index to jf_content plus other indicies - performance gain in front and backend
+ # [#13853] Uninstalling the last used content element brings an error.  Also added trap for bad content element file  in translation overview
+ # [#13852] Content Element Installer.  I also changed the file copy function to be JFTP compatible.
+
+2008-11-24 Ivo Apostolov
+ # Fixing the uninstall bug
+
+2008-11-16 Geraint Edwards
+ # Bad field values for unused grid ordering hidden fields in orphan and translation lists
+ # In language selection module switching off href caching now ensures that cache is not used when routing menu items (3rd party SEF specific problem)
+
+2008-11-15 Alex Kempkens
+ # [#12655] Frontend publishing - not working by default settings
+ ^ Added default language values for the English language if a clean installation is processed
+
+2008-11-04 Geraint Edwards
+ # fixed [#13278] Wrong loadObject implementation for legacy mdatabase class
+
+2008-10-09 Geraint Edwards
+ ^ Change db cache to use compressed data stored in mediumblob
+ ^ Change default state of Joomfish caching to be off
+ ^ Language Module caching now respects joomfish component caching selection
+
+2008-09-29 Geraint Edwards
+ ^ Enable category translation filter to respect section selection
+ ^ Switch setreftable caching to use JFile/JFolder functions and to disable this if FTP layer is enabled
+
+2008-09-19 Geraint Edwards
+ + Add frontpage filter to content items translations
+ # Add trap for language config link before languages have been saved
+ + Add DB Cache for translations
+ # Fix memory reset for translation filters
+ ^ Improvement to setRefTables - skipping the processing for joomfish base queries
+
+2008-09-12 Geraint Edwards
+ ^ Added new "trash" filter to content and menu items so that we can drop the old type of filter completely
+
+2008-09-11 Ivo Apostolov
+ # Adding missing language strings
+ # Fix of Swedish flag
+
 ==== 09 September 2008 Joom!Fish 2.0 RC public release =====
 
 2008-09-09 Alex Kempkens
@@ -82,7 +236,7 @@ Legend:
 2008-09-01 Ivo Apostolov
  # Varios new strings in the language files. Thanks Rued.
  + Adding en-GB.com_joomfish.menu.ini. Thanks Rued.
- 
+
 ==== 27 August 2008 Joom!Fish 2.0 RC1 donors and contributors release =====
 
 2008-08-27 Ivo Apostolov
@@ -97,7 +251,7 @@ Legend:
  # Small fix of the description of mod_translate
  + Adding language files for the search plugins
  + Adding language files for mod_translate
- 
+
 2008-08-26 Geraint Edwards
  # fixed bad file location in jfrouter plugin config
  # removed setting locale in jfrouter (JLanguage does this for us now)
@@ -114,14 +268,14 @@ Legend:
  - Removed ContentLocalization plugin
  # Update of the installation manifest
 
-2008-08-23 Geraint Edwards	
+2008-08-23 Geraint Edwards
  # Ensure content element files are loaded from the correct path by JoomFishManager following move of this file to classes subdirectory
- 
-2008-08-22 Geraint Edwards	
+
+2008-08-22 Geraint Edwards
  # Rationalised treatment of strip slashes when saving translations - html fields are allowed HTML all other are stripped if necessary
  # Fixed minor regression config should not be obtained dynamically in JoomFishManager
  # Remove readmore button in html editor for translations pending more advance treatment of readmore in JF 2.1
- 
+
 2008-18-19 Ivo Apostolov
  # Replacement of mosConfig_livesite with JURI::root() in mod_translate
  # Fixing cPanel donate image handling by adding JURI::root() in the URL
@@ -149,9 +303,9 @@ Legend:
  # refactored manage translations dialog
 
 2008-08-15 Geraint Edwards
- # Fix untranslated menus for logged in users - we must not allow any database calls within the translation routine 
+ # Fix untranslated menus for logged in users - we must not allow any database calls within the translation routine
  + Added method upgrade to installer
- 
+
 2008-08-12 Geraint Edwards
  # Fix mod_jflanguageselection to handle ssl correctly
 
@@ -165,7 +319,7 @@ Legend:
 2008-08-10 Alex Kempkens
  + new default view class
  # updated elements view to new base view class
- # updated elements view to Joomla! generic view templ files 
+ # updated elements view to Joomla! generic view templ files
  # update installer methods and views related
  # updated various language texts
  # updated xml and primary files to new Joomla! 1.5 standards
@@ -181,7 +335,7 @@ Legend:
 
 2008-08-05 Geraint Edwards
  # Some Joomfish cache files were not being removed on expiry.  Add a garbage handler to the jfdatabase::onAfterRender method to take care of this
- 
+
 2008-08-03 Geraint Edwards
  + Add "Apply" button when editing translations
 
@@ -205,9 +359,9 @@ Legend:
  # fixed basic router to deal with pdf and feeds correctly when SEF with extensions is enabled
  # Finished fixing url parameters to allow selection of article in menu translation
  # remove reference to JPATH_COMPONENT_ADMINISTRATOR in JLoader::register - always refer to Joomfish in the path so we can inherit from Joomfish elsewhere
- 
+
 2008-07-18 Geraint Edwards
- # Fixed variety of bugs from Ivo's Beta2Bugs doc - deletion of CE, deletion of orphans, count of transltion for donate link in CPanel, back link in CE installer, irrelevant href link in lang config, date formatting in backend, 
+ # Fixed variety of bugs from Ivo's Beta2Bugs doc - deletion of CE, deletion of orphans, count of transltion for donate link in CPanel, back link in CE installer, irrelevant href link in lang config, date formatting in backend,
  + Added content attribute translation
  + Added translation of URLs for weblinks
  # Fixed problem with untranslated section and category titles on front page
@@ -217,28 +371,28 @@ Legend:
 2008-07-14 Geraint Edwards
  # Fixed problem with translation where 2 fields with the same name were being incorrectly translated (see http://www.joomfish.net/forum/viewtopic.php?f=16&t=1523&p=7108#p7107)
  # Fixed call to onBeforeTranslation that resulted in items not being translated if the plugin returned true
- 
+
 2008-07-11 Geraint Edwards
  # Fixed various problems with 302 redirect and cookies see : http://www.joomfish.net/forum/viewtopic.php?f=28&t=1472&p=6899#p6888
  # Fixed bad call to translateListWithIDs when processing fallbacks - could lead to recursion with badly configured language configuration
  # Added missing handler for getNumRows to JFDatabase
  + Add ignoreifblank to ContentElementTableField to allow modules to ignore "content" field if original is blank
  ^ Replace usage of JPATH_COMPONENT and JPATH_COMPONENT_ADMINISTRATOR for future flexibility
- 
+
 2008-07-10 Geraint Edwards
  - Remove frontend component files from installation since they are not used anywhere
 
 2008-07-03 Geraint Edwards
  # Correct use of ACL for frontend translation
  # Fix stripping of paramaters in translation slashes were getting dropped so textarea params were not translated properly
- 
+
 
  # Fixing Czech language flag [#11406] Default country flag for czech language is wrong
 
 2008-06-21 Geraint Edwards
  # Joomfish routine to find site default language was obtaining the current user's admin language!!  This is now fixed.
  # Fix translation preview - note that some editors are still broken e.g. xstandard (poor coding assuptions) and JCE/TinyMCE needed a workaround of a bug
- 
+
 2008-06-20 Geraint Edwards
  # Removed subtable from polls.xml content element file
  # replaced stray mosRedirect from translate controller
@@ -248,18 +402,18 @@ Legend:
  ^ Improve check on legacy mode in jfdatabase
  # fixed declaration of JFDatabase::loadRowList ($translation field was missing)
  # Remove module caching option from language switching module - its too dangerous
- + Add sef URL caching option to language switching module 
- 
- 
+ + Add sef URL caching option to language switching module
+
+
 2008-06-15 Ivo Apostolov
  # Fixing of copy function in JCE (by Geraint) - forum http://www.joomfish.net/forum/viewtopic.php?f=28&t=1319
  # Applying the fix on the installation (removing comments from SQL files) - forum version by Geraint, http://www.joomfish.net/forum/viewtopic.php?f=28&t=1314
  ^ Resizing two flags for consistency
-	
+
 2008-06-14 Ivo Apostolov
  ^ Moving the no translations available JText to the missing translations plugin
  + Language file for missing_translations plugin
- + Adding the lang files in missing_translations.xml 
+ + Adding the lang files in missing_translations.xml
 
 2008-06-09 Ivo Apostolov
  + Adding Egyptian flag
@@ -267,7 +421,7 @@ Legend:
 
 
 ==== Joom!Fish 2.0 Beta 2 public release =====
- 
+
 2008-06-03 Geraint Edwards
  # Fixed overwrite global config - it was not in the config.xml file and hence ignored!
  ~ changed language specific global config to include the default text string to allow easy translation
@@ -286,7 +440,7 @@ Legend:
 2008-06-01 Geraint Edwards
  + Added utility method to JoomfishManager getLanguagesIndexedById
  # fix page navigation on content elements overview
- 
+
 2008-06-01 Ivo Apostolov
  # fixing the translations overview screen (incomplete usage of JText causing incorrect visualisation)
  # additing to the installer status_r.png, status_y.png and status_g.png used in views/translate/tmpl/overview.php
@@ -321,7 +475,7 @@ Legend:
 
 2008-02-18 Alex Kempkens
  + first integration of language manager
- ! Geraint did several other dialogs already .... 
+ ! Geraint did several other dialogs already ....
 
 2008-01-03 Alex Kempkens
  + Integration of CPanel MVC

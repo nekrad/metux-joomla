@@ -25,26 +25,32 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: default_message.php 1251 2009-01-07 06:29:53Z apostolov $
+ * $Id: languages.php 1267 2009-01-29 18:01:22Z akede $
  * @package joomfish
- * @subpackage Views
+ * @subpackage Models
  *
 */
-$state			= &$this->get('State');
-$message1		= $state->get('message');
-$message2		= $state->get('extension.message');
+// Check to ensure this file is included in Joomla!
+defined('_JEXEC') or die();
+
+jimport( 'joomla.application.component.model' );
+
+/**
+ * This class extends JModel about some general methods used in all models of Joom!Fish
+ * @package		Joom!Fish
+ * @subpackage	JFModel
+ */
+class JFModel extends JModel {
+
+	/**
+	 * returns the default language of the frontend
+	 * @return object	instance of the default language
+	 */
+	function getDefaultLanguage() {
+		$params = JComponentHelper::getParams('com_languages');
+		return $params->get("site", 'en-GB');
+
+	}
+}
+
 ?>
-<table class="adminform">
-	<tbody>
-		<?php if($message1) : ?>
-		<tr>
-			<th><?php echo JText::_($message1) ?></th>
-		</tr>
-		<?php endif; ?>
-		<?php if($message2) : ?>
-		<tr>
-			<td><?php echo $message2; ?></td>
-		</tr>
-		<?php endif; ?>
-	</tbody>
-</table>

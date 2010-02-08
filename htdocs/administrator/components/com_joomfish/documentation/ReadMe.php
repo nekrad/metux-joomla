@@ -1,11 +1,11 @@
 <?
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
- * 
- * All rights reserved.  The Joom!Fish project is a set of extentions for 
- * the content management system Joomla!. It enables Joomla! 
- * to manage multi lingual sites especially in all dynamic information 
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
  * which are stored in the database.
  *
  * This program is free software; you can redistribute it and/or
@@ -25,7 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ReadMe.php 928 2008-03-30 10:51:32Z akede $
+ * $Id: ReadMe.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage ReadMe
  *
 */
  

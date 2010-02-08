@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,11 +25,15 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: jfinstaller.php 928 2008-03-30 10:51:32Z akede $
+ * $Id: jfinstaller.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage jfinstaller
  *
 */
 
 defined( 'JPATH_BASE' ) or die( 'Direct Access to this location is not allowed.' );
+
+jimport('joomla.filesystem.file');
 
 /**
  * This class allows general installation of files related to the Joom!Fish project
@@ -85,14 +89,14 @@ class jfInstaller {
 		}
 
 		if( !is_array( $this->_uploadfile ) ) {
-			if(! @copy($this->_uploadfile, $this->_elementdir .DS. $this->_realname) ) {
+			if(!@JFile::copy($this->_uploadfile, $this->_elementdir .DS. $this->_realname) ) {
 				$this->errno = 2;
 				$this->error = JText::_('FILEUPLOAD_ERROR');
 				return false;
 			}
 		} else {
 			foreach ($this->_uploadfile as $file ) {
-				if(! @copy($this->_unpackdir . $file, $this->_elementdir .DS. $file) ) {
+				if(! @JFile::copy($this->_unpackdir .DS . $file, $this->_elementdir .DS. $file) ) {
 					$this->errno = 2;
 					$this->error = JText::_('FILEUPLOAD_ERROR');
 					return false;

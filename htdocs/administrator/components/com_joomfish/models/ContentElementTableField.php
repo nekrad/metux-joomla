@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,10 +25,11 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ContentElementTableField.php 1023 2008-07-11 09:45:56Z geraint $
+ * $Id: ContentElementTableField.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage Models
  *
 */
-
 
 // Don't allow direct linking
 defined( 'JPATH_BASE' ) or die( 'Direct Access to this location is not allowed.' );
@@ -38,9 +39,9 @@ defined( 'JPATH_BASE' ) or die( 'Direct Access to this location is not allowed.'
  *
  * @package joomfish
  * @subpackage administrator
- * @copyright 2003-2008 Think Network GmbH
+ * @copyright 2003-2009 Think Network GmbH
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version $Revision: 1023 $
+ * @version $Revision: 1251 $
  * @author Alex Kempkens <joomfish@thinknetwork.com>
  */
 class ContentElementTablefield {
@@ -54,6 +55,9 @@ class ContentElementTablefield {
 	var $Rows=15;
 	var $Columns=30;
 	var $posthandler="";
+	
+	// Can be boolean or array, if boolean defines if the buttons are displayed, if array defines a list of buttons not to show.
+	var $ebuttons=true;
 
 	// boolean to determine where to show this field if original is not blank e.g. content in modules
 	var $ignoreifblank=0;
@@ -84,6 +88,23 @@ class ContentElementTablefield {
 		$this->Columns = intval( $tablefieldElement->getAttribute( 'columns' ) );
 		$this->posthandler = trim( $tablefieldElement->getAttribute( 'posthandler' ) );
 		$this->ignoreifblank = intval( $tablefieldElement->getAttribute( 'ignoreifblank' ) );
+		
+		$this->ebuttons = trim( $tablefieldElement->getAttribute( 'ebuttons' ) );
+		if (strpos($this->ebuttons,",")>0){
+			$this->ebuttons = explode(",",$this->ebuttons);
+		}
+		else if ($this->ebuttons=="1"  || strtolower($this->ebuttons)=="true"){
+			$this->ebuttons = true;
+		}
+		else if (strlen($this->ebuttons)==0) {
+			$this->ebuttons = array("readmore");
+		}
+		else if ($this->ebuttons=="0"  || strtolower($this->ebuttons)=="false"){
+			$this->ebuttons = false;
+		}
+		else if (strlen($this->ebuttons)>0){
+			$this->ebuttons = array($this->ebuttons);
+		}
 	}
 }
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,10 +25,11 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: cpanel.php 1085 2008-08-18 17:31:38Z akede $
+ * $Id: cpanel.php 1277 2009-03-16 17:27:45Z geraint $
+ * @package joomfish
+ * @subpackage Models
  *
 */
-
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
@@ -76,6 +77,47 @@ class CPanelModelCPanel extends JModel
 	}
 
 	/**
+	 * Get a list of performance information for optimal installation
+	 */
+	function getPerformanceInfo() {
+		$performanceInfo = array();
+		
+		// DB Driver
+		$db =& JFactory::getDBO();
+		$performanceInfo['driver'] = array();
+		$performanceInfo['driver']["current"] = $db->name;
+		$performanceInfo['driver']["best"] = function_exists("mysqli_connect")?"mysqli":"mysql";
+		
+		if ($performanceInfo['driver']["best"]=="mysqli" && $performanceInfo['driver']["best"]!=$performanceInfo['driver']["current"]){
+			$performanceInfo['driver']["optimal"]=false;
+		}
+		else {
+			$performanceInfo['driver']["optimal"]=true;
+		}
+		
+		// Translation Caching
+		if (version_compare(phpversion(),"5.0.0",">=")){
+			$jfm =& JoomFishManager::getInstance();
+			$performanceInfo['cache']["best"]=JText::_("on");
+			if ($jfm->getCfg("transcaching",1)){
+				$performanceInfo['cache']["optimal"]=true;
+				$performanceInfo['cache']["current"]=JText::_("on");
+			}			
+			else {
+				$performanceInfo['cache']["optimal"]=false;
+				$performanceInfo['cache']["current"]=JText::_("off");
+			}
+		}
+		else {
+			$performanceInfo['cache']["best"]=JText::_("n/a");
+			$performanceInfo['cache']["optimal"]=false;
+			$performanceInfo['cache']["current"]=JText::_("off");
+
+		}
+		return $performanceInfo;
+	}
+
+	/**
 	 * Get the list of published tabs, based on the ID
 	 */
 	function getPublishedTabs() {
@@ -107,6 +149,13 @@ class CPanelModelCPanel extends JModel
 			$pane = new stdClass();
 			$pane->title = 'System State';
 			$pane->name = 'SystemState';
+			$pane->alert = false;
+			$tabs[] = $pane;
+		}
+		if( $params->get('PerformanceInfo', 1) ) {
+			$pane = new stdClass();
+			$pane->title = 'Performance Information';
+			$pane->name = 'PerformanceInfo';
 			$pane->alert = false;
 			$tabs[] = $pane;
 		}
@@ -236,7 +285,8 @@ class CPanelModelCPanel extends JModel
 			}
 		}
 
-		if( $oldInstall == 1 && $this->_joomfishManager->getCfg( 'mbfupgradeDone' ) ) {
+		$jfManager = JoomFishManager::getInstance();
+		if( $oldInstall == 1 && $jfManager->getCfg( 'mbfupgradeDone' ) ) {
 			$oldInstall = 2;
 		}
 

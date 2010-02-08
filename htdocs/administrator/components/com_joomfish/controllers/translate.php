@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,7 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: translate.php 1173 2008-09-08 20:14:26Z akede $
+ * $Id: translate.php 1277 2009-03-16 17:27:45Z geraint $
+ * @package joomfish
+ * @subpackage translate
  *
 */
 
@@ -86,7 +88,7 @@ class TranslateController extends JController   {
 		$this->registerTask( 'unpublish', 'publishTranslation' );
 		$this->registerTask( 'remove', 'removeTranslation' );
 		$this->registerTask( 'preview', 'previewTranslation' );
-		
+
 		$this->registerTask( 'orphans', 'showOrphanOverview' );
 		$this->registerTask( 'orphandetail', 'showOrphanDetail' );
 		$this->registerTask( 'removeorphan', 'removeOrphan' );
@@ -94,15 +96,17 @@ class TranslateController extends JController   {
 		// Populate data used by controller
 		global $mainframe;
 		$this->_catid = $mainframe->getUserStateFromRequest('selected_catid', 'catid', '');
-		$this->_select_language_id = $mainframe->getUserStateFromRequest('selected_lang','select_language_id', '-1');		
+		$this->_select_language_id = $mainframe->getUserStateFromRequest('selected_lang','select_language_id', '-1');
 		$this->_language_id =  JRequest::getVar( 'language_id', $this->_select_language_id );
 		$this->_select_language_id = ($this->_select_language_id == -1 && $this->_language_id != -1) ? $this->_language_id : $this->_select_language_id;
-		
+
 		// Populate common data used by view
 		// get the view
 		$this->view = & $this->getView("translate");
+		$model =& $this->getModel('translate');
+		$this->view->setModel($model, true);
 
-		// Assign data for view 
+		// Assign data for view
 		$this->view->assignRef('catid'   , $this->_catid);
 		$this->view->assignRef('select_language_id',  $this->_select_language_id);
 		$this->view->assignRef('task', $this->task);
@@ -115,6 +119,12 @@ class TranslateController extends JController   {
 	 */
 	function showTranslate() {
 
+		// If direct translation then close the modal window
+		if (intval(JRequest::getVar("direct",0))){
+			$this->modalClose();
+			return;
+		}
+
 		JoomfishControllerHelper::_setupContentElementCache();
 		if( !JoomfishControllerHelper::_testSystemBotState() ) {;
 		echo "<div style='font-size:16px;font-weight:bold;color:red'>".JText::_('MAMBOT_ERROR')."</div>";
@@ -126,7 +136,6 @@ class TranslateController extends JController   {
 
 	/** Presentation of the content's that must be translated
 	 */
-	// DONE
 	function showTranslationOverview( $language_id, $catid) {
 		$db =& JFactory::getDBO();
 		global $mainframe;
@@ -142,20 +151,25 @@ class TranslateController extends JController   {
 		$filterHTML=array();
 		if( $language_id != -1 && isset($catid) && $catid!="" ) {
 			$contentElement = $this->_joomfishManager->getContentElement( $catid );
+			if (!$contentElement){
+				$catid = "content";
+				$contentElement = $this->_joomfishManager->getContentElement( $catid );
+			}
 			JLoader::import( 'models.TranslationFilter',JOOMFISH_ADMINPATH);
 			$tranFilters = getTranslationFilters($catid,$contentElement);
 
 			$total = $contentElement->countReferences($language_id, $tranFilters);
-			
+
 			if ($total<$limitstart){
 				$limitstart = 0;
 			}
-			
+
 			$db->setQuery( $contentElement->createContentSQL( $language_id, null, $limitstart, $limit,$tranFilters ) );
 			$rows = $db->loadObjectList();
 			if ($db->getErrorNum()) {
 				echo $db->stderr();
-				return false;
+				// should not stop the page here otherwise there is no way for the user to recover
+				$rows = array();
 			}
 
 			// Manipulation of result based on further information
@@ -177,20 +191,6 @@ class TranslateController extends JController   {
 		jimport('joomla.html.pagination');
 		$pageNav = new JPagination($total, $limitstart, $limit);
 
-		// get list of active languages
-		$langOptions[] = JHTML::_('select.option',  '-1', JText::_('Select Language') );
-		$langOptions[] = JHTML::_('select.option',  'NULL', JText::_('Select no Translation'));
-
-		$langActive = $this->_joomfishManager->getLanguages( false );		// all languages even non active once
-
-		if ( count($langActive)>0 ) {
-			foreach( $langActive as $language )
-			{
-				$langOptions[] = JHTML::_('select.option',  $language->id, $language->name );
-			}
-		}
-		$langlist = JHTML::_('select.genericlist', $langOptions, 'select_language_id', 'class="inputbox" size="1" onchange="document.adminForm.submit();"', 'value', 'text', $language_id );
-
 		// get list of element names
 		$elementNames[] = JHTML::_('select.option',  '', JText::_('Please select') );
 		//$elementNames[] = JHTML::_('select.option',  '-1', '- All Content elements' );
@@ -200,7 +200,7 @@ class TranslateController extends JController   {
 		{
 			$elementNames[] = JHTML::_('select.option',  $key, $element->Name );
 		}
-		$clist = JHTML::_('select.genericlist', $elementNames, 'catid', 'class="inputbox" size="1" onchange="document.adminForm.submit();"', 'value', 'text', $catid );
+		$clist = JHTML::_('select.genericlist', $elementNames, 'catid', 'class="inputbox" size="1" onchange="if(document.getElementById(\'select_language_id\').value>=0) document.adminForm.submit();"', 'value', 'text', $catid );
 
 		// get the view
 		$this->view = & $this->getView("translate","html");
@@ -212,10 +212,11 @@ class TranslateController extends JController   {
 		$this->view->assignRef('rows'   , $rows);
 		$this->view->assignRef('search'   , $search);
 		$this->view->assignRef('pageNav'   , $pageNav);
-		$this->view->assignRef('langlist'   , $langlist);
 		$this->view->assignRef('clist'   , $clist);
 		$this->view->assignRef('language_id', $language_id);
 		$this->view->assignRef('filterlist', $filterHTML);
+		$this->view->assignRef('language_id', $language_id);
+
 		$this->view->display();
 		//TranslateViewTranslate::showTranslationOverview( $rows, $search, $pageNav, $langlist, $clist, $catid ,$language_id,$filterHTML );
 	}
@@ -274,13 +275,17 @@ class TranslateController extends JController   {
 		// get existing filters so I can remember them!
 		JLoader::import( 'models.TranslationFilter',JOOMFISH_ADMINPATH);
 		$tranFilters = getTranslationFilters($catid,$contentElement);
-		
+
 		// get the view
 		$this->view = & $this->getView("translate");
 
 		// Set the layout
 		$this->view->setLayout('edit');
 
+		// Need to load com_config language strings!
+		$lang =& JFactory::getLanguage();
+		$lang->load( 'com_config' );
+		
 		// Assign data for view - should really do this as I go along
 		$this->view->assignRef('actContentObject'   , $actContentObject);
 		$this->view->assignRef('langlist'   , $langlist);
@@ -300,7 +305,7 @@ class TranslateController extends JController   {
 		$catid=$this->_catid;
 		$select_language_id = $this->_select_language_id;
 		$language_id =  $this->_language_id;
-		
+
 		$id =  JRequest::getVar( 'reference_id', null );
 		$jfc_id  =  JRequest::getVar( 'jfc_id ', null );
 
@@ -329,7 +334,7 @@ class TranslateController extends JController   {
 
 		if ($this->task=="translate.apply"){
 			$cid =  $actContentObject->id."|".$id."|".$language_id;
-			JRequest::setVar( 'cid', array($cid) );		
+			JRequest::setVar( 'cid', array($cid) );
 			$this->editTranslation();
 		}
 		else {
@@ -348,9 +353,9 @@ class TranslateController extends JController   {
 			$this->cid = array(0);
 		}
 
-		$this->_removeTranslation( $this->_catid, $this->cid );
 
-		$this->view->message = JText::_('Translation(s) deleted');
+		$model =& $this->view->getModel();
+		$model->_removeTranslation( $this->_catid, $this->cid );
 		// redirect to overview
 		$this->showTranslate();
 	}
@@ -363,6 +368,7 @@ class TranslateController extends JController   {
 		$catid = $this->_catid;
 		$publish = $this->_task=="publish" ? 1 : 0;
 		$cid =  JRequest::getVar( 'cid', array(0) );
+		$model =& $this->view->getModel();
 		if( strpos($cid[0], '|') >= 0 ) {
 			list($translation_id, $contentid, $language_id) = explode('|', $cid[0]);
 		}
@@ -376,7 +382,7 @@ class TranslateController extends JController   {
 			if( $actContentObject->state>=0 ) {
 				$actContentObject->setPublished($publish);
 				$actContentObject->store();
-				$this->view->message = ($publish ? JText::_('Translation published') : JText::_('Translation unpublished') );
+				$model->setState('message', $publish ? JText::_('Translation published') : JText::_('Translation unpublished') );
 			}
 		}
 
@@ -384,61 +390,6 @@ class TranslateController extends JController   {
 		$this->showTranslate();
 	}
 
-	/**
-	 * Deletes the selected translations (only the translations of course)
-	 */
-	function _removeTranslation( $catid, $cid ) {
-		$db =& JFactory::getDBO();
-		foreach( $cid as $cid_row ) {
-			list($translationid, $contentid, $language_id) = explode('|', $cid_row);
-
-			$contentElement = $this->_joomfishManager->getContentElement( $catid );
-			$contentTable = $contentElement->getTableName();
-			$contentid= intval($contentid);
-			$translationid = intval($translationid);
-
-			// safety check -- complete overkill but better to be safe than sorry
-
-			// get the translation details
-			JLoader::import( 'models.JFContent',JOOMFISH_ADMINPATH);
-			$translation = new jfContent($db);
-			$translation->load($translationid);
-
-			if (!isset($translation))		{
-				JText::sprintf('NO_SUCH_TRANSLATION', $translationid);
-				continue;
-			}
-
-			// make sure translation matches the one we wanted
-			if ($contentid != $translation->reference_id){
-				echo JText::_('Something dodgy going on here');
-				continue;
-			}
-
-			// ??? This line doesn't make sense!
-			/*
-			$sql= "SELECT * from #__$contentTable WHERE id=".$translationid;
-			$db->setQuery($sql);
-			$rows = $db->loadObjectList("");
-			if (count($rows)>0) {
-				echo "ID $contentid is not an orphan translation - it has not been deleted<br/>";
-				continue;
-			}
-			*/
-			// ???
-
-			$sql= "DELETE from #__jf_content WHERE reference_table='$catid' and language_id=$language_id and reference_id=$contentid";
-			$db->setQuery($sql);
-			$db->query();
-			if( $db->getErrorNum() != 0 ) {
-				echo JText::_('Something dodgy going on here');
-				echo $db->getErrorMsg();
-				continue;
-			}
-		}
-	}
-
-	
 	/**
 	 * Previews content translation
 	 *
@@ -453,15 +404,15 @@ class TranslateController extends JController   {
 		// Assign data for view - should really do this as I go along
 		//$this->view->assignRef('rows'   , $rows);
 		$this->view->display();
-		
+
 	}
-	
+
 	/**
 	 * show original value in an IFrame - for form safety
 	 *
 	 */
-	function originalValue(){		
-		$cid =  trim(JRequest::getVar( 'cid', "" ));		
+	function originalValue(){
+		$cid =  trim(JRequest::getVar( 'cid', "" ));
 		$language_id =  JRequest::getInt( 'lang', 0 );
 		if ($cid=="" ){
 			echo JText::_("Invalid paramaters");
@@ -485,7 +436,7 @@ class TranslateController extends JController   {
 		}
 
 		$fieldname = JRequest::getString('field','');
-				
+
 		// get the view
 		$this->view = & $this->getView('translate');
 
@@ -498,13 +449,13 @@ class TranslateController extends JController   {
 		$this->view->display();
 
 	}
-	
+
 	/** Presentation of translations that have been orphaned
 	 */
 	function showOrphanOverview( ) {
 		$language_id = $this->_language_id;
 		$catid = $this->_catid;
-		 
+
 		global  $mainframe;
 		$db =& JFactory::getDBO();
 
@@ -573,7 +524,7 @@ class TranslateController extends JController   {
 			$elementNames[] = JHTML::_('select.option',  $key, $element->Name );
 		}
 		$clist = JHTML::_('select.genericlist', $elementNames, 'catid', 'class="inputbox" size="1" onchange="document.adminForm.submit();"', 'value', 'text', $catid );
-		
+
 		// get the view
 		$this->view = & $this->getView("translate");
 
@@ -613,7 +564,7 @@ class TranslateController extends JController   {
 
 		// read details of orphan translation
 		//$sql = "SELECT * FROM #__jf_content WHERE id=$mbfc_id AND reference_id=$contentid AND reference_table='".$tablename."'";
-		$sql = "SELECT * FROM #__jf_content WHERE reference_id=$contentid AND language_id='".$language_id."' AND reference_table='".$tablename."'";	
+		$sql = "SELECT * FROM #__jf_content WHERE reference_id=$contentid AND language_id='".$language_id."' AND reference_table='".$tablename."'";
 		$db->setQuery($sql);
 		$rows = null;
 		$rows=$db->loadObjectList();
@@ -639,11 +590,28 @@ class TranslateController extends JController   {
 			$this->cid = array(0);
 		}
 
-		$this->_removeTranslation( $this->_catid, $this->cid );
+		$model = & $this->view->getModel();
+		$model->_removeTranslation( $this->_catid, $this->cid );
 
 		$this->view->message = JText::_('Orphan Translation(s) deleted');
 		// redirect to overview
 		$this->showOrphanOverview();
 	}
-	
+
+	function modalClose(){
+
+		@ob_end_clean();
+		?>
+		<script language="javascript" type="text/javascript">
+			window.parent.SqueezeBox.close();
+			<?php
+				if ($this->task=="translate.save"){
+					echo "alert('".JText::_('Translation saved')."');";
+				}
+			?>
+		</script>
+		<?php
+		exit();
+
+	}
 }

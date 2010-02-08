@@ -1,17 +1,35 @@
 <?php
 /**
-* @version		$Id: mergeCopyTarget8156.tmp 1080 2008-08-15 15:24:03Z akede $
-* @package		Joomla
-* @subpackage	Weblinks
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
-* @license		GNU/GPL, see LICENSE.php
-* Joomla! is free software. This version may have been modified pursuant
-* to the GNU General Public License, and as distributed it includes or
-* is derivative of works licensed under the GNU General Public License or
-* other free or open source software licenses.
-* See COPYRIGHT.php for copyright notices and details.
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: view.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage Views
+ *
 */
-
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
@@ -28,6 +46,31 @@ JLoader::import( 'views.default.view',JOOMFISH_ADMINPATH);
 class TranslateViewTranslate extends JoomfishViewDefault
 {
 	/**
+	 * Setting up special general attributes within this view
+	 * These attributes are independed of the specifc view
+	 */
+	function _initialize() {
+		// get list of active languages
+		$langOptions[] = JHTML::_('select.option',  '-1', JText::_('Select Language') );
+		// Get data from the model
+		$langActive = $this->get('Languages');		// all languages even non active once
+		$defaultLang = $this->get('DefaultLanguage');
+		$params = JComponentHelper::getParams('com_joomfish');
+		$showDefaultLanguageAdmin = $params->get("showDefaultLanguageAdmin", true);
+
+		if ( count($langActive)>0 ) {
+			foreach( $langActive as $language )
+			{
+				if($language->code != $defaultLang || $showDefaultLanguageAdmin) {
+					$langOptions[] = JHTML::_('select.option',  $language->id, $language->name );
+				}
+			}
+		}
+		$langlist = JHTML::_('select.genericlist', $langOptions, 'select_language_id', 'class="inputbox" size="1" onchange="if(document.getElementById(\'catid\').value.length>0) document.adminForm.submit();"', 'value', 'text', $this->select_language_id );
+
+		$this->assignRef('langlist'   , $langlist);
+	}
+	/**
 	 * Control Panel display function
 	 *
 	 * @param template $tpl
@@ -35,34 +78,31 @@ class TranslateViewTranslate extends JoomfishViewDefault
 	function display($tpl = null)
 	{
 		$document =& JFactory::getDocument();
-		// this already includes administrator
-		$livesite = JURI::base();
-		$document->addStyleSheet($livesite.'components/com_joomfish/assets/css/joomfish.css');
-
-		// browser title
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('TITLE_TRANSLATION'));
-		
+
 		// Set  page title
 		JToolBarHelper::title( JText::_( 'TITLE_TRANSLATION' ), 'jftranslations' );
+
+		$this->_initialize();
 
 		$layout = $this->getLayout();
 		if (method_exists($this,$layout)){
 			$this->$layout($tpl);
 		} else {
 			$this->overview($tpl);
-		}			
+		}
 
 		JHTML::_('behavior.tooltip');
 		parent::display($tpl);
 	}
-	
-	
+
+
 	function overview($tpl = null)
 	{
 		// browser title
 		$document =& JFactory::getDocument();
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('TRANSLATE'));
-		
+
 		// set page title
 		JToolBarHelper::title( JText::_( 'TRANSLATE' ), 'translation' );
 
@@ -70,8 +110,8 @@ class TranslateViewTranslate extends JoomfishViewDefault
 		JToolBarHelper::publish("translate.publish");
 		JToolBarHelper::unpublish("translate.unpublish");
 		JToolBarHelper::editList("translate.edit");
-		JToolBarHelper::deleteList(JText::_("ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION"), "translate.remove");
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::deleteList("ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION", "translate.remove");
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL', false );
 		JToolBarHelper::help( 'screen.translate.overview', true);
 
 		JSubMenuHelper::addEntry(JText::_('Control Panel'), 'index2.php?option=com_joomfish', false);
@@ -82,14 +122,14 @@ class TranslateViewTranslate extends JoomfishViewDefault
 		JSubMenuHelper::addEntry(JText::_('Language Configuration'), 'index2.php?option=com_joomfish&amp;task=languages.show', false);
 		JSubMenuHelper::addEntry(JText::_('Content elements'), 'index2.php?option=com_joomfish&amp;task=elements.show', false);
 		JSubMenuHelper::addEntry(JText::_('HELP AND HOWTO'), 'index2.php?option=com_joomfish&amp;task=help.show', false);
-	}	
-	
+	}
+
 	function edit($tpl = null)
 	{
 		// browser title
 		$document =& JFactory::getDocument();
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('Translate'));
-		
+
 		// set page title
 		JToolBarHelper::title( JText::_( 'Translate' ), 'translation' );
 
@@ -97,30 +137,30 @@ class TranslateViewTranslate extends JoomfishViewDefault
 		if (JRequest::getVar("catid","")=="content"){
 			//JToolBarHelper::preview('index.php?option=com_joomfish',true);
 			$bar = & JToolBar::getInstance('toolbar');
-			// Add a special preview button by hand			
-			$live_site = JURI::base();			
+			// Add a special preview button by hand
+			$live_site = JURI::base();
 			$bar->appendButton( 'Popup', 'preview', 'Preview', JRoute::_("index.php?option=com_joomfish&task=translate.preview&tmpl=component"), "800","550");
 		}
 		JToolBarHelper::save("translate.save");
 		JToolBarHelper::apply("translate.apply");
 		JToolBarHelper::cancel("translate.overview");
 		JToolBarHelper::help( 'screen.translate.edit', true);
-		
+
 		JRequest::setVar('hidemainmenu',1);
-	}	
+	}
 
 	function orphans($tpl = null)
 	{
 		// browser title
 		$document =& JFactory::getDocument();
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('CLEANUP ORPHANS'));
-		
+
 		// set page title
 		JToolBarHelper::title( JText::_( 'CLEANUP ORPHANS' ), 'orphan' );
 
 		// Set toolbar items for the page
 		JToolBarHelper::deleteList(JText::_("ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION"), "translate.removeorphan");
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL', false );
 		JToolBarHelper::help( 'screen.translate.orphans', true);
 
 		JSubMenuHelper::addEntry(JText::_('Control Panel'), 'index2.php?option=com_joomfish', false);
@@ -131,36 +171,36 @@ class TranslateViewTranslate extends JoomfishViewDefault
 		JSubMenuHelper::addEntry(JText::_('Language Configuration'), 'index2.php?option=com_joomfish&amp;task=languages.show', false);
 		JSubMenuHelper::addEntry(JText::_('Content elements'), 'index2.php?option=com_joomfish&amp;task=elements.show', false);
 		JSubMenuHelper::addEntry(JText::_('HELP AND HOWTO'), 'index2.php?option=com_joomfish&amp;task=help.show', false);
-	}	
+	}
 
 	function orphandetail($tpl = null)
 	{
 		// browser title
 		$document =& JFactory::getDocument();
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('CLEANUP ORPHANS'));
-		
+
 		// set page title
 		JToolBarHelper::title( JText::_( 'CLEANUP ORPHANS' ), 'orphan' );
 
 		// Set toolbar items for the page
 		//JToolBarHelper::deleteList(JText::_("ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION"), "translate.removeorphan");
 		JToolBarHelper::back();
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL', false );
 		JToolBarHelper::help( 'screen.translate.orphans', true);
 
 		// hide the sub menu
 		// This won't work
 		$submenu = & JModuleHelper::getModule("submenu");
 		$submenu->content = "\n";
-		
+
 		JRequest::setVar('hidemainmenu',1);
-	}	
+	}
 
 	function preview($tpl = null)
 	{
 		// hide the sub menu
 		$this->_hideSubmenu();
 		parent::display($tpl);
-		
+
 	}
 }

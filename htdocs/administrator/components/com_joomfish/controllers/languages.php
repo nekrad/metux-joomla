@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,7 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: languages.php 1085 2008-08-18 17:31:38Z akede $
+ * $Id: languages.php 1267 2009-01-29 18:01:22Z akede $
+ * @package joomfish
+ * @subpackage languages
  *
 */
 
@@ -143,6 +145,30 @@ class LanguagesController extends JController  {
 	}
 	
 	/**
+	 * Method to call the deletion of languages
+	 */
+	function remove() {
+		// Check for request forgeries
+		JRequest::checkToken() or die( 'Invalid Token' );
+
+		$post	= JRequest::get('post');
+		$cid 	= JRequest::getVar( 'checkboxid', array(), 'post', 'array' );
+		JArrayHelper::toInteger($cid);
+		
+		$model = $this->getModel('languages');
+		
+		if ($model->remove($cid, $post)) {
+			$msg = JText::_( 'Languages removed' );
+		} else {
+			$msg = JText::_( 'Error Deleting Languages' );
+		}
+
+		// Check the table in so it can be edited.... we are done with it anyway
+		$link = 'index.php?option=com_joomfish&task=languages.show';
+		$this->setRedirect($link, $msg);
+	}
+	
+	/**
 	 * Method to translate global config values
 	 *
 	 */
@@ -180,7 +206,7 @@ class LanguagesController extends JController  {
 		// Default Text handled 'manually'
 		$config =& JComponentHelper::getParams( 'com_joomfish' );
 		$view->defaulttext = $config->getValue("defaultText");		
-		$view->trans_defaulttext = $view->translations->get("defaulttext","x");
+		$view->trans_defaulttext = $view->translations->get("defaulttext","");
 		
 		// Set the config detials for translation in the view
 		$elementfolder =JPath::clean( JPATH_ADMINISTRATOR . '/components/com_joomfish/contentelements' );
@@ -219,18 +245,23 @@ class LanguagesController extends JController  {
 		}
 		
 		$params = new JParameter($language->params);
+		$data = array();
 		foreach ($_REQUEST as $key=>$val) {
 			if (strpos($key,"trans_")===0){
 				$key = str_replace("trans_","",$key);
-				$db = &JFactory::getDBO();
-				$val = $db->getEscaped($val);
-				$params->set($key,$val);
+				if (ini_get('magic_quotes_gpc')) {
+          		  $val = stripslashes($val);
+        		} 
+        		$data[$key]=$val;
 			}
 		}
-		$language->params = $params->toString("INI");
+		$registry = new JRegistry();
+		$registry->loadArray($data);
+		$language->params = $registry->toString();
+
 		$language->store();
 		global $mainframe;
-		$mainframe->redirect("index.php?option=com_joomfish&task=languages.show",JText::_("saved"));
+		$mainframe->redirect("index.php?option=com_joomfish&task=languages.show",JText::_("Languages saved"));
 	}
 	
 	

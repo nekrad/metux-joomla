@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,20 +25,27 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: TranslationFilter.php 1174 2008-09-08 20:47:58Z akede $
+ * $Id: TranslationFilter.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage Models
  *
 */
-
 function getTranslationFilters($catid, $contentElement)
 {
+	if (!$contentElement) return array();
 	$filterNames=$contentElement->getAllFilters();
+	if (count($filterNames)>0) {
+		$filterNames["reset"]="reset";
+	}
 	$filters=array();
 	foreach ($filterNames as $key=>$value){
 		$filterType = "translation".ucfirst(strtolower($key))."Filter" ;
 		$classFile = JPATH_SITE."/administrator/components/com_joomfish/contentelements/$filterType.php" ;
 		if (!class_exists($filterType)){
 			if (file_exists($classFile )) include_once($classFile);
-			if (!class_exists($filterType)) continue;
+			if (!class_exists($filterType)) {
+				continue;
+			}
 		}
 		$filters[strtolower($key)] =  new $filterType($contentElement);
 	}
@@ -61,10 +68,10 @@ class translationFilter
 	function translationFilter($contentElement=null){
 
 		global $mainframe;
-		$this->rememberValues = ($mainframe->getUserStateFromRequest('selected_catid', 'catid', '')== JRequest::getVar('catid',''));
-
-		if ($this->rememberValues){
-			$catid = $mainframe->getUserStateFromRequest('selected_catid', 'catid', '');
+		if (intval(JRequest::getVar('filter_reset',0))){
+			$this->filter_value =  $this->filterNullValue;
+		}
+		else if ($this->rememberValues){
 			// TODO consider making the filter variable name content type specific
 			$this->filter_value = $mainframe->getUserStateFromRequest($this->filterType.'_filter_value', $this->filterType.'_filter_value', $this->filterNullValue);
 		}
@@ -87,14 +94,174 @@ class translationFilter
 	function _createfilterHTML(){ return "";}
 }
 
+class translationResetFilter extends translationFilter
+{
+	function translationResetFilter ($contentElement){
+		$this->filterNullValue=-1;
+		$this->filterType="reset";
+		$this->filterField = "";
+		parent::translationFilter($contentElement);
+	}
+
+	function _createFilter(){
+		return "";
+	}
+
+	
+	/**
+ * Creates javascript session memory reset action
+ *
+ */
+	function _createfilterHTML(){
+		$reset["title"]= JText::_('Reset');
+		$reset["html"] = "<input type='hidden' name='filter_reset' id='filter_reset' value='0' /><input type='button' value='".JText::_("reset")."' onclick='document.getElementById(\"filter_reset\").value=1;document.adminForm.submit()' />";
+		return $reset;
+
+	}
+
+}
+
+class translationFrontpageFilter extends translationFilter
+{
+	function translationFrontpageFilter ($contentElement){
+		$this->filterNullValue=-1;
+		$this->filterType="frontpage";
+		$this->filterField = $contentElement->getFilter("frontpage");
+		parent::translationFilter($contentElement);
+	}
+
+	function _createFilter(){
+		if (!$this->filterField) return "";
+		$filter="";
+		if ($this->filter_value!=$this->filterNullValue){
+			$db =& JFactory::getDBO();
+			$sql = "SELECT content_id FROM #__content_frontpage order by ordering";
+			$db->setQuery($sql);
+			$ids = $db->loadResultArray();
+			if (is_null($ids)){
+				$ids = array();
+			}
+			$ids[] = -1;
+			$idstring = implode(",",$ids);
+			$not = "";
+			if ($this->filter_value==0){
+				$not = " NOT ";
+			}
+			$filter =   " c.".$this->filterField.$not." IN (".$idstring.") ";
+		}
+		return $filter;
+	}
+
+	
+	/**
+ * Creates frontpage filter
+ *
+ * @param unknown_type $filtertype
+ * @param unknown_type $contentElement
+ * @return unknown
+ */
+	function _createfilterHTML(){
+		$db =& JFactory::getDBO();
+
+		if (!$this->filterField) return "";
+
+		$FrontpageOptions=array();
+		$FrontpageOptions[] = JHTML::_('select.option', -1, JText::_('Filter any'));
+		$FrontpageOptions[] = JHTML::_('select.option', 1, JText::_('Yes'));
+		$FrontpageOptions[] = JHTML::_('select.option', 0, JText::_('No'));
+		$frontpageList=array();
+		$frontpageList["title"]= JText::_('FRONTPAGE FILTER');
+		$frontpageList["html"] = JHTML::_('select.genericlist', $FrontpageOptions, 'frontpage_filter_value', 'class="inputbox" size="1" onchange="document.adminForm.submit();"', 'value', 'text', $this->filter_value );
+
+		return $frontpageList;
+
+	}
+
+}
+
+class translationArchiveFilter extends translationFilter
+{
+	function translationArchiveFilter ($contentElement){
+		$this->filterNullValue=-1;
+		$this->filterType="archive";
+		$this->filterField = $contentElement->getFilter("archive");
+		parent::translationFilter($contentElement);
+	}
+
+	function _createFilter(){
+		if (!$this->filterField) return "";
+		$filter="";
+		if ($this->filter_value!=$this->filterNullValue){
+			if ($this->filter_value==0){
+				$filter =   " c.".$this->filterField." >=0 ";
+			}
+			else {
+				$filter =   " c.".$this->filterField." =-1 ";
+			}
+		}
+		return $filter;
+	}
+
+	
+	/**
+ * Creates frontpage filter
+ *
+ * @param unknown_type $filtertype
+ * @param unknown_type $contentElement
+ * @return unknown
+ */
+	function _createfilterHTML(){
+		$db =& JFactory::getDBO();
+
+		if (!$this->filterField) return "";
+
+		$FrontpageOptions=array();
+		$FrontpageOptions[] = JHTML::_('select.option', -1, JText::_('Filter any'));
+		$FrontpageOptions[] = JHTML::_('select.option', 1, JText::_('Yes'));
+		$FrontpageOptions[] = JHTML::_('select.option', 0, JText::_('No'));
+		$frontpageList=array();
+		$frontpageList["title"]= JText::_('ARCHIVE FILTER');
+		$frontpageList["html"] = JHTML::_('select.genericlist', $FrontpageOptions, 'archive_filter_value', 'class="inputbox" size="1" onchange="document.adminForm.submit();"', 'value', 'text', $this->filter_value );
+
+		return $frontpageList;
+
+	}
+
+}
 
 class translationCategoryFilter extends translationFilter
 {
+	var $section_filter_value;
+	
 	function translationCategoryFilter ($contentElement){
 		$this->filterNullValue=-1;
 		$this->filterType="category";
 		$this->filterField = $contentElement->getFilter("category");
 		parent::translationFilter($contentElement);
+		
+		// if currently selected category is not compatible with section then reset
+		if (intval(JRequest::getVar('filter_reset',0))){
+			$this->section_filter_value =  -1;
+		}
+		else if ($this->rememberValues){
+			global $mainframe;
+			$this->section_filter_value = $mainframe->getUserStateFromRequest('section_filter_value', 'section_filter_value', -1);
+		}
+		else {
+			$this->section_filter_value =  JRequest::getVar( "section_filter_value", -1 );
+		}
+
+		if ($this->section_filter_value!=-1 and $this->filter_value>=0){
+			$cat = & JTable::getInstance('category');
+			$cat->load($this->filter_value);
+			if ($cat->section != $this->section_filter_value) {
+				$this->filter_value=-1;
+			}
+		}
+		if ($this->section_filter_value==0){
+			$this->filter_value=0;
+		}
+		
 	}
 
 
@@ -109,21 +276,29 @@ class translationCategoryFilter extends translationFilter
 		$db =& JFactory::getDBO();
 
 		if (!$this->filterField) return "";
-		$categoryOptions=array();
-		$categoryOptions[] = JHTML::_('select.option', '-1',JText::_('ALL CATEGORIES') );
-		// if content categories then add "static content" null category
-		if ($this->tableName=="content"){
-			$categoryOptions[] = JHTML::_('select.option' ,'0',JText::_('STATIC CONTENT') );
+
+		// limit choices to specific section
+		$sectionfilter = "";
+		if ($this->section_filter_value!=-1){
+			$sectionfilter = " AND section=".$db->quote($this->section_filter_value);
 		}
 
+		$categoryOptions=array();
+		$categoryOptions[-1] = JHTML::_('select.option', '-1',JText::_('ALL CATEGORIES') );
+		// if content categories then add "static content" null category
+		if ($this->tableName=="content" && $this->section_filter_value<=0){
+			$categoryOptions[0] = JHTML::_('select.option' ,'0',JText::_('Uncategorized') );
+		}
+
+		
 		//	$sql = "SELECT c.id, c.title FROM #__categories as c ORDER BY c.title";
 		$sql = "SELECT DISTINCT cat.id, cat.title FROM #__categories as cat, #__".$this->tableName." as c
-			WHERE c.".$this->filterField."=cat.id ORDER BY cat.title";
+			WHERE c.".$this->filterField."=cat.id $sectionfilter ORDER BY cat.title";
 		$db->setQuery($sql);
 		$cats = $db->loadObjectList();
 		$catcount=0;
 		foreach($cats as $cat){
-			$categoryOptions[] = JHTML::_('select.option', $cat->id,$cat->title);
+			$categoryOptions[$cat->id] = JHTML::_('select.option', $cat->id,$cat->title);
 			$catcount++;
 		}
 		$categoryList=array();
@@ -188,7 +363,8 @@ class translationKeywordFilter extends translationFilter
 		if (!$this->filterField) return "";
 		$filter="";
 		if ($this->filter_value!=""){
-			$filter =  "LOWER(c.".$this->filterField." ) LIKE '%".$this->filter_value."%'";
+			$db =& JFactory::getDBO();
+			$filter =  "LOWER(c.".$this->filterField." ) LIKE '%".$db->getEscaped( $this->filter_value, true )."%'";
 		}
 		return $filter;
 	}
@@ -322,6 +498,33 @@ class translationChangedFilter extends translationFilter
 
 		return $ChangedList;
 	}
+}
+
+/**
+ * Look for unpublished translations - i.e. no translation or translation is unpublished
+ * Really only makes sense with a specific language selected
+ *
+ */
+
+class translationTrashFilter extends translationFilter
+{
+	function translationTrashFilter ($contentElement){
+		$this->filterNullValue=-1;
+		$this->filterType="trash";
+		$this->filterField = $contentElement->getFilter("trash");
+		parent::translationFilter($contentElement);
+	}
+
+	function _createFilter(){
+		// -1 = archive, -2 = trash
+		$filter = "c.".$this->filterField.">=-1";
+		return $filter;
+	}
+
+	function _createfilterHTML(){
+		return "";
+	}
+
 }
 
 /**

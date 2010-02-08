@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,21 +25,21 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: languages.php 1023 2008-07-11 09:45:56Z geraint $
+ * $Id: languages.php 1278 2009-03-27 09:20:15Z geraint $
+ * @package joomfish
+ * @subpackage Models
  *
 */
-
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
-jimport( 'joomla.application.component.model' );
-
+JLoader::register('JFModel', JOOMFISH_ADMINPATH .DS. 'models' .DS. 'JFModel.php' );
 
 /**
  * @package		Joom!Fish
  * @subpackage	CPanel
  */
-class LanguagesModelLanguages extends JModel
+class LanguagesModelLanguages extends JFModel
 {
 	/**
 	 * @var string	name of the current model
@@ -47,18 +47,18 @@ class LanguagesModelLanguages extends JModel
 	 */
 	var $_modelName = 'languages';
 
-	/** 
+	/**
 	 * @var array	set of languages found in the system
-	 * @access private 
+	 * @access private
 	 */
 	var $_languages = null;
-	
+
 	/**
 	 * default constrcutor
 	 */
 	function __construct() {
 		parent::__construct();
-		
+
 		$this->addTablePath(JOOMFISH_ADMINPATH .DS. 'tables');
 
 		$app	= &JFactory::getApplication();
@@ -71,10 +71,10 @@ class LanguagesModelLanguages extends JModel
 		$limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
 
 		$this->setState('limit', $limit);
-		$this->setState('limitstart', $limitstart);		
+		$this->setState('limitstart', $limitstart);
 	}
-	
-	
+
+
 	/**
 	 * return the model name
 	 */
@@ -88,21 +88,11 @@ class LanguagesModelLanguages extends JModel
 	 */
 	function getData() {
 		if($this->_languages == null) {
-			$this->_loadLanguages(); 
+			$this->_loadLanguages();
 		}
 		return $this->_languages;
 	}
-	
-	/**
-	 * returns the default language of the frontend
-	 * @return object	instance of the default language
-	 */
-	function getDefaultLanguage() {
-		$params = JComponentHelper::getParams('com_languages');
-		return $params->get("site", 'en-GB');
 
-	}
-	
 	/**
 	 * Method to store language information
 	 */
@@ -130,7 +120,7 @@ class LanguagesModelLanguages extends JModel
 				$jfLang->ordering = $data['order'][$i];
 				$jfLang->fallback_code = $data['fallbackCode'][$i];
 				$jfLang->params = $data['params'][$i];
-				
+
 				if( !$jfLang->store() ) {
 					$this->setError($jfLang->getError());
 					return false;
@@ -139,12 +129,28 @@ class LanguagesModelLanguages extends JModel
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Method to remove a language completely
+	 */
+	function remove($cid, $data) {
+		if( is_array($cid) && count($cid)>0 ) {
+			for ($i=0; $i<count($cid); $i++) {
+				$jfLang = $this->getTable('JFLanguage');
+				if( !$jfLang->delete($cid[$i]) ) {
+					$this->setError($jfLang->getError());
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	/**
 	 * Method to load the languages in the system
 	 * This is based on the languages currently configured in the Joom!Fish and all frontend languages installed in the system<br />
 	 * Loaded languages will be stored in the private variable _languages
-	 * 
+	 *
 	 * @return void
 	 */
 	function _loadLanguages(){
@@ -153,7 +159,7 @@ class LanguagesModelLanguages extends JModel
 
 		$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'l.ordering',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',				'word' );
-		
+
 		// 1. read all known languages from the database
 		$sql = "SELECT l.*"
 		. "\nFROM #__languages AS l";
@@ -162,30 +168,44 @@ class LanguagesModelLanguages extends JModel
 			$sql .= ' ORDER BY ' .$filter_order .' '. $filter_order_Dir;
 		}
 		$db->setQuery( $sql	);
-		$languages = $db->loadObjectList();	
+		$languages = $db->loadObjectList();
 		echo $db->getErrorMsg();
 
 		// Read the languages dir to find new installed languages
 		// This method returns a list of JLanguage objects with the related inforamtion
 		$systemLanguages = JLanguage::getKnownLanguages(JPATH_SITE);
-		
+
+		// Generate a compability list of known languages
+		$backwardLanguages = array();
+		foreach ($systemLanguages as $jLanguage) {
+			$backwardLanguages[$jLanguage['backwardlang']] = $jLanguage;
+		}
+
 		// We convert any language of the table into a JFLanguage object. As within the language list the key will be the language code
 		// All Joomla! system languages not known will be added to the result list
 		$this->_languages = array();
 		foreach($languages as $language) {
 			$jfLanguage = $this->getTable('JFLanguage');
 			$jfLanguage->bind($language);
+
+			// solving [12658] language codes might be determint and maped also using the compability field!
+			foreach (array_keys($backwardLanguages) as $backwardlang) {
+				if($backwardlang == substr($jfLanguage->code, 0, strlen($backwardlang))) {
+					$jLanguage = $backwardLanguages[$backwardlang];
+					$jfLanguage->set('code', $jLanguage['tag']);
+					$jfLanguage->set('iso',  $jLanguage['locale']);
+				}
+			}
 			$this->_languages[$jfLanguage->code] = $jfLanguage;
 		}
-		
+
 		foreach ($systemLanguages as $jLanguage) {
 			if($jLanguage != null && !array_key_exists($jLanguage['tag'], $this->_languages)) {
-				$jfLanguage = $this->getTable('JFLanguage');
-				$jfLanguage->bindFromJLanguage($jLanguage);
-				$this->_languages[$jfLanguage->code] = $jfLanguage;
+					$jfLanguage = $this->getTable('JFLanguage');
+					$jfLanguage->bindFromJLanguage($jLanguage);
+					$this->_languages[$jfLanguage->code] = $jfLanguage;
 			}
 		}
 	}
-			
 }
 ?>

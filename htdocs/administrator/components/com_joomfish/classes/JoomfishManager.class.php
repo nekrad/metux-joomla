@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,9 +25,12 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: JoomfishManager.class.php 1080 2008-08-15 15:24:03Z akede $
+ * $Id: JoomfishManager.class.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage classes
  *
 */
+
 
 
 /** ensure this file is being included by a parent file */
@@ -40,9 +43,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
  *
  * @package joomfish
  * @subpackage administrator
- * @copyright 2003-2008 Think Network GmbH
+ * @copyright 2003-2009 Think Network GmbH
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version 1.0, 2003-10-16 $Revision: 1080 $
+ * @version 1.0, 2009-01-07 $Revision: 1251 $
  * @author Alex Kempkens <joomfish@thinknetwork.com>
 */
 class JoomFishManager {
@@ -470,18 +473,28 @@ class JoomFishManager {
 			return $this->_cache[$lang];
 		}
 		
+		jimport('joomla.cache.cache');
+
+		if (version_compare(phpversion(),"5.0.0",">=")){
+			// Use new Joomfish DB Cache Storage Handler but only for php 5
+			$storage = 'jfdb';
+			// Make sure we have loaded the cache stroage handler 
+			JLoader::import('JCacheStorageJFDB', dirname( __FILE__ ));
+		}
+		else {
+			$storage = 'file';
+		}
+		
 		$options = array(
 			'defaultgroup' 	=> "joomfish-".$lang,
 			'cachebase' 	=> $conf->getValue('config.cache_path'),		
 			'lifetime' 		=> $this->getCfg("cachelife",1440) * 60,	// minutes to seconds
 			'language' 		=> $conf->getValue('config.language'),
-			'storage'		=> $conf->getValue('config.cache_handler', 'file')
+			'storage'		=> $storage
 		);
-
-		jimport('joomla.cache.cache');
+		
 		$this->_cache[$lang] =& JCache::getInstance( "callback", $options );
 		return $this->_cache[$lang];		
 	}
 
 }
-?>

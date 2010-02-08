@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2007 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,16 +25,16 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: joomfish.class.php 1027 2008-07-18 15:00:49Z geraint $
+ * $Id: joomfish.class.php 1276 2009-03-16 17:18:05Z geraint $
  *
 */
 
 /**
 * @package joomfish
  * @subpackage frontend.includes
- * @copyright 2003-2007 Think Network GmbH
+ * @copyright 2003-2009 Think Network GmbH
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version $Revision: 1027 $
+ * @version $Revision: 1276 $
  * @author Alex Kempkens <Alex@JoomFish.net>
 */
 
@@ -206,7 +206,7 @@ class JoomFish {
 
 		}
 
-		$results = $dispatcher->trigger('onBeforeTranslation', array (&$rows, $ids, $reference_table, $language, $refTablePrimaryKey, & $tableArray, $querySQL, $allowfallback));
+		$results = $dispatcher->trigger('onBeforeTranslation', array (&$rows, &$ids, $reference_table, $language, $refTablePrimaryKey, & $tableArray, $querySQL, $allowfallback));
 
 		// find reference table alias
 		$reftableAlias = $reference_table;
@@ -260,10 +260,13 @@ class JoomFish {
 		}
 
 		if (isset($ids) && $reference_table!='') {
+			$user =& JFactory::getUser();
+			$published = ($user->gid<21)?"\n	AND jf_content.published=1":"";
+			//$published = "\n	AND jf_content.published=1";
 			$sql = "SELECT jf_content.reference_field, jf_content.value, jf_content.reference_id, jf_content.original_value "
 			. "\nFROM #__jf_content AS jf_content"
 			. "\nWHERE jf_content.language_id=".$languages[$language]->id
-			. "\n	AND jf_content.published=1"
+			. $published
 			. "\n   AND jf_content.reference_id IN($ids)"
 			. "\n   AND jf_content.reference_table='$reference_table'"
 			;
@@ -339,8 +342,9 @@ class JoomFish {
 				$fallbackids = implode($fallbackids,",");
 				JoomFish::translateListWithIDs( $fallbackrows, $fallbackids, $reference_table, $fallbacklanguage, $refTablePrimaryKey, $tableArray,$querySQL, false);
 			}
+
+			$dispatcher->trigger('onAfterTranslation', array (&$rows, $ids, $reference_table, $language, $refTablePrimaryKey, $tableArray, $querySQL, $allowfallback));
 		}
-		$dispatcher->trigger('onAfterTranslation', array (&$rows, $ids, $reference_table, $language, $refTablePrimaryKey, $tableArray, $querySQL, $allowfallback));
 	}
 
 	/**
@@ -359,10 +363,7 @@ class JoomFish {
 			$info = array();
 		}
 		if (!isset($info[$reference_table])){
-			$cacheDir = dirname(__FILE__)."/cache";
-			if (!file_exists($cacheDir)){
-				mkdir($cacheDir);
-			}
+			$cacheDir = JPATH_CACHE;
 			$cacheFile = $cacheDir."/".$reference_table."_cefields.cache";
 			if (file_exists($cacheFile)){
 				$cacheFileContent = file_get_contents($cacheFile);
@@ -387,9 +388,11 @@ class JoomFish {
 					}
 				}
 				$cacheFileContent = serialize($info[$reference_table]);
-				$handle = fopen($cacheFile,"w");
-				fwrite($handle,$cacheFileContent);
-				fclose($handle);
+				$handle = @fopen($cacheFile,"w");
+				if ($handle){
+					fwrite($handle,$cacheFileContent);
+					fclose($handle);
+				}
 			}
 		}
 

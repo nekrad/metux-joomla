@@ -1,15 +1,34 @@
 <?php
 /**
-* @version		$Id: mergeCopyTarget8155.tmp 1080 2008-08-15 15:24:03Z akede $
-* @package		Joomla
-* @subpackage	Weblinks
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
-* @license		GNU/GPL, see LICENSE.php
-* Joomla! is free software. This version may have been modified pursuant
-* to the GNU General Public License, and as distributed it includes or
-* is derivative of works licensed under the GNU General Public License or
-* other free or open source software licenses.
-* See COPYRIGHT.php for copyright notices and details.
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: view.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage view
+ *
 */
 
 // Check to ensure this file is included in Joomla!
@@ -23,8 +42,8 @@ JLoader::import( 'views.default.view',JOOMFISH_ADMINPATH);
  * HTML View class for the WebLinks component
  *
  * @static
- * @package		Joomla
- * @subpackage	Weblinks
+ * @package		Joom!Fish
+ * @subpackage	Views
  * @since 1.0
  */
 class CPanelViewCPanel extends JoomfishViewDefault
@@ -58,10 +77,12 @@ class CPanelViewCPanel extends JoomfishViewDefault
 						
 		$this->panelStates	= &$this->get('PanelStates');
 		$this->contentInfo	= &$this->get('ContentInfo');
+		$this->performanceInfo	= &$this->get('PerformanceInfo');
 		$this->publishedTabs	= &$this->get('PublishedTabs');
 		
 		$this->assignRef('panelStates', $this->panelStates);
 		$this->assignRef('contentInfo', $this->contentInfo);
+		$this->assignRef('performanceInfo', $this->performanceInfo);
 		$this->assignRef('publishedTabs', $this->publishedTabs);
 		
 		JHTML::_('behavior.tooltip');
@@ -209,6 +230,51 @@ class CPanelViewCPanel extends JoomfishViewDefault
 			}
 			?>
 		</table>
+		<?php
+		$output .= ob_get_clean();
+	 	return $output;
+	 }
+	 
+	 /**
+	  * render content state information
+	  */
+	 function renderPerformanceInfo() {
+	 	$output = '';
+		ob_start();
+		?>
+		<table class="adminlist">
+			<tr>
+				<th />
+				<th ><?php echo JText::_("Current");?></th>
+				<th ><?php echo JText::_("Best Available");?></th>
+			</tr>
+			<tr class="row0">
+				<?php 
+				if ($this->performanceInfo["driver"]["optimal"]){
+					$color="green";
+				}
+				else {
+					$color="red";					
+				}
+				echo "<td>".JText::_("mySQL Driver")."</td>\n";
+				echo "<td>".$this->performanceInfo["driver"]["current"]."</td>\n";
+				echo "<td style='color:$color;font-weight:bold'>".$this->performanceInfo["driver"]["best"]."</td>\n";
+				?>
+			</tr>
+			<tr class="row1">
+				<?php 
+				if ($this->performanceInfo["cache"]["optimal"]){
+					$color="green";
+				}
+				else {
+					$color="red";					
+				}
+				echo "<td>".JText::_("Translation Caching")."</td>\n";
+				echo "<td>".$this->performanceInfo["cache"]["current"]."</td>\n";
+				echo "<td style='color:$color;font-weight:bold'>".$this->performanceInfo["cache"]["best"]."</td>\n";
+				?>
+			</tr>
+			</table>
 		<?php
 		$output .= ob_get_clean();
 	 	return $output;

@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,7 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: mergeCopyTarget8150.tmp 1067 2008-08-10 15:49:46Z akede $
+ * $Id: view.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage Views
  *
 */
 
@@ -66,7 +68,7 @@ class ElementsViewElements extends JoomfishViewDefault
 		JToolBarHelper::custom("elements.installer","archive","archive", JText::_( 'INSTALL' ),false);
 		JToolBarHelper::custom("elements.detail","preview","preivew", JText::_( 'DETAIL' ),true);
 		JToolBarHelper::deleteList(JText::_("ARE YOU SURE YOU WANT TO DELETE THIS CE FILE"), "elements.remove");
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL' , false );
 		JToolBarHelper::help( 'screen.elements', true);
 
 		JSubMenuHelper::addEntry(JText::_('Control Panel'), 'index2.php?option=com_joomfish');
@@ -83,7 +85,7 @@ class ElementsViewElements extends JoomfishViewDefault
 	{
 		// Set toolbar items for the page
 		JToolBarHelper::back();
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL' , false );
 		JToolBarHelper::help( 'screen.elements', true);
 
 		// hide the sub menu
@@ -102,7 +104,7 @@ class ElementsViewElements extends JoomfishViewDefault
 		// Set toolbar items for the page
 		JToolBarHelper::custom( 'elements.show', 'back', 'back', JText::_( 'Back' ), false );
 		JToolBarHelper::deleteList(JText::_("ARE YOU SURE YOU WANT TO DELETE THIS CE FILE"), "elements.remove_install");
-		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', JText::_( 'CONTROL PANEL' ), false );
+		JToolBarHelper::custom( 'cpanel.show', 'joomfish', 'joomfish', 'CONTROL PANEL' , false );
 		JToolBarHelper::help( 'screen.elements', true);
 
 		// hide the sub menu

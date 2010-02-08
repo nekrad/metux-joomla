@@ -2,7 +2,7 @@
 <joomfish type="contentelement">
   <name>Menus</name>
   <author>A. Kempkens</author>
-  <version>2.0</version>
+  <version>2.0.3</version>
   <description>Definition for the core menu manager</description>
   <reference>
   	<table name="menu">
@@ -14,12 +14,12 @@
   		<field type="text" name="type" translate="0">Menu Type</field>
   		<field type="checked_out_by" name="checked_out" translate="0">Check out by</field>
   		<field type="checked_out_date" name="checked_out_time" translate="0">Check out date</field>
-  		<filter>c.published &gt;= 0</filter>
   	</table>
   </reference>
   <translationfilters>
   	  <keyword>name</keyword>
   	  <menutype>menutype</menutype>
   	  <published>published</published>
+  	  <trash>published</trash>
   </translationfilters>
  </joomfish>

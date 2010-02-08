@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,10 +25,11 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: JFContent.php 928 2008-03-30 10:51:32Z akede $
+ * $Id: JFContent.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage Tables
  *
 */
-
 
 
 /**
@@ -36,9 +37,9 @@
  *
  * @package joomfish
  * @subpackage administrator
- * @copyright 2003-2008 Think Network GmbH
+ * @copyright 2003-2009 Think Network GmbH
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version $Revision: 928 $
+ * @version $Revision: 1251 $
  * @author Alex Kempkens <joomfish@thinknetwork.com>
  */
 class jfContent extends JTable  {

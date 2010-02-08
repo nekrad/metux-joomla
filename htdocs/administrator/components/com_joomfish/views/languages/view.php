@@ -1,17 +1,35 @@
 <?php
 /**
-* @version		$Id: mergeCopyTarget8144.tmp 1080 2008-08-15 15:24:03Z akede $
-* @package		Joomla
-* @subpackage	Weblinks
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
-* @license		GNU/GPL, see LICENSE.php
-* Joomla! is free software. This version may have been modified pursuant
-* to the GNU General Public License, and as distributed it includes or
-* is derivative of works licensed under the GNU General Public License or
-* other free or open source software licenses.
-* See COPYRIGHT.php for copyright notices and details.
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: view.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage Views
+ *
 */
-
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
@@ -38,20 +56,15 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 	function display($tpl = null)
 	{
 		global $mainframe;
-		
-		$document =& JFactory::getDocument();
-		// this already includes administrator
-		$livesite = JURI::base();
-		$document->addStyleSheet($livesite.'components/com_joomfish/assets/css/joomfish.css');
 
+		$document =& JFactory::getDocument();
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('Language Title'));
-		
+
 		// Set toolbar items for the page
 		JToolBarHelper::title( JText::_( 'Language Title' ), 'language' );
-		//JToolBarHelper::custom( 'languages.translateConfig', 'config', 'config', JText::_( 'Config' ),true);
-		JToolBarHelper::deleteList('Are you sure you want to delete the selcted items?', 'language.remove');
-		JToolBarHelper::custom( 'languages.save', 'save', 'save', JText::_( 'Save' ),false);
-		JToolBarHelper::custom( 'languages.apply', 'apply', 'apply', JText::_( 'Apply' ),false);
+		JToolBarHelper::deleteList('Are you sure you want to delete the selcted items?', 'languages.remove');
+		JToolBarHelper::custom( 'languages.save', 'save', 'save', 'Save',false);
+		JToolBarHelper::custom( 'languages.apply', 'apply', 'apply', 'Apply',false);
 		JToolBarHelper::cancel('languages.cancel');
 		JToolBarHelper::help( 'screen.languages', true);
 
@@ -63,7 +76,7 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 		JSubMenuHelper::addEntry(JText::_('Language Configuration'), 'index2.php?option=com_joomfish&amp;task=languages.show', true);
 		JSubMenuHelper::addEntry(JText::_('Content elements'), 'index2.php?option=com_joomfish&amp;task=elements.show', false);
 		JSubMenuHelper::addEntry(JText::_('HELP AND HOWTO'), 'index2.php?option=com_joomfish&amp;task=help.show', false);
-		
+
 		$option				= JRequest::getCmd('option', 'com_joomfish');
 		$filter_state		= $mainframe->getUserStateFromRequest( $option.'filter_state',		'filter_state',		'',				'word' );
 		$filter_catid		= $mainframe->getUserStateFromRequest( $option.'filter_catid',		'filter_catid',		0,				'int' );
@@ -71,13 +84,13 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',				'word' );
 		$search				= $mainframe->getUserStateFromRequest( $option.'search',			'search',			'',				'string' );
 		$search				= JString::strtolower( $search );
-				
+
 		$languages	= &$this->get('data');
 		$defaultLanguage = &$this->get('defaultLanguage');
-		
+
 		$this->assignRef('items', $languages);
 		$this->assignRef('defaultLanguage', $defaultLanguage);
-		
+
 		// state filter
 		$lists['state']	= JHTML::_('grid.state',  $filter_state );
 
@@ -90,7 +103,7 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 
 		$this->assignRef('user',		JFactory::getUser());
 		$this->assignRef('lists',		$lists);
-		
+
 		JHTML::_('behavior.tooltip');
 		parent::display($tpl);
 	}
@@ -106,17 +119,17 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 		$document->addStyleSheet($livesite.'components/com_joomfish/assets/css/joomfish.css');
 
 		$document->setTitle(JText::_('JOOMFISH_TITLE') . ' :: ' .JText::_('Language Title'));
-		
+
 		// hide the sub menu
-		JRequest::setVar('hidemainmenu',1);		
-		
+		JRequest::setVar('hidemainmenu',1);
+
 		// Set toolbar items for the page
-		JToolBarHelper::title( JText::_('JOOMFISH_TITLE') .' :: '. JText::_( 'Translate Configuration' ), 'fish' );
+		JToolBarHelper::title( JText::_( 'Language Title' ) .' - '.JText::_( 'Translate Configuration' ) , 'language' );
 		JToolBarHelper::save('languages.saveTranslateConfig');
 		JToolBarHelper::cancel('languages.show');
 		JToolBarHelper::help( 'screen.languages', true);
 
-		parent::display($tpl);		
+		parent::display($tpl);
 	}
 	/**
 	 * Method to determine the correct image path for language flags.
@@ -181,6 +194,6 @@ class LanguagesViewLanguages extends JoomfishViewDefault
 
 		return '<img src="'. JURI::root() . $src .'" alt="'. html_entity_decode( $alt ) .'" '.$attribs.' />';
 	}
-	
+
 }
 ?>

@@ -28,7 +28,10 @@
 			<option value="0">NO</option>
 			<option value="1">YES</option>
 		</param>
-		
+		<param name="showDefaultLanguageAdmin" type="radio" default="1" label="Show default language in administration" description="SHOWDEFAULTLANGUAGEADMIN_HELP">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>		
 		<param name="@spacer" type="spacer" default="Control Panel Moduls" label="Control Panel Moduls" description="" />
 		<param name="showPanelNews" type="radio" default="1" label="News" description="CPANEL_NEWS_HELP">
 			<option value="0">NO</option>
@@ -48,12 +51,12 @@
 			<option value="0">NO</option>
 			<option value="1">YES</option>
 		</param>
-		<param name="@spacer" type="spacer" default="Caching Options for myssqli and mysql" label="Caching Options for myssqli and mysql" />
-		<param name="transcaching" type="radio" default="1" label="Enable translation caching" description="TRANS_CACHING_HELP">
+		<param name="@spacer" type="spacer" default="Caching Options (requires mysql 4.1.1+)" label="Caching Options for myssqli and mysql" />
+		<param name="transcaching" type="radio" default="0" label="Enable translation caching" description="TRANS_CACHING_HELP">
 			<option value="0">NO</option>
 			<option value="1">YES</option>
 		</param>
-		<param name="cachelife" type="text" cols="50" default="1440" label="Cache Life in Minutes" description="TRANS_CACHELIFE_HELP" />
+		<param name="cachelife" type="text" cols="50" default="180" label="Cache Life in Minutes" description="TRANS_CACHELIFE_HELP" />
 		<param name="@spacer" type="spacer" default="Caching Options for mysql only" label="Caching Options for mysql only" />
 		<param name="qacaching" type="radio" default="1" label="Enable query analysis caching" description="QA_CACHING_HELP">
 			<option value="0">NO</option>

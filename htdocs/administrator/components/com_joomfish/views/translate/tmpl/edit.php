@@ -1,4 +1,36 @@
 <?php
+/**
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: edit.php 1277 2009-03-16 17:27:45Z geraint $
+ * @package joomfish
+ * @subpackage Views
+ *
+*/
+
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 /**
@@ -133,14 +165,13 @@ else {
 		      }
 		      ?>
 		      </td>
-			  <td valign="top">
+			  <td valign="top" class="button">
 				<input type="hidden" name="origValue_<?php echo $field->Name;?>" value='<?php echo md5( $field->originalValue );?>' />
+				<textarea  name="origText_<?php echo $field->Name;?>" style="display:none"><?php echo $field->originalValue;?></textarea>
 				<?php if( strtolower($field->Type)!='htmltext' ) {?>
-					<input type="hidden" name="origText_<?php echo $field->Name;?>" value='<?php echo $field->originalValue;?>' />
-					<a class="toolbar" onclick="document.adminForm.refField_<?php echo $field->Name;?>.value = document.adminForm.origText_<?php echo $field->Name;?>.value;" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('copy_<?php echo $field->Name;?>','','images/copy_f2.png',1);"><img src="images/copy.png" alt="<?php echo JText::_('copy');?>" border="0" name="copy_<?php echo $field->Name;?>" align="middle" /></a>
+					<a class="toolbar" onclick="document.adminForm.refField_<?php echo $field->Name;?>.value = document.adminForm.origText_<?php echo $field->Name;?>.value;"><span class="icon-32-copy"></span><?php echo JText::_('Copy'); ?></a>
 				<?php }	else { ?>
-				    <textarea  name="origText_<?php echo $field->Name;?>" style="display:none"><?php echo $field->originalValue;?></textarea>
-					<a class="toolbar" onclick="copyToClipboard('<?php echo $field->Name;?>','copy');" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('copy_<?php echo $field->Name;?>','','images/copy_f2.png',1);"><img src="images/copy.png" alt="<?php echo JText::_('copy');?>" border="0" name="copy_<?php echo $field->Name;?>" align="middle" /></a>
+					<a class="toolbar" onclick="copyToClipboard('<?php echo $field->Name;?>','copy');" onmouseout="MM_swapImgRestore();"><span class="icon-32-copy"></span><?php echo JText::_('Copy'); ?></a>
 				<?php  }?>
 			  </td>
 		    </tr>
@@ -167,7 +198,7 @@ else {
 							<?php
 							$editorFields[] = array( "editor_".$field->Name, "refField_".$field->Name );
 							// parameters : areaname, content, hidden field, width, height, rows, cols
-							echo $wysiwygeditor->display( "refField_".$field->Name, $translationContent->value, '100%', '300', '70', '15',array("readmore") ) ;
+							echo $wysiwygeditor->display( "refField_".$field->Name, $translationContent->value, '100%', '300', '70', '15',$field->ebuttons ) ;
 						}
 						if( strtolower($field->Type)=='readonlytext') {
 							$length = ($field->Length>0)?$field->Length:60;
@@ -179,17 +210,14 @@ else {
 						}
 						?>
 				</td>
-				<td valign="top">
+				<td valign="top" class="button">
 					<?php
 					 if ( strtolower($field->Type)=='readonlytext'){
 					}
 					else if( strtolower($field->Type)!='htmltext' ) {?>
-						<a class="toolbar" onclick="document.adminForm.refField_<?php echo $field->Name;?>.value = '';" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('clear_<?php echo $field->Name;?>','','images/delete_f2.png',1);"><img src="images/delete.png" alt="<?php echo JText::_('clear');?>" border="0" name="clear_<?php echo $field->Name;?>" align="middle" /></a>
+					<a class="toolbar" onclick="document.adminForm.refField_<?php echo $field->Name;?>.value = '';"><span class="icon-32-delete"></span><?php echo JText::_('Delete'); ?></a>
 					<?php } else {?>
-					<!-- ToDo
-						<a class="toolbar" onclick="editor_setHTML('refField_<?php echo $field->Name;?>', ''); document.adminForm.refField_<?php echo $field->Name;?>.value = '';" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('clear_<?php echo $field->Name;?>','','images/delete_f2.png',1);"><img src="images/delete.png" alt="<?php echo JText::_('clear');?>" border="0" name="clear_<?php echo $field->Name;?>" align="middle" /></a>
-					-->
-					<a class="toolbar" onclick="copyToClipboard('<?php echo $field->Name;?>','clear');" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('clear_<?php echo $field->Name;?>','','images/delete_f2.png',1);"><img src="images/delete.png" alt="<?php echo JText::_('clear');?>" border="0" name="clear_<?php echo $field->Name;?>" align="middle" /></a>
+					<a class="toolbar" onclick="copyToClipboard('<?php echo $field->Name;?>','clear');"><span class="icon-32-delete"></span><?php echo JText::_('Delete'); ?></a>
 
 					<?php }?>
 					</td>
@@ -212,13 +240,10 @@ else {
 				      <td valign="top" style="text-align:center!important"><?php echo JText::_('Translation');?></td>
 				      <td valign="top" align="right">
 						<input type="hidden" name="origValue_<?php echo $field->Name;?>" value='<?php echo md5( $field->originalValue );?>' />
-						<input type="hidden" name="origText_<?php echo $field->Name;?>" value='<?php echo $field->originalValue;?>' />
-						<a class="toolbar" onclick="copyParams('orig', '<?php echo $field->Name;?>');" onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('copy_<?php echo $field->Name;?>','','images/copy_f2.png',1);">
-						   <img src="images/copy.png" alt="<?php echo JText::_('copy');?>" border="0" name="copy_<?php echo $field->Name;?>" align="middle" />
-						</a>
-						<a class="toolbar" onclick="copyParams('defaultvalue', '<?php echo $field->Name;?>');"  onmouseout="MM_swapImgRestore();"  onmouseover="MM_swapImage('clear_<?php echo $field->Name;?>','','images/delete_f2.png',1);">
-						    <img src="images/delete.png" alt="<?php echo JText::_('clear');?>" border="0" name="clear_<?php echo $field->Name;?>" align="middle" />
-						</a>
+						<!--<input type="hidden" name="origText_<?php echo $field->Name;?>" value='<?php echo $field->originalValue;?>' />//-->
+					    <textarea  name="origText_<?php echo $field->Name;?>" style="display:none"><?php echo $field->originalValue;?></textarea>
+						<a class="toolbar" onclick="copyParams('orig', '<?php echo $field->Name;?>');"><span class="icon-32-copy"></span><?php echo JText::_('Copy'); ?></a>
+						<a class="toolbar" onclick="copyParams('defaultvalue', '<?php echo $field->Name;?>');"><span class="icon-32-delete"></span><?php echo JText::_('Delete'); ?></a>
 					   </td>
 			     </tr>
 			     <tr>
@@ -237,6 +262,7 @@ else {
 			      <td align="left" valign="top" class="translateparams">
 						  <input type="hidden" name="id_<?php echo $field->Name;?>" value="<?php echo $translationContent->id;?>" />
 							<?php
+							// TODO sort out default value for author in params when editing new translation
 							$retval = $transparams->editTranslation();
 							if ($retval){
 								$editorFields[] = $retval;
@@ -294,6 +320,8 @@ else {
 	</table>
 	<input type="hidden" name="option" value="com_joomfish" />
 	<input type="hidden" name="task" value="translate.edit" />
+	<input type="hidden" name="direct" value="<?php echo intval(JRequest::getVar("direct",0));?>" />
+	
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
 <script language="javascript" type="text/javascript">

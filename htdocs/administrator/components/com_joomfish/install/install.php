@@ -1,12 +1,13 @@
 <?php
 /**
  * @version		$Id: install.php 33 2007-12-19 10:26:16Z andrew.eddie $
- * @package		jXZine
- * @copyright	2005-2008 New Life in IT Pty Ltd.  All rights reserved.
+ * @package		joomfish
+ * @copyright	2003-2009 Think Network GmbH, Munich
  * @license		GNU General Public License
  * 
  * This is the special installer addon created by Andrew Eddie and the team of jXtended.
  * We thank for this cool idea of extending the installation process easily
+ * copyright	2005-2008 New Life in IT Pty Ltd.  All rights reserved.
  */
 
 // no direct access
@@ -276,7 +277,63 @@ if (is_a($plugins, 'JSimpleXMLElement') && count($plugins->children())) {
 * SETUP DEFAULTS
 * ---------------------------------------------------------------------------------------------
 ***********************************************************************************************/
+// Check to see if a plugin by the same name is already installed
+$query = 'SELECT `id`' .
+' FROM `#__components`' .
+' WHERE parent = 0 and name=' .$db->Quote('Joom!Fish').
+' AND parent = 0';
+$db->setQuery($query);
+$componentID = $db->loadResult();
 
+if(!is_null($componentID) && $componentID > 0) {
+	$query = 'UPDATE #__components SET params = '
+		. $db->Quote("noTranslation=2\n"
+		. "defaultText=\n"
+		. "overwriteGlobalConfig=1\n"
+		. "storageOfOriginal=md5\n"
+		. "frontEndPublish=1\n"
+		. "frontEndPreview=1\n"
+		. "showPanelNews=1\n"
+		. "showPanelUnpublished=1\n"
+		. "showPanelState=1\n"
+		. "copyparams=1\n"
+		. "transcaching=0\n"
+		. "cachelife=180\n"
+		. "qacaching=1\n"
+		. "qalogging=0\n")
+		. 'WHERE id = ' . $componentID;
+	$db->setQuery($query);
+		
+	if (!$db->Query()) {
+		// Install failed, roll back changes
+		$this->parent->abort(JText::_('Plugin').' '.JText::_('Install').': '.$db->stderr(true));
+		return false;
+	}
+}
+
+// Insert the default lanauage if no language exist
+$query = 'SELECT count(*) FROM #__languages';
+$db->setQuery($query);
+$count = $db->loadResult();
+
+if($count==0) {
+	$query = 'INSERT INTO #__languages VALUES (1, '
+		.$db->quote('English (United Kingdom)')
+		. ', 1, ' .$db->quote('en_GB.utf8, en_GB.UT'). ', ' . $db->quote('en-GB')
+		. ', '. $db->quote('en') .', '. $db->quote('').', '. $db->quote('').', '. $db->quote(''). ', 1);';
+	$db->execute($query);
+}
+
+/***********************************************************************************************
+* ---------------------------------------------------------------------------------------------
+* Execute specific system steps to ensure a consistent installtion
+* ---------------------------------------------------------------------------------------------
+***********************************************************************************************/
+
+// check if prePost_translations.xml exist and if yes remove it
+if( JFile::exists(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'prepostTranslation.xml') ) {
+	JFile::delete(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'prepostTranslation.xml');
+}
 
 /***********************************************************************************************
 * ---------------------------------------------------------------------------------------------
@@ -285,7 +342,7 @@ if (is_a($plugins, 'JSimpleXMLElement') && count($plugins->children())) {
 ***********************************************************************************************/
 $rows = 0;
 ?>
-<img src="components/com_joomfish/assets/images/joomfish_slogan.png" width="138" heigh="50" alt="Joom!Fish Multilingual Content Manager" align="right" />
+<img src="components/com_joomfish/assets/images/joomfish_slogan.png" width="138" height="50" alt="Joom!Fish Multilingual Content Manager" align="right" />
 
 <h2>Joom!Fish Installation</h2>
 <table class="adminlist">

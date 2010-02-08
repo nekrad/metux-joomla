@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,10 +25,11 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ContentObject.php 1105 2008-08-22 14:08:28Z geraint $
+ * $Id: ContentObject.php 1284 2009-03-31 08:16:49Z geraint $
+ * @package joomfish
+ * @subpackage Models
  *
 */
-
 include_once(dirname(__FILE__).DS."JFContent.php");
 
 /**
@@ -42,9 +43,9 @@ include_once(dirname(__FILE__).DS."JFContent.php");
  *
  * @package joomfish
  * @subpackage administrator
- * @copyright 2003-2008 Think Network GmbH
+ * @copyright 2003-2009 Think Network GmbH
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @version $Revision: 1105 $
+ * @version $Revision: 1284 $
  * @author Alex Kempkens <joomfish@thinknetwork.com>
  */
 class ContentObject {
@@ -164,13 +165,13 @@ class ContentObject {
 					$formArray[$prefix ."origText_". $fieldName .$suffix] = JRequest::_stripSlashesRecursive( $formArray[$prefix ."origText_". $fieldName .$suffix] );
 				}
 				else {
-					$formArray[$prefix ."refField_". $fieldName .$suffix] = JRequest::getVar( $prefix ."refField_". $fieldName .$suffix, '', 'post', 'string', JREQUEST_ALLOWRAW );					
-					$formArray[$prefix ."origText_". $fieldName .$suffix] = JRequest::getVar( $prefix ."origText_". $fieldName .$suffix, '', 'post', 'string', JREQUEST_ALLOWRAW );					
+					$formArray[$prefix ."refField_". $fieldName .$suffix] = JRequest::getVar( $prefix ."refField_". $fieldName .$suffix, '', 'post', 'string', JREQUEST_ALLOWRAW );
+					$formArray[$prefix ."origText_". $fieldName .$suffix] = JRequest::getVar( $prefix ."origText_". $fieldName .$suffix, '', 'post', 'string', JREQUEST_ALLOWRAW );
 				}
 
 				$translationValue = $formArray[$prefix ."refField_". $fieldName .$suffix];
 				$originalValue = $formArray[$prefix ."origValue_". $fieldName .$suffix];
-				$originalText = ($storeOriginalText) ? $formArray[$prefix ."origText_". $fieldName .$suffix] : null;
+				$originalText = ($storeOriginalText) ? $formArray[$prefix ."origText_". $fieldName .$suffix] : "";
 				$fieldContent = new jfContent($db);
 
 				// code cleaner for xhtml transitional compliance
@@ -208,12 +209,12 @@ class ContentObject {
 				$fieldContent->value = $translationValue;
 				// original value will be already md5 encoded - based on that any encoding isn't needed!
 				$fieldContent->original_value = $originalValue;
-				$fieldContent->original_text = $originalText;
+				$fieldContent->original_text = !is_null($originalText)?$originalText:"";
 				$fieldContent->modified = date( "Y-m-d H:i:s" );
 				$fieldContent->modified_by = $user->id;
 				$fieldContent->published=$this->published;
 				$field->translationContent = $fieldContent;
-				
+
 			}
 		}
 	}
@@ -225,7 +226,7 @@ class ContentObject {
 		}
 		$alias = JFilterOutput::stringURLSafe($alias);
 	}
-	
+
 	function filterName(&$alias){
 		if($alias=="") {
 			$alias = JRequest::getString("refField_name");
@@ -256,6 +257,24 @@ class ContentObject {
 				}
 				$url = null;
 				$link = $prefix . '?' . implode( '&', $temp3 );
+			}
+		}
+		else {
+			$menuid = JRequest::getInt("reference_id",0);
+			if ($menuid==0) return;
+			include_once( JPATH_SITE.DS.'includes'.DS.'application.php');
+			$menu =& JSite::getMenu();
+			$item = $menu->getItem($menuid);
+			if ($item->type=="menulink"){
+				$urlparams = JRequest::getVar("refField_params",array(),'post',"array");
+				if (is_array($urlparams) && count($urlparams)>0 && array_key_exists("menu_item",$urlparams)){
+					$pos = strpos( $link, '?' );
+					if ($pos !== false)
+					{
+						$prefix = substr( $link, 0, $pos );
+						$link = $prefix . '?Itemid=' .$urlparams["menu_item"];
+					}
+				}
 			}
 		}
 	}

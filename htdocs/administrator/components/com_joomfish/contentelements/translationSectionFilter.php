@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,7 +25,9 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: translationSectionFilter.php 928 2008-03-30 10:51:32Z akede $
+ * $Id: translationSectionFilter.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage TranslationFilters
  *
 */
 
@@ -54,6 +56,7 @@ class translationSectionFilter extends translationFilter
 		if (!$this->filterField) return "";
 		$sectionOptions=array();
 		$sectionOptions[] = JHTML::_('select.option', '-1', JText::_('All Sections'));
+		$sectionOptions[] = JHTML::_('select.option', '0', JText::_('Uncategorized'));
 
 		//	$sql = "SELECT c.id, c.title FROM #__categories as c ORDER BY c.title";
 		$sql = "SELECT DISTINCT section.id, section.title FROM #__sections as section, #__".$this->tableName." as c

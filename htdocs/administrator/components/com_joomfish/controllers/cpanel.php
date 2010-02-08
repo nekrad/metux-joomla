@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -25,9 +25,12 @@
  * The "GNU General Public License" (GPL) is available at
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: cpanel.php 1085 2008-08-18 17:31:38Z akede $
+ * $Id: cpanel.php 1251 2009-01-06 18:33:02Z apostolov $
+ * @package joomfish
+ * @subpackage cpanel
  *
 */
+
 
 defined( 'JPATH_BASE' ) or die( 'Direct Access to this location is not allowed.' );
 
@@ -47,6 +50,12 @@ class CpanelController extends JController  {
 	{
 		parent::__construct($config);
 		$this->registerTask( 'show',  'display' );
+
+		// ensure DB cache table is created and up to date
+		JLoader::import( 'helpers.controllerHelper',JOOMFISH_ADMINPATH);
+		JLoader::import( 'classes.JCacheStorageJFDB',JOOMFISH_ADMINPATH);
+		JoomfishControllerHelper::_checkDBCacheStructure();
+		JoomfishControllerHelper::_checkDBStructure();
 	}
 
 	/**
