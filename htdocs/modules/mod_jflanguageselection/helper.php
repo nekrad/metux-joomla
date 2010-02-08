@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -23,9 +23,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
  * The "GNU General Public License" (GPL) is available at
- * http: *www.gnu.org/copyleft/gpl.html
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: mod_jflanguageselection.php 610 2007-08-30 11:11:58Z geraint $
+ * $Id: helper.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage mod_jflanguageselection
  *
 */
 
@@ -128,7 +130,8 @@ if( !defined( 'JFMODULE_CLASS' ) ) {
 			$uri = &JURI::getInstance();
 			$currenturl = $uri->toString();
 			
-			if ($modparams->get("cache_href",1)){
+			$params =& JComponentHelper::getParams("com_joomfish");
+			if ($modparams->get("cache_href",1) && $params->get("transcaching",1)){
 				$jfm =& JoomFishManager::getInstance();
 				$cache = $jfm->getCache($language->code);
 
@@ -158,9 +161,9 @@ if( !defined( 'JFMODULE_CLASS' ) ) {
 
 				// Should really do this with classes and clones - this is a proof of concept
 				$menu =& JSite::getMenu();
-				$menu->_items = JFModuleHTML::getJFMenu($sefLang->code,$menu->_items);
+				$menu->_items = JFModuleHTML::getJFMenu($sefLang->code, false, $menu->_items);
 				$url = JFModuleHTML::_route( $href, $sefLang);
-				$menu->_items = JFModuleHTML::getJFMenu($language->code);
+				$menu->_items = JFModuleHTML::getJFMenu($language->code, true);
 				$registry->setValue("joomfish.sef_lang", false);
 
 				/*
@@ -226,67 +229,78 @@ if( !defined( 'JFMODULE_CLASS' ) ) {
 			return $url;
 		}
 
-		function getJFMenu($lang, $currentLangMenuItems=false){
+		function getJFMenu($lang, $getOriginals=true,  $currentLangMenuItems=false){
 			static $instance;
 			if (!isset($instance)){
 				$instance = array();
 
+				if (!$currentLangMenuItems){
+					JError::raiseWarning('SOME_ERROR_CODE', "Error translating Menus - missing currentLangMenuItems");
+					return false;
+				}
 				$db		= & JFactory::getDBO();
 
 				$sql	= 'SELECT m.*, c.`option` as component' .
 				' FROM #__menu AS m' .
 				' LEFT JOIN #__components AS c ON m.componentid = c.id'.
-				' WHERE m.published = 1'.
+				' WHERE m.published = 1 '.
 				' ORDER BY m.sublevel, m.parent, m.ordering';
 				$db->setQuery($sql);
 
 				// get untranslated menus first
-				if (!($menus = $db->loadObjectList('id',false))) {
+				// run through the translation code so that we get the correct reftablearray
+				$registry =& JFactory::getConfig();
+				$defLang = $registry->getValue("config.defaultlang");
+				// done as array of one item so that joomla core menu code will work with it
+				if (!($menu = $db->loadObjectList('id',true, $defLang))) {
 					JError::raiseWarning('SOME_ERROR_CODE', "Error loading Menus: ".$db->getErrorMsg());
 					return false;
 				}
 
-				$instance["raw"] = array("rows"=>$menus,"tableArray"=>$db->_getRefTables());
+				$tempmenu = JSite::getMenu();
+				$activemenu = $tempmenu->getActive();
+				if ($activemenu && isset($activemenu->id) && $activemenu->id>0 && array_key_exists($activemenu->id,$menu)){
+					$newmenu = array();
+					$newmenu[$activemenu->id] = $menu[$activemenu->id];
+					while ($activemenu->parent!=0 && array_key_exists($activemenu->parent,$menu)){
+						$activemenu = $menu[$activemenu->parent];
+						$newmenu[$activemenu->id] = $activemenu;
+					}
+					$menu = $newmenu;
+				}
+				
+				$instance["raw"] = array("rows"=>$menu, "tableArray"=>$db->_getRefTables(),"originals"=>$currentLangMenuItems);
 				JFModuleHTML::_setupMenuRoutes($instance["raw"]["rows"]);
 				// This is really annoying in PHP5 - an array of stdclass objects is copied as an array of references
 				// I tried doing this as a stdclass and cloning but it didn't seek to work.
 				$instance["raw"] = serialize($instance["raw"]);
 
-				/*
-				I can't save time by not translating the default language
-				$registry =& JFactory::getConfig();
-				$defLang = $registry->getValue("config.defaultlang");
+				$defLang = $registry->getValue("config.jflang");
 				$instance[$defLang] = unserialize($instance["raw"]);
-				*/
-				// instead I could in the original menu items
-				// However if we don't translate in default language then menu localisation wouldn't work etc. in default language
-				// So TAKE CARE TO GET THE RIGHT COMBINTATION
-				if ($currentLangMenuItems){
-					$registry =& JFactory::getConfig();
-					$defLang = $registry->getValue("config.jflang");
-					$instance[$defLang] = unserialize(serialize(array("rows"=>$currentLangMenuItems,"tableArray"=>$db->_getRefTables())));
-				}
 
 			}
 			if (!isset($instance[$lang])){
 				$instance[$lang] = unserialize($instance["raw"]);
 
-				$jfm =& JoomFishManager::getInstance();
-				if ($jfm->getCfg("transcaching",1)){
-					$cache = $jfm->getCache($lang);
-					$result = $cache->get( array("JoomFish", 'translateListCached'), array($instance[$lang]["rows"], $lang, $instance[$lang]["tableArray"]));
-					$instance[$lang]["rows"] = $result;
-				}
-				else {
-					JoomFish::translateList( $instance[$lang]["rows"], $lang, $instance[$lang]["tableArray"]);
-				}
+				// Do not cache here since it can affect SEF components 				
+				JoomFish::translateList( $instance[$lang]["rows"], $lang, $instance[$lang]["tableArray"]);
 				JFModuleHTML::_setupMenuRoutes($instance[$lang]["rows"]);
 			}
-			return $instance[$lang]["rows"];
+			if ($getOriginals){
+				return $instance[$lang]["originals"];
+			}
+			else {
+				return $instance[$lang]["rows"];
+			}
 		}
 
 		function _setupMenuRoutes(&$menus) {
 			if($menus) {
+				// first pass translate the route
+				foreach($menus as $key => $menu)
+				{
+					$menus[$key]->route = $menus[$key]->alias;
+				}
 				foreach($menus as $key => $menu)
 				{
 					//Get parent information

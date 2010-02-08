@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  *
  * All rights reserved.  The Joom!Fish project is a set of extentions for
  * the content management system Joomla!. It enables Joomla!
@@ -23,20 +23,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
  * The "GNU General Public License" (GPL) is available at
- * http: *www.gnu.org/copyleft/gpl.html
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: mod_jflanguageselection.php 610 2007-08-30 11:11:58Z geraint $
+ * $Id: mod_jflanguageselection.php 1251 2009-01-07 06:29:53Z apostolov $
+ * @package joomfish
+ * @subpackage mod_jflanguageselection
  *
 */
-
-/**
-* @package joomfish
-* @subpackage mod_jflanguageselection
-* @copyright 2003-2007 Think Network GmbH
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
-* @version 1.7 - $Id: mod_jflanguageselection.php 610 2007-08-30 11:11:58Z geraint $
-* @author Geraint Edwards
-**/
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -82,7 +75,7 @@ if (!array_key_exists($curLanguage->getTag(),$langActive)){
 	//$currentlang = current($langActive);
 	//global $mainframe;
 	//$mainframe->redirect(JRoute::_("index.php?lang=".$currentlang->iso));
-	JError::raiseError('0', JText::_('NOTAUTH'));
+	JError::raiseError('0', JText::_('NOT AUTHORISED').' '.$curLanguage->getTag());
 	exit();
 }
 
