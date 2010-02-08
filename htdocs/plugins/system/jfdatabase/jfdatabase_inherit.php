@@ -1,34 +1,36 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
- * 
- * All rights reserved.  The Joom!Fish project is a set of extentions for 
- * the content management system Joomla!. It enables Joomla! 
- * to manage multi lingual sites especially in all dynamic information 
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
  * which are stored in the database.
  *
  * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
+ * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
- * The "GNU Lesser General Public License" (LGPL) is available at
- * http: *www.gnu.org/copyleft/lgpl.html
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ReadMe,v 1.2 2005/03/15 11:07:01 akede Exp $
+ * $Id: jfdatabase_inherit 1251 2009-01-07 11:07:01 apostolov Exp $
+ * @package joomfish
+ * @subpackage jfdatabase
+ * @version 2.0
  *
 */
-
 
 // Don't allow direct linking
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
@@ -45,9 +47,9 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
  *
  * @package joomfish
  * @subpackage database
- * @copyright 2003-2008 Think Network GmbH
- * @license http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License
- * @version 1.0, 2003-10-16 $Revision: 1.6 $
+ * @copyright 2003-2009 Think Network GmbH
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @version 1.0, 2009-01-07 $Revision: 1251 $
  * @author Geraint Edwards
 */
 
@@ -61,6 +63,9 @@ class JFDatabase extends interceptDB {
 
 	/** @var Internal variable to hold flag about whether setRefTables is needed - JF queries don't need it */
 	var $_skipSetRefTables = false;
+
+	var $orig_limit	= 0;
+	var $orig_offset	= 0;
 
 	/** Constructor
 	*/
@@ -82,12 +87,18 @@ class JFDatabase extends interceptDB {
 	var $profileData = array();
 
 	function _profile($func = "", $forcestart=false){
+		if (!$this->_debug) return "";
 		// start of function
 		if ($func==="" || $forcestart){
 			if (!$forcestart){
 				$backtrace = debug_backtrace();
 				if (count($backtrace)>1){
-					$func = $backtrace[1]["function"];
+					if (array_key_exists("class",$backtrace[1])){
+						$func = $backtrace[1]["class"]."::".$backtrace[1]["function"];
+					}
+					else {
+						$func = $backtrace[1]["function"];
+					}
 				}
 			}
 			if (!array_key_exists($func,$this->profileData)){
@@ -130,12 +141,13 @@ class JFDatabase extends interceptDB {
 	{
 		$count = parent::getNumRows($cur);
 		if (!$translate) return $count;
-		
+
 		// setup Joomfish plugins
 		$dispatcher	   =& JDispatcher::getInstance();
 		JPluginHelper::importPlugin('joomfish');
-		
-		$allowfallback = false;
+
+		// musdt allow fall back for contnent table localisation to work
+		$allowfallback = true;
 		$refTablePrimaryKey = "";
 		$reference_table = "";
 		$ids="";
@@ -152,7 +164,7 @@ class JFDatabase extends interceptDB {
 		$count = $rows[0];
 		return $count;
 	}
-	
+
 	/**
 	* Overwritten method to loads the first field of the first row returned by the query.
 	*
@@ -160,11 +172,14 @@ class JFDatabase extends interceptDB {
 	*/
 	function loadResult( $translate=true, $language=null ) {
 		if (!$translate){
-			return parent::loadResult();
+			$this->_skipSetRefTables=true;
+			$result = parent::loadResult();
+			$this->_skipSetRefTables=false;
+			return $result;
 		}
 		$result=null;
 		$ret=null;
-		
+
 		$result = $this->_loadObject( $translate, $language );
 
 		$pfunc = $this->_profile();
@@ -177,7 +192,7 @@ class JFDatabase extends interceptDB {
 
 		$pfunc = $this->_profile($pfunc);
 
-		return $ret;		
+		return $ret;
 	}
 
 	/**
@@ -213,7 +228,7 @@ class JFDatabase extends interceptDB {
 
 		return $ret;
 	}
-	
+
 	/**
 	* Overwritten Fetch a result row as an associative array
 	*
@@ -236,7 +251,7 @@ class JFDatabase extends interceptDB {
 		}
 		return $result;
 	}
-	
+
 	/**
 	* Overwritten Load a assoc list of database rows
 	*
@@ -267,7 +282,7 @@ class JFDatabase extends interceptDB {
 		}
 		return $results;
 	}
-	
+
 	/**
 	* This global function loads the first row of a query into an object
 	*/
@@ -288,7 +303,7 @@ class JFDatabase extends interceptDB {
 	function _loadObject( $translate=true, $language=null ) {
 		return $this->loadObject();
 	}
-	
+
 	/**
 	* Load a list of database objects
 	* @param string The field name of a primary key
@@ -300,14 +315,14 @@ class JFDatabase extends interceptDB {
 		global $_JOOMFISH_MANAGER;
 
 		if (!$translate) {
-			$db->__skipSetRefTables=true;
+			$this->_skipSetRefTables=true;
 			$result = parent::loadObjectList( $key );
-			$db->__skipSetRefTables=false;
+			$this->_skipSetRefTables=false;
 			return $result;
 		}
 
 		$result = parent::loadObjectList( $key );
-		
+
 		if( isset($_JOOMFISH_MANAGER)) {
 			$this->_setLanguage($language);
 		}
@@ -344,10 +359,18 @@ class JFDatabase extends interceptDB {
 					// TODO call based on config
 					//$cache = &JFactory::getCache('jfquery');
 					$cache = $_JOOMFISH_MANAGER->getCache($language);
+					$this->orig_limit	= $this->_limit;
+					$this->orig_offset	= $this->_offset;
 					$result = $cache->get( array("JoomFish", 'translateListCached'), array($result, $language, $this->_getRefTables() ));
+					$this->orig_limit	= 0;
+					$this->orig_offset	= 0;
 				}
 				else {
+					$this->orig_limit	= $this->_limit;
+					$this->orig_offset	= $this->_offset;
 					JoomFish::translateList( $result, $language, $this->_getRefTables() );
+					$this->orig_limit	= 0;
+					$this->orig_offset	= 0;
 				}
 				$pfunc = $this->_profile($pfunc);
 			}
@@ -373,7 +396,7 @@ class JFDatabase extends interceptDB {
 		$pfunc = $this->_profile();
 
 		$row = array();
-		if( $result != null ) {		
+		if( $result != null ) {
 			$fields = get_object_vars( $result );
 			foreach ($fields as $val) {
 				$row[] = $val;
@@ -404,7 +427,7 @@ class JFDatabase extends interceptDB {
 		$pfunc = $this->_profile();
 
 		$row = array();
-		if( $rows != null ) {		
+		if( $rows != null ) {
 			foreach ($rows as $row) {
 				$fields = get_object_vars( $row );
 				$result = array();
@@ -416,13 +439,13 @@ class JFDatabase extends interceptDB {
 				}
 				else {
 					$results[] = $result;
-				}				
+				}
 			}
 		}
 		$pfunc = $this->_profile($pfunc);
 		return $results;
 	}
-		
+
 	/**
 	* Overwritten insert function to enable storage of material created in non-default language.
 	* Note that this creates a translation which is identical to the original - when we update
@@ -509,7 +532,7 @@ class JFDatabase extends interceptDB {
 	* default language is choosen the information will be updated directly within the original tables.
 	* To make sure that all other information will be written into the tables as expected the
 	* statements will be manipulated as needed.
-	* 
+	*
 	* @param	string	table name
 	* @param	object	instance with information to store
 	* @param	string	primary key name of table
@@ -585,7 +608,7 @@ class JFDatabase extends interceptDB {
 	 *  Internal function to determit the table name from an sql query
 	 *
 	 *  This is now deprecated
-	 * 
+	 *
 	 * @return	string	table name
 	 */
 	function _getTableName() {
@@ -681,8 +704,8 @@ class JFDatabase extends interceptDB {
 
 		return $database;
 	}
-	
-	
+
+
 	/**
 	 * The following methods are not yet implemented in Joomfish (or may not be possible)
 	 */
@@ -702,9 +725,11 @@ class mldatabase extends JFDatabase
 			foreach (get_object_vars($res) as $key=>$val) {
 				$object->$key = $val;
 			}
+			return true;
 		}
 		else {
 			$object  = parent::loadObject($translate, $language);
+			return $object;
 		}
 	}
 

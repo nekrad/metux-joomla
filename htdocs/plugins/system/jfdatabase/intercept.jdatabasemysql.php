@@ -1,4 +1,38 @@
 <?php
+/**
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
+ * 
+ * All rights reserved.  The Joom!Fish project is a set of extentions for 
+ * the content management system Joomla!. It enables Joomla! 
+ * to manage multi lingual sites especially in all dynamic information 
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: intercept.jdatabasemysql 1251 2009-01-07 11:07:01 apostolov Exp $
+ * @package joomfish
+ * @subpackage jfdatabase
+ * @version 2.0
+ *
+*/
+
+
 // Don't allow direct linking
 defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 
@@ -39,8 +73,8 @@ class interceptDB extends JDatabaseMySQL {
 		if (!is_resource($this->_cursor)){
 			// This is a serious problem since we do not have a valid db connection
 			// or there is an error in the query
-			if ($this->getErrorMsg()===""){
-				echo JText::_("No valid database connection")."<br/>";
+			if ($this->getErrorNum()>0){
+				echo JText::_("No valid database connection")." ".$this->getErrorMsg()."<br/>";
 			}
 			return 0;
 		}
@@ -60,11 +94,7 @@ class interceptDB extends JDatabaseMySQL {
 		$pfunc = $this->_profile();
 
 		$cacheFileContent = serialize($this->_refTables);
-		$handle = @fopen($cacheFile,"wb");
-		if ($handle){
-			fwrite($handle,$cacheFileContent);
-			fclose($handle);
-		}
+		JFile::write($cacheFile,$cacheFileContent);
 		// clean out old cache files
 		// This could be very slow for long list of old files -
 		// TODO store in database instead
@@ -77,15 +107,13 @@ class interceptDB extends JDatabaseMySQL {
 	function cleanRefTableCache($cacheDir){
 
 		$pfunc = $this->_profile();
-
-		if (!($dh = opendir($cacheDir))) {
-			return false;
-		}
-		while ($file = readdir($dh)) {
+		
+		$files =JFolder::files($cacheDir); 
+		foreach ($files as $file) {
 			if (($file != '.') && ($file != '..')) {
 				$file = "$cacheDir/$file";
-				if (is_file($file) && @filemtime($file) < $this->cacheExpiry) {
-					if (!@unlink($file)) {
+				if (JFile::exists($file) && @filemtime($file) < $this->cacheExpiry) {
+					if (!JFile::delete($file)) {
 						echo "problems clearing cache file $file";
 					}
 				}
@@ -106,9 +134,9 @@ class interceptDB extends JDatabaseMySQL {
 		// replace tabs and carriage returns with spaces
 		fwrite($handle,"$action ");
 		fwrite($handle,preg_replace("/([\t\n\r\f])/"," ",$tempsql));
-		fwrite($handle," #@£^£@# ");
+		fwrite($handle," #@ï¿½^ï¿½@# ");
 		fwrite($handle,preg_replace("/([\t\n\r\f])/"," ",$sql_exNos));
-		fwrite($handle," #@£^£@# ");
+		fwrite($handle," #@ï¿½^ï¿½@# ");
 		fwrite($handle,preg_replace("/([\t\n\r\f])/"," ",$sqlHash));
 		fwrite($handle," # JF LINE END# \n");
 
@@ -130,15 +158,22 @@ class interceptDB extends JDatabaseMySQL {
 		$tempsql = $this->_sql;
 		// only needed for selects at present - possibly add for inserts/updates later
 		if (strpos(strtoupper($tempsql),"SELECT")===false) {
-		
 			$pfunc = $this->_profile($pfunc);
-
+			return;
+		}
+		
+		// Ignore Joomfish translation query	
+		if (strpos($tempsql,"SELECT jf_content.reference_field, jf_content.value")===0){
+			$pfunc = $this->_profile($pfunc);
 			return;
 		}
 	
 		$config =& JFactory::getConfig();
 	
-		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1)){
+		jimport('joomla.client.helper');
+		$FTPOptions = JClientHelper::getCredentials('ftp');
+		// we won't use this caching if FTP layer ie enabled
+		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1) && $FTPOptions['enabled'] == 1){
 			$cachepath = JPATH_CACHE;
 			$cachetime = $config->getValue('config.cachetime',0);
 			// remove time formats (assume all numbers are not necessay - this is experimental
@@ -158,10 +193,10 @@ class interceptDB extends JDatabaseMySQL {
 
 			$this->cacheExpiry = time() - $cachetime;
 			$cacheDir = "$cachepath/refTableSQL";
-			if (!file_exists($cacheDir)) mkdir($cacheDir);
+			if (!JFolder::exists($cacheDir)) JFolder::create($cacheDir);
 			$cacheFile = "$cacheDir/$sqlHash";
-			if (file_exists($cacheFile) &&	@filemtime($cacheFile) > $this->cacheExpiry) {
-				$cacheFileContent = file_get_contents($cacheFile);
+			if (JFile::exists($cacheFile) &&	@filemtime($cacheFile) > $this->cacheExpiry) {
+				$cacheFileContent = JFile::read($cacheFile);
 				$this->_refTables = unserialize($cacheFileContent);
 
 				if ($_JOOMFISH_MANAGER->getCfg("qalogging",0)){
@@ -190,7 +225,7 @@ class interceptDB extends JDatabaseMySQL {
 
 		//print "<br> $tempsql $this->_cursor $fields";
 
-		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1)){
+		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1) && $FTPOptions['enabled'] == 1){
 			if ($fields<=0) {
 				if ($_JOOMFISH_MANAGER->getCfg("qalogging",0)){
 					$this->_logSetRefTablecache("w0f",$tempsql,$sql_exNos,$sqlHash);
@@ -219,7 +254,6 @@ class interceptDB extends JDatabaseMySQL {
 		$this->_refTables["sql"]=$tempsql;
 		// local variable to keep track of aliases that have already been analysed
 		$tableAliases = array();
-
 		for ($i = 0; $i < $fields; ++$i) {
 			$meta = $this->_getFieldMetaData($i);
 			if (!$meta) {
@@ -244,7 +278,7 @@ class interceptDB extends JDatabaseMySQL {
 					//echo "<br>Information for column $i of ".($fields-1)." ".$meta->name." : $tempTable=";
 					$tempArray=array();
 					$prefix = $this->_table_prefix;
-					preg_match_all("/$prefix(\w*)\s+AS\s+".$tempTable."[,\s]/i",$this->_sql, $tempArray, PREG_PATTERN_ORDER);
+					preg_match_all("/$prefix(\w*)\s+AS\s+`?".$tempTable."`?[,\s]/i",$this->_sql, $tempArray, PREG_PATTERN_ORDER);
 					if (count($tempArray)>1 && count($tempArray[1])>0) $value = $tempArray[1][0];
 					else $value = null;
 					if (isset($this->_table_prefix) && strlen($this->_table_prefix)>0 && strpos($tempTable,$this->_table_prefix)===0) $tempTable = substr($tempTable, strlen( $this->_table_prefix));
@@ -260,7 +294,7 @@ class interceptDB extends JDatabaseMySQL {
 					else {
 						$tempName = $meta->name;
 						$tempArray=array();
-						preg_match_all("/(\w*)\s+AS\s+".$tempName."[,\s]/i",$this->_sql, $tempArray, PREG_PATTERN_ORDER);
+						preg_match_all("/`?(\w*)`?\s+AS\s+`?".$tempName."`?[,\s]/i",$this->_sql, $tempArray, PREG_PATTERN_ORDER);
 						if (count($tempArray)>1 && count($tempArray[1])>0) {
 							//echo "$meta->name is an alias for ".$tempArray[1][0]."<br>";
 							$nameValue = $tempArray[1][0];
@@ -282,7 +316,7 @@ class interceptDB extends JDatabaseMySQL {
 
 			}
 		}
-		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1)){
+		if ($_JOOMFISH_MANAGER->getCfg("qacaching",1) && $fields>1 && $FTPOptions['enabled'] == 1){
 			if ($_JOOMFISH_MANAGER->getCfg("qalogging",0)){
 				$this->_logSetRefTablecache("wn",$tempsql,$sql_exNos,$sqlHash);
 			}

@@ -1,7 +1,7 @@
 <?php
 /**
  * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
- * Copyright (C) 2003-2008 Think Network GmbH, Munich
+ * Copyright (C) 2003-2009 Think Network GmbH, Munich
  * 
  * All rights reserved.  The Joom!Fish project is a set of extentions for 
  * the content management system Joomla!. It enables Joomla! 
@@ -9,25 +9,25 @@
  * which are stored in the database.
  *
  * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
+ * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
  *
- * The "GNU Lesser General Public License" (LGPL) is available at
- * http: *www.gnu.org/copyleft/lgpl.html
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * -----------------------------------------------------------------------------
- * $Id: ReadMe,v 1.2 2005/03/15 11:07:01 akede Exp $
+ * $Id: jfdatabase 1251 2009-01-07 11:07:01 apostolov Exp $
  * @package joomfish
- * @subpackage system.jfdatabase_bot
+ * @subpackage jfdatabase
  * @version 2.0
  *
 */
@@ -111,46 +111,11 @@ class plgSystemJFDatabase extends JPlugin{
 
 	function onAfterRender()
 	{
-		// There is a bug in Garbage collectino in Joomla 1.5.5 see http://joomlacode.org/gf/project/joomla/tracker/?action=TrackerItemEdit&tracker_item_id=12101
-		// garbage collect the cache
-		/*
-		$jfm =& JoomFishManager::getInstance();
-		if ($jfm->getCfg("transcaching",1)){
-		$jlang =& JFactory::getLanguage();
-		$language = $jlang->getTag();
-		$cache = $jfm->getCache($language);
-		$cache->gc();
-		}
-		*/
-		// Therefore do it ourselves (the old fashioned way to maximise performance)
-		$jfm =& JoomFishManager::getInstance();
-		if ($jfm->getCfg("transcaching",1)){
-			$jlang =& JFactory::getLanguage();
-			$language = $jlang->getTag();
-			$cache = $jfm->getCache($language);
-			$handler =& $cache->_getStorage();
-			$lifetime = intval($jfm->getCfg("cachelife",1440)) * 60;	// minutes to seconds
-			if (!JError::isError($handler)  && strtolower(get_class($handler)) == "jcachestoragefile") {
-				$files = JFolder::files($handler->_root.DS.$cache->_options["defaultgroup"], '_expire', true, true);
-				clearstatcache();
-				foreach($files As $file) {
-					$time = @filemtime($file);
-					if ($time){
-						$time += $lifetime;
-						if ( $handler->_now > $time) {
-							JFile::delete($file);
-							JFile::delete(str_replace('_expire', '', $file));
-						}
-
-					}
-				}
-			}
-		}
-
 		$buffer = JResponse::getBody();
 		$info = "";
 		$db =& JFactory::getDBO();
 		$info .=  "<div style='font-size:11px'>";
+		uasort($db->profileData,array($this,"sortprofile"));
 		foreach ($db->profileData as $func=>$data) {
 			$info .=  "$func = ".round($data["total"],4)." (".$data["count"].")<br />";
 		}
@@ -159,6 +124,10 @@ class plgSystemJFDatabase extends JPlugin{
 		JResponse::setBody($buffer);
 	}
 
+	function sortprofile($a,$b){
+		return $a["total"]>=$b["total"]?-1:1;
+	}
+	
 	/**
 	 * Setup for the Joom!Fish database connectors, overwriting the original instances of Joomla!
 	 * Which connector is used and which technique is based on the extension configuration
